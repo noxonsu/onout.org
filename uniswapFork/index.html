@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Uniswap Fork</title>
+    <meta name="description" content="Step-by-step guide how to fork Uniswap" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <link rel="canonical" href="https://onout.org/uniswapFork/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
+    <link rel="stylesheet" href="index.css" />
+    <script>
+    if (location.protocol !== 'https:') {
+      location.replace(`https:${location.href.substring(location.protocol.length)}`);
+    }
+    </script>
+    <style>
+      .banner {
+        font-size: 1.2em;
+        padding: 0.7rem;
+        font-weight: 500;
+        border-radius: 0.5rem;
+        border: 2px solid rgb(0, 0, 0, 0.09);
+        box-shadow: 0 0 0.7rem rgb(0, 0, 0, 0.03);
+        background-color: rgb(0, 0, 0, 0.03);
+        color: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Uniswap V2 fork</h1>
+      <p>How to create uniswap fork and collect 0.05% fees for every trade.</p>
+      <p class="banner">
+        See also: Do not want to waste your time and make mistakes?
+        <br>
+        Use extended version without coding skills: <a href="https://tools.onout.org/dex/" target="_blank">no-code tool for creating DEX</a>
+      </p>
+    </header>
+    <main>
+      <section>
+        <h2>Introduction</h2>
+
+        <ul>
+          <li>
+            <a href="https://github.com/Uniswap/v2-core">Uniswap V2-core</a>
+          </li>
+          <li>
+            <a href="https://github.com/Uniswap/v2-periphery">Uniswap V2-periphery</a>
+          </li>
+          <li>
+            <a href="https://github.com/Uniswap/v2-sdk">Uniswap V2-sdk</a>
+          </li>
+          <li>
+            <a href="https://www.trufflesuite.com/docs/truffle/overview">Truffle</a>
+          </li>
+          <li>
+            <a href="https://www.trufflesuite.com/docs/ganache/overview">Ganache</a>
+          </li>
+          <li>
+            <a href="https://github.com/rkalis/truffle-plugin-verify">Verify plugin for Truffle</a>
+          </li>
+          <li>
+            <a href="https://uniswap.org/whitepaper.pdf">Uniswap V2 Core whitepaper</a>
+          </li>
+          <li>
+            <a href="https://uniswap.org/docs/v2/">Uniswap V2 docs</a>
+          </li>
+          <li>
+            <a href="https://etherscan.io/address/0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f#code">Uniswap V2 factory contract</a>
+          </li>
+          <li>
+            <a href="https://etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D#code">Uniswap V2 router code</a>
+          </li>
+          <li>
+            <a href="https://remix.ethereum.org/">Remix</a>
+          </li>
+          <li>
+            <a id="start-template-source" href="https://github.com/1azy-guy/CoolSwap-interface">Interface template</a>
+            (Uniswap team didn't make a new repo for V3 interface, but we need a version which is as close as possible to Uniswap V2
+            for ease of interaction with V2 contracts. So we can use it as a start template)
+          </li>
+          <li>
+            <a href="https://github.com/1azy-guy/CoolSwap-core">Core template</a>
+          </li>
+          <li>
+            <a href="https://github.com/1azy-guy/CoolSwap-periphery">Periphery template</a>
+          </li>
+        </ul>
+
+        <blockquote>
+          <p>
+            We will use Rinkeby test network. Deploy through Truffle and use these contracts, exept a section
+            with Remix deployment, where will be a Ropsten network.
+          </p>
+          <p><b>tx</b> - short name for transaction</p>
+        </blockquote>
+      </section>
+
+      <section>
+        <h2>Table of contents</h2>
+
+        <ul>
+          <li>
+            <a href="#deploy-with-truffle">Deploy with Truffle</a>
+            
+            <ul>
+              <li>
+                <a href="#core-contracts">Core contracts</a>
+                
+                <ul>
+                  <li><a href="#base-core-contracts-template">base core contracts template</a></li>
+                  <li><a href="#deploy-core-with-ganache">deploy core with Ganache</a></li>
+                  <li><a href="#deploy-core-on-testnet">deploy core on the testnet</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <a href="#periphery-contracts">Periphery contracts</a>
+                <ul>
+                  <li><a href="#base-periphery-template">base periphery template</a></li>
+                  <li><a href="#deploy-periphery-on-testnet">deploy periphery on the testnet</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#contracts-title">Deploy with Remix</a>
+            <ul>
+              <li><a href="#remix-editor-start">start with Remix</a></li>
+              <li><a href="#copy-uniswap-factory">uniswap factory</a></li>
+              <li>
+                <a href="#replace-factory-names">replace factory names</a>
+              </li>
+              <li><a href="#add-pair-code-hash">add INIT_CODE_HASH</a></li>
+              <li><a href="#compile-factory">compile CoolSwapFactory</a></li>
+              <li><a href="#deploy-factory">deploy CoolSwapFactory</a></li>
+              <li>
+                <a href="#save-factory-address">save the factory address</a>
+              </li>
+              <li>
+                <a href="#set-protocol-fee-address"
+                  >set a protocol fee address</a
+                >
+              </li>
+              <li><a href="#save-init-code-hash">save INIT_CODE_HASH</a></li>
+              <li>
+                <a href="#create-router-file">create a router contract</a>
+              </li>
+              <li>
+                <a href="#replace-init-code-hash">replace INIT_CODE_HASH</a>
+              </li>
+              <li>
+                <a href="#deploy-router-contract">deploy CoolSwapRouter</a>
+              </li>
+              <li><a href="#final-contract-data">final contract data</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#frontend">Frontend</a>
+            <ul>
+              <li>
+                <a href="#interface-start-template">start template</a>
+              </li>
+              <li><a href="#what-need-to-change">what's need to change</a></li>
+              <li><a href="#interface-start">start work in the interface interface</a></li>
+              <li><a href="#check-protocol-fee">check protocol fee</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#additional-changes-title">Additional changes</a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="deploy-with-truffle">Deploy with Truffle</h2>
+
+        <h3 id="core-contracts">Core contracts</h3>
+
+        <blockquote>
+          <p>
+            When replacing the code, you need to pay attention to the places
+            where the prefix <b>0x</b> is found, you have to save it and replace
+            what follows it
+          </p>
+        </blockquote>
+
+        <ol>
+          <li id="base-core-contracts-template">
+            Create a new folder CoolSwap-core and copy there the code from Gihub repo. 
+            Create two files: <code>.env</code> (deployment data) and <code>.secret</code> (leave here your mnemonic phrase).
+
+            <blockquote class="danger">
+              <p>
+                Don't lose your private info like mnemonic phrase or API key.
+                All this info in our case will be in <b>dot</b> files that are added to <code>.gitignore</code>
+                file to exclude it from git tracking
+              </p>
+            </blockquote>
+
+            Add these variables in the `.env`:
+            <pre><code>TESTNET_NETWORK_URL="https://rinkeby.infura.io/v3/3cb031735f9a46a69f2babab4fae3e0d"</code></pre>
+            <pre><code>TESTNET_NETWORK_ID="4"</code></pre>
+            <pre><code>EXPLORER_API_KEY="fill it with your key from the explorer account"</code></pre>
+
+            And add your mnemonic phrase in the <code>.secret</code> file (just paste words).
+            For mainnet values replace names prefixes with <code>MAINNET_</code> and of course add your own links
+          </li>
+
+          <li>
+            You can copy a core contracts template or make the same actions as described next.
+            In the <code>SwapFactory.sol</code> contract was added a new line. After factory deployment we need to copy this parameter from the blockchain and paste it in Library:
+
+            <pre><code>bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(SwapPair).creationCode));</code></pre>
+
+            In the <code>SwapERC20.sol</code> contract we change Uniswap token names with ours:
+            
+            <pre><code>string public constant name = 'Swap-LP-Token';</code></pre>
+            <pre><code>string public constant symbol = 'SWAP-LP';</code></pre>
+
+            And were changed all log/file names with <b>Swap</b> name in <code>SwapFactory.sol</code>,
+            <code>SwapERC20.sol</code> and <code>SwapPair.sol</code>
+          </li>
+
+          <li id="deploy-core-with-ganache">
+            At first we download <b>Ganache</b> where you can fast and easy make the first tests locally.
+            After we've checked that on your machine everything is fine we can more slower deploy on testnet.
+
+            <blockquote>
+              <p>
+                Work with Nodejs 16.\* version
+              </p>
+            </blockquote>
+
+            Install dependencies:
+
+            <pre><code>npm i</code></pre>
+
+            Download Ganache and start it (quick start is enough).
+            Correct <code>development</code> settings in the <code>truffle-config.js</code> if they doesn't
+            match with Ganache settings. But probable it's fine by default.
+          </li>
+
+          <li>
+            Go to <code>2_deploy_contracts.js</code> and fill these variables
+            (<b>adminAddress</b> address will be able to change himself (_feeToSetter) and 
+            feeCollectingAddress (_feeTo) in the deployed factory):
+
+            <pre><code>const adminAddress = "";</code></pre>
+            <pre><code>const feeCollectingAddress = "";</code></pre>
+          </li>
+
+          <li>
+            Compile contracts (confirm truffle installation if it wasn't installed):
+
+            <pre><code>npx truffle compile</code></pre>
+
+            <img src="./img/truffle-core/truffle-compile-contracts.png" alt="" />
+
+            Deploy contracts on Ganache local blockchain:
+
+            <pre><code>npx truffle migrate --reset --network development</code></pre>
+            
+            No you probably can see this error in the terminal/console:
+
+            <pre><code>Error: Returned error: VM Exception while processing transaction: revert Swap: FORBIDDEN -- Reason given: Swap: FORBIDDEN.</code></pre>
+
+            We set <code>adminAddress</code> not from local Ganache blockchain.
+            So we can't use <code>setFeeTo</code> method, because we call this method we use Ganache
+            blockchain address instead of <code>adminAddress</code> (if you didn't set this address from Ganache).
+            If you want to bypass this error just change <code>adminAddress</code> with the first one
+            from Ganache or comment this string:
+
+            <img src="./img/truffle-core/solve-local-ganache-problem.png" alt="" />
+
+            In the successful option you have to see something like this:
+
+            <img src="./img/truffle-core/successful-ganache-core-deploy.png" alt="" />
+          </li>
+
+          <li id="deploy-core-on-testnet">
+            Well for now it seems ok. It's more faster to debug/solve problems. Now we deploy it on testnet.
+            Contracts are already compiled and we can just change a deploy command:
+
+            <pre><code>npx truffle migrate --reset --network testnet</code></pre>
+
+            You have to see similar output as with Ganache deployment, but you're able to check it on Ethereum testnet.
+            Copy a factory address (from the explorer or truffle output) and save it. Let's verify the factory:
+
+            <pre><code>npx truffle run verify SwapFactory --network testnet</code></pre>
+
+            Now the contract is verified
+
+            <img src="./img/truffle-core/check-factory-on-testnet.png" alt="" />
+
+            Go to a <b>Read Contract</b> tab, copy <code>INIT_CODE_PAIR_HASH</code> parameter and save it
+          </li>
+        </ol>
+
+        <blockquote>
+          <p>Finally we have this parameters:</p>
+          <br>
+
+          Factory: <pre><code>0x6Bd5A1A63ffF10De3c6B7C667040E9AE1B47fDf2</code></pre>
+          INIT_CODE_PAIR_HASH: <pre><code>0xaf88dd15a55596feb9d67243c727bfd6144af12453963809bc91f0cfcf8241bc</code></pre>
+        </blockquote>
+
+        <h3 id="periphery-contracts">Periphery contracts</h3>
+
+        <ol>
+          <li id="base-periphery-template">
+            This template has changed names/logs in <code>SwapLibrary.sol</code>, <code>SwapRouterV1</code>
+            and <code>SwapRouterV2</code>. And for now we have to change only <b>init code hash</b> value
+            in a library:
+
+            <img src="./img/truffle-periphery/change-init-code-hash-in-library.png" alt="" />
+          </li>
+
+          <li>
+            Copy <code>.env</code> and <code>.secret</code> files from the <b>CoolSwap-core</b> folder
+            and install dependecies: 
+
+            <pre><code>npm i</code></pre>
+          </li>
+
+          <li>
+            Go to <code>2_deploy_contracts.js</code> and fill these variables:
+
+            <pre><code>const factoryAddress = "";</code></pre>
+            <pre><code>const WETH = "";</code></pre>
+
+            For the testnet we can use this WETH contract: <code>0xc778417e063141139fce010982780140aa0cd5ab</code>
+
+            <blockquote class="danger">
+              <p>
+                Use only trusted sources for main networks, like <a href="https://www.coingecko.com/">CoinGecko</a>
+              </p>
+            </blockquote>
+
+            Compile contracts:
+
+            <pre><code>npx truffle compile</code></pre>
+          </li>
+
+          <li id="deploy-periphery-on-testnet">
+            Let's do the same actions with Ganache as for core to be sure there're no errors.
+            After this we deploy contracts on the testnet:
+
+            <pre><code>npx truffle migrate --reset --network testnet</code></pre>
+
+            And also verify the router contract:
+
+            <pre><code>npx truffle run verify SwapRouterV2 --network testnet</code></pre>
+
+            <img src="./img/truffle-periphery/verify-router-contract.png" alt="" />
+          </li>
+
+          <blockquote>
+            <p>Here we need only a router address</p>
+
+            <pre><code>0xA4E1f3fD10E2397f58926E215Ed331D7cDA14056</code></pre>
+          </blockquote>
+        </ol>
+      </section>
+
+      <section>
+        <h2 id="contracts-title">Deploy with Remix</h2>
+
+        <ol>
+          <li id="remix-editor-start">
+            Go to
+            <a target="_blank" href="https://remix.ethereum.org"
+              >Remix editor</a
+            >
+            and create there two files: <b>CoolSwapFactory.sol</b>,
+            <b>CoolSwapRouter.sol</b>
+          </li>
+
+          <li id="copy-uniswap-factory">
+            Let's begin with factory. Copy Uniswap factory code from the
+            Etherscan:
+
+            <img src="./img/contracts/copyFactory.png" alt="copy uniswap factory code" />
+
+            And paste it into the new CoolSwapFactory file:
+            <img
+              src="./img/contracts/copyUniswapFactoryCode.png"
+              alt="paste the factory code in the new file"
+            />
+          </li>
+
+          <li id="replace-factory-names">
+            Replace ERC20 contract name with <b>CoolSwapERC20</b>. Also replace
+            two constants: <b>name</b> with <b>CoolSwap LP</b>,
+            <b>symbol</b> with <b>Cool-LP</b>. It will be a bonus token which
+            the user will receive for his liquidity:
+
+            <img
+              src="./img/contracts/replaceErc20ContractNames.png"
+              alt="replace names for erc20 token in the new factory file"
+            />
+          </li>
+
+          <li>
+            Replace a pair contract name with <b>CoolSwapPair</b>. Also replace
+            next to it ERC20 contract name:
+            <img
+              src="./img/contracts/replacePairContractName.png" alt="" />
+
+            Also change it in the <b>createPair</b> method:
+            <img
+              src="./img/contracts/replacePairNameInTheCreateMethod.png"
+              alt="replace other names for erc20 and pair contracts"
+            />
+
+            And finally just a little above change the factory name:
+            <img
+              src="./img/contracts/changeFactoryContractName.png"
+              alt="replace the factory contract name"
+            />
+
+            <blockquote>
+              You're able to replace all names (interfaces, logs and so on), but
+              we won't do this
+            </blockquote>
+          </li>
+
+          <li id="add-pair-code-hash">
+            Add the following line in the CoolSwapFactory contract:
+
+            <pre><code>bytes32 public constant INIT_CODE_HASH = keccak256(abi.encodePacked(type(CoolSwapPair).creationCode));</code></pre>
+            <img
+              src="./img/contracts/addInitCodeHashInFactory.png"
+              alt="add an init code hash in the factory"
+            />
+          </li>
+
+          <li id="compile-factory">
+            Go to <b>"Solidity Compiler"</b> tab. Change compiler version with
+            <em>0.5.16</em> if it's different. Enable optimization option and
+            click button <b>"Compile"</b>:
+
+            <img
+              src="./img/contracts/compileFactoryButton.png"
+              alt="compile factory button"
+            />
+          </li>
+
+          <li id="deploy-factory">
+            Go to
+            <b>"Deploy & run transaction"</b> tab. Select
+            <b>Injected Web3</b> in the ENVIRONMENT drop-down. It will use your
+            external wallet. We will use
+            <a target="_blank" href="https://metamask.io/">Metamask wallet</a>.
+            If you didn't login in the wallet then login it now, reload page,
+            come back and compile factory contract one more time. And again
+            chose <b>Injected Web3</b> option. Chose Ropsten network in the
+            Metamask. Select CoolSwapFactory in the CONTRACT drop-down (probably
+            it's already made by default). Set an address in the
+            <b>_feeToSetter</b> field. Contracts will use
+            <b>feeToSetter</b> variable. This variable contains the address that
+            will be able to set an address <b>feeTo</b> which will get protocol
+            commission. Also <b>feeToSetter</b> can change himself to a new one.
+            Now you can see something like this in the deploy tab:
+            <img
+              src="./img/contracts/settingsOnFactoryDeployment.png"
+              alt="settings on the factory deployment in the deploy tab"
+            />
+
+            If you won't add this address and deploy just with empty field then
+            protocol fee will be disabled (you can set this address in future
+            after deployment). So now click on
+            <b>"Deploy"</b> button and confirm a modal window from external
+            wallet with transaction fee:
+            <img
+              src="./img/contracts/deployFactoryButton.png"
+              alt="deploy option on the deploy tab"
+            />
+          </li>
+
+          <li id="save-factory-address">
+            After transaction has been mined you can see all details in the
+            Remix terminal:
+            <img
+              src="./img/contracts/factoryTransactionInfoInTheConsole.png"
+              alt="info about transaction where we deployed the factory"
+            />
+
+            Copy a transaction hash and go to Ropsten etherscan. Paste this hash
+            in the search field and go to a new contract page. Copy his address
+            and save it somewhere.
+            <img
+              src="./img/contracts/transactionWithCoolSwapFactory.png"
+              alt="info about mined transaction on the Etherscan"
+            />
+            <img
+              src="./img/contracts/copyFactoryAddressOnEtherscan.png"
+              alt="factory contract address on the Etherscan"
+            />
+          </li>
+
+          <li id="set-protocol-fee-address">
+            Come back into Remix deploy tab. Open our CoolSwapFactory contract
+            and paste <b>_feeTo</b> address in the <b>setFeeTob</b> method. We
+            will use <code>0x7371466090234bDE67bB6c8Ba55dB705Fcec4BCB</code> address
+            without funds. This address will receive protocol fee. Click on this
+            method button and wait while tx will be mined. After that you can
+            check this transaction on the same way as factory tx.
+
+            <img
+              src="./img/contracts/setFeeToAddress.png"
+              alt="set fee to address and call contract method"
+            />
+          </li>
+
+          <li id="save-init-code-hash">
+            Click on the last button <b>INIT_CODE_HASH</b> that is among
+            CoolSwapFactory options. Copy it (without "bytes32") and save
+            somewhere:
+
+            <img
+              src="./img/contracts/saveInitCodeHash.png"
+              alt="copy init code pair hash value from deployed factory contract"
+            />
+          </li>
+
+          <li id="create-router-file">
+            Go to <b>"File explorers"</b> tab and copy Uniswap router code into
+            <b>CoolSwapRouter.sol</b>. Rename a router contract.
+
+            <img
+              src="./img/contracts/renameUniswapRouter.png"
+              alt="rename router contract"
+            />
+          </li>
+
+          <li id="replace-init-code-hash">
+            Replace a hex value in the <b>pairFor</b> method with the
+            <b>INIT_CODE_HASH</b> that we got earlier (replace it without
+            <b>"0x"</b> at the beginning):
+
+            <img
+              src="./img/contracts/replaceInitCodeHashInTheRouter.png"
+              alt="replace init code hash value in the router contract"
+            />
+          </li>
+
+          <li id="deploy-router-contract">
+            On the compiler tab enable optimization options and compile
+            CoolSwapRouter file. Go to deploy tab. Pass two parameters in the
+            <b>Deploy</b> method with a dot between them: factory address (that
+            we just deployed) and WETH token address. Then deploy contract:
+
+            <img
+              src="./img/contracts/deploySettingsForRouterContract.png"
+              alt="deploy router contract"
+            />
+          </li>
+
+          <li>
+            Make the same actions as after factory deployment and copy
+            CoolSwapRouter address.
+          </li>
+        </ol>
+
+        <blockquote id="final-contract-data">
+          <p>Now we have this data:</p>
+          <br />
+          <a
+            target="_blank"
+            href="https://ropsten.etherscan.io/tx/0x05f534f7f67c291923da6930cc5d888583eb42e52e4069b7671bf34bff0d9cb3"
+            >CoolSwapFactory</a
+          >:
+          <pre><code>0x68d3A8bc9441eF1225521C1E5EC67C6a7509Ce58</code></pre>
+          <br />
+          <a
+            target="_blank"
+            href="https://ropsten.etherscan.io/address/0xb2d64667df4c3608e0d4f3683f6e69914d185c87"
+            >CoolSwapRouter</a
+          >:
+          <pre><code>0xB2D64667df4C3608E0d4f3683f6e69914D185C87</code></pre>
+          <br />
+          INIT_CODE_HASH:
+          <pre><code>0x6be71632e8b409042bcda4b9b5dd96de1a924599be32bb83c12bce7d3355900e</code></pre>
+        </blockquote>
+      </section>
+
+      <section>
+        <h2 id="frontend">Frontend</h2>
+
+        <blockquote>
+          <p>
+            Main changes in this interface template:
+
+            <ul>
+              <li>Removed all (or almost all) info about first version of Uniswap</li>
+              <li>Removed UNI token info</li>
+              <li>
+                Removed links to Project analytics (it is not included in this description).
+                And saved only necessary for swap flow pages
+              </li>
+              <li>
+                Disabled <b>Coinbase</b>, <b>Fortmatic</b> and <b>Portis</b> options to connect external wallet.
+                You can uncomment it if you have API keys
+              </li>
+              <li>Changed source styles just a little. Now the interface is more like Uniswap V3 then V2</li>
+              <li>Some fixes, like warnings about no checksummed addresses, etc.</li>
+            </ul>
+          </p>
+        </blockquote>
+
+        <ol>
+          <li id="interface-start-template">
+            Create a new directory: CoolSwap. Copy
+            <a href="#start-template-source">start template</a> code in this
+            directory and nstall dependencies (do not forget about Nodejs 16).
+            Fill with the a network info <code>.env</code> file. In our case it's Rinkeby testnet:
+
+            <pre><code>REACT_APP_NETWORK_URL="https://rinkeby.infura.io/v3/3cb031735f9a46a69f2babab4fae3e0d"</code></pre>
+            <pre><code>REACT_APP_CHAIN_ID="4"</code></pre>
+          </li>
+
+          <li id="what-need-to-change">
+            Let's look at <code>forks</code> directory in the project root. We
+            have to change <b>Uniswap sdk</b> to be able use it with our contracts. We will follow the least resistance
+            and copy this builded package in our root directory. Change info directly in the sdk build and replace
+            it in the <code>node_modules</code> directory after each dependency installation
+            (automatically of course. NPM makes his job well). You also can do the same action as
+            Uniswap and put your values in the new sdk and create own npm package. In our template we already
+            have this package and npm script which will replace `node_modules` sdk with files from `forks`:
+
+            <pre><code>"postinstall": "rm -rf ./node_modules/@uniswap/sdk; cp -r ./forks/@uniswap/sdk ./node_modules/@uniswap/sdk",</code></pre>
+
+            All what we have to do it's replace values there with our saved info from the previous deployment.
+            With our template and contracts we
+            need to change only constants and <code>INIT_CODE_HASH</code>, because we use the same info for our ERC20
+            contract in the Truffle deployment. Open a <code>src/constants/index.ts</code> file.
+            At first copy the old <code>FACTORY_ADDRESS</code> address. Here are our constants:
+
+            <pre><code>export const FACTORY_ADDRESS</code></pre>
+            <pre><code>export const ROUTER_ADDRESS</code></pre>
+            <pre><code>export const LP_TOKEN_NAME</code></pre>
+            <pre><code>export const LP_TOKEN_SYMBOL</code></pre>
+          </li>
+
+          <li>
+            Find all his coincidences for whole project and replace it with our new factory
+            (deploy with Truffle): <code>0x6Bd5A1A63ffF10De3c6B7C667040E9AE1B47fDf2</code>.
+            An example in Visual Studio Code search tab:
+
+            <img src="./img/interface/replace-factory-address-in-interface.png" alt="" />
+
+            For router address change it only in one place, in the same file. Our new router address:
+            <code>0xA4E1f3fD10E2397f58926E215Ed331D7cDA14056</code>.
+
+            Now go to <code>forks/@uniswap/sdk/dist/constants.d.ts</code> and copy the old init code
+            hash value. Do the same steps as for the factory. Find and replace with the new value:
+            <code>0xaf88dd15a55596feb9d67243c727bfd6144af12453963809bc91f0cfcf8241bc</code>.
+
+            You probable have your token info. Well repeat the cycle, find old token name/symbol values and replace it.
+            You can find your info in the Verified router contract:
+
+            <img src="./img/interface/lp-token-info-example.png" alt="" />
+          </li>
+
+          <li id="interface-start">
+            Install dependencies:
+
+            <pre><code>npm i</code></pre>
+
+            <blockquote>
+              <p>
+                Do not forget to reinstall the <code>node_modules</code> directory
+                if you change something in <code>forks</code>
+              </p>
+            </blockquote>
+
+            Start a server:
+
+            <pre><code>npm start</code></pre>
+          </li>
+
+          <li>
+            Now we can check that all works fine. We do not have any pools and can't make swaps.
+            Connect your external wallet and go to <b>Pool</b> page. Click on a <code>Create a pair</code> button:
+
+            <img src="./img/interface/pool-tab-without-any-pools.png" alt="" />
+
+            We will use tokens available in the default list. In our example we're creating a new pool,
+            <b>ETH</b> with <b>DAI</b>. Fill form fields. Click on a `Approve <TOKEN>` button
+            and wait while transaction will be in the blockchain. After that you press a <b>Supply</b> button.
+            Confirm your actions in the modal window and wait just a while:
+
+            <img src="./img/interface/create-a-new-pool.png" alt="" />
+          </li>
+
+          <li>
+            Go back to the <b>Pool</b> page and check your pool in the list:
+
+            <img src="./img/interface/created-pool-in-list.png" alt="" />
+
+            Let's make several swaps on the <b>Swap</b> page:
+
+            <img src="./img/interface/swap-form-interface.png" alt="" />
+          </li>
+
+          <li id="check-protocol-fee">
+            It remains for us to check accumulated protocol fee liquidity.
+            Go to the <b>Pool</b> page and remove some part or all liquidity from the pool:
+
+            <img src="./img/interface/remove-liquidity.png" alt="" />
+            
+            We see in our <code>remove liquidity</code> transaction the <b>feeTo</b> address,
+            where were accumulated tokens sent:
+
+            <img src="./img/interface/transaction-remove-liquidity.png" alt="" />
+
+            Switch in the wallet to the address for collecting commissions.
+            You're able to see the same pool with the amounts that has been accumulated from previous swaps:
+
+            <img src="./img/interface/admin-liquidity-pool.png" alt="" />
+          </li>
+        </ol>
+
+        <blockquote>
+          <p>
+            These were the minimum actions needed for the exchange to work and to collect the commission.
+          </p>
+        </blockquote>
+      </section>
+
+      <section>
+        <h2 id="additional-changes-title">Additional changes</h2>
+
+        <h3>Token lists</h3>
+        <p>
+          Here is the main file with lists sources. 
+          <pre><code>constants/lists.ts</code></pre>
+
+          All lists is available for Ethereum network.
+          You can add your list address and it will be displayed here:
+
+          <img src="./img/addition/tokenListsDisplay.png" alt="" />
+
+          The simple way to place your list is to add it on Github for example
+          and copy his address from there. When you placed a list file you need to
+          press a <b>Raw</b> button and copy a url address:
+
+          <img src="./img/addition/getTokenListUrlFromGithub.png" alt="" />
+
+          It has to be the address of this type:
+          <pre><code>https://raw.githubusercontent.com/(organization or user name)/(repo name)/main/list.json</code></pre>
+
+          <blockquote>
+            <p>
+              If there is no urls, then by default is used a Uniswap package with tokens:
+              <b>@uniswap/default-token-list</b>. Replace it with some other package or
+              add it manually in a json file and import them from it.
+            </p>
+          </blockquote>
+        </p>
+
+        <h3>Language</h3>
+        <div>
+          How to add a new messages? Here we use a <b><code>react-i18next</code></b> package
+          to translate information. Base settings file
+          in the <code>src/i18.ts</code> and in the <code>src/index.ts</code> we just import it.
+          After that we have to import a translation hook from a <b><code>react-i18next</code></b>
+          package:
+          <pre><code>import { useTranslation } from 'react-i18next';</code></pre>
+
+          Now we need to get a <b><code>t</code></b> function from this hook somewhere
+          inside your functional component:
+          <pre><code>const { t } = useTranslation();</code></pre>
+
+          And finally use this function with a translation key. For example:
+
+          <img src="./img/addition/exampleOfTranslateUsage.png" alt="" />
+
+          Now all what we need to do is add a <b>swap</b> key and his message value in
+          translation files. They are here:
+
+          <img src="./img/addition/localesDirectroy.png" alt="" />
+
+          Now we already have this message. If you don't just add a key and message 
+          as a value in all translation files. It will automatically detect browser
+          language and show content in this language.
+
+          <img src="./img/addition/exampleOfTranslatedMessage.png" alt="" />
+
+          Example of reflected changes:
+
+          <img src="./img/addition/changeTranslatedMessage.png" alt="" />
+          <img src="./img/addition/changedTranslatedLinkMessage.png" alt="" />
+        </div>
+
+        <h3>User interface</h3>
+        <div>
+          Almost all UI color styles can be changed in this file
+          <pre><code>theme/index.tsx</code></pre>
+
+          If you want to add a new variables, don't forget add in types file:
+          <pre><code>theme/styled.d.ts</code></pre>
+
+          Logos in the Header component are used here
+          <pre><code>assets/svg/*</code></pre>
+        </div>
+
+        <h3>Naming</h3>
+        <div>
+          <pre><code>public/index.html</code></pre>
+          <pre><code>public/manifest.json</code></pre>
+          <pre><code>public/locales/*</code></pre>
+          <pre><code>components/vote/DelegateModal.tsx</code></pre>
+          <pre><code>connectors/index.ts</code></pre>
+
+          Change logs name if you change it in the contracts:
+          <pre><code>hooks/useSwapCallback.ts</code></pre>
+
+          <div class="group">
+            Links:
+            <pre><code>components/PositionCard/index.tsx</code></pre>
+            <pre><code>components/swap/AdvancedSwapDetails.tsx</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="banner">
+        See also: Do not want to waste your time and make mistakes?
+        <br>
+        Use extended version without coding skills: <a href="https://tools.onout.org/dex/" target="_blank">no-code tool for creating DEX</a>
+      </p>
+    </footer>
+  </body>
+</html>
