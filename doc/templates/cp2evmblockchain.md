@@ -18,7 +18,7 @@ Hello! Since you have a working EVM rpc (link to rpc). Our team can deploy the f
 - dex (uniswap fork)
 - farming (erc20 token staking)
 - lottery (pancakeswap fork)
-- and other dapp list can be found here tools.onout.org
+- and other dapp list can be found here onout.org
 
 What is needed from you:
 

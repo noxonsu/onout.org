@@ -117,7 +117,7 @@ Feel free to check out our [pre-release video example](https://www.youtube.com/w
 
 ### Release announcement
 
-**A:** Hello! 🤩 We got it! 🥳 The final version of { project name } is now available! 🔥 Check it out in our catalog 🛒 - https://tools.onout.org/{ project name }!
+**A:** Hello! 🤩 We got it! 🥳 The final version of { project name } is now available! 🔥 Check it out in our catalog 🛒 - https://onout.org/{ project name }!
 
 ## Admin panel integration
 
@@ -133,9 +133,9 @@ See our guide to [Blockchain storage](./storage.md#blockchain-storage) for instr
 
 ## How do I make a landing page for the release?
 
-Make a pull request [example](https://github.com/noxonsu/tools.onout.org/pull/56):
+Make a pull request [example](https://github.com/noxonsu/onout.org/pull/56):
 
-0. Use the existing [landing page](https://github.com/noxonsu/tools.onout.org/tree/main/lenda).
+0. Use the existing [landing page](https://github.com/noxonsu/onout.org/tree/main/lenda).
 0. Check out our notes on [SEO optimization](#how-do-i-optimize-landing-page-seo).
 0. Make sure all the data is up-to-date.
 
@@ -152,7 +152,7 @@ The `body` element must contain `h1` and `h2` headers, each `img` element must h
 
 ## How do I add a product to the catalog?
 
-0. Use a pre-made [example](https://github.com/noxonsu/tools.onout.org/pull/56/commits/5c79f3ca5f35a1bfd3158e2865714467b3b1c505).
+0. Use a pre-made [example](https://github.com/noxonsu/onout.org/pull/56/commits/5c79f3ca5f35a1bfd3158e2865714467b3b1c505).
 0. Use presale cover.
 0. Details should containt a link to [release landing page](#how-do-i-make-a-landing-page-for-the-release).
 0. Preview should containt a link to project demo.
@@ -225,14 +225,14 @@ Videos must be uploaded to the team's [youtube channel](https://www.youtube.com/
 0. Add the following **video description**:
 
 ```
-https://{ link to the project in pre-sale (dash.onout.org) or catalog (tools.onout.org) }  - Get started!
+https://{ link to the project in pre-sale (dash.onout.org) or catalog (onout.org) }  - Get started!
 https://{ link to project demo } - Try live demo right now!
 
 {timecodes}
 
 We are a blockchain developers team.
 We build no-code tools for creating DEX, DAO, Wallet, Farming, Lottery and NFT marketplace at your own domain. 
-View catalog https://tools.onout.org
+View catalog https://onout.org
 
 Ask questions!
 support@onout.org - Email 

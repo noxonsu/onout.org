@@ -2,12 +2,12 @@
 
 https://youtu.be/cLlQ4MIuyes - Watch the video 📺 
 
-Add your product to tools.onout.org and earn up to 50% of sales. (this means you work for one month, and earn 🏖 passive income). How much? 
+Add your product to onout.org and earn up to 50% of sales. (this means you work for one month, and earn 🏖 passive income). How much? 
 
 
 ## General terms and conditions
-- tools.onout.org team provide complete guide for developers
-- tools.onout.org team find customers who pay for product developer (you) made
+- onout.org team provide complete guide for developers
+- onout.org team find customers who pay for product developer (you) made
 - The developers either receive payments as a share of income from each sale
 - Payments are delivered in cryptocurrency and/or payoneer.com.
 
@@ -26,11 +26,11 @@ In order to receive the initial payment for the project, it is required to pass 
 - To generate an idea ([stage 0](#contributing0))
 - To develop a product ([stage 2](#contributing2))
 
-### The tools.onout.org team guarantees
+### The onout.org team guarantees
 
 - To review the product idea ([stage 1](#contributing1))
 - Security Audit
-- Publish product at tools.onout.org and promote in our channels
+- Publish product at onout.org and promote in our channels
 - Support and communication with clients (if you don't like this)
 
 # How to start
@@ -67,7 +67,7 @@ Present your idea following the [template](./templates/idea.md) and send the res
 
 ## <a name="contributing1"></a> Stage 1 – Review (team)
 
-The tools.onout.org team reviews the idea and provides feedback with resolution: 
+The onout.org team reviews the idea and provides feedback with resolution: 
 
 - The idea is approved for development
 - The idea is returned for revision
@@ -78,7 +78,7 @@ See this [guide](./development.md) for details on development process.
 
 # Further information
 
-For further information see our [FAQ](./faq.md) or contact the tools.onout.org team:
+For further information see our [FAQ](./faq.md) or contact the onout.org team:
 
 - [Email](mailto:support@onout.org)
 - [Telegram](https://t.me/onoutsupportbot)

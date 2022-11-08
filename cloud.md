@@ -1,7 +1,7 @@
 How to configure cloud versions of product: 
 
 Hello, please do these steps. dash.cloudflare.com : 
-![](https://tools.onout.org/images/chrome_TA893FIgwGieMrDeALvyksY6xiEsbEY5.png)
+![](https://onout.org/images/chrome_TA893FIgwGieMrDeALvyksY6xiEsbEY5.png)
 
 # Cloudflare DNS settings:
 
