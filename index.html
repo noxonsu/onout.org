@@ -1,17 +1,782 @@
-<html>
-<body>
-<head>
-<meta name="google-site-verification" content="dAuAE5Avrhl9BnkcweTCaDMEPJBS2k84sWwqtWAomuw" />
-<link rel="canonical" href="https://onout.org/" />
-</head>
-<h2>Stuff</h2>
-<a href="/uniswapFork">uniswap fork</a> <br>
-<a href="/lottery">lottery fork</a>
-<script>
-if (location.protocol !== 'https:') {
-    location.replace(`https:${location.href.substring(location.protocol.length)}`);
-}
-</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75bf4c369d3624b0","version":"2022.8.1","r":1,"token":"e7d183c901134c989cfe6c8b59324866","si":100}' crossorigin="anonymous"></script>
-</body>
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="trustpilot-one-time-domain-verification-id" content="48b74c39-9ec3-4714-b966-46dbc0a382ec"/>
+    <meta name="description" content="Build your own white label blockchain apps. Based on populars' open sources. Developer-free web3 toolset. DeFi forks. DeFi clones. No-code web3 solutions.">
+    <title>Tools Onout - deploy web3 apps to your own domain</title>
+    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="css/swiper.min.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <main>
+      <!-- hero -->
+      <div class="hero">
+        <div class="header">
+          <div class="logo">
+            <svg class="icon">
+              <use xlink:href="#logo-header"></use>
+            </svg>
+          </div>
+          <div class="header-links">
+            <a href="https://github.com/noxonsu/tools.onout.org/blob/main/doc/contributing.md" target="_blank" class="docs-btn">For developers</a>
+            <a href="https://dash.onout.org/" target="_blank" class="white-btn">Get started</a>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1 class="hero-title">Run blockchain apps on your own domain in One-click</h1>
+              <h2>With admin panel, dashboard. Earn comissions</h2>
+            </div>
+            <div class="col">
+              <div class="video">
+                <div class="play">
+                  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.2" d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100Z" fill="url(#paint0_linear_92_280)"/>
+                    <path d="M69.5 47.3821L39.5 30.3821C37.5 29.2821 35 30.6821 35 32.9821V66.9821C35 69.2821 37.5 70.6821 39.5 69.5821L69.5 52.5821C71.5 51.3821 71.5 48.5821 69.5 47.3821Z" fill="url(#paint1_linear_92_280)"/>
+                    <path d="M99 50C99 77.062 77.062 99 50 99C22.938 99 1 77.062 1 50C1 22.938 22.938 1 50 1C77.062 1 99 22.938 99 50Z" stroke="url(#paint2_linear_92_280)" stroke-width="2"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_92_280" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_92_280" x1="35" y1="49.9821" x2="71" y2="49.9821" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8E34D9"/>
+                    <stop offset="1" stop-color="#72AAFF"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_92_280" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8E34D9"/>
+                    <stop offset="1" stop-color="#72AAFF"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <a data-fancybo href="https://www.youtube.com/channel/UCEu5-QDPFCxKm9z4BAYQSJw/playlists" target=_blank><img src="images/video.jpg" alt="Go to our playlists"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / hero -->
+      <!-- products -->
+      <div class="products">
+        <div class="container">
+          <div class="headline"><span>Products</span></div>
+          <div class="subtitle sub-1">Products</div>
+          <div class="row">
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/dex/" target="_blank"><img src="images/exchange-cover.jpg" alt="Unifactory cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/dex/" target="_blank">DEX</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>0.01% - 99% each trade</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, colors, list of assets, links, fee percent, admin and fee addresses. Deploy contracts without coding-skills (see also: how to create an <a href="/uniswapFork">uniswap fork</a> as a developer)</p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/dex/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://definance.wpmix.net/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/wallet/" target="_blank"><img src="images/wallet-cover.jpg" alt="MCWallet cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/wallet/" target="_blank">Wallet</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>Add "Withdraw" comission (BTC, ETH, Tokens), exchange comission (0x.org connected)</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, colors, styles, list of assets (BTC, ETH, Tokens)</p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/wallet/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://wallet.wpmix.net/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/farming/" target="_blank"><img src="images/farming-cover.jpg" alt="Farmfactory cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/farming/" target="_blank">Farming</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>No comissions</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, colors, list of assets</p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/farming/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://farm.wpmix.net/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/dao/" target="_blank"><img src="images/dao-cover.jpg" alt="DAOfactory cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/dao/" target="_blank">DAO</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>No comissions</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, colors, list of assets</p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/dao/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://farm.wpmix.net/daofactory/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/nft/" target="_blank"><img src="images/nftsy-cover.jpg" alt="NFTsy cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/nft/" target="_blank">NFT MArketplace</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>Add "Withdraw" comission (BTC, ETH, Tokens), exchange comission (0x.org connected)</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, colors, styles, list of assets (BTC, ETH, Tokens)</p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/nft/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://nft.wpmix.net/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/lottery/" target="_blank"><img src="images/lottery-cover.jpg" alt="Lotteryfactory cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/lottery/" target="_blank">Lottery</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>and EARN 0-30% commission from selling tickets</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Start/Stop lottery, draw winning numbers. Set comission</p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/lottery/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://lottery.wpmix.net/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/crosschain/" target="_blank"><img src="images/cross-chain-cover.jpg" alt="Cross-Chain cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/crosschain/" target="_blank">Cross-Chain</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>Set up commission on all your multichain liquidity pair of tokens and each trade between them</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, colors, styles, list of assets (ETH, Tokens)</p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/crosschain/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://crosschain.onout.org/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/lenda/" target="_blank"><img src="images/lenda-cover.jpg" alt="Lenda cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/lenda/" target="_blank">Lenda</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>Use your own token for a collateral</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, colors, styles, list of assets (ETH, Tokens)</p>
+                  <p>
+                    Development in progress.
+                    <br>
+                    <a href="https://dash.onout.org/" target="_blank">Sign up</a> to get updates
+                  </p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/lenda/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://lenda.onout.xyz/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card">
+                <div class="product-card-img"><a href="/launchpad/" target="_blank"><img src="images/launchpad-cover.png" alt="Launchpad cover"></a></div>
+                <div class="product-card-text">
+                  <div class="product-card-title"><a href="/launchpad/" target="_blank">IDOFactory</a></div>
+                  <div class="product-card-subtitle">How to earn</div>
+                  <p>Use your own token to creating IDO pools. Use native coin (ETH, BNB etc.) to create Token Lockers</p>
+                  <div class="product-card-subtitle">Admin can edit</div>
+                  <p>Logo, title, colors, social links, services' fees, admin and fee addresses</p>
+                  <p>
+                    Development in progress.
+                    <br>
+                    <a href="https://dash.onout.org/" target="_blank">Sign up</a> to get updates
+                  </p>
+                </div>
+                <div class="product-card-btns">
+                  <a href="/launchpad/" target="_blank" class="black-btn">Details</a>
+                  <a href="https://launchpad.onout.org/" target="_blank" class="btn">Preview</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="product-card want-card">
+                <div class="want-card-img">
+                  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect opacity="0.2" width="100" height="100" rx="20" fill="url(#paint0_linear_92_264)"/>
+                    <rect x="1" y="1" width="98" height="98" rx="19" stroke="url(#paint1_linear_92_264)" stroke-width="2"/>
+                    <path opacity="0.5" d="M50 80L76 65V35L50 50V80Z" fill="url(#paint2_linear_92_264)"/>
+                    <path opacity="0.5" d="M50 80L24 65V35L50 50V80Z" fill="url(#paint3_linear_92_264)"/>
+                    <path opacity="0.5" d="M76 35L50 20L24 35L50 50L76 35Z" fill="url(#paint4_linear_92_264)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_92_264" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_92_264" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8E34D9"/>
+                    <stop offset="1" stop-color="#72AAFF"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_92_264" x1="63" y1="80" x2="63" y2="35" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint3_linear_92_264" x1="37" y1="35" x2="37" y2="80" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint4_linear_92_264" x1="24" y1="35" x2="76" y2="35" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="want-card-text">
+                  <div class="product-card-title"><a href="mailto:support@onout.org">want something</a>?</div>
+                  <p>To request a copy, send us a link to the project you like and we will research if it is possible to fork</p>
+                </div>
+                <p>Contact <a href="mailto:support@onout.org">support@onout.org</a> and request new product</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / products -->
+      <!-- how-build -->
+      <div class="how-build">
+        <div class="container">
+          <div class="headline"><span>How we builD a product</span></div>
+          <div class="subtitle sub-2">How we builD a product</div>
+          <ul class="how-build-list">
+            <li>
+              <span class="ico">
+                <svg class="num" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle opacity="0.2" cx="20" cy="20" r="20" fill="url(#paint0_linear_89_107)"/>
+                  <path d="M21.971 12.4546V27H20.2096V14.3012H20.1244L16.5732 16.6591V14.8694L20.2096 12.4546H21.971Z" fill="#BCC2CB"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_107" x1="0" y1="20" x2="40" y2="20" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.2" d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100Z" fill="url(#paint0_linear_89_103)"/>
+                  <path opacity="0.2" d="M43.1 66.6C36.6 63.9 32 57.5 32 50C32 40.1 40.1 32 50 32C59.9 32 68 40.1 68 50C68 57.5 63.4 63.9 56.9 66.6L69 96.2C63.1 98.6 56.7 100 50 100C43.3 100 36.8 98.7 31 96.2L43.1 66.6Z" fill="url(#paint1_linear_89_103)"/>
+                  <path d="M99 50C99 77.062 77.062 99 50 99C22.938 99 1 77.062 1 50C1 22.938 22.938 1 50 1C77.062 1 99 22.938 99 50Z" stroke="url(#paint2_linear_89_103)" stroke-width="2"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_103" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_89_103" x1="69" y1="66" x2="31" y2="66" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_89_103" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8E34D9"/>
+                  <stop offset="1" stop-color="#72AAFF"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              Find an opensource app (or listen to our <br>clients)
+            </li>
+            <li>
+              <span class="ico">
+                <svg class="num" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle opacity="0.2" cx="20" cy="20" r="20" fill="url(#paint0_linear_89_118)"/>
+                  <path d="M15.9509 26.9999V25.7215L20.7521 20.4658C21.3155 19.8503 21.7795 19.3153 22.1441 18.8607C22.5087 18.4014 22.7786 17.9706 22.9538 17.5681C23.1337 17.1609 23.2237 16.7348 23.2237 16.2897C23.2237 15.7783 23.1005 15.3356 22.8543 14.9616C22.6129 14.5875 22.2814 14.2987 21.86 14.0951C21.4386 13.8915 20.9651 13.7897 20.4396 13.7897C19.8809 13.7897 19.3932 13.9057 18.9765 14.1377C18.5646 14.365 18.245 14.6846 18.0177 15.0965C17.7952 15.5085 17.6839 15.9914 17.6839 16.5454H16.0077C16.0077 15.6931 16.2042 14.945 16.5972 14.3011C16.9902 13.6571 17.5253 13.1552 18.2023 12.7954C18.8842 12.4355 19.6488 12.2556 20.4964 12.2556C21.3487 12.2556 22.1039 12.4355 22.762 12.7954C23.4202 13.1552 23.9362 13.6406 24.3103 14.2514C24.6844 14.8621 24.8714 15.5416 24.8714 16.2897C24.8714 16.8247 24.7743 17.3479 24.5802 17.8593C24.3908 18.3659 24.0594 18.9318 23.5859 19.5568C23.1171 20.177 22.4661 20.9346 21.6327 21.8295L18.3657 25.3238V25.4374H25.1271V26.9999H15.9509Z" fill="#BCC2CB"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_118" x1="0" y1="20" x2="40" y2="20" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.2" d="M80 100H20C9 100 0 91 0 80V20C0 9 9 0 20 0H80C91 0 100 9 100 20V80C100 91 91 100 80 100Z" fill="url(#paint0_linear_89_121)"/>
+                  <path opacity="0.2" d="M20 90H40C45.5 90 50 85.5 50 80V40C50 34.5 45.5 30 40 30H20C14.5 30 10 34.5 10 40V80C10 85.5 14.5 90 20 90Z" fill="url(#paint1_linear_89_121)"/>
+                  <path opacity="0.2" d="M50 16C50 19.3 52.7 22 56 22C59.3 22 62 19.3 62 16C62 12.7 59.3 10 56 10C52.7 10 50 12.7 50 16ZM36 10C39.3 10 42 12.7 42 16C42 19.3 39.3 22 36 22C32.7 22 30 19.3 30 16C30 12.7 32.7 10 36 10ZM16 10C19.3 10 22 12.7 22 16C22 19.3 19.3 22 16 22C12.7 22 10 19.3 10 16C10 12.7 12.7 10 16 10Z" fill="url(#paint2_linear_89_121)"/>
+                  <path d="M80 99H20C9.55229 99 1 90.4477 1 80V20C1 9.55229 9.55229 1 20 1H80C90.4477 1 99 9.55229 99 20V80C99 90.4477 90.4477 99 80 99Z" stroke="url(#paint3_linear_89_121)" stroke-width="2"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_121" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_89_121" x1="50" y1="60" x2="10" y2="60" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_89_121" x1="62" y1="16" x2="10" y2="16" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint3_linear_89_121" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8E34D9"/>
+                  <stop offset="1" stop-color="#72AAFF"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              Create Admin panel for this App
+            </li>
+            <li>
+              <span class="ico">
+                <svg class="num" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle opacity="0.2" cx="20" cy="20" r="20" fill="url(#paint0_linear_89_144)"/>
+                  <path d="M20.5533 27.1988C19.6158 27.1988 18.7801 27.0378 18.0462 26.7158C17.317 26.3939 16.737 25.9464 16.3061 25.3735C15.88 24.7959 15.648 24.1259 15.6101 23.3636H17.3999C17.4378 23.8323 17.5987 24.2372 17.8828 24.5781C18.1669 24.9142 18.5386 25.1747 18.9979 25.3593C19.4572 25.544 19.9662 25.6363 20.5249 25.6363C21.1499 25.6363 21.7039 25.5274 22.1868 25.3096C22.6698 25.0918 23.0486 24.7888 23.3232 24.4005C23.5978 24.0122 23.7351 23.5624 23.7351 23.0511C23.7351 22.516 23.6025 22.0449 23.3374 21.6377C23.0722 21.2258 22.684 20.9038 22.1726 20.6718C21.6612 20.4398 21.0362 20.3238 20.2976 20.3238H19.1328V18.7613H20.2976C20.8753 18.7613 21.3819 18.6571 21.8175 18.4488C22.2578 18.2405 22.6011 17.9469 22.8473 17.5681C23.0983 17.1893 23.2237 16.7443 23.2237 16.2329C23.2237 15.7405 23.1148 15.312 22.897 14.9474C22.6792 14.5828 22.3715 14.2987 21.9737 14.0951C21.5808 13.8915 21.1167 13.7897 20.5817 13.7897C20.0798 13.7897 19.6063 13.882 19.1612 14.0667C18.7209 14.2466 18.3611 14.5094 18.0817 14.855C17.8023 15.196 17.6508 15.6079 17.6272 16.0908H15.9226C15.951 15.3285 16.1807 14.6609 16.6115 14.088C17.0424 13.5103 17.6058 13.0605 18.3019 12.7386C19.0026 12.4166 19.772 12.2556 20.6101 12.2556C21.5097 12.2556 22.2815 12.4379 22.9254 12.8025C23.5694 13.1623 24.0642 13.6382 24.4098 14.23C24.7555 14.8219 24.9283 15.4611 24.9283 16.1477C24.9283 16.9668 24.7129 17.6652 24.282 18.2428C23.8558 18.8205 23.2758 19.2206 22.5419 19.4431V19.5568C23.4605 19.7083 24.1778 20.0989 24.6939 20.7286C25.21 21.3536 25.4681 22.1278 25.4681 23.0511C25.4681 23.8418 25.2526 24.552 24.8218 25.1818C24.3956 25.8068 23.8132 26.2992 23.0746 26.659C22.336 27.0189 21.4955 27.1988 20.5533 27.1988Z" fill="#BCC2CB"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_144" x1="0" y1="20" x2="40" y2="20" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.2" d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100Z" fill="url(#paint0_linear_89_147)"/>
+                  <path opacity="0.2" d="M55.2214 80H45.0214V70.88C39.6786 69.56 35.55 66.2 33 61.4L41.1357 55.28C43.5643 59 46.8429 60.92 50.7286 60.92C53.4 60.92 55.1 60.08 55.1 58.4C55.1 56.96 53.8857 56.24 50.85 55.16L46.1143 53.6C39.0714 51.08 35.0643 46.64 35.0643 40.76C35.0643 34.88 38.95 30.44 45.0214 28.76V20H55.2214V28.52C59.8357 29.6 63.2357 32.36 65.5429 36.92L57.4071 43.04C55.4643 40.16 53.0357 38.6 50.2429 38.6C48.3 38.6 46.9643 39.32 46.9643 40.76C46.9643 41.96 48.0571 42.8 50.4857 43.64L55.8286 45.32C63.4786 47.96 67 52.16 67 58.16C67 65 62.2643 69.68 55.2214 71.12V80V80Z" fill="url(#paint1_linear_89_147)"/>
+                  <path d="M99 50C99 77.062 77.062 99 50 99C22.938 99 1 77.062 1 50C1 22.938 22.938 1 50 1C77.062 1 99 22.938 99 50Z" stroke="url(#paint2_linear_89_147)" stroke-width="2"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_147" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_89_147" x1="33" y1="50" x2="67" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D4E5FF" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_89_147" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8E34D9"/>
+                  <stop offset="1" stop-color="#72AAFF"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              Distribute across clients who want to <br>get a "copy" app on their own domain
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- / how-build -->
+      <!-- should-work -->
+      <div class="should-work">
+        <div class="container">
+          <div class="headline"><span>Why us?</span></div>
+          <div class="subtitle sub-3">Why us?</div>
+          <ul class="should-work-list">
+            <li>
+              <span class="ico">
+                <svg width="90" height="100" viewBox="0 0 90 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.2" d="M89.9251 66.3697C89.9251 69.6362 87.6769 73.7936 84.9042 75.5754L49.9084 98.6637C47.1357 100.445 42.6395 100.445 39.9417 98.6637L5.02082 75.5754C2.24813 73.7936 0 69.6362 0 66.3697V33.7045C0 30.438 2.24813 26.2806 5.02082 24.4989L39.9417 1.3363C42.7144 -0.445434 47.2107 -0.445434 49.9833 1.3363L84.9792 24.4246C87.7519 26.2064 90 30.3638 90 33.6303V66.3697H89.9251Z" fill="url(#paint0_linear_89_153)"/>
+                  <path opacity="0.3" d="M56.9525 39.6435H32.9725V44.0978H56.9525V39.6435ZM59.95 47.0674H29.975V51.5217H59.95V47.0674ZM63.6969 54.4913H26.2281V58.9456H63.6969V54.4913ZM44.9625 22.5685C29.6752 22.5685 17.2356 34.8922 17.2356 50.0369C17.2356 65.1817 29.6752 77.5054 44.9625 77.5054C60.2497 77.5054 72.6894 65.1817 72.6894 50.0369C72.6894 34.8922 60.2497 22.5685 44.9625 22.5685ZM44.9625 20.3413C61.5237 20.3413 74.9375 33.6301 74.9375 50.0369C74.9375 66.4438 61.5237 79.7325 44.9625 79.7325C28.4013 79.7325 14.9875 66.4438 14.9875 50.0369C14.9875 33.6301 28.4013 20.3413 44.9625 20.3413Z" fill="url(#paint1_linear_89_153)"/>
+                  <path d="M89 65.3697H88.9251V66.3697C88.9251 67.7937 88.4279 69.4854 87.576 71.0515C86.7241 72.6175 85.5723 73.9574 84.3636 74.7341L84.3636 74.734L84.3536 74.7406L49.3678 97.8224C49.3662 97.8234 49.3646 97.8245 49.363 97.8255C48.172 98.5891 46.5553 99 44.897 99C43.2354 99 41.6414 98.5877 40.4932 97.8295C40.4931 97.8294 40.493 97.8294 40.4928 97.8293L5.57233 74.7412L5.57238 74.7411L5.56142 74.7341C4.35277 73.9574 3.20096 72.6175 2.3491 71.0515C1.49721 69.4854 1 67.7937 1 66.3697V33.7045C1 32.2806 1.49721 30.5888 2.3491 29.0228C3.20096 27.4567 4.35277 26.1168 5.56142 25.3402L5.56752 25.3362L5.57357 25.3322L40.4883 2.17376C41.6788 1.41081 43.2949 1 44.9625 1C46.6307 1 48.2473 1.41108 49.438 2.17451C49.4396 2.17553 49.4411 2.17656 49.4427 2.17758L84.4285 25.2594L84.4285 25.2594L84.4386 25.2659C85.6472 26.0426 86.799 27.3825 87.6509 28.9485C88.5028 30.5146 89 32.2063 89 33.6303V65.3697Z" stroke="url(#paint2_linear_89_153)" stroke-width="2"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_153" x1="0" y1="50" x2="90" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_89_153" x1="74.9375" y1="50.0369" x2="14.9875" y2="50.0369" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_89_153" x1="-3.35276e-07" y1="50" x2="90" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8E34D9"/>
+                  <stop offset="1" stop-color="#72AAFF"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              This tool was developed by the team who made MCW wallet (trusted by 1000+ webmasters).
+            </li>
+            <li>
+              <span class="ico">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.2" d="M55.7503 1.38898C62.0573 -1.80846 69.6659 0.689536 72.8695 7.08441L72.9696 7.28425C74.8717 10.8814 78.1755 13.4793 82.18 14.1787H82.3802C89.0877 15.3778 93.793 21.9725 92.7919 29.0668L92.6918 29.5664C92.1912 33.5632 93.3926 37.6599 96.0956 40.5576L96.3959 40.8573C101.201 45.9532 101.201 54.0468 96.3959 59.1427L96.0956 59.4424C93.3926 62.3401 92.0911 66.4368 92.6918 70.4336L92.7919 70.9332C93.793 78.0275 89.0877 84.5223 82.2801 85.8213H82.0798C78.1755 86.5207 74.7716 89.1186 72.8695 92.7158L72.7694 92.9156C69.5658 99.3105 61.9572 101.808 55.6501 98.611C52.0461 96.8125 47.8414 96.8125 44.2373 98.611C37.9302 101.808 30.3217 99.2105 27.1181 92.9156L27.018 92.7158C25.1158 89.1186 21.8121 86.5207 17.8076 85.8213H17.6074C11 84.5223 6.29467 77.9276 7.2958 70.8333L7.39591 70.3337C7.89647 66.3369 6.69512 62.2402 3.99208 59.3425L3.69175 59.0427C-1.21377 53.9468 -1.21377 45.9532 3.59163 40.7574L3.89197 40.4577C6.59501 37.56 7.89647 33.4633 7.2958 29.4665L7.19568 28.9669C6.29467 21.9725 11 15.3778 17.8076 14.1787H18.0078C21.9122 13.4793 25.3161 10.8814 27.2182 7.28425L27.3183 7.08441C30.4218 0.689536 38.0303 -1.80846 44.3374 1.38898C47.9415 3.18753 52.1462 3.18753 55.7503 1.38898Z" fill="url(#paint0_linear_89_161)"/>
+                  <path opacity="0.2" d="M50 85C30.67 85 15 69.33 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50C85 69.33 69.33 85 50 85Z" fill="url(#paint1_linear_89_161)"/>
+                  <path opacity="0.2" d="M54.83 61.6199C59.38 59.7299 62.6 55.2499 62.6 49.9999C62.6 43.0699 56.93 37.3999 50 37.3999C43.07 37.3999 37.4 43.0699 37.4 49.9999C37.4 55.2499 40.62 59.7299 45.1699 61.6199L36.7 82.3399C40.83 84.0199 45.31 84.9999 50 84.9999C54.69 84.9999 59.24 84.0899 63.3 82.3399L54.83 61.6199Z" fill="url(#paint2_linear_89_161)"/>
+                  <path d="M56.1968 2.28376L56.2024 2.28091C62.0129 -0.664787 69.0189 1.63058 71.9754 7.53231L72.0755 7.73215L72.0805 7.74198L72.0856 7.75171C74.1179 11.595 77.6698 14.4061 82.0079 15.1638L82.0933 15.1787H82.18H82.2896C88.3891 16.3177 92.7146 22.3535 91.8056 28.8991L91.7113 29.3699L91.7041 29.4058L91.6995 29.4421C91.1652 33.7081 92.4425 38.1075 95.3644 41.2397L95.3765 41.2527L95.3892 41.2654L95.6787 41.5543C100.107 46.262 100.107 53.7381 95.6786 58.4458L95.3892 58.7346L95.3765 58.7472L95.3644 58.7603C92.4548 61.8794 91.0565 66.2814 91.7029 70.5822L91.7065 70.6063L91.7113 70.6301L91.8056 71.1009C92.7121 77.6289 88.4048 83.5846 82.1836 84.8213H82.0798H81.991L81.9035 84.837C77.6757 85.5943 74.0214 88.3982 71.9855 92.2483L71.9804 92.258L71.9754 92.2678L71.8753 92.4677L72.7694 92.9156L71.8753 92.4677C68.9187 98.3694 61.9128 100.665 56.1023 97.7191L56.0967 97.7162C52.2115 95.7774 47.676 95.7774 43.7908 97.7162L43.7851 97.7191C37.9847 100.66 30.9718 98.2798 28.0106 92.4646C28.0102 92.4638 28.0097 92.4629 28.0093 92.462L27.912 92.2678L27.9071 92.258L27.902 92.2483C25.8697 88.405 22.3178 85.5939 17.9797 84.8362L17.8943 84.8213H17.8076H17.7068C11.6965 83.5864 7.37353 77.5435 8.28207 71.001L8.37642 70.5302L8.38361 70.4943L8.38816 70.458C8.92244 66.1919 7.64517 61.7926 4.72332 58.6604L4.71115 58.6473L4.69851 58.6347L4.40541 58.3422C-0.113593 53.6404 -0.125405 46.264 4.31245 41.4508L4.5984 41.1654L4.61103 41.1528L4.62321 41.1398C7.53279 38.0207 8.93105 33.6186 8.28469 29.3178L8.28108 29.2938L8.27631 29.27L8.18317 28.8052C7.37067 22.3595 11.694 16.3186 17.8968 15.1787H18.0078H18.0967L18.1842 15.1631C22.412 14.4057 26.0663 11.6018 28.1022 7.75171L28.1073 7.74198L28.1123 7.73215L28.2124 7.53231L28.2125 7.53234L28.218 7.52102C31.0743 1.63547 38.0705 -0.666928 43.8853 2.28092L43.8909 2.28375C47.7761 4.22261 52.3116 4.22261 56.1968 2.28376Z" stroke="url(#paint3_linear_89_161)" stroke-width="2"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_161" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_89_161" x1="85" y1="50" x2="15" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_89_161" x1="36.7" y1="61.1999" x2="63.3" y2="61.1999" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint3_linear_89_161" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8E34D9"/>
+                  <stop offset="1" stop-color="#72AAFF"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              We are fully legal (we use only MIT and GPL sources)
+            </li>
+            <li>
+              <span class="ico">
+                <svg width="120" height="90" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.2" d="M70.6875 0L21.4688 90H120L70.6875 0Z" fill="url(#paint0_linear_89_167)"/>
+                  <path d="M117.843 89H22.6866L70.2196 2.08262L117.843 89Z" stroke="url(#paint1_linear_89_167)" stroke-width="2"/>
+                  <path opacity="0.2" d="M37.9688 20.7393L0 90.0001H75.9375L37.9688 20.7393Z" fill="url(#paint2_linear_89_167)"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_167" x1="21.4688" y1="45" x2="120" y2="45" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_89_167" x1="21" y1="45" x2="119.531" y2="45" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8E34D9"/>
+                  <stop offset="1" stop-color="#72AAFF"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_89_167" x1="0" y1="55.3697" x2="75.9375" y2="55.3697" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              We use only top audited sources
+            </li>
+            <li>
+              <span class="ico">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.2" d="M91.3 50.0501C91.3 43.043 94.7 36.9369 100 33.2332C99.2 30.9309 98.3 28.7287 97.3 26.6266C90.9 27.7277 84.2 25.8258 79.2 20.9209C74.2 16.016 72.4 9.10911 73.5 2.7027C71.4 1.6016 69.2 0.700701 66.9 0C63.1 5.30531 57 8.70871 50 8.70871C43 8.70871 36.9 5.30531 33.2 0C30.9 0.800801 28.7 1.7017 26.6 2.7027C27.7 9.10911 25.8 15.8158 20.9 20.8208C16 25.7257 9.2 27.6276 2.8 26.5265C1.7 28.6286 0.8 30.8308 0.1 33.1331C5.3 36.9369 8.7 43.043 8.7 50.0501C8.7 57.0571 5.3 63.1632 0 66.8669C0.8 69.1692 1.7 71.3714 2.7 73.4735C9.1 72.3724 15.8 74.2743 20.8 79.1792C25.7 84.0841 27.6 90.8909 26.5 97.2973C28.6 98.3984 30.8 99.2993 33.1 100C36.8 94.6947 43 91.2913 49.9 91.2913C56.8 91.2913 63 94.6947 66.7 100C69 99.1992 71.2 98.2983 73.3 97.2973C72.2 90.8909 74.1 84.1842 79 79.1792C83.9 74.2743 90.7 72.3724 97.1 73.4735C98.2 71.3714 99.1 69.1692 99.8 66.8669C94.7 63.1632 91.3 57.0571 91.3 50.0501Z" fill="url(#paint0_linear_89_172)"/>
+                  <path d="M21.6075 21.5276L21.6075 21.5276L21.6146 21.5204C26.5522 16.477 28.5846 9.77333 27.702 3.29027C29.3483 2.53026 31.0573 1.83088 32.829 1.19232C36.7455 6.40237 42.9409 9.70871 50 9.70871C57.0764 9.70871 63.2777 6.38698 67.2791 1.16765C69.0492 1.74279 70.7565 2.44146 72.4014 3.26359C71.5052 9.75194 73.4325 16.664 78.4997 21.6348C83.5378 26.5771 90.2348 28.612 96.7119 27.7289C97.4714 29.3774 98.1703 31.0885 98.8083 32.8626C93.6028 36.7831 90.3 42.9847 90.3 50.05C90.3 57.1208 93.6074 63.3227 98.6344 67.2411C98.0594 69.0152 97.3607 70.7263 96.5384 72.3749C90.0513 71.4833 83.2475 73.5125 78.2925 78.4724L78.2854 78.4796C73.3478 83.523 71.3155 90.2267 72.198 96.7097C70.5516 97.4698 68.8425 98.1692 67.0707 98.8078C63.1459 93.5957 56.8604 90.2913 49.9 90.2913C42.9298 90.2913 36.6365 93.605 32.7128 98.8297C30.9455 98.2551 29.2408 97.5572 27.5983 96.7363C28.4894 90.2432 26.4627 83.4326 21.5075 78.4724L21.5003 78.4653C16.4622 73.523 9.76521 71.4881 3.28807 72.3712C2.5286 70.7227 1.82974 69.0116 1.19167 67.2375C6.39718 63.317 9.7 57.1154 9.7 50.05C9.7 42.9696 6.3841 36.7656 1.26501 32.7608C1.8401 30.9859 2.53898 29.2742 3.36156 27.6251C9.84873 28.5167 16.6525 26.4875 21.6075 21.5276Z" stroke="url(#paint1_linear_89_172)" stroke-width="2"/>
+                  <path opacity="0.2" d="M50 70.0701C38.9543 70.0701 30 61.1068 30 50.05C30 38.9933 38.9543 30.03 50 30.03C61.0457 30.03 70 38.9933 70 50.05C70 61.1068 61.0457 70.0701 50 70.0701Z" fill="url(#paint2_linear_89_172)"/>
+                  <defs>
+                  <linearGradient id="paint0_linear_89_172" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_89_172" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8E34D9"/>
+                  <stop offset="1" stop-color="#72AAFF"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_89_172" x1="70" y1="50.05" x2="30" y2="50.05" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              You don't need coder, setup without technical skills. <a href="#" target="_blank">See videos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- / should-work -->
+      <!-- info -->
+      <div class="info">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="info-item">
+                <div class="ico">
+                  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect opacity="0.2" width="100" height="100" rx="20" fill="url(#paint0_linear_92_264)"/>
+                    <rect x="1" y="1" width="98" height="98" rx="19" stroke="url(#paint1_linear_92_264)" stroke-width="2"/>
+                    <path opacity="0.5" d="M50 80L76 65V35L50 50V80Z" fill="url(#paint2_linear_92_264)"/>
+                    <path opacity="0.5" d="M50 80L24 65V35L50 50V80Z" fill="url(#paint3_linear_92_264)"/>
+                    <path opacity="0.5" d="M76 35L50 20L24 35L50 50L76 35Z" fill="url(#paint4_linear_92_264)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_92_264" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_92_264" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8E34D9"/>
+                    <stop offset="1" stop-color="#72AAFF"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_92_264" x1="63" y1="80" x2="63" y2="35" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint3_linear_92_264" x1="37" y1="35" x2="37" y2="80" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint4_linear_92_264" x1="24" y1="35" x2="76" y2="35" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="info-item-title">We are listen to you. <br>Ask for a new project</div>
+                <p>Want new feature or new product? Ask the team!</p>
+                <a href="#" target="_blank" class="white-btn">talk to team</a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="info-item">
+                <div class="ico">
+                  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.2" d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100Z" fill="url(#paint0_linear_89_147)"/>
+                    <path opacity="0.2" d="M55.2214 80H45.0214V70.88C39.6786 69.56 35.55 66.2 33 61.4L41.1357 55.28C43.5643 59 46.8429 60.92 50.7286 60.92C53.4 60.92 55.1 60.08 55.1 58.4C55.1 56.96 53.8857 56.24 50.85 55.16L46.1143 53.6C39.0714 51.08 35.0643 46.64 35.0643 40.76C35.0643 34.88 38.95 30.44 45.0214 28.76V20H55.2214V28.52C59.8357 29.6 63.2357 32.36 65.5429 36.92L57.4071 43.04C55.4643 40.16 53.0357 38.6 50.2429 38.6C48.3 38.6 46.9643 39.32 46.9643 40.76C46.9643 41.96 48.0571 42.8 50.4857 43.64L55.8286 45.32C63.4786 47.96 67 52.16 67 58.16C67 65 62.2643 69.68 55.2214 71.12V80V80Z" fill="url(#paint1_linear_89_147)"/>
+                    <path d="M99 50C99 77.062 77.062 99 50 99C22.938 99 1 77.062 1 50C1 22.938 22.938 1 50 1C77.062 1 99 22.938 99 50Z" stroke="url(#paint2_linear_89_147)" stroke-width="2"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_89_147" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_89_147" x1="33" y1="50" x2="67" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D4E5FF" stop-opacity="0"/>
+                    <stop offset="1" stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_89_147" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8E34D9"/>
+                    <stop offset="1" stop-color="#72AAFF"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="info-item-title">you can SPONSOR new products and get up to 150% from future sales</div>
+                <p>The system will automatically pay you from each sale until you get back 150%, this is an investment opportunity</p>
+                <a href="/sponsor.md" target="_blank" class="btn">BECOME a sponsor</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / info -->
+      <!-- testimonials -->
+      <div class="testimonials">
+        <div class="container">
+          <div class="headline"><span>Testimonials</span></div>
+          <div class="testimonials-slider-wrapper">
+            <div class="testimonials-slider swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="testimonial-card">
+                    <div class="testimonial-card-top">
+                      <div class="rating">
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                      </div>
+                      <div class="date">by sahelian 1 year ago</div>
+                    </div>
+                    <p>I am not a coder and I cannot do all that I wanted to with this plugin... I hope not but might end up loosing my money or spending hours on this. However, support has been awesome thus far! I don't agree with the bad review about the seller. I understand we are all busy and this is not some mega corporation, so a bit of patience will pay off.</p>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonial-card">
+                    <div class="testimonial-card-top">
+                      <div class="rating">
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                      </div>
+                      <div class="date">by sahelian 1 year ago</div>
+                    </div>
+                     <p>excelente pero me gustaria que procesador de pago integrado aceptara visas virtuales</p>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonial-card">
+                    <div class="testimonial-card-top">
+                      <div class="rating">
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                      </div>
+                      <div class="date">by sahelian 1 year ago</div>
+                    </div>
+                    <p>I am not a coder and I cannot do all that I wanted to with this plugin... I hope not but might end up loosing my money or spending hours on this. However, support has been awesome thus far! I don't agree with the bad review about the seller. I understand we are all busy and this is not some mega corporation, so a bit of patience will pay off.</p>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonial-card">
+                    <div class="testimonial-card-top">
+                      <div class="rating">
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                        <span><svg class="icon"><use xlink:href="#star"></use></svg></span>
+                      </div>
+                      <div class="date">by sahelian 1 year ago</div>
+                    </div>
+                    <p>Awesome team, helpful all the time , nothing is to difficult and if you have a problem, they are straight onto it, one of the most pleasurable experience i have had to date with devs and using code.. A++</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <!-- / testimonials -->
+      <!-- pre-footer -->
+      <div class="pre-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="pre-footer-card">
+                <div class="card-ico support-ico">
+                  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.2" d="M50 0C22.4 0 0 22.4 0 50C0 77.6 22.4 100 50 100C77.6 100 100 77.6 100 50C100 22.4 77.6 0 50 0ZM50 75C36.2 75 25 63.8 25 50C25 36.2 36.2 25 50 25C63.8 25 75 36.2 75 50C75 63.8 63.8 75 50 75Z" fill="url(#paint0_linear_89_219)"/>
+                    <path opacity="0.2" d="M44.1 25.7002L25.1 6.7002C17.5 11.1002 11.1 17.5002 6.70004 25.1002L25.7 44.1002C27.9 35.0002 35 27.9002 44.1 25.7002ZM55.9001 25.7002L74.9 6.7002C82.5 11.1002 88.9 17.5002 93.3 25.1002L74.3 44.1002C72.1 35.0002 65.0001 27.9002 55.9001 25.7002ZM44.1 74.3002L25.1 93.3002C17.5 88.9002 11.1 82.5002 6.70004 74.9002L25.7 55.9002C27.9 65.0002 35 72.1002 44.1 74.3002ZM74.3 55.9002L93.3 74.9002C88.9 82.5002 82.5 88.9002 74.9 93.3002L55.9001 74.3002C65.0001 72.1002 72.1 65.0002 74.3 55.9002Z" fill="url(#paint1_linear_89_219)"/>
+                    <path d="M1 50C1 22.9523 22.9523 1 50 1C77.0477 1 99 22.9523 99 50C99 77.0477 77.0477 99 50 99C22.9523 99 1 77.0477 1 50ZM24 50C24 64.3523 35.6477 76 50 76C64.3523 76 76 64.3523 76 50C76 35.6477 64.3523 24 50 24C35.6477 24 24 35.6477 24 50Z" stroke="url(#paint2_linear_89_219)" stroke-width="2"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_89_219" x1="0" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_89_219" x1="93.3" y1="50.0002" x2="6.70004" y2="50.0002" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_89_219" x1="-3.72529e-07" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8E34D9"/>
+                    <stop offset="1" stop-color="#72AAFF"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <div class="headline"><span>Support process</span></div>
+                  <p><a href="mailto:support@onout.org">support@onout.org</a> <br>Online 08:00 - 17:00 GMT, sunday day off <br><a href="#" target="_blank">Read know lagebase</a>, or <a href="#" target="_blank">ask the community</a></p>                  
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="pre-footer-card">
+                <div class="card-ico developer-ico">
+                  <svg width="110" height="86" viewBox="0 0 110 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.2" d="M85.9293 3.04173e-05L12.0374 73.7305L24.0691 85.7359L97.9611 12.0055L85.9293 3.04173e-05Z" fill="url(#paint0_linear_92_229)"/>
+                    <path opacity="0.2" d="M42.8828 86.0001L0 43.1253L42.8828 0.250488L55 12.3412L24.1484 43.1253L55 73.9094L42.8828 86.0001ZM110 43.1253L67.1172 0.250488L55 12.3412L85.8516 43.1253L55 73.9094L67.1172 86.0001L110 43.1253Z" fill="url(#paint1_linear_92_229)"/>
+                    <path d="M42.8835 1.66386L53.5842 12.3412L23.4421 42.4174L22.7327 43.1253L23.4421 43.8332L53.5842 73.9094L42.8835 84.5868L1.41435 43.1253L42.8835 1.66386ZM56.4158 73.9094L86.5579 43.8332L87.2673 43.1253L86.5579 42.4174L56.4158 12.3412L67.1165 1.66386L108.586 43.1253L67.1165 84.5868L56.4158 73.9094Z" stroke="url(#paint2_linear_92_229)" stroke-width="2"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_92_229" x1="18.0532" y1="79.7332" x2="91.7835" y2="5.84141" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D4E5FF" stop-opacity="0"/>
+                    <stop offset="1" stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_92_229" x1="0" y1="43.1253" x2="110" y2="43.1253" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D5E5FF" stop-opacity="0.8"/>
+                    <stop offset="1" stop-color="#D4E5FF" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_92_229" x1="-4.09782e-07" y1="43.1253" x2="110" y2="43.1253" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8E34D9"/>
+                    <stop offset="1" stop-color="#72AAFF"/>
+                    </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <div class="headline"><span>Developer?</span></div>
+                  <p>Get a grand or add a product to our marketplace and earn. Please contact support! We are happy to collaborate!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / pre-footer -->
+      <!-- faq -->
+      <div class="faq">
+        <div class="container">
+          <div class="headline"><span>F.A.Q.</span></div>
+          <div class="subtitle sub-4">F.A.Q.</div>
+          <div class="accordion">
+            <button class="course-accordion">Do you have any guaranties the funds will be safu?</button>
+            <div class="course-panel">
+              <div class="inner">
+                <p>Risk notification: Our code is based on top audited sources, but our changes are unaudited from 3rd party auditors. We improve security but a lot of things are out of our control, for example, 3rd party software like WordPress, your server's software, your hosting provider. We have delivered dapps for hundreds of clients which handle tens of thousands of users. For the past 3 years, we have received about 10 incident reports kind of "a user lost funds". Unfortunately, not all of them have been resolved. Ask yourself who other than you can access your server? When was your last time installing security updates? The most secure choice would be our cloud solution (with a "revenue-share" payment model) contact support for more information. For WP standalone versions please use as less plugins as you can and the "Simply Static plugin" and "Wodefence" for security.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / faq -->
+      <!-- footer -->
+      <div class="footer">
+        <div class="container">
+          <div class="logo">
+            <svg class="icon">
+              <use xlink:href="#logo-footer"></use>
+            </svg>
+          </div>
+          <p>Our mission is make opensource software available for everyone. Talk to team: support@onout.org</p>
+          <ul class="socially">
+            <li><a href="https://t.me/onoutsupportbot" target="_blank"><svg class="icon"><use xlink:href="#telegram"></use></svg></a></li>
+            <li><a href="https://discord.com/invite/C6MJzfcDqV" target="_blank"><svg class="icon"><use xlink:href="#discord"></use></svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- / footer -->
+    </main>
+
+    <svg width="0" height="0" style="position: absolute; visibility: hidden; width: auto; height: auto;">
+      <symbol viewBox="0 0 114 45" fill="none" id="logo-header">
+        <path d="M34 0C27.9 0 23 4.9 23 11C23 17.1 27.9 22 34 22C40.1 22 45 17.1 45 11C45 4.9 40.1 0 34 0ZM34 18C30.1 18 27 14.9 27 11C27 7.1 30.1 4 34 4C37.9 4 41 7.1 41 11C41 14.9 37.9 18 34 18ZM57 0C50.9 0 46 4.9 46 11C46 17.1 50.9 22 57 22C63.1 22 68 17.1 68 11C68 4.9 63.1 0 57 0ZM57 18C53.1 18 50 14.9 50 11C50 7.1 53.1 4 57 4C60.9 4 64 7.1 64 11C64 14.9 60.9 18 57 18ZM57 23C50.9 23 46 27.9 46 34C46 40.1 50.9 45 57 45C63.1 45 68 40.1 68 34C68 27.9 63.1 23 57 23ZM57 41C53.1 41 50 37.9 50 34C50 30.1 53.1 27 57 27C60.9 27 64 30.1 64 34C64 37.9 60.9 41 57 41ZM11 23C4.9 23 0 27.9 0 34C0 40.1 4.9 45 11 45C17.1 45 22 40.1 22 34C22 27.9 17.1 23 11 23ZM11 41C7.1 41 4 37.9 4 34C4 30.1 7.1 27 11 27C14.9 27 18 30.1 18 34C18 37.9 14.9 41 11 41ZM13 0H22V4H13V22H9V4H0V0H9H13ZM105 23H114V27H105V45H101V27H91V34C91 40.1 86.1 45 80 45C73.9 45 69 40.1 69 34V23H73V34C73 37.9 76.1 41 80 41C83.9 41 87 37.9 87 34V23H90H91H101H105ZM91 6.5C91 7.9 92.1 9 93.5 9H107.5C111.1 9 114 11.9 114 15.5C114 19.1 111.1 22 107.5 22H91H88H69V0H73V18H88H91H107.5C108.9 18 110 16.9 110 15.5C110 14.1 108.9 13 107.5 13H93.5C89.9 13 87 10.1 87 6.5C87 2.9 89.9 0 93.5 0H114V4H93.5C92.1 4 91 5.1 91 6.5ZM41 23H45V45H42.2L27 29.8V45H23V23H25.8L41 38.2V23Z" fill="white"/>
+      </symbol>
+      <symbol viewBox="0 0 16 15" fill="none" id="star">
+        <path d="M8 12.1L12.9 15L11.6 9.5L16 5.7L10.2 5.2L8 0L5.8 5.2L0 5.7L4.4 9.5L3.1 15L8 12.1Z" fill="#5F48B0"/>
+      </symbol>
+      <symbol viewBox="0 0 114 45" fill="none" id="logo-footer">
+        <path d="M34 0C27.9 0 23 4.9 23 11C23 17.1 27.9 22 34 22C40.1 22 45 17.1 45 11C45 4.9 40.1 0 34 0ZM34 18C30.1 18 27 14.9 27 11C27 7.1 30.1 4 34 4C37.9 4 41 7.1 41 11C41 14.9 37.9 18 34 18ZM57 0C50.9 0 46 4.9 46 11C46 17.1 50.9 22 57 22C63.1 22 68 17.1 68 11C68 4.9 63.1 0 57 0ZM57 18C53.1 18 50 14.9 50 11C50 7.1 53.1 4 57 4C60.9 4 64 7.1 64 11C64 14.9 60.9 18 57 18ZM57 23C50.9 23 46 27.9 46 34C46 40.1 50.9 45 57 45C63.1 45 68 40.1 68 34C68 27.9 63.1 23 57 23ZM57 41C53.1 41 50 37.9 50 34C50 30.1 53.1 27 57 27C60.9 27 64 30.1 64 34C64 37.9 60.9 41 57 41ZM11 23C4.9 23 0 27.9 0 34C0 40.1 4.9 45 11 45C17.1 45 22 40.1 22 34C22 27.9 17.1 23 11 23ZM11 41C7.1 41 4 37.9 4 34C4 30.1 7.1 27 11 27C14.9 27 18 30.1 18 34C18 37.9 14.9 41 11 41ZM13 0H22V4H13V22H9V4H0V0H9H13ZM105 23H114V27H105V45H101V27H91V34C91 40.1 86.1 45 80 45C73.9 45 69 40.1 69 34V23H73V34C73 37.9 76.1 41 80 41C83.9 41 87 37.9 87 34V23H90H91H101H105ZM91 6.5C91 7.9 92.1 9 93.5 9H107.5C111.1 9 114 11.9 114 15.5C114 19.1 111.1 22 107.5 22H91H88H69V0H73V18H88H91H107.5C108.9 18 110 16.9 110 15.5C110 14.1 108.9 13 107.5 13H93.5C89.9 13 87 10.1 87 6.5C87 2.9 89.9 0 93.5 0H114V4H93.5C92.1 4 91 5.1 91 6.5ZM41 23H45V45H42.2L27 29.8V45H23V23H25.8L41 38.2V23Z" fill="#545C67"/>
+      </symbol>
+      <symbol viewBox="0 0 24 24" fill="none" id="telegram">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C18.6 24 24 18.6 24 12C24 5.4 18.6 0 12 0ZM17.6 8.2C17.4 10.1 16.6 14.7 16.2 16.8C16 17.7 15.7 18 15.4 18C14.7 18.1 14.2 17.5 13.5 17.1C12.4 16.4 11.8 16 10.8 15.3C9.6 14.5 10.4 14.1 11.1 13.4C11.3 13.2 14.3 10.4 14.4 10.2C14.4 10.2 14.4 10 14.3 10C14.2 9.9 14.1 10 14.1 10C14 10 12.3 11.1 9 13.3C8.5 13.6 8.1 13.8 7.7 13.8C7.3 13.8 6.4 13.6 5.8 13.4C5 13.2 4.5 13 4.5 12.6C4.5 12.4 4.8 12.2 5.4 11.9C8.9 10.4 11.2 9.4 12.4 8.9C15.7 7.5 16.4 7.3 16.9 7.3C17 7.3 17.2 7.3 17.4 7.4C17.5 7.5 17.6 7.6 17.6 7.7C17.6 7.8 17.6 8 17.6 8.2Z" fill="#545C67"/>
+      </symbol>
+      <symbol viewBox="0 0 24 24" fill="none" id="facebook">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.4 0 0 5.4 0 12C0 18 4.3 22.9 10 23.8V15.2H7V12.2H10V9.9C10 7.1 12.2 4.8 14.9 4.8H16V7.8H14.9C13.9 7.8 13 8.7 13 9.9V12.3H16V15.3H13V24C19.2 23.5 24 18.3 24 12C24 5.4 18.6 0 12 0Z" fill="#545C67"/>
+      </symbol>
+      <symbol viewBox="0 0 24 24" fill="none" id="instagram">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5353 0H8.36514C3.68465 0 0 3.7 0 8.4V15.7C0 20.3 3.68465 24 8.36514 24H15.6349C20.2158 24 24 20.3 24 15.6V8.4C23.9004 3.7 20.2158 0 15.5353 0ZM20.9129 15.6C20.9129 18.6 18.5228 21 15.5353 21H8.36514C5.37759 21 2.98755 18.6 2.98755 15.6V8.4C2.98755 5.4 5.37759 3 8.36514 3H15.6349C18.6224 3 21.0124 5.4 21.0124 8.4V15.6H20.9129ZM11.9502 7C9.16183 7 6.97095 9.2 6.97095 12C6.97095 14.8 9.16183 17 11.9502 17C14.7386 17 16.9295 14.8 16.9295 12C16.9295 9.2 14.7386 7 11.9502 7ZM11.9502 14C10.8548 14 9.95851 13.1 9.95851 12C9.95851 10.9 10.8548 10 11.9502 10C13.0456 10 13.9419 10.9 13.9419 12C13.9419 13.1 13.0456 14 11.9502 14ZM17.4274 5.5C16.8299 5.5 16.4315 5.9 16.4315 6.5C16.4315 7.1 16.8299 7.5 17.4274 7.5C18.0249 7.5 18.4232 7.1 18.4232 6.5C18.4232 5.9 18.0249 5.5 17.4274 5.5Z" fill="#545C67"/>
+      </symbol>
+      <symbol viewBox="0 0 24 20" fill="none" id="discord">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M22.7 8.5C21.7 5.1 20.7 3.4 20.7 3.3C20.6 3.2 19.1 1.3 15.4 0L14.9 1.4C16.6 2.1 17.9 2.9 18.6 3.4C16.6 2.8 14.1 2.4 12 2.4C9.9 2.4 7.4 2.8 5.4 3.4C6.1 2.9 7.3 2.1 9.1 1.4L8.6 0C4.9 1.4 3.4 3.3 3.3 3.3C3.3 3.3 2.2 5.1 1.3 8.5C0.4 11.8 0 16.4 0 16.5C0.1 16.7 2 20 7.1 20L8.4 18.1C6.9 17.7 5.5 17.1 4.3 16.2L5.1 15C7.2 16.4 9.6 17.2 12 17.2C14.5 17.2 16.9 16.5 18.9 15L19.7 16.2C18.4 17.1 17 17.7 15.6 18.1L16.9 20C22 20 23.9 16.7 24 16.5C24 16.4 23.6 11.8 22.7 8.5ZM8.7 12.3H7.3V9.9H8.7V12.3ZM16.7 12.3H15.3V9.9H16.7V12.3Z" fill="#545C67"/>
+      </symbol>
+    </svg>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Plugins&Scripts -->
+    <script src="js/f.js"></script>
+  </body>
 </html>
