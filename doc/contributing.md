@@ -2,8 +2,41 @@
 
 https://youtu.be/cLlQ4MIuyes - Watch the video 📺 
 
-Add your product to onout.org and earn up to 50% of sales. (this means you work for one month, and earn 🏖 passive income). How much? 
+Add your product to onout.org and earn up to 50% of sales. (this means you work for one month, and earn 🏖 passive income).
 
+## Real cases ❌ 3000 USD once or ✅ 1 000 USD monthly ? 
+First product which made with "revshare" model earns 1900 USD every month (the stats is open https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071 ) . You think not so much? In comparison with full time job yes. But
+
+- ✅ this revenue coming fully automatically (all bugs are fixed, developer don't spend a lot of time).
+- ✅ this is not fulltime job (get paid for time), this is not "freelance job" (get paid once for job). This is "spent time now, get money for years"  
+- ✅ in this case: the developer spent about 100 hours for this product. let's calculate 50 USD per hour = 3000 USD he would receive at "regular" job. But from farm factory he has received ~20 000 USD (calculated on 50% revshare model, real revshre present is less, but you will get 50%)
+- ✅ you can work with as without leaving your full time job 
+
+## Risks?
+People don't like risk according  https://en.wikipedia.org/wiki/Risk_aversion theory. So this let's see full statistics (November 2022 statistic): 
+
+| Name             | Release date   | Investments (Developer's rate), USD | Earnings, USD | APY                              | ROI |
+|------------------|----------------|-------------------------------------|---------------|----------------------------------|-----|
+| MCW              | March 2019     | 200 000 USD                         | 100 000       | calculating              |  calculating   |
+| FarmFactory (revsahre model)      | January 2022   | 4000 USD                            | 40000         |                                  |     |
+| LotteryFactory   | May 2022       | 6000 USD                            | 8000          |                                  |     |
+| Unifactory (dex) | February 2022* | 10000 USD                           | 16200         |                                  |     |
+| Dao widget       | December 2021  | 2000 USD                            | 11800         |                                  |     |
+| CrossChain       | April 2022     | 6000 USD                            | 4000          |                                  |     |
+| NFTcy            | March 2022     | 5000 USD                            | 3000          |                                  |     |
+|                  |                |                                     |               |                                  |     |
+
+As you can see most of them are profitable and earnings IS NOT stopped, better if we calculate APY. As you can see some of products rock, but the best one is developed based on revenue share model. Let's see on the weak projects.  
+
+1. MltiCurrencyWallet. Originally it was an Atomic Swap exchange we spent 80% budget to deliver unnecessary function (nobody need atomic swap now). This product was venture funded. Now it's completed good product. Lesson: do not do complex product without real product market fit. 
+2. CrossChain. We deliver complex product for corporate market (only big project need bridges and mostly of them already has in-house development team). 
+3. NFTcy. At different times, 3 different developers started working on this project. We use Rarible.org api so in't not needed to hire a blockchain developer. We spent a lot of energy on managing. Also, rabble API is not complete bug-free api and does not support BSC. Lesson: we need "self-managed", experienced developers.  
+
+## Resume
+- ✅ we have a profitable business model. 
+- ✅ We must create products in partnerships with motivated developers    
+- ✅ Developer will earn more than on regular job for the same time
+- ❌ Afraid to complex and "a lot of features" ideas
 
 ## General terms and conditions
 - onout.org team provide complete guide for developers
@@ -25,6 +58,7 @@ In order to receive the initial payment for the project, it is required to pass 
 
 - To generate an idea ([stage 0](#contributing0))
 - To develop a product ([stage 2](#contributing2))
+- Do support (response to tickets, bug fixes)
 
 ### The onout.org team guarantees
 
