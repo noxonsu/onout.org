@@ -4,7 +4,7 @@ https://youtu.be/cLlQ4MIuyes - Watch the video 📺
 
 Add your product to onout.org and earn up to 50% of sales. (this means you work for one month, and earn 🏖 passive income).
 
-## Real cases ❌ 3000 USD once or ✅ 1 000 USD monthly ? 
+## What's you prefer ❌ 3000 USD once or ✅ 1 000 USD monthly ? 
 First product which made with "revshare" model earns 1900 USD every month (the stats is open https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071 ) . You think not so much? In comparison with full time job yes. But
 
 - ✅ this revenue coming fully automatically (all bugs are fixed, developer don't spend a lot of time).
