@@ -14,7 +14,7 @@ Usecase: First product which made with "revshare" model called "FarmFactory" ear
 - ✅ it's like a game development, you release a game on steam.com and earn each sale
 
 ## Risks?
-People don't like risk according  https://en.wikipedia.org/wiki/Risk_aversion theory. So this let's see to the statistics of another our products (Calculated November 2022 statistic): 
+People don't like risk according  https://en.wikipedia.org/wiki/Risk_aversion theory. So this let's see to the statistics of other our products (Calculated on November 2022): 
 
 | Name             | Release date   | Investments (Developer's rate), USD | Earnings, USD | APY                              | ROI |
 |------------------|----------------|-------------------------------------|---------------|----------------------------------|-----|
