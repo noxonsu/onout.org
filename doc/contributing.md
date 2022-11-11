@@ -2,7 +2,7 @@
 
 https://youtu.be/cLlQ4MIuyes - Watch the video 📺 
 
-Add your product to onout.org and earn up to 50% product revenue share. (this means you work for one month, and earn 🏖 passive income).
+Add your product to onout.org and get rewarded from each sale of this product. (this means you work for one month, and earn 🏖 passive income).
 
 ## How much you will earn ? 
 Usecase: First product which made with "revshare" model called "FarmFactory" earns 1900 USD every month (the stats is open https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071 ) . You think not so much? In comparison with full time job yes. But
