@@ -2,10 +2,10 @@
 
 https://youtu.be/cLlQ4MIuyes - Watch the video 📺 
 
-Add your product to onout.org and earn up to 50% of sales. (this means you work for one month, and earn 🏖 passive income).
+Add your product to onout.org and earn up to 50% product revenue share. (this means you work for one month, and earn 🏖 passive income).
 
-## What's you prefer ❌ 3000 USD once or ✅ 1 000 USD monthly ? 
-First product which made with "revshare" model called "FarmFactory" earns 1900 USD every month (the stats is open https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071 ) . You think not so much? In comparison with full time job yes. But
+## How much you will earn ? 
+Usecase: First product which made with "revshare" model called "FarmFactory" earns 1900 USD every month (the stats is open https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071 ) . You think not so much? In comparison with full time job yes. But
 
 - ✅ this revenue coming fully automatically (all bugs are fixed, developer don't spend a lot of time).
 - ✅ this is not fulltime job (get paid for time), this is not "freelance job" (get paid once for job). This is "spent time now, get money for years"  
@@ -13,18 +13,22 @@ First product which made with "revshare" model called "FarmFactory" earns 1900 U
 - ✅ you can work with as without leaving your full time job 
 
 ## Risks?
-People don't like risk according  https://en.wikipedia.org/wiki/Risk_aversion theory. So this let's see full statistics (November 2022 statistic): 
+People don't like risk according  https://en.wikipedia.org/wiki/Risk_aversion theory. So this let's see full statistics (Calculated November 2022 statistic): 
 
 | Name             | Release date   | Investments (Developer's rate), USD | Earnings, USD | APY                              | ROI |
 |------------------|----------------|-------------------------------------|---------------|----------------------------------|-----|
-| MCW              | March 2019     | 200 000 USD                         | 100 000       | calculating              |  calculating   |
-| FarmFactory (revsahre model)      | January 2022   | 4000 USD                            | 40000         |                                  |     |
-| LotteryFactory   | May 2022       | 6000 USD                            | 8000          |                                  |     |
-| Unifactory (dex) | February 2022* | 10000 USD                           | 16200         |                                  |     |
-| Dao widget       | December 2021  | 2000 USD                            | 11800         |                                  |     |
-| CrossChain       | April 2022     | 6000 USD                            | 4000          |                                  |     |
-| NFTcy            | March 2022     | 5000 USD                            | 3000          |                                  |     |
-|                  |                |                                     |               |                                  |     |
+| MCW              | March 2019     | 200 000 USD                         | 100 000       | 14% |  50%    |
+| FarmFactory (revsahre model)      | January 2022   | 4000 USD           | 40000         |     1100% 🤩                       | 1000%    |
+| LotteryFactory   | May 2022       | 6000 USD                            | 8000          |  250%                                | 133%    |
+| Unifactory       | February 2022* | 10000 USD                           | 16200         |  211%                                | 162%    |
+| Dao widget       | December 2021  | 2000 USD                            | 11800         |  624%                                | 590%    |
+| CrossChain       | April 2022     | 6000 USD                            | 4000          |  107%                                | 66%    |
+| NFTcy            | March 2022     | 5000 USD                            | 3000          |  85%                                | 60%    |
+
+where: **Investments** = Developer's rate * time he spent . We don't spend money for marketing 🍏 <br>
+**ROI (Return of investment)** = Money we recieved from clients in USD, ETH, BNB.  <br>
+**APY** = ROI / days since release * 365 <br>
+
 
 As you can see most of them are profitable and earnings IS NOT stopped, better if we calculate APY. As you can see some of products rock, but the best one is developed based on revenue share model. Let's see on the weak projects.  
 
@@ -33,12 +37,12 @@ As you can see most of them are profitable and earnings IS NOT stopped, better i
 3. NFTcy. At different times, 3 different developers started working on this project. We use Rarible.org api so in't not needed to hire a blockchain developer. We spent a lot of energy on managing. Also, rabble API is not complete bug-free api and does not support BSC. Lesson: we need "self-managed", experienced developers.  
 
 ## Resume
-- ✅ we have a profitable business model. 
+- ✅ we (team) made a lot of mistakes and now have a profitable business model. 
 - ✅ We must create products in partnerships with motivated developers    
 - ✅ Developer will earn more than on regular job for the same time
-- ❌ Afraid to complex and "a lot of features" ideas
+- ❌ We against complex and "a lot of features" ideas
 
-## General terms and conditions
+## General terms and conditions for you
 - onout.org team provide complete guide for developers
 - onout.org team find customers who pay for product developer (you) made
 - The developers either receive payments as a share of income from each sale
