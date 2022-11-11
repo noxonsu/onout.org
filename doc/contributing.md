@@ -8,9 +8,10 @@ Add your product to onout.org and earn up to 50% product revenue share. (this me
 Usecase: First product which made with "revshare" model called "FarmFactory" earns 1900 USD every month (the stats is open https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071 ) . You think not so much? In comparison with full time job yes. But
 
 - ✅ this revenue coming fully automatically (all bugs are fixed, developer don't spend a lot of time).
-- ✅ this is not fulltime job (get paid for time), this is not "freelance job" (get paid once for job). This is "spent time now, get money for years"  
+- ✅ this is not fulltime job (where you get paid for time spent), this is not "freelance job" (get paid once for job has done). Our is "spent time now, get money for years".   
 - ✅ in this case: the developer spent about 100 hours for this product. let's calculate 50 USD per hour = 3000 USD he would receive at "regular" job. But from farm factory he has received ~20 000 USD (calculated on 50% revshare model, real revshre present is less, but you will get 50%)
 - ✅ you can work with as without leaving your full time job 
+- ✅ it's like a game development, you release a game on steam.com and earn each sale
 
 ## Risks?
 People don't like risk according  https://en.wikipedia.org/wiki/Risk_aversion theory. So this let's see full statistics (Calculated November 2022 statistic): 
