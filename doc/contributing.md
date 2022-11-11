@@ -26,7 +26,7 @@ People don't like risk according  https://en.wikipedia.org/wiki/Risk_aversion th
 | CrossChain       | April 2022     | 6000 USD                            | 4000          |  107%                                | 66%    |
 | NFTcy            | March 2022     | 5000 USD                            | 3000          |  85%                                | 60%    |
 
-where: **Investments** = Developer's rate * time he spent . We don't spend money for marketing 🍏 <br>
+where: **Investments** = Developer's rate * time he spent . 
 **ROI (Return of investment)** = Money we recieved from clients in USD, ETH, BNB.  <br>
 **APY** = ROI / days since release * 365 <br>
 
