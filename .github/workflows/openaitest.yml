@@ -1,12 +1,14 @@
-name: OpenAI Action
+name: Test output of OpenAI on Push
+
 on:
   push:
     branches:
       - main
 jobs:
   deploy:
-    name: OpenAI
+    name: Deploy
     runs-on: ubuntu-latest
+    environment: Production
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -20,3 +22,6 @@ jobs:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           openai-prompt: "Write a description for this git commit: \n${{ github.event.head_commit.message }}"
         id: openai
+      - name: Print
+        run: |
+          echo  "${{ steps.openai.outputs.text}}"
