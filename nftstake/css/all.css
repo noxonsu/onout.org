@@ -2078,7 +2078,7 @@ svg {
 }
 .hero {
   padding: 40px 0 157px;
-  background: url(../images/hero-bg.jpg) center top no-repeat;
+  background: url(../images/hero-bg.jpg) center top no-repeat #100D22;
   background-size: cover;
 }
 .hero p {
@@ -2585,7 +2585,7 @@ svg {
 
 .reviews {
   padding: 90px 0 100px;
-  background: url(../images/hero-bg.jpg) center top no-repeat;
+  background: url(../images/hero-bg.jpg) center top no-repeat #100D22;
   background-size: cover;
 }
 .reviews .title {
