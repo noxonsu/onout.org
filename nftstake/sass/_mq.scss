@@ -1,0 +1,315 @@
+@media (max-width: 1550px) {
+  .reviews-slider{
+    padding: 0 210px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next{
+    width: 150px;
+  }
+  .attract-img img{
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .attract-img img{
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .btn{
+    max-width: 200px;
+    flex: 0 0 200px;
+  }
+  .about-subtitle{
+    min-height: 90px;
+    margin-bottom: 63px;
+  }
+  .title{
+    font-size: 39px;
+    line-height: 51px;
+  }
+}
+
+@media (max-width: 991px) {
+  .row{
+    display: block;
+    .col{
+      max-width: 100%;
+    }
+  }
+  .hero{
+    padding: 20px 0 36px;
+    .logo{
+      max-width: 150px;
+      margin-bottom: 43px;
+    }
+    p{
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 25px;
+    }
+    .video{
+      margin: 40px 0 17px;
+    }
+  }
+  .title{
+    font-size: 28px;
+    line-height: 38px;
+    margin-bottom: 14px;
+  }
+  .crypto-icons{
+    margin-bottom: 30px;
+    img{
+      max-width: 166px;
+    }
+  }
+  .btn{
+    padding: 16px;
+    margin: 0 5px;
+  }
+  .btns{
+    margin: 0 -5px;
+  }
+  .video-title{
+    font-size: 10px;
+    line-height: 14px;
+  }
+  .attract{
+    padding: 42px 0 40px;
+  }
+  .attract-img{
+    margin-bottom: 26px;
+    margin-left: -20px;
+  }  
+  .attract p{
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 34px;
+  }
+  .rewards{
+    padding: 35px 0 40px;
+    .row{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+  .rewards-img{
+    text-align: center;
+    margin-bottom: 27px;
+    img{
+      width: 290px;
+      max-width: 100%;
+    }
+  }
+  .rewards p{
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 34px;
+  }
+  .about{
+    padding: 40px 0 1px;
+    &:before{
+      height: 630px;
+    }
+  }
+  .about .video{
+    margin-bottom: 23px;
+  }
+  .about .video-title{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+  .about p{
+    margin-bottom: 34px;
+  }
+  .about .btns{
+    display: none;
+  }
+  .about-ico{
+    margin-bottom: 22px;
+    img{
+      width: 70px;
+    }
+  }
+  .about-title{
+    font-size: 24px;
+    line-height: 34px;
+    margin-bottom: 11px;
+  }
+  .about-subtitle{
+    font-size: 16px;
+    line-height: 24px;
+    min-height: auto;
+    margin-bottom: 34px;
+  }
+  .support{
+    padding: 32px 0 40px;
+    .title{
+      margin-bottom: 30px;
+    }
+  }
+  .support-adress{
+    margin-bottom: 24px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 24px;
+    .ico{
+      flex: 0 0 32px;
+      max-width: 32px;
+      height: 32px;
+      margin-right: 15px;
+    }
+  }
+  .support-row{
+    margin-bottom: 14px;
+  }
+  .support-title{
+    font-size: 10px;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+  .support-text{
+    font-size: 14px;
+    line-height: 23px;
+    padding: 16px 25px;
+  }
+  .support .btns{
+    padding-top: 26px;
+  }
+  .faq{
+    padding: 32px 0 40px;
+    .title{
+      margin-bottom: 30px;
+    }
+  }
+  .accordion{
+    padding-bottom: 9px;
+  }
+  .course-accordion{
+    font-size: 14px;
+    line-height: 24px;
+    align-items: flex-start;
+    margin-bottom: 7px;
+    .ico{
+      flex: 0 0 32px;
+      max-width: 32px;
+      height: 32px;
+      margin-right: 18px;
+      margin-top: -3px;
+    }
+  }
+  .course-panel{
+    padding-left: 50px;
+    margin-bottom: 26px;
+    p{
+      font-size: 14px;
+      line-height: 23px;
+    }
+  }
+  .see-also{
+    padding: 32px 0 1px;
+    .title{
+      margin-bottom: 30px;
+    }
+  }
+  .see-also-list li{
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+    font-size: 12px;
+    line-height: 20px;
+    span{
+      margin-bottom: 14px;
+    }
+  }
+  .reviews{
+    padding: 32px 0 68px;
+    .title{
+      margin-bottom: 30px;
+    }
+  }
+  .review{
+    padding: 20px 25px 18px;
+    p{
+      font-size: 14px;
+      line-height: 23px;
+    }
+  }
+  .review-top{
+    margin-bottom: 15px;
+  }
+  .rate{
+    span{
+      flex: 0 0 14px;
+      max-width: 14px;
+      img{
+        max-width: 100%;
+      }
+    }
+  }
+  .user{
+    font-size: 10px;
+  }
+  .footer{
+    padding: 30px 0;
+    .logo{
+      max-width: 150px;
+    }
+  }
+  .sub-title{
+    display: block;
+  }
+  .play{
+    width: 76px;
+    height: 76px;
+    &:before{
+      top: -12px;
+      right: -12px;
+      bottom: -12px;
+      left: -12px;
+    }
+    svg{
+      width: 32px;
+      height: 37px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .reviews-slider{
+    padding: 0 50px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next{
+    display: none;
+  }
+  .swiper-pagination{
+    display: none;
+  }
+}
+
+@media (max-width: 577px) {
+  .reviews-slider{
+    padding: 0px;
+  }
+  .btn{
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }  
+  .see-also-list{
+    margin: 0 -10px;
+    li{
+      padding: 0 10px;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  .reviews{
+    padding-left: 20px;
+    padding-right: 20px;
+    .container{
+      padding: 0;
+    }
+  }
+}
