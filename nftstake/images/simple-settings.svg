@@ -1,0 +1,13 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect opacity="0.2" width="100" height="100" rx="20" fill="white"/>
+<path opacity="0.2" d="M0 20C0 8.95431 8.95431 0 20 0H80C91.0457 0 100 8.9543 100 20V24H0V20Z" fill="white"/>
+<path opacity="0.2" d="M5 42C5 40.3431 6.34315 39 8 39H92C93.6569 39 95 40.3431 95 42C95 43.6569 93.6569 45 92 45H8C6.34315 45 5 43.6569 5 42Z" fill="white"/>
+<path opacity="0.2" d="M5 82C5 80.3431 6.34315 79 8 79H92C93.6569 79 95 80.3431 95 82C95 83.6569 93.6569 85 92 85H8C6.34315 85 5 83.6569 5 82Z" fill="white"/>
+<path opacity="0.2" d="M95 62C95 60.3431 93.6569 59 92 59H8C6.34315 59 5 60.3431 5 62C5 63.6569 6.34315 65 8 65H92C93.6569 65 95 63.6569 95 62Z" fill="white"/>
+<circle cx="18" cy="12" r="4" fill="white"/>
+<circle cx="33" cy="12" r="4" fill="white"/>
+<circle cx="48" cy="12" r="4" fill="white"/>
+<circle cx="19" cy="42" r="5" stroke="white" stroke-width="6"/>
+<circle cx="50" cy="82" r="5" stroke="white" stroke-width="6"/>
+<circle cx="8" cy="8" r="5" transform="matrix(-1 0 0 1 89 54)" stroke="white" stroke-width="6"/>
+</svg>
