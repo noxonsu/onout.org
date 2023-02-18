@@ -35,19 +35,30 @@ $(document).ready(function(){
   );
   observer5.observe(el5);
 
-  const el6 = document.querySelector(".sub-6")
-  const observer6 = new IntersectionObserver( 
-    ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-    { threshold: [1] }
-  );
-  observer6.observe(el6);
 
-  const el7 = document.querySelector(".sub-7")
-  const observer7 = new IntersectionObserver( 
-    ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-    { threshold: [1] }
-  );
-  observer7.observe(el7);
-  
+  var swiper = new Swiper(".reviews-slider", {
+    slidesPerView: 1,
+    spaceBetween: 20,    
+    paginationClickable: true,
+    centeredSlides: true,    
+    loop: true,   
+    navigation: {
+      nextEl: ".reviews-next",
+      prevEl: ".reviews-prev",
+    },
+    pagination: {
+      el: ".reviews-pagination", 
+      clickable: true,     
+    },
+    breakpoints: {      
+      768: {               
+        spaceBetween: 20,     
+      },
+      992: {               
+        spaceBetween: 60,     
+      },      
+    },
+  });
+    
 
 });
