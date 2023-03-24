@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PancakeSwap Lottery Fork</title>
+    <meta name="description" content="Step-by-step guide how to fork PancakeSwap Lotter" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <link rel="canonical" href="https://onout.org/LotterySource/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
+    <link rel="stylesheet" href="index.css" />
+    <script>
+    if (location.protocol !== 'https:') {
+      location.replace(`https:${location.href.substring(location.protocol.length)}`);
+    }
+    </script>
+    <style>
+      .banner {
+        font-size: 1.2em;
+        padding: 0.7rem;
+        font-weight: 500;
+        border-radius: 0.5rem;
+        border: 2px solid rgb(0, 0, 0, 0.09);
+        box-shadow: 0 0 0.7rem rgb(0, 0, 0, 0.03);
+        background-color: rgb(0, 0, 0, 0.03);
+        color: #000;
+      }
+      CODE.blockCode {
+        margin-top: 10px;
+        display: block;
+        overflow: auto;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>PancakeSwap Lottery fork</h1>
+      <p>How to create PancakeSwap Lottery fork and collect 0-30% fees for every trade.</p>
+      <p class="banner">
+        See also: Do not want to waste your time and make mistakes?
+        <br>
+        Use extended version without coding skills: <a href="https://onout.org/lottery/" target="_blank">no-code tool for creating Lottery</a>
+      </p>
+    </header>
+    <main>
+      <section>
+        <h2>Introduction</h2>
+        <ul>
+          <li>
+            <a id="lottery_frontend" href="https://github.com/pancakeswap/pancake-frontend" target="_blank">Front-end repository</a>
+          </li>
+          <li>
+            <a href="https://bscscan.com/address/0x5af6d33de2ccec94efb1bdf8f92bd58085432d2c#contracts" target="_blank">Lottery contract</a>
+          </li>
+          <li>
+            <a href="https://remix.ethereum.org/" target="_blank">Remix</a>
+          </li>
+          <li>
+            <a href="https://www.unixtimestamp.com/" target="_blank">Unix Timestamp generator</a>
+          </li>
+          <li>
+            <a href="https://eth-converter.com/" target="_blank">Ethereum Unit Converter</a>
+          </li>
+          <li>
+            <a href="https://www.random.org/bytes/" target="_blank">Random Byte Generator</a>
+          </li>
+        </ul>
+
+        <blockquote>
+          <p>
+            We will use Goerli test network.
+          </p>
+          <p><b>tx</b> - short name for transaction</p>
+        </blockquote>
+      </section>
+
+      <section>
+        <h2>Table of contents</h2>
+
+        <ul>
+          <li>
+            <a href="#contracts-title">Deploy with Remix</a>
+            <ul>
+              <li><a href="#remix-editor-start">Remix editor</a></li>
+              <li><a href="#copy-uniswap-factory">Lottery contract code</a></li>
+              <li><a href="#replace-factory-names">Contract preparation</a></li>
+              <li><a href="#compile-factory">Contract Compilation</a></li>
+              <li><a href="#deploy-factory">Deploy contract</a></li>
+              <li><a href="#save-factory-address">Save Lottery contract address</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#frontend">Frontend</a>
+            <ul>
+              <li><a href="#interface-start-template">Cloning PancakeSwap Lottery</a></li>
+              <li><a href="#interface-mainpage">Home page customization</a></li>
+              <li><a href="#interface-contract">Setting up a contract</a></li>
+              <li><a href="#interface-blockchain">Blockchain setup</a></li>
+              <li><a href="#interface-token">Setting up a token</a></li>
+              <li><a href="#interface-start">Launch of the project</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#lottery-control-title">Lottery Rounds control</a>
+            <ul>
+              <li><a href="#lottery-control-life">Round life cycle</a></li>
+              <li><a href="#lottery-control-howto">Connection to a contract</a></li>
+              <li><a href="#lottery-control-raundid">Active round number</a></li>
+              <li><a href="#lottery-control-start">Start of a new round</a></li>
+              <li><a href="#lottery-control-stop">Closing the round</a></li>
+              <li><a href="#lottery-control-draw">Winning combination calculation</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="contracts-title">Deploy with Remix</h2>
+
+        <ol>
+          <li id="remix-editor-start">
+            <h4>Remix editor</h4>
+            <p>
+              Go to
+              <a target="_blank" href="https://remix.ethereum.org"
+                >Remix editor</a
+              >
+              and create there file: <b>Lottery.sol</b>
+            </p>
+          </li>
+
+          <li id="copy-uniswap-factory">
+            <h4>Lottery contract code</h4>
+            <p>
+              Copy Pancakeswap Lottery contract code from the
+              Bscscan:
+              <a href="https://bscscan.com/address/0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c#contracts" target="_blank">
+                https://bscscan.com/address/0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c#contracts
+              </a>
+              <img src="./img/_contracts/copySource.png" alt="copy pancakeswap lottery contract code" />
+
+              And paste it into the new <b>Lottery.sol</b> file:
+              <img
+                src="./img/_contracts/copySourcePaste.png"
+                alt="paste the contract code in the new file"
+              />
+            </p>
+          </li>
+
+          <li id="replace-factory-names">
+            <h4>Contract preparation</h4>
+            <p>
+              Set up basic lottery rules
+              <br />
+              <code class="blockCode">
+                <b>MAX_TREASURY_FEE</b> - Your commission<br />
+                <b>maxPriceTicketInCake</b> - Maximum ticket price<br />
+                <b>minPriceTicketInCake</b> - Minimum ticket price<br />
+
+                <b>MIN_DISCOUNT_DIVISOR</b> - Minimum discount if the user buys many tickets at once<br />
+                <b>MIN_LENGTH_LOTTERY</b> - Minimum round duration<br />
+                <b>MAX_LENGTH_LOTTERY</b> - Maximum round duration<br />
+              </code>
+              <img
+                src="./img/_contracts/defaultSettings.png"
+                alt="editing lottery parameters"
+              />
+            </p>
+            <p>
+              Set the address where the commission will be transferred and who will be able to manage the lottery by adding this code to the constructor
+              <br />
+              <code class="blockCode">
+                injectorAddress = msg.sender;<br />
+                operatorAddress = msg.sender;<br />
+                treasuryAddress = msg.sender;<br />
+              </code>
+              <blockquote>
+                <b>msg.sender;</b> - Returns the address of the account from which the lottery contract will be deployed
+              </blockquote>
+              <img
+                src="./img/_contracts/feeAddress.png"
+                alt="editing address for commission"
+              />
+            </p>
+            <p>
+              Add this code to the contract constructor.
+              <code class="blockCode">
+                currentLotteryId++;<br />
+                _lotteries[currentLotteryId] = Lottery({<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;status: Status.Claimable,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;startTime: block.timestamp,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;endTime:  block.timestamp,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;priceTicketInCake: 0,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;discountDivisor: 0,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;rewardsBreakdown: [uint256(250),uint256(375),uint256(625),uint256(1250),uint256(2500),uint256(5000)],<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;treasuryFee: 2000,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;cakePerBracket: [uint256(0), uint256(0), uint256(0), uint256(0), uint256(0), uint256(0)],<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;countWinnersPerBracket: [uint256(0), uint256(0), uint256(0), uint256(0), uint256(0), uint256(0)],<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;firstTicketId: currentTicketId,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;firstTicketIdNextLottery: currentTicketId,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;amountCollectedInCake: pendingInjectionNextLottery,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;finalNumber: 1000000<br />
+                });<br />
+              </code>
+              <img src="./img/_contracts/construct.png"
+                title="change contruct code"
+              />
+              Comment out this line in the method<code>closeLottery</code>
+              <br />
+              <img
+                src="./img/_contracts/randFix1.png"
+                alt="Editing the random number generator"
+              />
+              Add the <code>bytes32 _seed</code> parameter to the <code>drawFinalNumberAndMakeLotteryClaimable</code> function of the <code>IPancakeSwapLottery</code> interface
+              <br />
+              <img
+                src="./img/_contracts/randFix1.0.png" 
+                alt="Editing the random number generator"
+              />
+              Add the <code>bytes32 _seed</code> parameter to the <code>drawFinalNumberAndMakeLotteryClaimable</code> function
+              <br />
+              <img
+                src="./img/_contracts/randFix2.png"
+                alt="Редактирование генератора случайных чисел"
+              />
+              Comment out the line<br />
+              <code>require(_lotteryId == randomGenerator.viewLatestLotteryId(), "Numbers not drawn");</code>
+              <br />
+              in the <code>drawFinalNumberAndMakeLotteryClaimable</code> method
+              <br />
+              <img
+                src="./img/_contracts/randFix3.png"
+                alt="редактирование генератора случайных чисел"
+              />
+              Replace the random number generator in the <code>drawFinalNumberAndMakeLotteryClaimable</code> method
+              <br />
+              to this code
+              <br />
+              <code class="blockCode">
+                uint256 randomness = uint(keccak256(abi.encodePacked(<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;block.timestamp,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;_seed,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;_lotteryId,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;_lotteries[_lotteryId].firstTicketId,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;_lotteries[_lotteryId].firstTicketIdNextLottery,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;_lotteries[_lotteryId].amountCollectedInCake,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;block.coinbase,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;block.difficulty,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;block.gaslimit,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;tx.gasprice<br />
+                )));<br />
+                uint32 finalNumber = uint32(1000000 + (randomness % 1000000));<br />
+              </code>
+              <br />
+              <img
+                src="./img/_contracts/randFix4.png"
+                alt="редактирование генератора случайных чисел"
+              />
+            </p>
+          </li>
+          <li id="compile-factory">
+            <h4>Contract Compilation</h4>
+            <p>
+              Go to <b>"Solidity Compiler"</b> tab. Change compiler version with
+              <em>0.8.18</em> if it's different. Enable optimization option to <em>99999</em> and
+              click button <b>"Compile"</b>:
+
+              <img
+                src="./img/_contracts/compile.png"
+                alt="compile button"
+              />
+            </p>
+          </li>
+
+          <li id="deploy-factory">
+            <h4>Deploy contract</h4>
+            <p>
+              Go to
+              <b>"Deploy & run transaction"</b> tab. Select
+              <b>Injected Web3</b> in the ENVIRONMENT drop-down. It will use your
+              external wallet. We will use
+              <a target="_blank" href="https://metamask.io/">Metamask wallet</a>.
+              If you didn't login in the wallet then login it now, reload page,
+              come back and compile lottery contract one more time. And again
+              chose <b>Injected Web3</b> option. Chose Goerli network in the
+              Metamask. Select PancakeSwapLottery in the CONTRACT drop-down (probably
+              it's already made by default).
+              <br />
+              <img
+                src="./img/_contracts/deploy1.png"
+                alt="deploying pancakeswap lottery contract"
+              />
+              <br />
+              Set an address of your ERC20 token in the
+              <b>_CAKETOKENADDRESS</b> field.
+              <br />
+              Set <code>0x0000000000000000000000000000000000000000</code> in the <b>_RANDOMGENERATORADDRESS</b> field
+              <br />
+              Now you can see something like this in the deploy tab:
+              <br />
+              <img
+                src="./img/_contracts/deploy2.png"
+                alt="settings on the pancakeswap lottery deployment in the deploy tab"
+              />
+              <br />So now click on
+              <b>"transact"</b> button and confirm a modal window from external
+              wallet with transaction fee:
+              <img
+                src="./img/_contracts/deploy3.png"
+                alt="deploy option on the deploy tab"
+              />
+            </p>
+          </li>
+
+          <li id="save-factory-address">
+            <h4>Save Lottery contract address</h4>
+            <p>
+              After transaction has been mined you can see all details in the
+              Remix terminal:
+              <img
+                src="./img/_contracts/deploy4.png"
+                alt="info about transaction where we deployed the pancakeswap lottery contract"
+              />
+
+              Copy a transaction hash and go to Goerli etherscan. Paste this hash
+              in the search field and go to a new contract page. Copy his address
+              and save it somewhere.
+              <img
+                src="./img/_contracts/saveDeploy1.png"
+                alt="info about mined transaction on the Etherscan"
+              />
+              <img
+                src="./img/_contracts/saveDeploy2.png"
+                alt="pancakeswap lottery contract address on the Etherscan"
+              />
+            </p>
+          </li>
+        </ul>
+        <blockquote id="final-contract-data">
+          <p>Now we have this data:</p>
+          <br />
+          <a
+            target="_blank"
+            href="https://goerli.etherscan.io/address/0xad661a60bd10caf905a177ac36cefdab43744a8a"
+            >PancakeSwapLottery</a
+          >:
+          <pre><code>0xad661a60bd10caf905a177ac36cefdab43744a8a</code></pre>
+        </blockquote>
+      </section>
+
+      <section>
+        <h2 id="frontend">Frontend</h2>
+
+        <blockquote>
+          <p>
+            Main changes in this interface template:
+
+            <ul>
+              <li>Removed all (or almost all) info about pancakeswap</li>
+              <li>Installing Our Lottery Contract</li>
+              <li>Set lottery page as default</li>
+              <li>Changed source styles just a little.</li>
+            </ul>
+          </p>
+        </blockquote>
+
+        <ol>
+          <li id="interface-start-template">
+            <h4>Cloning PancakeSwap Lottery</h4>
+            <p>
+              Create a new directory: <b>Lottery</b>. Copy 
+              <a href="#lottery_frontend">front-end</a>code in this
+               directory then install dependencies
+              <br />
+              <code>
+                yarn
+              </code>
+              <br />
+              After installing the dependencies, you will see the following
+              <img src="./img/_front/depency_ok.png"
+                title="depency installed"
+              />
+            </p>
+          </li>
+          <li id="interface-mainpage">
+            <h4>Home page customization</h4>
+            <p>
+              Let's make the lottery the main page<br />
+              Open file<b>\apps\web\src\pages\_app.tsx</b><br />
+              Add an import <br />
+              <code>
+                import Lottery from "./lottery"
+              </code>
+              <img
+                src="./img/_front/mainPage1.png"
+                alt="Changing the main page adding imports"
+              />
+              <br />
+              Add a lottery call <code>&lt;Lottery {...pageProps} /&gt;</code> and comment out the code below as shown in the image
+              <img
+                src="./img/_front/mainPage2.png"
+                alt="Home page change"
+              />
+            </p>
+          </li>
+          <li id="interface-contract">
+            <h4>Setting up a contract</h4>
+            <p>
+              Open the file <b>\apps\web\src\utils\addressHelpers.ts</b> and add the following code
+              <br />
+              <code>
+                return '0xad661a60bd10caf905a177ac36cefdab43744a8a'
+              </code>
+              <blockquote>
+                Enter the address of your lottery contract that you created earlier
+              </blockquote>
+              <img 
+                src="./img/_front/contract.png"
+                alt="Lottery contract"
+              />
+            </p>
+          </li>
+          <li id="interface-blockchain">
+            <h4>Blockchain setup</h4>
+            <p>
+              Set up the blockchain that will run the lottery<br />
+              Open <b>\apps\web\src\config\constants\supportChains.ts</b><br />
+              And enter your network ID<br />
+              <img src="./img/_front/workChain.png"
+                alt="working network"
+              />
+              Open file <b>\apps\web\src\hooks\useProviderOrSigner.ts</b><br />
+              And enter your network ID<br />
+              <img src="./img/_front/workChain2.png"
+                alt="working network"
+              />
+              Open <b>\apps\web\src\utils\contractHelpers.ts</b><br />
+              And enter your network ID<br />
+              <img src="./img/_front/workChain3.png"
+                alt="working network"
+              />
+              Open file <b>\apps\web\src\state\lottery\helpers.ts</b>
+              And specify your network ID in all calls to <b>multicallv2</b>
+              <img src="./img/_front/chain_mc.png"
+                alt="working network"
+              />
+              Open <b>\apps\web\src\state\lottery\fetchUnclaimedUserRewards.ts</b>
+              And specify your network ID in all calls to <b>multicallv2</b>
+              <img src="./img/_front/chain_mc2.png"
+                alt="working network"
+              />
+            </p>
+          </li>
+          <li id="interface-token">
+            <h4>Setting up a token</h4>
+            <p>
+              Open <b>\apps\web\src\utils\contractHelpers.ts</b><br />
+              Specify your network ID and the address of your token
+              <img src="./img/_front/workChain4.png"
+                alt="work network and token address"
+              />
+              Open <b>\apps\web\src\config\constants\tokenLists\pancake-default.tokenlist.json</b><br />
+              Add information about your token as shown in the example<br />
+              <code class="blockCode">
+                {<br />
+                &nbsp;&nbsp;"name": "WEENUS",<br />
+                &nbsp;&nbsp;"symbol": "WEENUS",<br />
+                &nbsp;&nbsp;"address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",<br />
+                &nbsp;&nbsp;"chainId": 5,<br />
+                &nbsp;&nbsp;"decimals": 18,<br />
+                &nbsp;&nbsp;"logoURI": "https://pancakeswap.finance/images/lottery/star-small.png"<br />
+                }
+              </code>
+              <img src="./img/_front/tokenJson.png"
+                alt="Information about the token"
+              />
+              Open file <b>\apps\web\src\views\Lottery\components\BuyTicketsModal\BuyTicketsModal.tsx</b><br />
+              And find the line
+              <code class="blockCode">const { balance: userCake, fetchStatus } = useTokenBalance(bscTokens.cake.address)</code>
+              Replace <code>bscTokens.cake.address</code> with the address of your token<br />
+              <img src="./img/_front/buyTikerTokenAddress.png"
+                alt="Token address"
+              />
+              Replace all references to "CAKE" with to the character of your token.<br />
+               To do this, just edit the files in the folder <b>\apps\web\src\views\Lottery\</b><br />
+               Be careful. Replace only strings
+            </p>
+          </li>
+          <li id="interface-start">
+            <h4>Launch of the project</h4>
+            <p>
+              To start the project, run the command in the root directory
+              <code class="blockCode">yarn dev</code>
+              If done correctly, the lottery will be available at <b>http://localhost:3000/</b>
+              <img
+                src="./img/_front/ready.png"
+                alt="Ready fork pancakeswap lottery"
+              >
+            </p>
+          </li>
+          
+        </ol>
+
+        <blockquote>
+          <p>
+            These were the minimum actions needed for the lottery to work and to collect the commission.
+          </p>
+        </blockquote>
+      </section>
+
+      <section>
+        <h2 id="lottery-control-title">Lottery Rounds control</h2>
+        <ol>
+          <li id="lottery-control-life">
+            <h4>Round life cycle</h4>
+            <p>
+              In the lottery rounds have the following states
+              <ul>
+                <li>
+                  <code>Open</code> - The round is active. Users can buy tickets
+                </li>
+                <li>
+                  <code>Close</code> - The round is closed. Waiting for the calculation of winnings
+                </li>
+                <li>
+                  <code>Pending</code> - Waiting for results. Users cannot buy tickets
+                </li>
+                <li>
+                  <code>Claimable</code> - Winning this round is calculated. Users can find out the result and get a reward
+                </li>
+              </ul>
+              <br />
+              Life cycle:
+              <br />
+              <code>Open</code> &gt; <code>Close</code> &gt; <code>Pending</code> &gt; <code>Claimable</code>
+              <br />
+              To manage the lifecycle of rounds in a contract, the appropriate methods are
+            </p>
+          </li>
+          <li id="lottery-control-intro">
+            <h4 id="lottery-control-howto">Connection with a contract</h4>
+            <p>
+              To manage the rounds, you need to interact with the contract. To do this, you need to connect to the contract.
+              For interaction with the contract will use Remix
+              <br />
+              Go to
+              <a target="_blank" href="https://remix.ethereum.org"
+                >Remix editor</a
+              > and select contract file <b>Lottery.sol</b>
+            </p>
+            <p>
+              Compile the contract by <a href="#compile-factory">compile instructions</a>
+            </p>
+            <p>
+              Go to
+              <b>"Deploy & run transaction"</b> tab. Select
+              <b>Injected Web3</b> in the ENVIRONMENT drop-down. It will use your
+              external wallet. We will use
+              <a target="_blank" href="https://metamask.io/">Metamask wallet</a>.
+              If you didn't login in the wallet then login it now, reload page,
+              come back and compile lottery contract one more time. And again
+              chose <b>Injected Web3</b> option. Chose Goerli network in the
+              Metamask. Select PancakeSwapLottery in the CONTRACT drop-down (probably
+              it's already made by default).
+              <br />
+              <img
+                src="./img/_contracts/deploy1.png"
+                alt="Connection to a contract"
+              />
+              Enter your contract address and click "At Address"
+              <img
+                src="./img/_control/connect.png"
+                alt="Connection to a contract"
+              />
+              After that, the contract control panel will appear at the bottom.
+              <img
+                src="./img/_control/connect2.png"
+                alt="Connection to a contract"
+              />
+              Click on it to display the control panel.
+              <img
+                src="./img/_control/connect3.png"
+                alt="Connection to a contract"
+              />
+            </p>
+            
+          </li>
+          <li id="lottery-control-raundid">
+            <h4>Active round number</h4>
+            <p>
+              Most contract methods use the current round number. To find out it, execute the "currentLotteryId" method
+              <img
+                src="./img/_control/roundnumber.png"
+                alt="current round number"
+              />
+              After pressing the button, the current lottery round will be shown
+            </p>
+          </li>
+          <li id="lottery-control-start">
+            <h4>Start of a new round</h4>
+            <p>
+              To start a new round, use the <b>startLottery</b><br /> method
+              Method parameters:<br />
+              <ul>
+                <li>
+                  <code>_endTime</code> - The time the round will end. Value in UnixTimestamp
+                </li>
+                <li>
+                  <code>_priceTicketInCake</code> - Price of a ticket in the current round. Meaning in Wei
+                </li>
+                <li>
+                  <code>_discountDivisor</code> - Discount when buying several tickets at once in one transaction.<br />
+                  Calculation formula <code>_discountDivisor = needValue% * 100</code>.<br />
+                  Example: 0.5% = 0.5 * 100 = 50, 2% = 2 * 100 = 200
+                </li>
+                <li>
+                  <code>_rewardsBreakdown</code> - Win percentage for each matched combination of balls<br />
+                  An array of six numbers. The sum of the numbers must be equal to <b>10000</b><br />
+                  Calculation formula <code>V = needValue% * 100</code><br />
+                  Example:<br />
+                  Desired win distribution percentage: <code>[0%, 7%, 13%, 20%, 25%, 30%]</code><br />
+                  Method call data: <code>[0, 700, 1300, 2000, 2500, 3500]</code>
+                </li>
+                <li>
+                  <code>_treasuryFee</code> - Your commission in the current round<br />
+                  Calculation formula <code>V = needValue% * 100</code>
+                </li>
+              </ul>
+              Specify the desired parameters and click "transact" to start a new round.
+              <img src="./img/_control/start.png"
+                alt="start of a new round"
+              />
+            </p>
+          </li>
+          <li id="lottery-control-stop">
+            <h4>Closing the round</h4>
+            <p>
+              When the time of the round is over, it must be closed. To close, use the "closeLottery" method
+              <img
+                src="./img/_control/close.png"
+                title="round closing method"
+              />
+              Method parameters: <br />
+              <ul>
+                <li>
+                  <code>_lotteryId</code> - Number of the round to be closed
+                </li>
+              </ul>
+              <br />
+              Specify <a href="lottery-control-roundid">current round number</a> and click "transact" to close the round
+            </p>
+          </li>
+          <li id="lottery-control-draw">
+            <h4>Winning combination calculation</h4>
+            <p>
+              The final step in the life cycle of a round is the calculation of the winning numbers.
+              To do this, use the <code>drawFinalNumberAndMakeLotteryClaimable</code> method
+              <img
+                src="./img/_control/draw1.png"
+                alt="winning calculation"
+              />
+              Method parameters:<br />
+              <ul>
+                <li>
+                  <code>_lotteryId</code> - Round number
+                </li>
+                <li>
+                  <code>_seed</code> - Random set of bytes of length 32.<br />
+                  Example:
+                  Let's create 32 random numbers through the service <a href="https://www.random.org/bytes/" target="_blank">Random.org</a>
+                  <img
+                    src="./img/_control/randGen1.png"
+                    alt="how to generate random"
+                  />
+                  The service will generate 32 random numbers
+                  <img
+                    src="./img/_control/randGen2.png"
+                    alt="random numbers"
+                  />
+                  HEX string of these numbers will be
+                  <br />
+                  <code>0xf708a0a28a75973d69ea1d04065f62d57c135def2d750beb0ed39ae55a262cf9</code>
+                </li>
+                <li>
+                  <code>_autoInjection</code> - TRUE | FALSE, if set to TRUE, the balance of not won tokens will be automatically transferred to a new round
+                </li>
+              </ul>
+              <br />
+              To calculate the winning numbers, specify the parameters and click "transact" to calculate the winnings
+              <img
+                src="./img/_control/draw2.png"
+                alt="Win calculation"
+              />
+              After that, the round is over. You can now <a href="#lottery-control-start">start a new round</a>
+            </p>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p class="banner">
+        See also: Do not want to waste your time and make mistakes?
+        <br>
+        Use extended version without coding skills: <a href="https://onout.org/lottery/" target="_blank">no-code tool for creating Lottery</a>
+      </p>
+    </footer>
+  </body>
+</html>
