@@ -140,11 +140,11 @@
               <a href="https://bscscan.com/address/0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c#contracts" target="_blank">
                 https://bscscan.com/address/0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c#contracts
               </a>
-              <img src="./img/_contracts/copySource.png" alt="copy pancakeswap lottery contract code" />
+              <img src="./img/contracts/copySource.png" alt="copy pancakeswap lottery contract code" />
 
               And paste it into the new <b>Lottery.sol</b> file:
               <img
-                src="./img/_contracts/copySourcePaste.png"
+                src="./img/contracts/copySourcePaste.png"
                 alt="paste the contract code in the new file"
               />
             </p>
@@ -165,7 +165,7 @@
                 <b>MAX_LENGTH_LOTTERY</b> - Maximum round duration<br />
               </code>
               <img
-                src="./img/_contracts/defaultSettings.png"
+                src="./img/contracts/defaultSettings.png"
                 alt="editing lottery parameters"
               />
             </p>
@@ -181,7 +181,7 @@
                 <b>msg.sender;</b> - Returns the address of the account from which the lottery contract will be deployed
               </blockquote>
               <img
-                src="./img/_contracts/feeAddress.png"
+                src="./img/contracts/feeAddress.png"
                 alt="editing address for commission"
               />
             </p>
@@ -205,25 +205,25 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;finalNumber: 1000000<br />
                 });<br />
               </code>
-              <img src="./img/_contracts/construct.png"
+              <img src="./img/contracts/construct.png"
                 title="change contruct code"
               />
               Comment out this line in the method<code>closeLottery</code>
               <br />
               <img
-                src="./img/_contracts/randFix1.png"
+                src="./img/contracts/randFix1.png"
                 alt="Editing the random number generator"
               />
               Add the <code>bytes32 _seed</code> parameter to the <code>drawFinalNumberAndMakeLotteryClaimable</code> function of the <code>IPancakeSwapLottery</code> interface
               <br />
               <img
-                src="./img/_contracts/randFix1.0.png" 
+                src="./img/contracts/randFix1.0.png" 
                 alt="Editing the random number generator"
               />
               Add the <code>bytes32 _seed</code> parameter to the <code>drawFinalNumberAndMakeLotteryClaimable</code> function
               <br />
               <img
-                src="./img/_contracts/randFix2.png"
+                src="./img/contracts/randFix2.png"
                 alt="Редактирование генератора случайных чисел"
               />
               Comment out the line<br />
@@ -232,7 +232,7 @@
               in the <code>drawFinalNumberAndMakeLotteryClaimable</code> method
               <br />
               <img
-                src="./img/_contracts/randFix3.png"
+                src="./img/contracts/randFix3.png"
                 alt="редактирование генератора случайных чисел"
               />
               Replace the random number generator in the <code>drawFinalNumberAndMakeLotteryClaimable</code> method
@@ -256,7 +256,7 @@
               </code>
               <br />
               <img
-                src="./img/_contracts/randFix4.png"
+                src="./img/contracts/randFix4.png"
                 alt="редактирование генератора случайных чисел"
               />
             </p>
@@ -269,7 +269,7 @@
               click button <b>"Compile"</b>:
 
               <img
-                src="./img/_contracts/compile.png"
+                src="./img/contracts/compile.png"
                 alt="compile button"
               />
             </p>
@@ -290,7 +290,7 @@
               it's already made by default).
               <br />
               <img
-                src="./img/_contracts/deploy1.png"
+                src="./img/contracts/deploy1.png"
                 alt="deploying pancakeswap lottery contract"
               />
               <br />
@@ -302,14 +302,14 @@
               Now you can see something like this in the deploy tab:
               <br />
               <img
-                src="./img/_contracts/deploy2.png"
+                src="./img/contracts/deploy2.png"
                 alt="settings on the pancakeswap lottery deployment in the deploy tab"
               />
               <br />So now click on
               <b>"transact"</b> button and confirm a modal window from external
               wallet with transaction fee:
               <img
-                src="./img/_contracts/deploy3.png"
+                src="./img/contracts/deploy3.png"
                 alt="deploy option on the deploy tab"
               />
             </p>
@@ -321,7 +321,7 @@
               After transaction has been mined you can see all details in the
               Remix terminal:
               <img
-                src="./img/_contracts/deploy4.png"
+                src="./img/contracts/deploy4.png"
                 alt="info about transaction where we deployed the pancakeswap lottery contract"
               />
 
@@ -329,11 +329,11 @@
               in the search field and go to a new contract page. Copy his address
               and save it somewhere.
               <img
-                src="./img/_contracts/saveDeploy1.png"
+                src="./img/contracts/saveDeploy1.png"
                 alt="info about mined transaction on the Etherscan"
               />
               <img
-                src="./img/_contracts/saveDeploy2.png"
+                src="./img/contracts/saveDeploy2.png"
                 alt="pancakeswap lottery contract address on the Etherscan"
               />
             </p>
@@ -380,7 +380,7 @@
               </code>
               <br />
               After installing the dependencies, you will see the following
-              <img src="./img/_front/depency_ok.png"
+              <img src="./img/front/depency_ok.png"
                 title="depency installed"
               />
             </p>
@@ -395,13 +395,13 @@
                 import Lottery from "./lottery"
               </code>
               <img
-                src="./img/_front/mainPage1.png"
+                src="./img/front/mainPage1.png"
                 alt="Changing the main page adding imports"
               />
               <br />
               Add a lottery call <code>&lt;Lottery {...pageProps} /&gt;</code> and comment out the code below as shown in the image
               <img
-                src="./img/_front/mainPage2.png"
+                src="./img/front/mainPage2.png"
                 alt="Home page change"
               />
             </p>
@@ -418,7 +418,7 @@
                 Enter the address of your lottery contract that you created earlier
               </blockquote>
               <img 
-                src="./img/_front/contract.png"
+                src="./img/front/contract.png"
                 alt="Lottery contract"
               />
             </p>
@@ -429,27 +429,27 @@
               Set up the blockchain that will run the lottery<br />
               Open <b>\apps\web\src\config\constants\supportChains.ts</b><br />
               And enter your network ID<br />
-              <img src="./img/_front/workChain.png"
+              <img src="./img/front/workChain.png"
                 alt="working network"
               />
               Open file <b>\apps\web\src\hooks\useProviderOrSigner.ts</b><br />
               And enter your network ID<br />
-              <img src="./img/_front/workChain2.png"
+              <img src="./img/front/workChain2.png"
                 alt="working network"
               />
               Open <b>\apps\web\src\utils\contractHelpers.ts</b><br />
               And enter your network ID<br />
-              <img src="./img/_front/workChain3.png"
+              <img src="./img/front/workChain3.png"
                 alt="working network"
               />
               Open file <b>\apps\web\src\state\lottery\helpers.ts</b>
               And specify your network ID in all calls to <b>multicallv2</b>
-              <img src="./img/_front/chain_mc.png"
+              <img src="./img/front/chain_mc.png"
                 alt="working network"
               />
               Open <b>\apps\web\src\state\lottery\fetchUnclaimedUserRewards.ts</b>
               And specify your network ID in all calls to <b>multicallv2</b>
-              <img src="./img/_front/chain_mc2.png"
+              <img src="./img/front/chain_mc2.png"
                 alt="working network"
               />
             </p>
@@ -459,7 +459,7 @@
             <p>
               Open <b>\apps\web\src\utils\contractHelpers.ts</b><br />
               Specify your network ID and the address of your token
-              <img src="./img/_front/workChain4.png"
+              <img src="./img/front/workChain4.png"
                 alt="work network and token address"
               />
               Open <b>\apps\web\src\config\constants\tokenLists\pancake-default.tokenlist.json</b><br />
@@ -474,14 +474,14 @@
                 &nbsp;&nbsp;"logoURI": "https://pancakeswap.finance/images/lottery/star-small.png"<br />
                 }
               </code>
-              <img src="./img/_front/tokenJson.png"
+              <img src="./img/front/tokenJson.png"
                 alt="Information about the token"
               />
               Open file <b>\apps\web\src\views\Lottery\components\BuyTicketsModal\BuyTicketsModal.tsx</b><br />
               And find the line
               <code class="blockCode">const { balance: userCake, fetchStatus } = useTokenBalance(bscTokens.cake.address)</code>
               Replace <code>bscTokens.cake.address</code> with the address of your token<br />
-              <img src="./img/_front/buyTikerTokenAddress.png"
+              <img src="./img/front/buyTikerTokenAddress.png"
                 alt="Token address"
               />
               Replace all references to "CAKE" with to the character of your token.<br />
@@ -496,7 +496,7 @@
               <code class="blockCode">yarn dev</code>
               If done correctly, the lottery will be available at <b>http://localhost:3000/</b>
               <img
-                src="./img/_front/ready.png"
+                src="./img/front/ready.png"
                 alt="Ready fork pancakeswap lottery"
               >
             </p>
@@ -567,22 +567,22 @@
               it's already made by default).
               <br />
               <img
-                src="./img/_contracts/deploy1.png"
+                src="./img/contracts/deploy1.png"
                 alt="Connection to a contract"
               />
               Enter your contract address and click "At Address"
               <img
-                src="./img/_control/connect.png"
+                src="./img/control/connect.png"
                 alt="Connection to a contract"
               />
               After that, the contract control panel will appear at the bottom.
               <img
-                src="./img/_control/connect2.png"
+                src="./img/control/connect2.png"
                 alt="Connection to a contract"
               />
               Click on it to display the control panel.
               <img
-                src="./img/_control/connect3.png"
+                src="./img/control/connect3.png"
                 alt="Connection to a contract"
               />
             </p>
@@ -593,7 +593,7 @@
             <p>
               Most contract methods use the current round number. To find out it, execute the "currentLotteryId" method
               <img
-                src="./img/_control/roundnumber.png"
+                src="./img/control/roundnumber.png"
                 alt="current round number"
               />
               After pressing the button, the current lottery round will be shown
@@ -630,7 +630,7 @@
                 </li>
               </ul>
               Specify the desired parameters and click "transact" to start a new round.
-              <img src="./img/_control/start.png"
+              <img src="./img/control/start.png"
                 alt="start of a new round"
               />
             </p>
@@ -640,7 +640,7 @@
             <p>
               When the time of the round is over, it must be closed. To close, use the "closeLottery" method
               <img
-                src="./img/_control/close.png"
+                src="./img/control/close.png"
                 title="round closing method"
               />
               Method parameters: <br />
@@ -659,7 +659,7 @@
               The final step in the life cycle of a round is the calculation of the winning numbers.
               To do this, use the <code>drawFinalNumberAndMakeLotteryClaimable</code> method
               <img
-                src="./img/_control/draw1.png"
+                src="./img/control/draw1.png"
                 alt="winning calculation"
               />
               Method parameters:<br />
@@ -672,12 +672,12 @@
                   Example:
                   Let's create 32 random numbers through the service <a href="https://www.random.org/bytes/" target="_blank">Random.org</a>
                   <img
-                    src="./img/_control/randGen1.png"
+                    src="./img/control/randGen1.png"
                     alt="how to generate random"
                   />
                   The service will generate 32 random numbers
                   <img
-                    src="./img/_control/randGen2.png"
+                    src="./img/control/randGen2.png"
                     alt="random numbers"
                   />
                   HEX string of these numbers will be
@@ -691,7 +691,7 @@
               <br />
               To calculate the winning numbers, specify the parameters and click "transact" to calculate the winnings
               <img
-                src="./img/_control/draw2.png"
+                src="./img/control/draw2.png"
                 alt="Win calculation"
               />
               After that, the round is over. You can now <a href="#lottery-control-start">start a new round</a>
