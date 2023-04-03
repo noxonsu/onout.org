@@ -1,0 +1,19 @@
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 1.3rem 0 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #bebebe;
+}
+
+.group {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cccccc;
+}
+
+footer {
+  padding: 1rem 0;
+}
