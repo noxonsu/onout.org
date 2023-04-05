@@ -3010,3 +3010,92 @@ svg {
     padding: 0;
   }
 }
+
+
+
+.for-whom {
+  padding: 71px 0 100px;
+  background: url(../images/bg-img-2.jpg) center bottom no-repeat #242F34;
+}
+.for-whom .btn {
+  display: block;
+  max-width: 100%;
+}
+.for-whom .col {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 33.3333%;
+          flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+}
+.for-whom .btn-box {
+  max-width: 720px;
+  margin: 60px auto 0;
+}
+
+.whom-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 18px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #C3D3DB;
+}
+.whom-list .ico {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40px;
+          flex: 0 0 40px;
+  max-width: 40px;
+}
+
+.list01 li:first-child svg,
+.list01 li:nth-child(2) svg {
+  width: 22px;
+  height: 16px;
+}
+.list01 li:nth-child(3) svg {
+  width: 20px;
+  height: 16px;
+}
+.list01 li:nth-child(4) svg {
+  width: 21px;
+  height: 18px;
+}
+.list01 li:nth-child(5) svg {
+  width: 18px;
+  height: 20px;
+}
+.list01 li:nth-child(6) svg {
+  width: 20px;
+  height: 20px;
+}
+
+.list02 li:nth-child(5) svg {
+  width: 20px;
+  height: 16px;
+}
+.list02 li:nth-child(3) svg {
+  width: 18px;
+  height: 22px;
+}
+.list02 li:nth-child(6) svg,
+.list02 li:nth-child(4) svg,
+.list02 li:nth-child(2) svg,
+.list02 li:first-child svg {
+  width: 20px;
+  height: 20px;
+}
+
+.list03 li:nth-child(4) svg {
+  width: 18px;
+  height: 21px;
+}
+.list03 li:nth-child(3) svg {
+  width: 19px;
+  height: 21px;
+}
+.list03 li:first-child svg,
+.list03 li:nth-child(2) svg {
+  width: 20px;
+  height: 20px;
+}
