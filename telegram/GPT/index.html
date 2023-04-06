@@ -481,14 +481,161 @@ export default {
           </code>
         </pre>
 
-        Now you can open your bot and try to ask something. After a few seconds
+        You can open your bot and try to ask something. After a few seconds
         you should see an answer that ChatGPT is generated for you.
+      </p>
+
+      <p>
+        Now we need to fix a chat id, because we set a specific value.
+        Even if someone else is trying to use it the bot will send it to
+        our current chat. For that replace code for sending messages
+        in <u>telegram.js</u>:
+        <pre>
+          <code>
+// Now instead of context we use chatId parameter
+const send = async (message, token, chatId) => {
+  return await fetch(`${TELEGRAM_API_DOMAIN}/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      // Set all context values here
+      chat_id: chatId,
+      reply_to_message_id: null,
+      parse_mode: "HTML",
+      text: message,
+    }),
+  });
+};
+
+// Also replace context with chatId in this function
+export const sendMessage = async (message, botToken, chatId) => {
+  if (message.length <= 4096) {
+    return await send(message, botToken, chatId);
+  }
+
+  const limit = 4000;
+
+  for (let i = 0; i < message.length; i += limit) {
+    const msg = message.slice(i, i + limit);
+
+    await send(`<pre>\n${msg}\n</pre>`, botToken, chatId);
+  }
+
+  return new Response("MESSAGE BATCH SEND", { status: 200 });
+};
+          </code>
+        </pre>
+
+        Finally update code in <u>index.js</u>:
+        <pre>
+          <code>
+const extractUserMessage = async (request) => {
+  try {
+    const raw = await request.json();
+
+    return raw?.message;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const requestToOpenAI = async ({ openAiToken, text }) => {
+  try {
+    return await msgChatWithOpenAI(text, openAiToken);
+  } catch (error) {
+    console.error(error);
+    return new Response(
+      JSON.stringify({
+        message: error.message,
+        stack: error.stack,
+      }),
+      { status: 200 }
+    );
+  }
+};
+
+const handleRequest = async (params) => {
+  const { request, botToken } = params;
+  const { pathname } = new URL(request.url);
+
+  try {
+    if (pathname === `/telegram/${botToken}/webhook`) {
+      const message = await extractUserMessage(request);
+
+      // Check if we have a text parameter, so ChatGPT can process it
+      // and if we have a chat id so we send it back to a right user
+      if (message?.text && message?.chat?.id) {
+        const response = await requestToOpenAI({
+          ...params,
+          text: message?.text,
+        });
+
+        if (response) {
+          await sendMessage(response, botToken, message?.chat?.id);
+        } else if (response instanceof Error) {
+          await sendMessage(
+            "Cannot process your request",
+            botToken,
+            message?.chat?.id
+          );
+        }
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error(error);
+
+    return new Response(
+      `
+      <h2>Something went wrong</h2>
+      <p>Error: ${JSON.stringify({
+        message: error.message,
+        stack: error.stack,
+      })}</p>
+    `,
+      {
+        status: 500,
+        headers: { "Content-Type": "text/html" },
+      }
+    );
+  }
+};
+
+export default {
+  async fetch(request, env) {
+    const { TG_BOT_TOKEN, OPEN_AI_TOKEN } = env;
+
+    await setupBot(request, TG_BOT_TOKEN);
+
+    const response = await handleRequest({
+      request,
+      botToken: TG_BOT_TOKEN,
+      openAiToken: OPEN_AI_TOKEN,
+    });
+
+    return response || new Response("yep", { status: 200 });
+  },
+};
+          </code>
+        </pre>
+
+        After such changes anyone who use the bot will be able to ask him
+        and receive an answer.
       </p>
     </section>
 
     <section>
       <h2 id="monetization">Monetization</h2>
-      <p>TODO</p>
+      <p>
+        At the moment, anyone can use this bot without any restrictions. You won't
+        get any benefit from it. Let's make a simple monetization for our bot.
+        We'll keep track of how many messages have been sent. And if there is
+        the limit has been reached the bot asks users to pay for further use.
+      </p>
+      <p></p>
     </section>
 
     <section>
