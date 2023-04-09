@@ -1,0 +1,61 @@
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 1.3rem 0 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #bebebe;
+}
+
+abbr {
+  cursor: help;
+}
+
+code.block {
+  display: block;
+  margin: 8px 0;
+}
+
+.group {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cccccc;
+}
+
+.banner {
+  font-size: 1.2em;
+  padding: 0.7rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  /* Light theme */
+  border: 2px solid rgb(0, 0, 0, 0.09);
+  box-shadow: 0 0 0.7rem rgb(0, 0, 0, 0.03);
+  background-color: rgb(0, 0, 0, 0.03);
+  color: #000;
+  /* Dark theme */
+  /* border: 2px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 0.7rem rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: #fff; */
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.blue {
+  color: #0000ff;
+}
+
+.red {
+  color: #ff0000;
+}
+
+footer {
+  padding: 1rem 0;
+}
