@@ -86,7 +86,7 @@
         </p>
         <p>
           The picture below shows a general description of the process:
-          <img src="./images/bot_development_description.png" alt="General description of the bot development circle with Cloudflare workers and Telegram API">
+          <img src="./images/bot-development-description.png" alt="General description of the bot development circle with Cloudflare workers and Telegram API">
         </p>
       </section>
       <section>
@@ -608,23 +608,111 @@ export default {
         After such changes anyone who use the bot will be able to ask him
         and receive an answer.
         </p>
+
+        <p>
+          The last step before we can talk about monetization is to add counter for user's messages.
+          To keep records about usage statistics we need to save it somewhere.
+          Fortunately, Cloudflare workers has a storage for this. It's called
+          <abbr title="Key-value">KV</abbr>. First off all we need to create it.
+          Go to <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare dashboard</a>. Open
+          <b>Workers</b> option and select <b>KV</b>:
+          <img src="./images/cf-dash-kv.png" alt="Interface of Cloudflare dashboard with highlighted options for KV creation">
+
+          Enter <code>DATABASE</code> name in the field and press create. Later we can access our KV
+          through this name:
+          <img src="./images/kv-creation.jpg" alt="Interface of namespace creation option">
+
+          Now a new KV should be displayed below the current form. Copy new KV id:
+          <img src="./images/copy-kv-id.png" alt="KV option with name and ID">
+        </p>
+
+        <p>
+          Next add copied ID in <u>wrangler.toml</u>. Also we add there extra variables
+          <code>ACTIVATION_CODE</code> and <code>AMOUNT_OF_FREE_MESSAGES</code>.This is for
+          future monetization, we can skip it for now. Now your file content looks like this:
+          <pre>
+            <code>
+name = "chatbot"
+main = "src/index.js"
+# Date depends on a wrangler version. It's probable will be a date of your work with code.
+compatibility_date = "2023-03-28"
+send_metrics = false
+
+kv_namespaces = [
+  # Create a new KV in Cloudflare dashboard and copy ID from there.
+  # Assuming you call KV as "DATABASE". Otherwise also replace binding with your name. 
+  { binding = "DATABASE", id = "" }
+]
+
+[vars]
+
+TG_BOT_TOKEN = "Telegram bot token"
+OPEN_AI_TOKEN = "API token from OpenAI"
+# You can use random hash values.
+ACTIVATION_CODE = "Code to activate the bot. Required if the user has reached the limit of free messages"
+AMOUNT_OF_FREE_MESSAGES = 3 # The number of messages each user can spend
+            </code>
+          </pre>
+
+          After a new deployment our code will access <b>KV</b> with <code>DATABASE</code>.
+          We'll use only two methods for interacting with <b>KV</b>:
+          <code>DATABASE.get()</code> <code>DATABASE.put()</code>. If you want to dive deeper
+          you can check this docs:
+          <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/" target="_blank">
+            Runtime APIs -> KV
+          </a>.
+
+          Let's create a new file <u>db.js</u>. Add code for messages counting:
+          <pre>
+            <code>
+export const countMessage = async (message, db) => {
+  if (message?.from?.id) {
+    const userId = message.from.id;
+    const userData = await db.get(userId);
+
+    if (userData) {
+      const { messageCounter } = JSON.parse(userData);
+
+      await db.put(
+        userId,
+        JSON.stringify({
+          messageCounter: messageCounter + 1,
+        })
+      );
+    } else {
+      await db.put(
+        userId,
+        JSON.stringify({
+          messageCounter: 1,
+        })
+      );
+    }
+  }
+};
+            </code>
+          </pre>
+        </p>
       </section>
-      <!--по поводу монетизации. в байми э коффе есть функция продажи каких то товаров, там можно продавать собсно лиценз коды. а в боте в телеге считать количество сообщений от юзера, и когда он пришлет больше 3 шт писать сообщение "что бы продолжить общение, пожалуйсте поддержите нас оплатив по ссылке. после оплаты введите кодовое слово которое вам будет показано"  -->
-      <!-- <section>
+
+      <section>
         <h2 id="monetization">Monetization</h2>
         <p>
           At the moment, anyone can use this bot without any restrictions. You won't
           get any benefit from it. Let's make a simple monetization for our bot.
-          We'll keep track of how many messages have been sent. And if there is
-          the limit has been reached the bot asks users to pay for further use.
+          Now we can make use of <code>ACTIVATION_CODE</code> and <code>AMOUNT_OF_FREE_MESSAGES</code>
+          in <u>wrangler.toml</u>. We can check how many messages already sent by a user
+          and if this is equal to <code>AMOUNT_OF_FREE_MESSAGES</code> we'll ask to
+          buy an activation code and send it to the bot. If it's correct we allow
+          that user continue to chat.
         </p>
-        <p>
-          To keep records about usage statistics we need to save it somewhere.
-          Fortunately, Cloudflare workers has a storage for this. It's called
-          <abbr title="Key-value">KV</abbr>. First off all we need to create it.
-          Update your content 
-        </p>
-        </section> -->
+        <blockquote>
+          As a activation code you can use any random hash. For example copy one
+          of the hashes from this site:
+          <a href="https://onlinehashtools.com/generate-random-md5-hash" target="_blank">Random MD5 hash</a>.
+        </blockquote>
+
+        <!-- @todo -->
+        </section>
       <section>
         <h2 id="marketing">Marketing</h2>
         <p>
