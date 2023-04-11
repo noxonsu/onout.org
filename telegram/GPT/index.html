@@ -31,7 +31,7 @@
         See also: Do not want to waste your time and make mistakes?
         <br />
         Use ready version without coding skills:
-        <a href="https://onout.org/telegramGPT/" target="_blank">Telegram ChatGPT bot</a>
+        <a href="https://onout.org/telegramGPT/" target="_blank" rel="noreferrer noopener">Telegram ChatGPT bot</a>
       </p>
     </header>
     <main>
@@ -86,7 +86,12 @@
         </p>
         <p>
           The picture below shows a general description of the process:
-          <img src="./images/bot-development-description.png" alt="General description of the bot development circle with Cloudflare workers and Telegram API">
+          <a href="https://onout.org/telegram/GPT/images/bot_development_description.png" target="_blank" rel="noreferrer noopener">
+          <img
+            src="./images/bot-development-description.png" 
+            alt="General description of the bot development circle with Cloudflare workers and Telegram API"
+            >
+          </a>
         </p>
       </section>
       <section>
@@ -99,7 +104,7 @@
         <ol>
           <li>
             Open the main bot responsible for bot creation:
-            <a href="https://t.me/BotFather" target="_blank">BotFather</a>. Start a chat with
+            <a href="https://t.me/BotFather" target="_blank" rel="noreferrer noopener">BotFather</a>. Start a chat with
             the BotFather and follow the instructions to create a new bot
             account. Once you've created the bot account, you'll be given a
             token. It looks like this:
@@ -116,13 +121,13 @@
             Copy chat ID from the result. It looks like: <code>1015004128</code>
           </li>
           <li>
-            The next step is to set up ChatGPT. Go to the <a href="https://platform.openai.com/" target="_blank">OpenAI platform</a>
+            The next step is to set up ChatGPT. Go to the <a href="https://platform.openai.com/" target="_blank" rel="noreferrer noopener">OpenAI platform</a>
             and sign up for an account. Once you've signed up, create a new API key. It looks like this:
             <code class="no-wrap">sk-czw4SSZP2JoDGUoq9VqeW3BlbxFJmxIm3RMOk19BLjgFmbXV</code>. Save this token in a secret
             place.
           </li>
           <li>
-            Create a new Cloudflare account. Go to the <a href="https://www.cloudflare.com/" target="_blank">Cloudflare site</a> and sign up for an account.
+            Create a new Cloudflare account. Go to the <a href="https://www.cloudflare.com/" target="_blank" rel="noreferrer noopener">Cloudflare site</a> and sign up for an account.
           </li>
         </ol>
         </p>
@@ -131,7 +136,7 @@
         <h2 id="development">Development</h2>
         <blockquote>
           You can use template code:
-          <a href="https://github.com/NotEternal/bots/tree/main/chat-bot" target="_blank">Chat bot</a>
+          <a href="https://github.com/NotEternal/bots/tree/main/chat-bot" target="_blank" rel="noreferrer noopener">Chat bot</a>
         </blockquote>
         <blockquote>
           Do not use <u>_</u> (underscore) in the name in <u>wrangler.toml</u>.
@@ -141,7 +146,7 @@
         <p>
           Now that you've set up both your
           Telegram bot account and ChatGPT, it's time to connect them.
-          Firstly you need to install <a href="https://nodejs.org/">Node.js</a>.
+          Firstly you need to install <a href="https://nodejs.org/" rel="noreferrer noopener">Node.js</a>.
           The major version in this guide is 18. With Node.js installation you will get NPM.
           Install a CLI for workers from the command line interface:
           <code class="block">
@@ -608,29 +613,25 @@ export default {
         After such changes anyone who use the bot will be able to ask him
         and receive an answer.
         </p>
-
         <p>
           The last step before we can talk about monetization is to add counter for user's messages.
           To keep records about usage statistics we need to save it somewhere.
           Fortunately, Cloudflare workers has a storage for this. It's called
           <abbr title="Key-value">KV</abbr>. First off all we need to create it.
-          Go to <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare dashboard</a>. Open
+          Go to <a href="https://dash.cloudflare.com/" target="_blank" rel="noreferrer noopener">Cloudflare dashboard</a>. Open
           <b>Workers</b> option and select <b>KV</b>:
           <img src="./images/cf-dash-kv.png" alt="Interface of Cloudflare dashboard with highlighted options for KV creation">
-
           Enter <code>DATABASE</code> name in the field and press create. Later we can access our KV
           through this name:
           <img src="./images/kv-creation.jpg" alt="Interface of namespace creation option">
-
           Now a new KV should be displayed below the current form. Copy new KV id:
           <img src="./images/copy-kv-id.png" alt="KV option with name and ID">
         </p>
-
         <p>
           Next add copied ID in <u>wrangler.toml</u>. Also we add there extra variables
           <code>ACTIVATION_CODE</code> and <code>AMOUNT_OF_FREE_MESSAGES</code>.This is for
           future monetization, we can skip it for now. Now your file content looks like this:
-          <pre>
+        <pre>
             <code>
 name = "chatbot"
 main = "src/index.js"
@@ -653,17 +654,15 @@ ACTIVATION_CODE = "Code to activate the bot. Required if the user has reached th
 AMOUNT_OF_FREE_MESSAGES = 3 # The number of messages each user can spend
             </code>
           </pre>
-
-          After a new deployment our code will access <b>KV</b> with <code>DATABASE</code>.
-          We'll use only two methods for interacting with <b>KV</b>:
-          <code>DATABASE.get()</code> <code>DATABASE.put()</code>. If you want to dive deeper
-          you can check this docs:
-          <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/" target="_blank">
-            Runtime APIs -> KV
-          </a>.
-
-          Let's create a new file <u>db.js</u>. Add code for messages counting:
-          <pre>
+        After a new deployment our code will access <b>KV</b> with <code>DATABASE</code>.
+        We'll use only two methods for interacting with <b>KV</b>:
+        <code>DATABASE.get()</code> <code>DATABASE.put()</code>. If you want to dive deeper
+        you can check this docs:
+        <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/" target="_blank" rel="noreferrer noopener">
+        Runtime APIs -> KV
+        </a>.
+        Let's create a new file <u>db.js</u>. Add code for messages counting:
+        <pre>
             <code>
 export const countMessage = async (message, db) => {
   if (message?.from?.id) {
@@ -691,9 +690,48 @@ export const countMessage = async (message, db) => {
 };
             </code>
           </pre>
+        Update <u>index.js</u> to start counting user messages:
+        <pre>
+            <code>
+const handleRequest = async (params) => {
+  // Import our database with db name
+  const { request, botToken, db } = params;
+  const { pathname } = new URL(request.url);
+
+  try {
+    if (pathname === `/telegram/${botToken}/webhook`) {
+      const message = await extractUserMessage(request);
+
+      // Call our function for ever message
+      await countMessage(message, db);
+      // Skip unchanged code...
+
+// ...
+
+export default {
+  async fetch(request, env) {
+    // Import KV with DATABASE name that we named in wrangler.toml
+    const { TG_BOT_TOKEN, OPEN_AI_TOKEN, DATABASE } = env;
+
+    await setupBot(request, TG_BOT_TOKEN);
+
+    const response = await handleRequest({
+      request,
+      botToken: TG_BOT_TOKEN,
+      openAiToken: OPEN_AI_TOKEN,
+      // Pass KV with new a variable name: db
+      db: DATABASE,
+    });
+
+    return response || new Response("yep", { status: 200 });
+  },
+};
+            </code>
+          </pre>
+          Next, you need to deploy the new code with the latest changes. Cloudflare will link KV to
+          our code. For each new message request, we will count it and save it in KV.
         </p>
       </section>
-
       <section>
         <h2 id="monetization">Monetization</h2>
         <p>
@@ -708,11 +746,10 @@ export const countMessage = async (message, db) => {
         <blockquote>
           As a activation code you can use any random hash. For example copy one
           of the hashes from this site:
-          <a href="https://onlinehashtools.com/generate-random-md5-hash" target="_blank">Random MD5 hash</a>.
+          <a href="https://onlinehashtools.com/generate-random-md5-hash" target="_blank" rel="noreferrer noopener">Random MD5 hash</a>.
         </blockquote>
-
         <!-- @todo -->
-        </section>
+      </section>
       <section>
         <h2 id="marketing">Marketing</h2>
         <p>
@@ -721,7 +758,7 @@ export const countMessage = async (message, db) => {
           Telegram bot:
         <ul>
           <li>Charge users for premium content or services.</li>
-          <li>Accept donations from users who appreciate your bot. For example: <a href="https://www.buymeacoffee.com" target="_blank">Buy Me a Coffee</a></li>
+          <li>Accept donations from users who appreciate your bot. For example: <a href="https://www.buymeacoffee.com" target="_blank" rel="noreferrer noopener">Buy Me a Coffee</a></li>
           <li>Use affiliate marketing to earn commissions on products or services you
             recommend.
           </li>
@@ -749,20 +786,5 @@ export const countMessage = async (message, db) => {
         </p>
       </section>
     </main>
-    <footer>
-      <h3 id="faq">FAQ</h3>
-      <details>
-        <summary>How much does it cost to create a Telegram bot with ChatGPT?</summary>
-        <p>Creating a Telegram bot with ChatGPT is free, but you may incur costs
-          for hosting and other services.
-        </p>
-      </details>
-      <details>
-        <summary>How long does it take to create a Telegram bot with ChatGPT?</summary>
-        <p>The time it takes to create a Telegram bot with ChatGPT depends on your
-          technical skills.
-        </p>
-      </details>
-    </footer>
   </body>
 </html>
