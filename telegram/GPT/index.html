@@ -45,7 +45,6 @@
           <li><a href="#monetization">Monetization</a></li>
           <li><a href="#marketing">Marketing</a></li>
           <li><a href="#conclusion">Conclusion</a></li>
-          <li><a href="#faq">FAQ</a></li>
         </ul>
       </section>
       <section>
@@ -744,11 +743,59 @@ export default {
           that user continue to chat.
         </p>
         <blockquote>
-          As a activation code you can use any random hash. For example copy one
+          As an activation code you can use any random hash. For example copy one
           of the hashes from this site:
           <a href="https://onlinehashtools.com/generate-random-md5-hash" target="_blank" rel="noreferrer noopener">Random MD5 hash</a>.
         </blockquote>
-        <!-- @todo -->
+        <p>
+          We'll use <b>Buy Me a Coffee</b> service. Open their site - <a href="https://www.buymeacoffee.com" target="_blank" rel="noreferrer noopener">
+            buymeacoffee.com
+          </a>.
+          Regster a new account. Go on your account page. Select <b>Extras</b> section
+          from the left menu and press a button <b>Start from scratch</b>:
+          <img src="./images/buymeacoffe-extras-from-scratch.png" alt="My account interface from Buy Me a Coffee">
+
+          Fill out the form with what you want. Enter an activation code (random hash) in the Connfirmation
+          message field:
+          <img src="./images/create-extra-for-bot-codes.png" alt="Creation interface for new Extra">
+
+          After creation copy you payment link:
+          <img src="./images/new-extra-payment-link.jpg" alt="Form with a payment link for your new Extra">
+        </p>
+        <p>
+          Let's go back to our code. In <u>wrangler.toml</u> fill these 3 variables:
+          <pre>
+            <code>
+ACTIVATION_CODE = "e9c40c011f64eed4c679e362077ac40f3f437b5a"
+AMOUNT_OF_FREE_MESSAGES = 3
+LINK_TO_PAY_FOR_CODE="https://www.buymeacoffee.com/someone/e/123456"
+            </code>
+          </pre>
+
+          Add a new function in <u>db.js</u> to check if we have to ask user for a payment:
+          <pre>
+            <code>
+export const needToAskForPayment = async ({
+  userId,
+  db,
+  amountOfFreeMessages,
+}) => {
+  const userData = await db.get(userId);
+
+  if (userData) {
+    const { messageCounter, isItPaidFor } = JSON.parse(userData);
+
+    if (isItPaidFor) return false;
+    if (messageCounter > amountOfFreeMessages) return true;
+  }
+
+  return false;
+};
+            </code>
+          </pre>
+
+          <!-- @todo -->
+        </p>
       </section>
       <section>
         <h2 id="marketing">Marketing</h2>
@@ -758,10 +805,8 @@ export default {
           Telegram bot:
         <ul>
           <li>Charge users for premium content or services.</li>
-          <li>Accept donations from users who appreciate your bot. For example: <a href="https://www.buymeacoffee.com" target="_blank" rel="noreferrer noopener">Buy Me a Coffee</a></li>
-          <li>Use affiliate marketing to earn commissions on products or services you
-            recommend.
-          </li>
+          <li>Accept donations from users who appreciate your bot.</li>
+          <li>Use affiliate marketing to earn commissions on products or services you recommend.</li>
         </ul>
         </p>
         <p>
@@ -786,5 +831,25 @@ export default {
         </p>
       </section>
     </main>
+    <footer>
+      <p class="banner">
+        See also: Do not want to waste your time and make mistakes?
+        <br />
+        Use ready version without coding skills:
+        <a href="https://onout.org/telegramGPT/" target="_blank" rel="noreferrer noopener">Telegram ChatGPT bot</a>
+      </p>
+
+      <svg class="logo">
+        <use xlink:href="#logo-footer"></use>
+      </svg>
+
+      <p>Talk to team: support@onout.org</p>
+    </footer>
+
+    <svg width="0" height="0" style="position: absolute; visibility: hidden; width: auto; height: auto;">
+      <symbol viewBox="0 0 114 45" fill="none" id="logo-footer">
+        <path d="M34 0C27.9 0 23 4.9 23 11C23 17.1 27.9 22 34 22C40.1 22 45 17.1 45 11C45 4.9 40.1 0 34 0ZM34 18C30.1 18 27 14.9 27 11C27 7.1 30.1 4 34 4C37.9 4 41 7.1 41 11C41 14.9 37.9 18 34 18ZM57 0C50.9 0 46 4.9 46 11C46 17.1 50.9 22 57 22C63.1 22 68 17.1 68 11C68 4.9 63.1 0 57 0ZM57 18C53.1 18 50 14.9 50 11C50 7.1 53.1 4 57 4C60.9 4 64 7.1 64 11C64 14.9 60.9 18 57 18ZM57 23C50.9 23 46 27.9 46 34C46 40.1 50.9 45 57 45C63.1 45 68 40.1 68 34C68 27.9 63.1 23 57 23ZM57 41C53.1 41 50 37.9 50 34C50 30.1 53.1 27 57 27C60.9 27 64 30.1 64 34C64 37.9 60.9 41 57 41ZM11 23C4.9 23 0 27.9 0 34C0 40.1 4.9 45 11 45C17.1 45 22 40.1 22 34C22 27.9 17.1 23 11 23ZM11 41C7.1 41 4 37.9 4 34C4 30.1 7.1 27 11 27C14.9 27 18 30.1 18 34C18 37.9 14.9 41 11 41ZM13 0H22V4H13V22H9V4H0V0H9H13ZM105 23H114V27H105V45H101V27H91V34C91 40.1 86.1 45 80 45C73.9 45 69 40.1 69 34V23H73V34C73 37.9 76.1 41 80 41C83.9 41 87 37.9 87 34V23H90H91H101H105ZM91 6.5C91 7.9 92.1 9 93.5 9H107.5C111.1 9 114 11.9 114 15.5C114 19.1 111.1 22 107.5 22H91H88H69V0H73V18H88H91H107.5C108.9 18 110 16.9 110 15.5C110 14.1 108.9 13 107.5 13H93.5C89.9 13 87 10.1 87 6.5C87 2.9 89.9 0 93.5 0H114V4H93.5C92.1 4 91 5.1 91 6.5ZM41 23H45V45H42.2L27 29.8V45H23V23H25.8L41 38.2V23Z" fill="#BCC2CB"/>
+      </symbol>
+    </svg>
   </body>
 </html>
