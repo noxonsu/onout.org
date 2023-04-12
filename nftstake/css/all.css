@@ -1599,9 +1599,10 @@ button.swiper-pagination-bullet {
   overflow: hidden;
 }
 
+@import url('https://fonts.cdnfonts.com/css/roboto');
+
 @font-face {
-  font-family: "TT Travels Next";
-  src: local("../fonts/TT Travels Next Bold"), local("TTTravelsNextBold"), url("../fonts/subset-TTTravelsNextBold.woff2") format("woff2"), url("../fonts/subset-TTTravelsNextBold.woff") format("woff"), url("../fonts/subset-TTTravelsNextBold.ttf") format("truetype");
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -2026,7 +2027,7 @@ svg {
 }
 
 .font, .user, .see-also-list li, .course-accordion, .support-title, .sub-title, .about-title, .about .video-title, .title, .video-title, .btn {
-  font-family: "TT Travels Next";
+  font-family: "Roboto";
 }
 
 .container {
