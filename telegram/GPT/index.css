@@ -28,6 +28,7 @@ code.block {
 }
 
 .banner {
+  width: 100%;
   font-size: 1.2em;
   padding: 0.7rem;
   font-weight: 500;
@@ -58,4 +59,13 @@ code.block {
 
 footer {
   padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  height: 45px;
+  margin: 20px auto;
 }
