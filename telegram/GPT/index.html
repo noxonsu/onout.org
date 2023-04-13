@@ -669,12 +669,13 @@ export const countMessage = async (message, db) => {
     const userData = await db.get(userId);
 
     if (userData) {
-      const { messageCounter } = JSON.parse(userData);
+      const parsedData = JSON.parse(userData);
 
       await db.put(
         userId,
         JSON.stringify({
-          messageCounter: messageCounter + 1,
+          ...parsedData,
+          messageCounter: parsedData.messageCounter + 1,
         })
       );
     } else {
@@ -727,8 +728,8 @@ export default {
 };
             </code>
           </pre>
-          Next, you need to deploy the new code with the latest changes. Cloudflare will link KV to
-          our code. For each new message request, we will count it and save it in KV.
+        Next, you need to deploy the new code with the latest changes. Cloudflare will link KV to
+        our code. For each new message request, we will count it and save it in KV.
         </p>
       </section>
       <section>
@@ -749,31 +750,30 @@ export default {
         </blockquote>
         <p>
           We'll use <b>Buy Me a Coffee</b> service. Open their site - <a href="https://www.buymeacoffee.com" target="_blank" rel="noreferrer noopener">
-            buymeacoffee.com
+          buymeacoffee.com
           </a>.
           Regster a new account. Go on your account page. Select <b>Extras</b> section
           from the left menu and press a button <b>Start from scratch</b>:
           <img src="./images/buymeacoffe-extras-from-scratch.png" alt="My account interface from Buy Me a Coffee">
-
           Fill out the form with what you want. Enter an activation code (random hash) in the Connfirmation
           message field:
           <img src="./images/create-extra-for-bot-codes.png" alt="Creation interface for new Extra">
-
           After creation copy you payment link:
           <img src="./images/new-extra-payment-link.jpg" alt="Form with a payment link for your new Extra">
         </p>
         <p>
           Let's go back to our code. In <u>wrangler.toml</u> fill these 3 variables:
-          <pre>
+        <pre>
             <code>
 ACTIVATION_CODE = "e9c40c011f64eed4c679e362077ac40f3f437b5a"
 AMOUNT_OF_FREE_MESSAGES = 3
 LINK_TO_PAY_FOR_CODE="https://www.buymeacoffee.com/someone/e/123456"
             </code>
           </pre>
-
-          Add a new function in <u>db.js</u> to check if we have to ask user for a payment:
-          <pre>
+        Add new functions in <u>db.js</u>. We use <code>needToAskForPayment</code>
+        to check if user has to pay for usage. And <code>validateActivationMessage</code>
+        to check user's activation code:
+        <pre>
             <code>
 export const needToAskForPayment = async ({
   userId,
@@ -791,10 +791,197 @@ export const needToAskForPayment = async ({
 
   return false;
 };
+
+export const validateActivationMessage = async ({
+  message,
+  activationCode,
+  botToken,
+  db,
+}) => {
+  if (message.text.match(/This is the activation code: ?\n?[a-z0-9]{32}$/m)) {
+    // Extract code sent
+    const codeSent = message.text.match(/[a-z0-9]{32}/);
+
+    // If code isn't right send a message about it
+    if (String(codeSent) !== String(activationCode)) {
+      await sendMessage("Your code is incorrect", botToken, message.chat.id);
+      return false;
+    }
+
+    // If it's correct we save info about it
+    // So he won't need to pay anymore
+    const userId = message.from.id;
+    const userData = await db.get(userId);
+
+    await db.put(
+      userId,
+      JSON.stringify({
+        ...JSON.parse(userData),
+        isItPaidFor: true,
+      })
+    );
+    await sendMessage("Successfully activated", botToken, message.chat.id);
+    return true;
+  }
+};
             </code>
           </pre>
+        Next, update <u>index.js</u> code. So, at the top of the file we add
+        the import of new functions. After all, in our default import, we import
+        new variables for monetization and pass them to <code>handleRequest</code>
+        function where are the main changes located. In that function we call
+        <code>validateActivationMessage</code> in case if user's message is an
+        activation message. If so, we will check its activation code. In case we
+        didn't get any result from the validation function (which means it's not
+        an activation message), we'll move forward and call <code>needToAskForPayment</code>.
+        We check whether the user has reached the limit of free messages. If so, we ask him
+        to buy our code and send it back. If none of the upper conditions worked
+        we let a user to continue usage because he has a free messages:
+        <pre>
+            <code>
+import {
+  countMessage,
+  needToAskForPayment,
+  validateActivationMessage,
+} from "./db";
 
-          <!-- @todo -->
+// Skip unchanged code ...
+
+const handleRequest = async (params) => {
+  const {
+    request,
+    botToken,
+    db,
+    activationCode,
+    amountOfFreeMessages,
+    paymentLink,
+  } = params;
+  const { pathname } = new URL(request.url);
+
+  try {
+    if (pathname === `/telegram/${botToken}/webhook`) {
+      const message = await extractUserMessage(request);
+
+      // Check if we have a text parameter, so ChatGPT can process it
+      // and if we have a chat id so we send it back to a right user
+      if (message?.text && message?.chat?.id) {
+        // First of all check the message format
+        // If a user sent an activation code we validate it
+        try {
+          const validationResult = await validateActivationMessage({
+            message,
+            activationCode,
+            botToken,
+            db,
+          });
+
+          // If result isn't it means user sent activated code
+          // So we won't need to send it to ChatGPT
+          if (validationResult !== undefined) return;
+
+          // Check if the user has reached the limit of free messages
+          // Send a payment link and ask for an activation code
+          const isPaymentRequired = await needToAskForPayment({
+            userId: message.from.id,
+            db,
+            amountOfFreeMessages,
+          });
+
+          if (isPaymentRequired) {
+            await sendMessage(
+              `&lt;b&gt;You've reached the limit of free messages.&lt;/b&gt;\nTo continue using this bot you need to pay for the activation code via the link below:\n&lt;a href="${paymentLink}"&gt;Pay for usage&lt;/a&gt;\nAfter payment, you need to send a message here with an activation code in the format:\n\n&lt;i&gt;This is the activation code:\naf9e4f3ef2080a003ef910dc2575497d&lt;/i&gt;`,
+              botToken,
+              message.chat.id
+            );
+            return;
+          }
+        } catch (error) {
+          await sendMessage(
+            `error ${JSON.stringify({
+              message: error.message,
+              stack: error.stack,
+            })}`,
+            botToken,
+            message?.chat?.id
+          );
+        }
+
+        await countMessage(message, db);
+
+        const response = await requestToOpenAI({
+          ...params,
+          text: message.text,
+        });
+
+        if (response) {
+          await sendMessage(response, botToken, message.chat.id);
+        } else if (response instanceof Error) {
+          await sendMessage(
+            "Cannot process your request",
+            botToken,
+            message?.chat?.id
+          );
+        }
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error(error);
+
+    return new Response(
+      `
+      &lt;h2&gt;Something went wrong&lt;/h2&lt;
+      &lt;b&gt;Error: ${JSON.stringify({
+        message: error.message,
+        stack: error.stack,
+      })}&lt;/b&gt;
+    `,
+      {
+        status: 500,
+        headers: { "Content-Type": "text/html" },
+      }
+    );
+  }
+};
+
+export default {
+  async fetch(request, env) {
+    const {
+      TG_BOT_TOKEN,
+      OPEN_AI_TOKEN,
+      DATABASE,
+      ACTIVATION_CODE,
+      AMOUNT_OF_FREE_MESSAGES,
+      LINK_TO_PAY_FOR_CODE,
+    } = env;
+
+    await setupBot(request, TG_BOT_TOKEN);
+
+    const response = await handleRequest({
+      request,
+      botToken: TG_BOT_TOKEN,
+      openAiToken: OPEN_AI_TOKEN,
+      db: DATABASE,
+      // Monetization variables
+      activationCode: ACTIVATION_CODE,
+      amountOfFreeMessages: AMOUNT_OF_FREE_MESSAGES,
+      paymentLink: LINK_TO_PAY_FOR_CODE,
+    });
+
+    return response || new Response("yep", { status: 200 });
+  },
+};
+            </code>
+          </pre>
+        At last we need to deploy updated code with wrangler. After deployment you can try
+        to send to bot some message to spent free limit. After that bot will ask you to
+        pay via link:          
+        <img src="./images/bot-asks-payment.jpg" alt="Telegram bot interface of requested payment">
+        And when you sent an activation code the bot allows you to use it:
+        <img src="./images/bot-payment-activation-process.jpg" alt="Telegram bot interface with an activation code validation">
+        In KV interface you can check if users pay or not:
+        <img src="./images/kv-data-for-user-who-paid.jpg" alt="Cloudflare KV interface with the user's displayed data">
         </p>
       </section>
       <section>
@@ -838,14 +1025,11 @@ export const needToAskForPayment = async ({
         Use ready version without coding skills:
         <a href="https://onout.org/telegramGPT/" target="_blank" rel="noreferrer noopener">Telegram ChatGPT bot</a>
       </p>
-
       <svg class="logo">
         <use xlink:href="#logo-footer"></use>
       </svg>
-
       <p>Talk to team: support@onout.org</p>
     </footer>
-
     <svg width="0" height="0" style="position: absolute; visibility: hidden; width: auto; height: auto;">
       <symbol viewBox="0 0 114 45" fill="none" id="logo-footer">
         <path d="M34 0C27.9 0 23 4.9 23 11C23 17.1 27.9 22 34 22C40.1 22 45 17.1 45 11C45 4.9 40.1 0 34 0ZM34 18C30.1 18 27 14.9 27 11C27 7.1 30.1 4 34 4C37.9 4 41 7.1 41 11C41 14.9 37.9 18 34 18ZM57 0C50.9 0 46 4.9 46 11C46 17.1 50.9 22 57 22C63.1 22 68 17.1 68 11C68 4.9 63.1 0 57 0ZM57 18C53.1 18 50 14.9 50 11C50 7.1 53.1 4 57 4C60.9 4 64 7.1 64 11C64 14.9 60.9 18 57 18ZM57 23C50.9 23 46 27.9 46 34C46 40.1 50.9 45 57 45C63.1 45 68 40.1 68 34C68 27.9 63.1 23 57 23ZM57 41C53.1 41 50 37.9 50 34C50 30.1 53.1 27 57 27C60.9 27 64 30.1 64 34C64 37.9 60.9 41 57 41ZM11 23C4.9 23 0 27.9 0 34C0 40.1 4.9 45 11 45C17.1 45 22 40.1 22 34C22 27.9 17.1 23 11 23ZM11 41C7.1 41 4 37.9 4 34C4 30.1 7.1 27 11 27C14.9 27 18 30.1 18 34C18 37.9 14.9 41 11 41ZM13 0H22V4H13V22H9V4H0V0H9H13ZM105 23H114V27H105V45H101V27H91V34C91 40.1 86.1 45 80 45C73.9 45 69 40.1 69 34V23H73V34C73 37.9 76.1 41 80 41C83.9 41 87 37.9 87 34V23H90H91H101H105ZM91 6.5C91 7.9 92.1 9 93.5 9H107.5C111.1 9 114 11.9 114 15.5C114 19.1 111.1 22 107.5 22H91H88H69V0H73V18H88H91H107.5C108.9 18 110 16.9 110 15.5C110 14.1 108.9 13 107.5 13H93.5C89.9 13 87 10.1 87 6.5C87 2.9 89.9 0 93.5 0H114V4H93.5C92.1 4 91 5.1 91 6.5ZM41 23H45V45H42.2L27 29.8V45H23V23H25.8L41 38.2V23Z" fill="#BCC2CB"/>
