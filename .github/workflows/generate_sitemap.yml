@@ -26,3 +26,9 @@ jobs:
         echo "sitemap-path = ${{ steps.sitemap.outputs.sitemap-path }}"
         echo "url-count = ${{ steps.sitemap.outputs.url-count }}"
         echo "excluded-count = ${{ steps.sitemap.outputs.excluded-count }}"
+
+    - name: Upload sitemap artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: sitemap
+        path: ${{ steps.sitemap.outputs.sitemap-path }}
