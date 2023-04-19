@@ -2025,9 +2025,9 @@ svg {
           box-shadow: 0 0 0 transparent !important;
 }
 
-.font, .user, .see-also-list li, .course-accordion, .support-title, .sub-title, .about-title, .about .video-title, .title, .video-title, .btn {
+/* .font, .user, .see-also-list li, .course-accordion, .support-title, .sub-title, .about-title, .about .video-title, .title, .video-title, .btn {
   font-family: "TT Travels Next";
-}
+} */
 
 .container {
   padding: 0 20px;
@@ -3098,4 +3098,145 @@ svg {
 .list03 li:nth-child(2) svg {
   width: 20px;
   height: 20px;
+}
+
+
+
+/****************/
+
+.col img, .see-also-list li span img{
+  border-radius: 20px;
+}
+.faq .container .col:after{
+  content: '.';
+  clear: both;
+  opacity: 0;
+}
+.faq .container .title br{
+  display: none;
+}
+.attract-img img{
+  margin-left: 0;
+  max-width: 100%;
+}
+
+img + i{
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.rewards-img img{
+  width: 100%;
+}
+
+.price{
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.price .buy-btn{
+  min-width: 240px;
+}
+
+.price .grey{
+  background-color: #f3f6ff !important;
+}
+
+.price .grey:last-child{
+  border-radius: 0 0 20px 20px;
+}
+
+.price .header{
+  border-radius: 20px 20px 0 0;
+}
+
+.price .buy-btn{
+  margin: 0 auto;
+  width: 240px;
+  max-width: 100%;
+  display: block;
+}
+
+@media (min-width: 992px){  
+  .attract{
+    padding: 100px 0 100px 0;
+  }  
+  .rewards{
+    padding: 100px 0 50px 0;  
+  }  
+  .faq{
+    padding: 50px 0;
+  }  
+  .faq .title{
+    margin-bottom: 33px;
+  }  
+  .faq .col .title{
+    margin-bottom: 52px;
+  }    
+  .support{
+    padding-top: 80px;
+  }
+  
+  .break + .faq{
+    padding-bottom: 100px;
+  }
+  
+  .for-whom{
+    padding-top: 81px;
+  }
+  
+  .for-whom .title{
+    margin-bottom: 38px;
+  }
+  
+  .whom-list .ico{
+    max-height: 66px;
+  }
+  
+  .whom-list li:last-child{
+    margin-bottom: 0;
+  }
+  
+  .see-also{
+    padding-top: 80px;
+  }
+  
+  .see-also .title{
+    margin-bottom: 46px;
+  }
+  
+  .reviews{
+    padding-top: 80px;
+  }
+  
+  .reviews .title{
+    margin-bottom: 30px !important;
+  }
+}
+
+
+@media (max-width: 991px){
+  .for-whom .col{
+    max-width: 100%;
+  }
+  .whom-list .ico{
+    display: none;
+  }
+  .attract-img{
+    margin-left: 0;
+  }
+  .faq .container .col{
+    padding-left: 0;
+    padding-right: 0;
+  }  
+}
+
+@media only screen and (max-width: 600px){
+  .columns1{
+    padding: 0 !important;
+  }
+  .columns1 + .columns1{
+    margin-top: 20px;
+  }  
 }
