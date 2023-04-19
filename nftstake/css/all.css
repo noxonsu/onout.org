@@ -2755,7 +2755,7 @@ svg {
   .title {
     font-size: 28px;
     line-height: 38px;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
   }
   .crypto-icons {
     margin-bottom: 30px;
@@ -3032,7 +3032,7 @@ svg {
 
 
 .for-whom {
-  padding: 71px 0 100px;
+  padding: 30px 0 30px;
   background: url(../images/bg-img-2.jpg) center bottom no-repeat #242F34;
 }
 .for-whom .btn {
@@ -3202,6 +3202,7 @@ img + i{
   
   .for-whom{
     padding-top: 81px;
+    padding-bottom: 100px;
   }
   
   .for-whom .title{
