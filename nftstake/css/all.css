@@ -1945,7 +1945,7 @@ template {
           flex: 0 0 240px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   text-transform: uppercase;
   border: 0;
@@ -1995,7 +1995,7 @@ ul, ol {
 
 a {
   color: #9230A1;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover, a:focus {
   text-decoration: none;
@@ -2171,7 +2171,7 @@ svg {
 
 .video-title {
   font-size: 14px;
-  line-height: 19px;
+  line-height: 24px;
   color: #FFFFFF;
   text-transform: uppercase;
 }
@@ -2222,6 +2222,13 @@ svg {
   line-height: 30px;
   color: #FFFFFF;
   margin-bottom: 42px;
+}
+
+.attract i {
+  font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+    text-transform: uppercase;
 }
 .attract .btn {
   color: #058EA8;
@@ -2277,6 +2284,12 @@ svg {
 .rewards-img img {
   width: 507px;
   max-width: 100%;
+}
+
+.rewards i {
+  font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
 }
 
 .about {
@@ -2383,7 +2396,7 @@ svg {
 }
 .support .title {
   text-align: center;
-  margin-bottom: 47px;
+  margin-bottom: 50px;
 }
 .support .btns {
   padding-top: 90px;
@@ -2502,9 +2515,10 @@ svg {
   border: 0;
   background: none;
   font-size: 20px;
-  line-height: 34px;
+  font-weight: 700;
+  line-height: 30px;
   color: #150D22;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
 }
 .course-accordion .ico {
   -webkit-box-flex: 0;
@@ -2565,6 +2579,10 @@ svg {
 .see-also-list li a {
   color: #150D22;
   text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
 }
 .see-also-list li a:hover {
   color: #9230A1;
@@ -2600,7 +2618,7 @@ svg {
 }
 .review p {
   font-size: 20px;
-  line-height: 30px;
+  line-height: 34px;
   color: #FFFFFF;
   margin-bottom: 0;
 }
@@ -3037,8 +3055,8 @@ svg {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 18px;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 26px;
   color: #C3D3DB;
 }
 .whom-list .ico {
@@ -3169,7 +3187,7 @@ img + i{
     padding: 50px 0;
   }  
   .faq .title{
-    margin-bottom: 33px;
+    margin-bottom: 50px;
   }  
   .faq .col .title{
     margin-bottom: 52px;
@@ -3187,7 +3205,7 @@ img + i{
   }
   
   .for-whom .title{
-    margin-bottom: 38px;
+    margin-bottom: 50px;
   }
   
   .whom-list .ico{
@@ -3203,7 +3221,7 @@ img + i{
   }
   
   .see-also .title{
-    margin-bottom: 46px;
+    margin-bottom: 60px;
   }
   
   .reviews{
@@ -3211,7 +3229,7 @@ img + i{
   }
   
   .reviews .title{
-    margin-bottom: 30px !important;
+    margin-bottom: 50px !important;
   }
 }
 
