@@ -1,3 +1,5 @@
+SELECT address FROM `erc20contracts` WHERE `status` != -1 AND ai_site != '' ORDER BY `dateadd` ASC
+
 find website and ticker (short name of token) for this erc20 smart contracts:
 
 0xd6b633d61db6cac1bb84f0268ed444fc53bf503b
