@@ -1,4 +1,4 @@
-SELECT address FROM `erc20contracts` WHERE `status` != -1 AND ai_site != '' ORDER BY `dateadd` ASC
+```SELECT address  FROM `erc20contracts` WHERE `status` != -1 AND ai_site != ''  ORDER BY `dateadd` ASC LIMIT 4```
 
 find website and ticker (short name of token) for this erc20 smart contracts:
 
