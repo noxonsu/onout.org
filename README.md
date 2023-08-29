@@ -1,6 +1,6 @@
 https://onout.org
 https://onout.org/telegram/GPT/ - connect gpt to telegram
-
+https://gitlab.com/onout/onout/ - alternative gitlab
 
 # devops
 если надо менять страницу по крипте, редактируй прямо index.html далее само задеплоится в cf pages
