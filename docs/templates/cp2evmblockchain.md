@@ -20,3 +20,5 @@
 ## Что писать? (icebreaker хероват, надо додумать) 
 
 Hello! My name is Alex i'am the founder of team who can deploy a crosschain bridge. Since you have a working EVM rpc (link to rpc). I noted your blockchain already has {blocknumber} blocks but still can't find a bridge. Our team can deploy the bridge and other dapps like DEX, lottery, DAO, NFT stuff and other. Can i send you demos? 
+
+chatgpt hint: Hello! My name is Alex, and I'm the founder of a team that specializes in setting up crosschain bridges. I noticed that your blockchain, which already has {blocknumber} blocks, doesn't have a bridge yet. We can help! Not only can we set up a bridge, but we can also develop other decentralized apps like a DEX, lottery, DAO, and NFT-related projects. Would you like to see some demos?
