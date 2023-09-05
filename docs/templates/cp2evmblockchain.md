@@ -2,29 +2,21 @@
 кейс - админ из next заплатил нам кучу денег и продолжает что то предлагать и платить. нужно систематизировать эту воронку. 
 
 ## Где искать лиды?
-1. https://chainlist.org/
-2. https://github.com/DefiLlama/chainlist
-3. ??
+1. https://chainlist.org/ отсюда автоматом создаются ишью тут https://github.com/noxonsu/chains/issues
 
-## Куда писать
-1. по контактам на сайте
-2. в дискорд
+# Для скаута
+1. зайти на сайт из списка https://github.com/noxonsu/chains/issues
+2. найти гитхаб (в документации или через гугл), найти главный репозиторий, ссылки на телеграм группу или дискорд
+3. определить какие апки уже подняты, в первую очередь интересует crosschain bridge и exchange (DEX)
+4. найти ЛПР, скорее всего он сидит в телеграм канале или дискорде, часто у ника стоит "never DM you" и он админ чата
+5. найти разработчика, или технаря, скорее всего в гитхабе его будет видно
+6. добавить это все в ишью который в работе. 
+7. этому же ишью поставить тег "researched" и если найден контакт кому писать то поставить тег "cold", если контакт не найден или на сатйе полный треш и ничего не гуглится то ставь тег "trash"
+8. допиши свои мысли, что из себя представляет проект, свои ощущения, чтоб манагеру проще было.
 
-## Что писать?
+## Для манагера
+1. пишем текст 
 
-Hello! Since you have a working EVM rpc (link to rpc). Our team can deploy the following products to your network:
+## Что писать? (icebreaker хероват, надо додумать) 
 
-- bridge (multichain.org fork)
-- dex (uniswap fork)
-- farming (erc20 token staking)
-- lottery (pancakeswap fork)
-- and other dapp list can be found here onout.org
-
-What is needed from you:
-
-1. information about chainid, rpc, explorer,
-2. multicall, wrapped coin contracts address (we can deploy if don't have)
-
-This will be positive news for your community, the number of transactions will increase. 
-
-Please email support@onout.org or https://t.me/onoutsupportbot with a link to your project. Thank you!
+Hello! My name is Alex i'am the founder of team who can deploy a crosschain bridge. Since you have a working EVM rpc (link to rpc). I noted your blockchain already has {blocknumber} blocks but still can't find a bridge. Our team can deploy the bridge and other dapps like DEX, lottery, DAO, NFT stuff and other. Can i send you demos? 
