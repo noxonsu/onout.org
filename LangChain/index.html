@@ -8,7 +8,21 @@
     <!-- CSS -->    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+	  <!-- Прогрев домена статики -->
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin />
+
+<!-- Асинхронная предзагрузка CSS файла с высоким приоритетом -->
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
+
+<!-- Неблокирующая загрузка CSS-файла с низким приоритетом -->
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      media="print" onload="this.media='all'" />
+
     <link href="https://onout.org/nftstake/css/all.css" rel="stylesheet">
   </head>
   <body>
