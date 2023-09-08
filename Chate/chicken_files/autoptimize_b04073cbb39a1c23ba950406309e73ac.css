@@ -1547,7 +1547,7 @@ textarea {
   z-index: 2;
 }
 .gpt-skeleton::before {
-  content: "Подождите, мы позвали Цыпу Зерноклюеву, сейчас она подойдет и вы сможете пообщаться";
+  content: "Wait, we called Chicken Agronomus, now she’ll come over and you can talk";
   position: absolute;
   top: 0;
   bottom: 0;
