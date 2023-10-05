@@ -22,3 +22,17 @@
 Hello! My name is Alex i'am the founder of team who can deploy a crosschain bridge. Since you have a working EVM rpc (link to rpc). I noted your blockchain already has {blocknumber} blocks but still can't find a bridge. Our team can deploy the bridge and other dapps like DEX, lottery, DAO, NFT stuff and other. Can i send you demos? 
 
 chatgpt hint: Hello! My name is Alex, and I'm the founder of a team that specializes in setting up crosschain bridges. I noticed that your blockchain, which already has {blocknumber} blocks, doesn't have a bridge yet. We can help! Not only can we set up a bridge, but we can also develop other decentralized apps like a DEX, lottery, DAO, and NFT-related projects. Would you like to see some demos?
+
+еще варианты
+
+Message 1:
+
+Hello!
+
+I found a broken link on your website at [specify the page]. You might want to check it.
+
+Message 2:
+
+Hi again, I'm Alex. I have a team that makes tools for blockchains. We have things like bridges between chains, DEX, lottery tools, DAOs, and NFT stuff. Your blockchain has {blocknumber} blocks, so maybe our tools can help.
+
+We sell them for a set price, but some can be used for free if we share the profits. Can I show you some examples? Waiting for your reply!
