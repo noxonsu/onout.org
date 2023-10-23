@@ -2395,3 +2395,38 @@ img {
     font-size: 16px;
   }
 }
+
+
+.headline span sup{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.drop-hint{
+  margin-top: -35px;  
+  display: none;
+}
+
+.drop-hint p{
+  font-size: 16px;
+  line-height: 26px;
+}
+
+@media (max-width: 991px){
+  .drop-hint{
+    margin-top: -25px;     
+  } 
+}
+
+@media (max-width: 577px){
+  .drop-hint{
+    margin-top: 20px;     
+  }  
+  .drop-hint p{
+    margin-bottom: 0;
+  }
+}
