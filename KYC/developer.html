@@ -76,6 +76,49 @@
     continual monitoring.</li>
   </ul>
 
+<p>
+<h2>Required Features</h2>
+
+<br> Identity Verification: The ability to authenticate government IDs like driver's licenses and passports, as well as validate details like name, date of birth, address etc. This can be done through document checks, biometric verification, video KYC etc. Examples include Jumio, Onfido.
+
+<br>Background Checks: Screening customers against watchlists and checking for potential ties to criminal activities. This requires integrating with watchlist databases and public records. Example: ComplyAdvantage
+
+<br>Risk Scoring: Analyzing a variety of data points to generate a risk score for each customer to identify potentially risky individuals. Involves ML models. Example: Ayasdi
+
+<br>Transaction Monitoring: Ongoing monitoring of customer transactions to detect any suspicious activities. Usually involves setting thresholds and rules. Example: Featurespace
+
+<br>Case Management: Tools for analysts to research and manage cases flagged for review. Important for the human oversight aspect. Example: Napier
+
+<h2>Data Sources</h2>
+
+<br>Government Databases: For checking ID details against official records. Requires partnerships with government agencies.
+
+<br>Watchlists: Databases of politically exposed persons, sanctioned individuals, criminal records etc. Requires subscription to databases like Dow Jones RiskCenter.
+<br><br>
+Open Source Intelligence: Leveraging data from social media, news sources etc. to gather background info on customers.
+<br><br>
+Bank Transactions: Analyzing past transaction patterns of customers by integrating with bank APIs and payment systems.
+<br>
+<h2>Technology Architecture</h2>
+
+Cloud Infrastructure: Cloud platforms like AWS, GCP and Azure allow for security, scalability and reliability.
+<br><br>
+Microservices: Breaking platform into independently deployable services makes development and maintenance easier.
+<br><br>
+Containerization: Containers like Docker simplify deployment and scalability across environments.
+<br><br>
+APIs: REST APIs make integration with other systems like bank backends easier.
+<br><br>
+Orchestration: Tools like Kubernetes help manage and automate container deployments.
+
+<h2>Other Considerations</h2>
+
+Compliance: Following regulations like KYC/AML, data privacy laws etc. Frequent audits are required.
+<br><br>
+Security: Encryption, access controls and cybersecurity best practices are critical when dealing with sensitive customer data.
+<br><br>
+Scalability: The platform should be designed to handle increased transaction volumes
+</p>
   <p>By prioritizing user needs, compliance, and ethical development practices,
   customized KYC platforms uphold both legal requirements and individual privacy
   rights.</p>
