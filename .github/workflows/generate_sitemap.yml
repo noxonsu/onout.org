@@ -32,3 +32,15 @@ jobs:
       with:
         name: sitemap
         path: ${{ steps.sitemap.outputs.sitemap-path }}
+
+    # New steps to configure Git, commit and push
+    - name: Configure Git
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+
+    - name: Commit and Push sitemap
+      run: |
+        git add ${{ steps.sitemap.outputs.sitemap-path }}
+        git commit -m 'Update sitemap'
+        git push
