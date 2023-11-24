@@ -40,7 +40,7 @@
                     <use xlink:href="#play"></use>
                   </svg>
                 </div>
-                <a data-fancybox href=""><img src="https://onout.org/eeat/eeata1.jpg" width='650px' alt=""></a>
+                <a data-fancybox href="https://chat.openai.com/g/g-f4XU7cC0Q-eeata"><img src="https://onout.org/eeat/eeata1.jpg" width='650px' alt=""></a>
               </div>
               <div class="video-title">Herramienta analítica en forma de chat</div>
             </div>
@@ -89,7 +89,7 @@
       <!-- / rewards -->
       <!-- about -->
 	  	 
-	 	
+	 	  <div id='pricesajax' class=''></div>
       <!-- faq -->
 	  <div class="break"></div>
 	  
@@ -349,5 +349,31 @@
     <script src="https://onout.org/nftstake/js/jquery.fancybox.min.js"></script> 
     <script src="https://onout.org/nftstake/js/swiper-bundle.min.js"></script>  
     <script src="https://onout.org/nftstake/js/f.js"></script>    
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest
+    xhr.open('GET', './prices.html', true); // Configure it: GET-request for the 'prices.html' file
+
+    xhr.onload = function() {
+        if (xhr.status === 200) { // If the request was successful (status 200)
+            document.getElementById('pricesajax').innerHTML = xhr.responseText; // Insert the response to 'pricesajax' div
+        } else if (xhr.status === 404) { // If the file is not found (status 404)
+            var element = document.getElementById('pricesajax');
+            element.parentNode.removeChild(element); // Remove 'pricesajax' div
+        }
+    };
+
+    xhr.onerror = function() {
+        // If an error occurred during the request (like network issues)
+        var element = document.getElementById('pricesajax');
+        if (element) {
+            element.parentNode.removeChild(element); // Remove 'pricesajax' div
+        }
+    };
+
+    xhr.send(); // Send the request
+});
+
+	</script>
   </body>
 </html>
