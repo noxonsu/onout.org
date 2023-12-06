@@ -4,6 +4,7 @@ you are a support agent. Hereгшы your database of FAQ.
 START DATABASE (csv)
 
 Name of Product,Question,Answer
+
 crosschain,Also any eta on the bridge you have coming? How will that work will it be able to bridge things like a token we make for the bridge?,We have forked https://app.multichain.org/ - you can check their docs to understand how the bridge works https://docs.multichain.org/ 
 crosschain,Where i can download wordpress version?,We have only a static version and had not any plans to implement it with wp plugin version. 
 crosschain,Also when i can expect answer regarding lottery?,Which network did you use? 
@@ -329,66 +330,6 @@ lottery,alright we would love to go ahead with the lottery app we can facilitate
 lottery,"using base BNB or ETH seems to be a problem reading wallet balance in metamask when purchasing a ticket. If i use a ERC20 token it works . is this suppose to work like this or can i use the native toke of the chain i.e. MATIC ,ETH,BNB or is it only working with WMATIC,WETH,WBNB","Yes, the lottery app works only with ERC20-like tokens, you need to wrap your native currency to use it as ERC20. "
 lottery,how am I able to see the solidity contract that has been created for the lottery.,Check the lottery contract in the ./contracts/Lottery.sol file in the root directory of the Lottery zip file that you downloaded at https://dash.onout.org/ 
 lottery,can i manually move funds out of the lottery contract?,You can add some amount of tokens to the bank of the current lottery round 
-Product,question,answer
-trash,What is the price of the entire development?, It depends on the time spent and the number of developers. 
-trash, Do you have something to do with this website https://primecodes.in/product/farmfactory-ethereum-assets-staking-yield-farming/ ?,"No, it is a scammers site, we and the codecanyon team are fighting them together. "
-trash,Have you put any thought into potentially adding something to the plug-in that displays TVL?,I will talk about it with our team. 
-trash,How this can be handled..!!!,We can't handle it at the moment... 
-trash,how i get token in wallet after distribution?,"I don't get it, can you clarify the "
-trash,Can you develop that?,No... 
-trash,Also how far away are you guys from launching a launchpad?,"We didn't start any launchpad work at the moment, but in the soon future we have plans for it, you can become one of the investors. "
-trash,When launch lenda?,There is no ETA... 
-trash,And is necessary to have a business plan for WordPress?,What is a business plan? Do you mean license key? 
-trash,Is possible to have static version for lottery and farming?,"We can provide you with a static version of these products, but for additional payment. Also, you still have to use the admin panel to create and manage your smart contracts of these products. "
-trash,WordPress business plan is a paid WordPress formula with the possibility of adding new plugins...,Didn't hear about that... 
-trash,"And when I bought the plugins you told me it was valid for 2 projects, is that still the case?",Didn't get it. Can you send a screenshot of this message? 
-trash,or should I uninstall the plugin from the first server?,no 
-trash,whats would cost be of both?,999 + 899 ~= 1900 USD 
-trash,so to have a swap system on my worpdress site liek dex but have multichain and other liq providers i would need ot buy MCWallet and dex?,"Not sure that fully got it, can you clarify your case? "
-trash,"999 + 899 ~= 1900 USD happy with this, do you accept crypto?",You can use our dashboard to buy it by crypto - https://dash.onout.org/ 
-trash,will it be seamless integration or different tools?,All of our products are separated... But you can add header links to connect them to each other. 
-trash,will the end result be having a multichain swap we can add our own liq and tokens created to as well as users can use swap from MCwallet to swap and send oer providers?,"Not sure about that, we have a crosschain app, and there is a multichain functionality in this app. https://tools.onout.org/crosschain/ "
-trash,can we make coms here aswell and will they need to import their current wallet or will it linked ot metamask?,In each of our products users can connect by metamask wallet. 
-trash,So all the prices updated on website?,Yes. 
-trash,is NFTsy plugin able to place for minting and buying about 6k NFTs with metadata at the same time?,"We didn't test that amount, but I think with rarible it is possible... "
-trash,Just wanted to understand the admin panel thing that was mentioned,"Do you want to see what content is on the admin page of the DEX app? There is no admin page yet in the IDO factory app, you can only set it manually, but we can provide installation service for an additional fee. "
-trash,so when we do this we will have a graphics processor,"No, it is only a graph"
-trash,And for rounding issue see?,We will also fix it 
-trash,Or is it an intergration issue?,I don't know the context of the issue... 
-trash,Also is it something that the lending app may also have?,The lenda app has not any ETA. 
-trash,Okay no worries I raised it with their Dev. Hopefully we can get a fix. But I would appreciate it if you could do that for the IDO as we were supposed to launch yesterday but fell behind schedule because of the connection issues.,Can your dev connect with us? 
-trash,we would love to go ahead with it what would be required? on our end,"Please, clarify the "
-trash,also bought the lending app,The lending app has no ETA... We can make the refund. 
-trash,no worries the refund is fine.,Just re
-trash,The 6 month extension is still valid if I make a video for YouTube?,"Yes, it is still valid, you can make the video... "
-trash, Can you guide on where to fix public favicon and logo in admin dashboard? ,T he STO sale app is not our app... 
-trash,How long does the integration process take?,It is about 1-3 days and depends on busy of our dev. 
-trash,will u help in developing an exclusive swapping platform for our token..?,What kind of an exclusive do you mean? 
-trash,Do you have access to the backend?😳,"No, we have not any access to the clients' servers "
-trash,"btcix network was added to it, right?",Yes 
-trash,Need to make it say v1 chain &amp; just phi for v2 chain,"Our other customers will be confused with the v1 chain name...), for instance, we can name it like phi_old "
-trash,And also need to make it so the v2 chain works without the v1 chain enabled. If the v1 chain is not enabled the v2 tokens through an error when viewing deposit address this only happens when the v1 chain is disabled. Would like to be able to use just the v2 chain and also have the v2 chain labeled as just PHI and have the v1 chain labeled as phi_v1,We can start to fix it but after other tasks and your payment. 
-trash,Can also send u additional funds,"Yes, you can send 100 USD (if we spend more time to fix your task we will re"
-trash,So we have to interact with a WEDG contract in Edgeware to get wEDG from native token EDG?,"Yes, but let me try to add your WEDG to the network config, maybe it will work fine without additional WEDG contract interaction. "
-trash,I have updated the version of edgscan to check verified contracts,It works only with the direct link on http://15.235.197.123:4000/ ? 
-trash,RPC error?,"Maybe, try to change it manually in networks setting "
-trash,Is it okay if I set it up and give you the information?,"I think it is okay, we will wait. "
-trash,Or how much should I pay if you do?,We have not experienced starting an archive node. But you can pay us 40 USD/h so I can understand and start it. 
-trash,"Would an eth archive node in chainstack do the job, at least to try?",Idk... 
-trash,Unfortunate the EVM doesn’t meet the requirements.,I think we can add your network without re
-trash,"If I buy the script, can I use it for multiple domains or do I need to buy it every time again?","You can buy only one time to use it with multiple domains, there is not any license checker at the moment. "
-trash,how much does custom api development cost,We don't provide custom development services... 
-trash,when will the info page be finished bro,"Idk, I hope tomorrow. "
-trash,please help me to come up with something awesome,What do you mean? 
-trash,Ethereum Blocks Subgraph https://thegraph.com/hosted-service/subgraph/blocklytics/ethereum-blocks,I have prepared this subgraph yesterday for the info app - https://thegraph-ui.btcix.org/subgraphs/name/btcix/network-blocks 
-trash,what is the time to appear trust wallet btcix network ??,"I have forked their assets repo, delete all blockchains and add only your btcix blockchain - https://github.com/Btcix/assets. "
-trash,"bro, should we add the btcix trust wallet together?",I'm busy mate... 
-trash,I have purchased 5 products but only 3 showing.,"Please, provide a list of your purchases with transaction hash so we can check it. "
-trash,One more doubt graph node is not required for BSC?,I have checked it and it looks like the graph node for BNB is also re
-trash,Can we use existing nodes for the CMC listing on the BSC side?,"Please, clarify this "
-trash,I have an archive node for Edgeware but it's a 6GB ram server. We need a new one to install graph nodes right?,"Yes, the VPS server with 8GB RAM is re"
-trash,I thinking do a NFT marketplace.,"Unfortunately, this plugin does not have the capability to handle Non-Fungible Tokens (NFT). "
-trash,"I need a Wordpress plugin that I permit my users have control about his wallets such as Binance, Coinbase, etc... that His wallet is linked to your email. Is possible with your plugin?","You can enable the 'Users must be registered and logged for access wallet' option and, if necessary, also activate the 'Save private information (keys, etc..) in user's profile (Custodial mode)' option to activate the custodial mode of the wallet. "
 wallet,can I put a wallet to receive the % of transactions different from the token?,I don't get this 
 wallet,I want to use my api key (infura) for wallet plugin. ,There is no way to add a custom Infura API key via the WP admin panel at the moment... 
 wallet,Does it include stacking?,"No, but we have the Farmfactory plugin for it - https://tools.onout.org/farming/ "
@@ -454,6 +395,28 @@ wallet,"Is it possible to use our own token to pay for gasfees / usagefees on th
 wallet,Imo we need our own blockchain to make that happen or do you guys have a work arround that?,"No, we don't provide the set up new EVM-like chain service yet... "
 "wallet, dex",is the wallet system and dex system completely decentralized?,"Only you can access your wallet app and can change settings on your server. About Dex, you can also change the admin address to access to manage panel on the dex app page... "
 "wallet, dex",you dont have any access into wallet or dex?,we have not any access to your wallet or dex... 
+
+
+Product name,Question,Answer
+farm,q: i mean i see on you frontend it indicate how much reward tokens are in farm contract, can that be remove from the frontend a: Yes, its can be removed
+launchpad,q: i mean can the marketplace be ready soon like tomorrow or ? a: the marketplace will not work with you blockchain. it uses the ripple api, and only works with the networks it supports We can develop a separate application that will use not the Ripple API, but a separate contract Development cost - 500$ Lead time - one week
+general,q: Миша пожалуйста в ответе повторяй вопрос пользователя в формате: q: повтор вопрос пользователя, с обязательным указанием имени продукта a: твой ответ, так же с указанием имени продукта не обязательно все вопросы так повторять, только те которые ты считаешь будут повторяться и их надо занести в faq (даже если там будет дубль ничего страшного) это будет использовано для fine tuning chatgpt чтоб она помогала нам отвечать потом и генерила всякие faq и прочий контент автоматом.
+unifactory,q: So I can use Uniswap Base factory and router for LP in Unifactory? a: Unifactory cannot use any external contract other than one's own. You need your personal contracts for each network. If you don't have one on Ethereum, you have to deploy it first from the admin panel. If you don't have it for Base, you have to deploy it on Base first and then you can use it.
+launchpad,q: If we buy IDO factory, we need to Infura.io Ipfs for setting? A: yes you need infura-ipfs.io and RPC node with wss for example p2pify.com
+general,q: Not possible to link activation key with new address? a: have you lost your last address? it's not possible to link activation key to new address
+general,q: When trying to connect with old wallet I have access denied q: Domain linked to your current wallet as owner
+unifactory,q: Can I use Unifactory and Farm for optimism network? a: You can't do it right now. We can integrate this network in both products. Current integration prices are here: https://support.onout.org/hc/1331700057/32/addnewnetwork?category_id=8 q: Can I run Unifactory and Farm on same WordPress install? a: Let me clarify this info from devs q: Any deal of we buy 2 plugins? a: Not at the moment q: Are you available for custom work? How much would it cost if we wanted to update the design on the farming. a: Yes, but it depends on amount and type of work. The longer the job takes the less likely we are to take it on.
+unifactory,q: Can I run Unifactory and Farm on same WordPress install? a: It's not possible to lounch it at the same time. Working and reliable solution is to lounch each app on your own subdomain. For example your site site.com and you louch it under farm.site.com and dex.farm.com. There can be some kind of Multi Plugin plugins, but you need to be careful and keep in mind the security of third-party plugins if you want to use it.
+unifactory,q: In Unifactory if we set the factory and router from the Uniswap V2 will it work? Or we need own router and factory? a: It's not possible. You need to deploy your personal contracts. q: In Unifactory is it possible to use push-button connection rather than forced automatic connection? a: Not right not, but we can make it.
+unifactory,q: Is Unifactory this white label? a: Please, clarify what you mean by white label. q: Is Unifactory has any ongoing support or updates? a: Yes. If problems arise, we'll fix them. For any individual work (for example, you want some changes for yourself personally), we do it for a separate fee. And it should be understood we have many clients, so the solution sometimes may not be so fast. q: Can you tell me a final price with Optimism integration? a: It's $1200. $1000 for the application + $200 for network integration. Also you can see active integration prices here: https://support.onout.org/hc/1331700057/32/addnewnetwork?category_id=8 q: Can we use any external liquidity in Unifactory? a: Not possible, because liquidity are located inside the contracts. So you have to deploy you own contracts. There's also an option for long and serious recycling so you can use third-party liquidity right away. But in this case you will only use the interface. There will be no possibility to add your commission (contracts are someone else's). q: How secure is MCW which displays private keys in a browser? a: It's only as safe as your system is safe (OS, browser, extensions). By default we don't send any private info outside of the application. And we use in-app crypto libraries to generate wallet related data (all happens inside your browser). q: Is it possible integrate safe.global in the MCW? a: I cannot tell you right now. It takes our sources to learn that service and make a decision.
+general,q: хм, а я то думаю, почему на других сетях мало деплоев, скорее всего это путает. самое простое, если сеть не bsc то под кнопками swich to bsc писать Q: I am deploying the exchange to a network other than BSC, but the app is requesting a switch to BSC. Why is that? A: We are utilizing the BSC network as a database since the app does not have a backend database. After deploying the contracts, it is necessary to save the new settings to storage, which is why you need to use both networks.
+general,q: hi! is everething okey with ETH network? We are going to improove UX for clarify how to deploy dex to network another than BSC. Q: I am deploying the exchange to a network other than BSC, but the app is requesting a switch to BSC. Why is that? A: We are utilizing the BSC network as a database since the app does not have a backend database. After deploying the contracts, it is necessary to save the new settings to storage, which is why you need to use both networks.
+general,q: I mean the ido factory adress and the token locker factory adress. a: just put erc20 to fee token (in future at this week you can you this) - and click deploy - after save deployed contracts to storage
+general,q: But i can't deploy your contracts directly because they are giving errors and warnings in remix a: So it’s logical - you weren’t able to put together a contract from the source, in a remix - is that the problem?
+general,q: here are the updated versions, i updated. a: at this week will be update with Contract section at flat source of contracts q: so should i just wait for the update so i can deploy on remix myself? Think that's the quickest way to go? a: Yes - in folder with contracts will be flatten versions, with you can withou promble compile in remix
+general,q: what chain is used to exchange polygon tokens on the product a: used polygon blockchain - chainid 137(0x89) q: in other words will my gas be massive if this is done on ETH a: if you use polygon - you pay native polygon coins - MATIC q: doesnt work: https://screenshots.wpmix.net/chrome_flURjFcp6AeS8A6TVaePogI32uV61jPT.png a: - its image in banner in our MCW procuct - you can manage baners items via admin panel q: Does this comment mean all polygon/MATIC tokens a: Its means token via ERC20 standart deployed on polygon network q: Also I found this doesnt have polygon contracts that work a: its a demo - we are not deploy contracts for polygon only testnet network of bnb and eth - admin can deploy contracts for each network in list, and be owner, and recive fee from txs of swaps q: o smaller payments count toward the overall total t o buy the product a: no, the price includes developers’ time for support and adaptation of the product to your needs q: can it be cheaper? a: no - see answer above. you can find our products from scammers and buy them cheaper, but you will not have support - you will be alone with yourself and with the scammer Any other questions?
+general,q: it support MetaMask and Trust Wallet in a mobile environment? What other wallets are supported? a: Yes, support, also support WalletConnect v2 (Last version on https://dash.onout.org/) q: Is it possible to fix the APY a: No, but we are can develop an application for your specific tasks
+
 
 END DATABASE 
 
