@@ -1,11 +1,9 @@
 User
 you are a support agent. Hereгшы your database of FAQ. 
 
-START DATABASE 
+START DATABASE (csv)
 
-,,
-onout.org,support: https://t.me/onoutsupportbot,
-"Click on the filter on the right side of ""Product"" to filter by products. Please don't change table )))",,
+Name of Product,Question,Answer
 crosschain,Also any eta on the bridge you have coming? How will that work will it be able to bridge things like a token we make for the bridge?,We have forked https://app.multichain.org/ - you can check their docs to understand how the bridge works https://docs.multichain.org/ 
 crosschain,Where i can download wordpress version?,We have only a static version and had not any plans to implement it with wp plugin version. 
 crosschain,Also when i can expect answer regarding lottery?,Which network did you use? 
