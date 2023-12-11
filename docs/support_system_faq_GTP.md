@@ -7,7 +7,7 @@ A: Your answer.
 Respond with just this structure, no additional text or introductions. If you don't understand a problem, product, or user question, ask clarifying questions before the main analysis and answer.
 
 In front of you is a database of frequently asked product questions. Use it as your primary source of answers:
-```csv
+
 START DATABASE (csv)
 
 Name of Product,Question,Answer
@@ -96,7 +96,7 @@ dex,Does your platform support backend and analytics of swaps similar to https:/
 dex,Does your DEX support graph nodes similar to UniSwap?,"Yes, it is a full clone of the Uniswap v2. "
 dex,would it make sense to use the DEX as well as its connected nodes and APIs for getting listed on CoinGecko and CoinMarketCap?,"Yes, for instance you can check the CMC document - C2: Subgraph Sample - https://docs.google.com/document/d/1S4urpzUnO2t7DmS_1dc4EL4tgnnbTObPYXvDeBnukCg/edit#bookmark=kix.5p33g7oj0og8 "
 dex,how should we connect the chain,We can add the Cryto chain for 200 USD if it an EVM-like network. 
-dex,how to receive the full DEX for automated market making and liquidity offerings?,"With this possibility ( https://onout.org/dex &gt; click get free version ) you will get all feature of uniswap v2 dex, but as I said before, if you need the info app, we can provide it for an additional fee. "
+dex,how to receive the full DEX for automated market making and liquidity offerings?,"With this possibility ( https://onout.org/dex > click get free version ) you will get all feature of uniswap v2 dex, but as I said before, if you need the info app, we can provide it for an additional fee. "
 dex,How much would be the total cost to deploy the platform on Cryto chain?,"200 USD for adding an EVM-like chain and when you will set it we can start to set the graph node, starting re"
 dex,We previously deployed a DEX connected to Cryto : https://defi.cryto.exchange but it doesn't supply nodes and analytical tools. Can you provide it? It's currently supporting both swap and liquidity features as the main points of view. ,We need to check your contracts' code and if it is a uniswapv2-like we can provide it. 
 dex,"And furthermore, it would be great if we can pay the retainers in Cryto native asset: https://nomics.com/assets/cryto3-cryto","No, we accept only ETH, BNB, USDT, BUSD, and USDC. "
@@ -296,8 +296,8 @@ lottery,Can I run multiple lotto’s at the same time? One for each $token ?,"Ye
 lottery,Any additional security setting or plugins recommend?,"You can follow basic security recommendations for WordPress, just google it. "
 lottery,I visited your discord and was concerned to read about risks of users loosing their crypto - is this safe??,"Yes, we have fixed the callback issue in the latest version of the lottery plugin... You can download it only on https://dash.onout.org/ "
 lottery,is it possible to hold a lottery for bnb but people buy lottery tickets with Rainbow shiba?,"No, the same token should be in a bank and reward. "
-lottery,"I'm not sure how to load a prize in the lottery, how can I deposit a prize into the lottery for people to purchase tickets for?",Follow the WP admin panel &gt; Lottery &gt; All Lotteries &gt; Choose the one you need &gt; click Re
-lottery,is there anyway to check which version of the lottery I have?,"Follow the WP admin panel &gt; Plugins &gt; Installed Plugins &gt; find Lottery Factory, the latest version of the lottery plugin is 1.0.37. "
+lottery,"I'm not sure how to load a prize in the lottery, how can I deposit a prize into the lottery for people to purchase tickets for?",Follow the WP admin panel > Lottery > All Lotteries > Choose the one you need > click Re
+lottery,is there anyway to check which version of the lottery I have?,"Follow the WP admin panel > Plugins > Installed Plugins > find Lottery Factory, the latest version of the lottery plugin is 1.0.37. "
 lottery,and has this been audited to assure customers of its safety?,"You can check the technical details of this issue here - https://tools.onout.org/doc/incidents/lottery2022.md We do not use external audits (AND PLACE THIS INFORMATION ON EVERY PAGE at dash.onout.org). In the description of the product, you can't see any guarantees users funds will be safe. "
 lottery,is it possible to decompress the lottery plugin for add the cronos network?,"Yes, we can add it, but you will also need to send some native coins of the EVM chain to deploy some re"
 lottery,As I understand it is a form of Wordpress plugging - what crucial information is being held on the serve (or none)?,"The main application use ReactJS. It is a full fork of the pancake lottery app. We use WordPress only for creating, editing, storing, and managing Farms information. "
@@ -347,13 +347,13 @@ wallet,If I set up with 1000 BEP20 coins liquidity and if any users try to buy 1
 wallet,If I set up with 1000 BEP20 coins liquidity and if any users try to buy 1500 coins what will happen?,"I double-checked this, the application will not ask to add more li"
 wallet,Incorrect rates on some pancakeswap and polygon tokens.,"As I can see it looks fine, maybe there is no li"
 wallet,Avax tokens don't show when added via admin panel,"We have opened the issue, and asap will fix it. "
-wallet,how do I enable the mandatory authorization?,"To enable it to follow WP admin panel &gt; MCWallet &gt; Options &gt; checked Users must be registered and logged for access wallet. and Save private information (keys, etc..) in user's profile (Custodial mode) "
+wallet,how do I enable the mandatory authorization?,"To enable it to follow WP admin panel > MCWallet > Options > checked Users must be registered and logged for access wallet. and Save private information (keys, etc..) in user's profile (Custodial mode) "
 wallet,"Please, I activated floating support on my site but seems not displaying on the wallet page why?",What is Floating support? Can you clarify it? 
 wallet,Is the plugin free forever,Also can you clarify this 
 wallet,Does that region IP address banned in Aggregator ?,"I don't know, but it probably is... Because I have checked it on my side and everything works fine... "
 wallet,"Is it possible to add BCH, LTC and dash to the bitcoin wallet ?",At the moment we don't have a free developer to add not an EVM-like chain... 
 wallet,Also how to get the upgrade version ? I bought the script on Codecanyon . Support is expired,"If you buy it on Codecanyon, then you have a license key, just add it to the plugin. We update the plugin on Codecanyon in a timely manner, but with a license key, you will be able to receive it permanently as something changes in the plugin. "
-wallet,So can BSC chains be supported?,Go to the WP admin page &gt; MCWallet &gt; Options &gt; Disable BNB wallet option should be turned off. 
+wallet,So can BSC chains be supported?,Go to the WP admin page > MCWallet > Options > Disable BNB wallet option should be turned off. 
 wallet,Cross network transactions are available within the MCW wallet application.,It is a depricated function in MCWallet. There is only BTC-to-(ERC20/ETH) and vice versa atomic swaps. 
 wallet, Is the plugin can only accommodate erc20?,"Yes, this plugin can only accommodate erc20-like tokens. "
 wallet,Can I add my new custom bep20 token?,"Sure, bep20 is erc20 in the BCS network. "
@@ -367,7 +367,7 @@ wallet,I need more information and guide on how to materialise my requirements.,
 wallet,"if I do my token Liquidity Pair with BUSD in your platform wallet system does my token and token price will Only available in your platform? Or it will also available in metamask, trust wallet, etc?",The app uses the PancakeSwap contracts to create li
 wallet,"If I do my token Liquidity Pool at PanCakeSwap and set my token price, does your platform will fetch my token and price from pancakeswap?","No, your users can see the dynamic token price only using your pair tokens (YOURTOKEN/BUSD) in the "
 wallet,"If your system fetch my token and price from pancakeswap, no need to set my token price at your platform?","It is not working on the wallet page, because the price depends on the amount of tokens you want to swap and etc... "
-wallet,how can i disable the custodial mode,MCWallet &gt; Options &gt; And turn off the Users must be registered and logged for access wallet. field. 
+wallet,how can i disable the custodial mode,MCWallet > Options > And turn off the Users must be registered and logged for access wallet. field. 
 wallet,are there any shortcodes for the plugin,No 
 wallet,What is the best thing to do so that I can sell my bep20 token to users in App?,"You can use swaps, but it is not selling it is a swap (the price can be different)... "
 wallet,Do I paste https://buy.ramp.network/ with quotation marks? And do I retain the parameters previously used for itez? ,"No, you need to paste it without "
@@ -422,4 +422,3 @@ general,q: what chain is used to exchange polygon tokens on the product a: used 
 general,q: it support MetaMask and Trust Wallet in a mobile environment? What other wallets are supported? a: Yes, support, also support WalletConnect v2 (Last version on https://dash.onout.org/) q: Is it possible to fix the APY a: No, but we are can develop an application for your specific tasks
 
 END DATABASE
-```
