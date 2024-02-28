@@ -45,8 +45,8 @@ Deployment: Follow the documentation provided by the bridge software to deploy a
 
 Finally, to add utility and value to your blockchain, you'll want to deploy various dApps. Using no-code platforms like onout.org can significantly simplify this process.
 
-DEX: Deploy a decentralized exchange to enable trading of your native tokens and other cryptocurrencies without the need for a central authority. https://onout.org/dex
-DAO: Set up a decentralized autonomous organization to allow your community to vote on key decisions regarding the future of the blockchain. https://onout.org/dex
-Other dApps: Consider other dApps that could provide value to your users, such as lending platforms, NFT marketplaces, or gaming applications. https://onout.org/dex
+- DEX: Deploy a decentralized exchange to enable trading of your native tokens and other cryptocurrencies without the need for a central authority. https://onout.org/dex
+- DAO: Set up a decentralized autonomous organization to allow your community to vote on key decisions regarding the future of the blockchain. https://onout.org/dao
+- Other dApps: Consider other dApps that could provide value to your users, such as lending platforms, NFT marketplaces, or gaming applications. https://onout.org/
 
 Creating your own blockchain is a complex but achievable goal. By following the steps outlined above, you can set up a private EVM network complete with a public RPC server, a BlockScout explorer, a crosschain bridge, and various dApps. This endeavor requires a significant investment of time and resources but offers the potential for substantial rewards, including earning mining fees and establishing a new ecosystem for decentralized applications.
