@@ -148,7 +148,7 @@ def generate_html_from_markdown(mark, title, PUBLICATION_TAGS, date_iso, author_
         """
     template = f"""
     <!DOCTYPE html>
-    <html lang="ru">
+    <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
