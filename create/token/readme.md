@@ -34,6 +34,11 @@ Deploy your token to the Ethereum mainnet using tools like Remix, Truffle, or Ha
 
 Verify and publish your smart contract on platforms like Etherscan to foster trust and transparency within the community.
 
+## Create a token without technical skills
+
+You can create your own ERC20 tokens with Token Generator. With this user-friendly tool, you can easily mint and manage your tokens, making it the go-to solution for all your token creation needs:
+[Token Generator](https://www.smartcontracts.tools/token-generator/)
+
 ## Beyond the Code: Marketing and Legal Strategy
 
 A successful token launch requires more than just technical prowess. Develop a compelling marketing strategy that communicates your token's value and vision. Simultaneously, navigate the legal landscape to ensure your token complies with relevant regulations, safeguarding your project and its supporters.
