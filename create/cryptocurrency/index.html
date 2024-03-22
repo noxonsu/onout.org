@@ -1,194 +1,322 @@
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:type" content="article" />
-        <meta name="keywords" content="create your own cryptocurrency">
-        <meta name="description" content="How to create Your Own Cryptocurrency">
-        <title>How to create Your Own Cryptocurrency</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tachyons/css/tachyons.min.css">
-        <style>
-    .toc{overflow-y:auto}.toc>.toc-list{overflow:hidden;position:relative}.toc>.toc-list li{list-style:none}.js-toc{overflow-y:hidden}.toc-list{margin:0;padding-left:10px}a.toc-link{color:currentColor;height:100%}.is-collapsible{max-height:1000px;overflow:hidden;transition:all 300ms ease-in-out}.is-collapsed{max-height:0}.is-position-fixed{position:fixed !important;top:0}.toc-link::before{background-color:#eee;content:" ";display:inline-block;height:inherit;left:0;margin-top:-1px;position:absolute;width:2px}.is-active-link::before{background-color:#54bc4b}/*# sourceMappingURL=tocbot.css.map */
-    /* Custom styles for layout */
-    body{
-        font-size: 1.1rem;
-        color: #000;
-    }
-    .layout {
-        display: flex;
-        justify-content: center;            
-    }
-    .toc-content {            
-        position: relative;
-    }
-    .sticky{
-        position: sticky;
-        top: 1rem;
-    }
-    .toc-list{            
-        list-style: none;
-        margin: 0;                                                                        
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="article" />
+    <meta name="keywords" content="create your own cryptocurrency" />
+    <meta name="description" content="How to create Your Own Cryptocurrency" />
+    <title>How to create Your Own Cryptocurrency</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tachyons/css/tachyons.min.css"
+    />
+    <style>
+      .toc {
+        overflow-y: auto;
+      }
+      .toc > .toc-list {
         overflow: hidden;
         position: relative;
-    }
+      }
+      .toc > .toc-list li {
+        list-style: none;
+      }
+      .js-toc {
+        overflow-y: hidden;
+      }
+      .toc-list {
+        margin: 0;
+        padding-left: 10px;
+      }
+      a.toc-link {
+        color: currentColor;
+        height: 100%;
+      }
+      .is-collapsible {
+        max-height: 1000px;
+        overflow: hidden;
+        transition: all 300ms ease-in-out;
+      }
+      .is-collapsed {
+        max-height: 0;
+      }
+      .is-position-fixed {
+        position: fixed !important;
+        top: 0;
+      }
+      .toc-link::before {
+        background-color: #eee;
+        content: " ";
+        display: inline-block;
+        height: inherit;
+        left: 0;
+        margin-top: -1px;
+        position: absolute;
+        width: 2px;
+      }
+      .is-active-link::before {
+        background-color: #54bc4b;
+      } /*# sourceMappingURL=tocbot.css.map */
+      /* Custom styles for layout */
+      body {
+        font-size: 1.1rem;
+        color: #000;
+      }
+      .layout {
+        display: flex;
+        justify-content: center;
+      }
+      .toc-content {
+        position: relative;
+      }
+      .sticky {
+        position: sticky;
+        top: 1rem;
+      }
+      .toc-list {
+        list-style: none;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+      }
 
-    .toc-list{
+      .toc-list {
         line-height: 1.4;
-    }
+      }
 
-    .toc-list .toc-list{
+      .toc-list .toc-list {
         position: static;
-    }
+      }
 
-    .toc>.toc-list{                    
+      .toc > .toc-list {
         position: static;
-    }
+      }
 
-    .toc>.toc-list li{
-        list-style: none;                    
-    }
+      .toc > .toc-list li {
+        list-style: none;
+      }
 
-    .sticky-panel{
+      .sticky-panel {
         position: sticky;
         bottom: 0;
         background-color: #fff;
         margin-left: -1rem;
         margin-right: -1rem;
-    }
+      }
 
-    .is-active-link::before {
+      .is-active-link::before {
         background-color: #00449e;
-    }
+      }
 
-    .content {
+      .content {
         /*max-width: 100%; /* Adjust based on your content's optimal reading width */
         flex: 0 0 75%;
         max-width: 75%;
-    }
+      }
 
-    aside{
+      aside {
         flex: 0 0 25%;
         max-width: 25%;
-    }
+      }
 
-    .content{
+      .content {
         flex: 1;
-    }
+      }
 
-    aside + .content{
+      aside + .content {
         padding-left: 2rem;
-    }
+      }
 
-    @media screen and (max-width: 50em){
-        .sticky-panel .layout{
-            display: block;
+      @media screen and (max-width: 50em) {
+        .sticky-panel .layout {
+          display: block;
         }
-    }
+      }
 
-    @media screen and (max-width: 30em) {
-        aside{
-            display: none;
+      @media screen and (max-width: 30em) {
+        aside {
+          display: none;
         }
-        .content {                
-            width: 100%;
-            margin-left: 0;
+        .content {
+          width: 100%;
+          margin-left: 0;
         }
-        .layout{
-            padding-left: 0;
-            padding-right: 0;
+        .layout {
+          padding-left: 0;
+          padding-right: 0;
         }
-        .content {        
-            flex: 0 0 100%;
-            max-width: 100%;
+        .content {
+          flex: 0 0 100%;
+          max-width: 100%;
         }
-        aside + .content{
-            padding-left: 0;
+        aside + .content {
+          padding-left: 0;
         }
-    }
-        </style>
-    </head>
-    <body class="w-100 sans-serif pa3 pb0">
-        <header class="tc pv2 pv4-l">
-            <h1 class="f2 lh-title mt0 mb4">How to create Your Own Cryptocurrency</h1>
-            <time class="f6 ttu tracked db mb4" datetime="2024-03-01T12:17:41.564086">2024-03-01T12:17:41.564086</time>
-            <address class="f6">
-                <a href="https://onout.org/" class="link dim black b">Aleks Noxon</a>
-                Blochcain developer and onout.org founder
-            </address>
-        </header>
-        <div class="layout mw8 center pa0">
-            <aside class="aside">
-                <div class="sticky">                          
-                    <nav class="toc-content mb3">
-                        <!-- tocbot will inject TOC here -->                
-                    </nav>
-                    <!-- <a href="#"><img src="https://placehold.co/200x200" alt=""></a> -->
-                </div>      
-            </aside>
-                                    
-            <!-- Main Content -->
-            <div class="content">
-                <article class="mb4">
-                    <h1>Creating a Cryptocurrency: A Comprehensive Guide</h1>
-<p>Creating a cryptocurrency is an intricate process that extends far beyond the simple dichotomy of choosing between developing an ERC token or creating a proprietary blockchain. It encompasses a holistic strategy that covers various critical areas such as technical development, legal considerations, security measures, marketing strategies, and community building. This article aims to guide you through the multifaceted approach needed to not only launch a cryptocurrency but also ensure its relevance, security, and value to its users in the competitive digital currency landscape.</p>
-<h2>Adapting Existing Digital Ecosystems</h2>
-<p>The foundation of creating a successful cryptocurrency involves adapting existing digital ecosystems. This means leveraging current technologies and platforms to build your cryptocurrency, making it more accessible and easier for users to adopt. For an in-depth guide on creating the technical backbone of a cryptocurrency, such as a blockchain, visit <a href="https://onout.org/create/blockchain">Creating a Blockchain</a>.</p>
-<h2>Modifying with a Tiered System for Incentives</h2>
-<p>Introducing a tiered system for incentives within your cryptocurrency can significantly enhance user engagement and investment. This involves rewarding users differently based on their level of participation or investment in the ecosystem, thereby encouraging more significant interaction and investment.</p>
-<h2>Magnifying Utility Across Services</h2>
-<p>The utility of a cryptocurrency is paramount for its success. This means ensuring that your cryptocurrency can be used across a wide range of services and platforms, thereby magnifying its utility and appeal to a broader audience.</p>
-<h2>Simplifying for Accessibility</h2>
-<p>Accessibility is key to the widespread adoption of any cryptocurrency. Simplifying the user experience and making it easy for people of all technical backgrounds to use your cryptocurrency is essential. This includes intuitive wallets, clear transaction processes, and accessible educational resources.</p>
-<h2>Substituting Consensus Mechanisms for Efficiency</h2>
-<p>The consensus mechanism is at the heart of any cryptocurrency, dictating how transactions are verified and added to the blockchain. Substituting traditional consensus mechanisms with more efficient ones can lead to faster transaction times and lower costs, making your cryptocurrency more competitive.</p>
-<h2>Rearranging Token Distribution</h2>
-<p>Carefully planning and rearranging token distribution can help prevent market manipulation and ensure a fair and equitable ecosystem for all users. This may involve setting aside tokens for community rewards, development funds, and strategic partnerships.</p>
-<h2>Reversing the Economic Model to a Deflationary One</h2>
-<p>Adopting a deflationary economic model, where the supply of tokens decreases over time, can create scarcity and potentially increase the value of your cryptocurrency. This involves mechanisms such as token burning, where a portion of the tokens is permanently removed from circulation.</p>
-<h2>Combining with a Loyalty Program</h2>
-<p>Integrating your cryptocurrency with a loyalty program can foster a strong and vibrant community. This involves rewarding users for their loyalty and participation in the ecosystem, which can lead to increased user retention and engagement.</p>
-<p>For those interested in creating their own tokens within an existing blockchain, <a href="https://onout.org/create/token">Creating a Token</a> offers a detailed guide on the process, including technical steps and strategic considerations.</p>
-<h2>Conclusion</h2>
-<p>Creating a cryptocurrency requires a comprehensive and multifaceted approach that goes beyond technical development. By addressing technical, legal, security, marketing, and community aspects and continuously adapting and innovating, your cryptocurrency project can achieve technical viability, ensure a vibrant community, and sustain growth in the highly competitive digital currency landscape.</p>
-                </article>
-                <!-- Additional articles or content here -->
-            </div>
-        
+      }
+    </style>
+  </head>
+  <body class="w-100 sans-serif pa3 pb0">
+    <header class="tc pv2 pv4-l">
+      <h1 class="f2 lh-title mt0 mb4">
+        Creating a cryptocurrency: a comprehensive guide
+      </h1>
+      <time class="f6 ttu tracked db mb4" datetime="2024-03-01T12:17:41.564086"
+        >2024-03-01T12:17:41.564086</time
+      >
+      <address class="f6">
+        <a href="https://onout.org/" class="link dim black b">Aleks Noxon</a>
+        Blochcain developer and onout.org founder
+      </address>
+    </header>
+    <div class="layout mw8 center pa0">
+      <aside class="aside">
+        <div class="sticky">
+          <nav class="toc-content mb3">
+            <!-- tocbot will inject TOC here -->
+          </nav>
+          <!-- <a href="#"><img src="https://placehold.co/200x200" alt=""></a> -->
         </div>
+      </aside>
 
-        <div style='
-        display: block;
-        ' class="sticky-panel shadow-2 pa2">
-            <div class="layout mw8 center pa0">
-                <div class="w-100 w-100-ns w-100-m flex items-center">
-                    <div class="f6 f5-m f4-l lh-copy mb2 mb0-l">onout.org no-code tools to create Cryptocurrency things</div>
-                </div>
-                <div class="w-100 w-100-ns w-100-m w-25-l">
-                    <a class="f6 link dim br2 ph3 pv2 dib white bg-dark-blue" href="#0">Open catalog</a>
-                    <a class="f6 link dim br2 ph3 pv2 dib black" onclick="closePanel()" href="#0">No Thanks</a>
-                </div>
-            </div>
+      <!-- Main Content -->
+      <div class="content">
+        <article class="mb4">
+          <h1>Creating a Cryptocurrency: A Comprehensive Guide</h1>
+          <p>
+            Creating a cryptocurrency is an intricate process that extends far
+            beyond the simple dichotomy of choosing between developing an ERC
+            token or creating a proprietary blockchain. It encompasses a
+            holistic strategy that covers various critical areas such as
+            technical development, legal considerations, security measures,
+            marketing strategies, and community building. This article aims to
+            guide you through the multifaceted approach needed to not only
+            launch a cryptocurrency but also ensure its relevance, security, and
+            value to its users in the competitive digital currency landscape.
+          </p>
+          <h2>Adapting Existing Digital Ecosystems</h2>
+          <p>
+            The foundation of creating a successful cryptocurrency involves
+            adapting existing digital ecosystems. This means leveraging current
+            technologies and platforms to build your cryptocurrency, making it
+            more accessible and easier for users to adopt. For an in-depth guide
+            on creating the technical backbone of a cryptocurrency, such as a
+            blockchain, visit
+            <a href="https://onout.org/create/blockchain"
+              >Creating a Blockchain</a
+            >.
+          </p>
+          <h2>Modifying with a Tiered System for Incentives</h2>
+          <p>
+            Introducing a tiered system for incentives within your
+            cryptocurrency can significantly enhance user engagement and
+            investment. This involves rewarding users differently based on their
+            level of participation or investment in the ecosystem, thereby
+            encouraging more significant interaction and investment.
+          </p>
+          <h2>Magnifying Utility Across Services</h2>
+          <p>
+            The utility of a cryptocurrency is paramount for its success. This
+            means ensuring that your cryptocurrency can be used across a wide
+            range of services and platforms, thereby magnifying its utility and
+            appeal to a broader audience.
+          </p>
+          <h2>Simplifying for Accessibility</h2>
+          <p>
+            Accessibility is key to the widespread adoption of any
+            cryptocurrency. Simplifying the user experience and making it easy
+            for people of all technical backgrounds to use your cryptocurrency
+            is essential. This includes intuitive wallets, clear transaction
+            processes, and accessible educational resources.
+          </p>
+          <h2>Substituting Consensus Mechanisms for Efficiency</h2>
+          <p>
+            The consensus mechanism is at the heart of any cryptocurrency,
+            dictating how transactions are verified and added to the blockchain.
+            Substituting traditional consensus mechanisms with more efficient
+            ones can lead to faster transaction times and lower costs, making
+            your cryptocurrency more competitive.
+          </p>
+          <h2>Rearranging Token Distribution</h2>
+          <p>
+            Carefully planning and rearranging token distribution can help
+            prevent market manipulation and ensure a fair and equitable
+            ecosystem for all users. This may involve setting aside tokens for
+            community rewards, development funds, and strategic partnerships.
+          </p>
+          <h2>Reversing the Economic Model to a Deflationary One</h2>
+          <p>
+            Adopting a deflationary economic model, where the supply of tokens
+            decreases over time, can create scarcity and potentially increase
+            the value of your cryptocurrency. This involves mechanisms such as
+            token burning, where a portion of the tokens is permanently removed
+            from circulation.
+          </p>
+          <h2>Combining with a Loyalty Program</h2>
+          <p>
+            Integrating your cryptocurrency with a loyalty program can foster a
+            strong and vibrant community. This involves rewarding users for
+            their loyalty and participation in the ecosystem, which can lead to
+            increased user retention and engagement.
+          </p>
+          <p>
+            For those interested in creating their own tokens within an existing
+            blockchain,
+            <a href="https://onout.org/create/token">Creating a Token</a> offers
+            a detailed guide on the process, including technical steps and
+            strategic considerations.
+          </p>
+          <h2>Conclusion</h2>
+          <p>
+            Creating a cryptocurrency requires a comprehensive and multifaceted
+            approach that goes beyond technical development. By addressing
+            technical, legal, security, marketing, and community aspects and
+            continuously adapting and innovating, your cryptocurrency project
+            can achieve technical viability, ensure a vibrant community, and
+            sustain growth in the highly competitive digital currency landscape.
+          </p>
+        </article>
+        <!-- Additional articles or content here -->
+      </div>
+    </div>
+
+    <div style="display: block" class="sticky-panel shadow-2 pa2">
+      <div class="layout mw8 center pa0">
+        <div class="w-100 w-100-ns w-100-m flex items-center">
+          <div class="f6 f5-m f4-l lh-copy mb2 mb0-l">
+            onout.org no-code tools to create Cryptocurrency things
+          </div>
         </div>
+        <div class="w-100 w-100-ns w-100-m w-25-l">
+          <a class="f6 link dim br2 ph3 pv2 dib white bg-dark-blue" href="#0"
+            >Open catalog</a
+          >
+          <a
+            class="f6 link dim br2 ph3 pv2 dib black"
+            onclick="closePanel()"
+            href="#0"
+            >No Thanks</a
+          >
+        </div>
+      </div>
+    </div>
 
-        <!-- Include tocbot script -->
-        <script src="https://cdn.jsdelivr.net/npm/tocbot/dist/tocbot.min.js"></script>
-        <script>
-          
-    // Initialize tocbot
-    tocbot.init({
-        tocSelector: '.toc-content',
-        contentSelector: '.content',
-        headingSelector: 'h1, h2, h3',                    
+    <!-- Include tocbot script -->
+    <script src="https://cdn.jsdelivr.net/npm/tocbot/dist/tocbot.min.js"></script>
+    <script>
+      // Initialize tocbot
+      tocbot.init({
+        tocSelector: ".toc-content",
+        contentSelector: ".content",
+        headingSelector: "h1, h2, h3",
         collapseDepth: 1,
-        hasInnerContainers: true
-    });
-    function closePanel() {              
-        var button = event.target;              
-        var parent = button.closest('.sticky-panel');
-        parent.style.display = 'none';
-    }
-        </script>
-    </body>
-    </html>
+        hasInnerContainers: true,
+      });
+      function closePanel() {
+        var button = event.target;
+        var parent = button.closest(".sticky-panel");
+        parent.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
