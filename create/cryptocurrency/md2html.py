@@ -156,7 +156,6 @@ def generate_html_from_markdown(mark, title, PUBLICATION_TAGS, date_iso, author_
         <meta name="keywords" content="{PUBLICATION_TAGS}">
         <meta name="description" content="{title}">
         <title>{title}</title>
-       
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tachyons/css/tachyons.min.css">
         <style>
            {css}
@@ -232,7 +231,7 @@ def main():
 
     author_link = os.environ.get('AUTHOR_LINK','#')
     author_name = os.environ.get('AUTHOR_NAME','Anonymous')
-    about_author = os.environ.get('ABOUT_AUTHOR','Autor not specified')
+    about_author = os.environ.get('ABOUT_AUTHOR','Author not specified')
     
     INDUSTRY_KEYWORD = os.environ.get('INDUSTRY_KEYWORD')
 
@@ -264,5 +263,6 @@ def main():
     file_path = "index.html"
     save_html_to_file(html, file_path)
     print(f"HTML saved to {file_path}")
+
 if __name__ == "__main__":
     main()
