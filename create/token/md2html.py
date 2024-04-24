@@ -1,7 +1,31 @@
 import markdown
 import os
 import datetime
+import re
 from dotenv import load_dotenv
+
+def add_unique_ids_to_headings(html):
+    # HTML headings pattern
+    pattern = re.compile(r'(<h([1-6])>(.*?)<\/h[1-6]>)')
+    # To keep track of how many times each heading content has appeared
+    heading_count = {}
+
+    def replacer(match):
+        full_tag = match.group(1) # The whole heading tag, e.g., <h1>Example</h1>
+        level = match.group(2)    # The heading level, e.g., '1' for <h1>
+        content = match.group(3)  # The text inside the heading, e.g., 'Example'
+
+        # Create a simple ID from the heading content
+        simplified_content = re.sub(r'\W+', '', content).lower()
+        if simplified_content in heading_count:
+            heading_count[simplified_content] += 1
+        else:
+            heading_count[simplified_content] = 1
+
+        unique_id = f'{simplified_content}{heading_count[simplified_content]}'
+        return f'<h{level} id="{unique_id}">{content}</h{level}>'
+
+    return pattern.sub(replacer, html)
 
 def generate_html_from_markdown(mark, title, description, PUBLICATION_TAGS, date_iso, author_name, author_link, about_author, CallToActionTitle, CallToActionButton, CallToActionNo,meta_description = ''):
     # markdown to html with tables
@@ -10,15 +34,16 @@ def generate_html_from_markdown(mark, title, description, PUBLICATION_TAGS, date
     mark = mark.replace('\\"', '"')
     mark = mark.replace('\\n', '\n')
     mark = mark.replace('\\', '')
-    
+
     html = markdown.markdown(mark, extensions=['markdown.extensions.tables', 'markdown.extensions.extra', 'markdown.extensions.nl2br', 'markdown.extensions.sane_lists'])
     #add class = 'pv3 pr3 bb b--black-20' to all td and th 
     html = html.replace('<td>', '<td class = "pv3 pr3 bb b--black-20">')
     html = html.replace('<th>', '<th class = "fw6 bb b--black-20 tl pb3 pr3 bg-white">')
     #li .mb1
     html = html.replace('<li>', '<li class = "mb1">')
-    
     html = html.replace("- ", "<br>- ")
+    html = add_unique_ids_to_headings(html)
+
     jscript = """
     // Initialize tocbot
     tocbot.init({
