@@ -3,7 +3,7 @@ import os
 import datetime
 from dotenv import load_dotenv
 
-def generate_html_from_markdown(mark, title, PUBLICATION_TAGS, date_iso, author_name, author_link, about_author, CallToActionTitle, CallToActionButton, CallToActionNo,meta_description = ''):
+def generate_html_from_markdown(mark, title, description, PUBLICATION_TAGS, date_iso, author_name, author_link, about_author, CallToActionTitle, CallToActionButton, CallToActionNo,meta_description = ''):
     # markdown to html with tables
     # markdown extantions for \n to <br>
     # unescape \" to " and other \ in mark
@@ -154,9 +154,8 @@ def generate_html_from_markdown(mark, title, PUBLICATION_TAGS, date_iso, author_
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:type" content="article" />
         <meta name="keywords" content="{PUBLICATION_TAGS}">
-        <meta name="description" content="{title}">
+        <meta name="description" content="{description}">
         <title>{title}</title>
-       
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tachyons/css/tachyons.min.css">
         <style>
            {css}
@@ -226,7 +225,10 @@ def main():
     load_dotenv()
 
     html_title = os.environ.get('PUBLICATION_TITLE')
+    html_description = os.environ.get('PUBLICATION_DESCRIPTION')
     print(html_title)
+    print(html_description)
+
     PUBLICATION_TAGS = os.environ.get('PUBLICATION_TAGS')
     markdown_content = os.environ.get('PUBLICATION_TEXT')
 
@@ -251,6 +253,7 @@ def main():
     html = generate_html_from_markdown(
         markdown_content,
         html_title,
+        html_description,
         PUBLICATION_TAGS,
         date_iso,
         author_name,
