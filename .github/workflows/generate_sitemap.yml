@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout the repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0 
 
@@ -28,7 +28,7 @@ jobs:
         echo "excluded-count = ${{ steps.sitemap.outputs.excluded-count }}"
 
     - name: Upload sitemap artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: sitemap
         path: ${{ steps.sitemap.outputs.sitemap-path }}
