@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://onout.org/</loc>
-<lastmod>2024-07-30T12:19:59+03:00</lastmod>
+<lastmod>2025-05-29T09:44:16+00:00</lastmod>
 </url>
 <url>
 <loc>https://onout.org/8e2eb842-0344-4db1-92ce-d51cbd3c708b.html</loc>
@@ -102,7 +102,11 @@
 </url>
 <url>
 <loc>https://onout.org/KYC/API.html</loc>
-<lastmod>2023-10-26T12:15:51+03:00</lastmod>
+<lastmod>2025-05-29T09:44:16+00:00</lastmod>
+</url>
+<url>
+<loc>https://onout.org/KYC/WorldID-integration.html</loc>
+<lastmod>2025-05-29T09:44:16+00:00</lastmod>
 </url>
 <url>
 <loc>https://onout.org/KYC/developer.html</loc>
@@ -326,7 +330,7 @@
 </url>
 <url>
 <loc>https://onout.org/lottery/</loc>
-<lastmod>2024-06-06T12:39:16+00:00</lastmod>
+<lastmod>2024-09-24T15:39:13+00:00</lastmod>
 </url>
 <url>
 <loc>https://onout.org/lottery/404.html</loc>
