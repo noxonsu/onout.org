@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Figma to Production - OnOut.org</title>
+    <title>Figma to React - OnOut.org</title>
     <meta name="description" content="Professional Figma to production with backend integration (Python, WordPress and other platforms).">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -148,11 +148,9 @@
         <div class="container">
             <a class="navbar-brand fw-bold text-white" href="index.html">OnOut.org</a>
             <div class="d-flex gap-3">
-                <a href="https://github.com/noxonsu/onout.org/blob/main/docs/contributing.md" 
-                   class="btn btn-modern btn-sm" target="_blank">For developers</a>
-                <a href="react.html" class="btn btn-modern btn-sm">Figma to React</a>
-                <a href="https://dash.onout.org/" 
-                   class="btn btn-primary-modern btn-sm" target="_blank">Get started</a>
+                <a href="index.html" class="btn btn-modern btn-sm">Figma to Production</a>
+                <a href="#figma_url_main" 
+                   class="btn btn-primary-modern btn-sm">Get started</a>
             </div>
         </div>
     </nav>
@@ -162,23 +160,35 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h1 class="display-4 fw-bold mb-4">Figma to Production</h1>
+                    <h1 class="display-4 fw-bold mb-4">Figma to React</h1>
                     <p class="lead mb-5 opacity-90">Professional development and backend integration</p>
                     
                     <!-- Evaluation Form -->
                     <div class="glass-card p-4 p-md-5 mx-auto" style="max-width: 500px;">
                         <h3 class="h5 fw-semibold mb-3">Evaluate your Figma design</h3>
-                        <p class="text-white-50 mb-4 small">Enter the link to your Figma design and we will contact you to evaluate it.</p>
+                        <p class="text-white-50 mb-4 small">Enter the link to your Figma design or upload an image of your mockup. We will contact you to evaluate it.</p>
                         
-                        <form action="https://t.me/sashanoxon/?start=Please calculate my figma design https://figma..." method="POST">
-                            <div class="mb-4">
+                        <form id="figmaEvaluationForm" method="POST" enctype="multipart/form-data"> {/* action removed, will be handled by JS */}
+                            <div class="mb-3">
                                 <label for="figma_url_main" class="form-label fw-medium">Figma design link</label>
                                 <input type="url" 
                                        id="figma_url_main" 
                                        name="figma_url" 
                                        class="form-control form-control-modern" 
-                                       placeholder="https://www.figma.com/file/..." 
-                                       required>
+                                       placeholder="https://www.figma.com/file/...">
+                            </div>
+
+                            <div class="text-center my-3">
+                                <span class="text-white-50 small">OR</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="figma_image_upload" class="form-label fw-medium">Upload design image</label>
+                                <input type="file" 
+                                       id="figma_image_upload" 
+                                       name="figma_image" 
+                                       class="form-control form-control-modern"
+                                       accept="image/*">
                             </div>
                             <button type="submit" class="btn btn-primary-modern w-100">
                                 Evaluate design
@@ -279,5 +289,63 @@
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('figmaEvaluationForm');
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    const figmaUrlInput = document.getElementById('figma_url_main');
+                    const figmaImageInput = document.getElementById('figma_image_upload');
+                    
+                    const figmaUrl = figmaUrlInput ? figmaUrlInput.value.trim() : '';
+                    const figmaImageFile = figmaImageInput ? figmaImageInput.files[0] : null;
+
+                    if (!figmaUrl && !figmaImageFile) {
+                        alert('Please provide either a Figma design link or upload an image of your mockup.');
+                        return; 
+                    }
+
+                    let mailtoLink = 'mailto:support@onout.org';
+                    const subject = 'Figma to React Design Evaluation';
+                    let body = 'Hello,\n\nPlease evaluate the following Figma design:\n\n';
+
+                    if (figmaUrl) {
+                        body += `Figma Link: ${figmaUrl}\n\n`;
+                    }
+
+                    if (figmaImageFile) {
+                        body += `I have also selected an image ("${figmaImageFile.name}") for evaluation. Please let me know if I need to send it as an attachment if it's not automatically included by my email client.\n\n`;
+                        alert('If you have selected an image, please ensure it is attached to the email when your mail client opens.');
+                    }
+                    
+                    body += 'Thank you.';
+
+                    mailtoLink += `?subject=${encodeURIComponent(subject)}`;
+                    mailtoLink += `&body=${encodeURIComponent(body)}`;
+
+                    window.location.href = mailtoLink;
+                });
+            }
+
+            // Smooth scroll for "Get started" button
+            const getStartedButton = document.querySelector('a.btn-primary-modern[href="#figma_url_main"]');
+            if (getStartedButton) {
+                getStartedButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetElement = document.getElementById('figma_url_main');
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        // Add a slight delay to ensure scrolling is done before focus
+                        setTimeout(() => {
+                            targetElement.focus();
+                        }, 300); // Adjust delay if needed
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
