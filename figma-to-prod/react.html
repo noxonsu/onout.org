@@ -309,19 +309,19 @@
                     }
 
                     let mailtoLink = 'mailto:support@onout.org';
-                    const subject = 'Figma to React Design Evaluation';
-                    let body = 'Hello,\n\nPlease evaluate the following Figma design:\n\n';
+                    const subject = 'Figma to React'; // Changed subject
+                    let body = 'Hello,\n\nI am requesting an evaluation for a Figma to React project.\n\n'; // Refined initial body text
 
                     if (figmaUrl) {
-                        body += `Figma Link: ${figmaUrl}\n\n`;
+                        body += `Figma Design Link: ${figmaUrl}\n`;
                     }
 
                     if (figmaImageFile) {
-                        body += `I have also selected an image ("${figmaImageFile.name}") for evaluation. Please let me know if I need to send it as an attachment if it's not automatically included by my email client.\n\n`;
+                        body += `Design Image: ${figmaImageFile.name} (selected for upload).\n`; // Refined image text
                         alert('If you have selected an image, please ensure it is attached to the email when your mail client opens.');
                     }
                     
-                    body += 'Thank you.';
+                    body += '\nPlease advise on the next steps.\n\nThank you.'; // Refined closing
 
                     mailtoLink += `?subject=${encodeURIComponent(subject)}`;
                     mailtoLink += `&body=${encodeURIComponent(body)}`;
