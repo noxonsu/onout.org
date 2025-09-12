@@ -84,6 +84,61 @@
         <span class="chip">AWS / GCP</span>
       </div>
       <p style="margin-top:6px;color:#BCC2CB">Timeline: 3–6 weeks (depends on scope). Complexity: medium‑high.</p>
+
+      <div class="headline">Fast discovery</div>
+      <ul class="features-grid">
+        <li>Stakeholder interviews, KPIs, short glossary</li>
+        <li>Domain map: sections/entities, user events and UI states</li>
+        <li>Integrations map: data owners, SLAs, responsibilities</li>
+      </ul>
+
+      <div class="headline">Practical build‑out</div>
+      <ul class="features-grid">
+        <li>Queued requests, media size limits</li>
+        <li>Avatar generation + automatic moderation</li>
+        <li>Quotas, logs/metrics, load management</li>
+      </ul>
+
+      <div class="headline">Architecture notes</div>
+      <ul class="features-grid">
+        <li>FAISS/embeddings vs BM25/SimHash for de‑duplication</li>
+        <li>VAD/streaming, diarization, punctuation restoration</li>
+        <li>Alerting with noise suppression and severity levels</li>
+        <li>Caching, queues, retries for robust processing</li>
+      </ul>
+
+      <div class="headline">Pitfalls</div>
+      <ul class="features-grid">
+        <li>False duplicates: cosine thresholds tuning</li>
+        <li>Domain drift — adapt LLM prompts and vocab</li>
+        <li>Anti‑bot/429/5xx — graceful offline with cache</li>
+      </ul>
+
+      <div class="headline">Quality & operations</div>
+      <ul class="features-grid">
+        <li>SLI/SLO: p95 latency, error budget, uptime</li>
+        <li>Tests: unit/contract/E2E, load; canary releases</li>
+        <li>Observability: structured logs, traces, metrics</li>
+        <li>CI/CD, migrations, rollbacks, health/readiness</li>
+      </ul>
+
+      <div class="headline">Security & data</div>
+      <ul class="features-grid">
+        <li>PII encryption at‑rest/in‑transit, key rotation</li>
+        <li>Roles & access, log masking, audit</li>
+        <li>Retention policies, TTL, regional compliance</li>
+      </ul>
+
+      <div class="headline">Market snapshot</div>
+      <ul class="features-grid">
+        <li>AI coaching TAM grows ~30% YoY, up to $15B by 2028</li>
+        <li>Automation cuts support costs by up to 40%</li>
+        <li>Interactive avatars deliver 3× better engagement vs classic chatbots</li>
+      </ul>
+
+      <div class="btn-box" style="margin-top:8px">
+        <a href="mailto:support@onout.org" class="btn">Discuss project</a>
+      </div>
     </div></div>
   </main>
 </body></html>
