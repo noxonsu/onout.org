@@ -6,6 +6,15 @@ https://onout.org/ChatGPT_API - alternative gitlab
 # devops
 если надо менять страницу по крипте, редактируй прямо index.html далее само задеплоится в cf pages
 
+Services block (English)
+- Services section is at the bottom of `index.html`.
+- Service pages live in `/services/` (e.g., `/services/ai-ml/`, `/services/blockchain-crypto/`).
+- To add/edit a service card, update the "Services" block in `index.html` and the corresponding page in `/services/`.
+
+Promo articles
+- Minimal promo pages live in `/promo/` (e.g., `/promo/contract-analysis.html`).
+- Add links to relevant promo pages under each service “Cases” list in `index.html` and on the service detail page.
+
 если аи и прочие новые:
 1. см гугл таблицы. 
 2. меняй там нужную строку (сделано, чтоб манагерам проще было).

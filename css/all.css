@@ -2003,6 +2003,76 @@ img {
   margin-bottom: 33px;
 }
 
+/* Buttons layout fixes for hero sections and promo pages */
+.hero .btn-box,
+.hero-btn-box .btn-row,
+.hero-btn-box .btn-box,
+.hero-btn-box,
+.promo .hero .btn-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hero .btn-box .btn,
+.hero-btn-box .btn,
+.promo .hero .btn-box .btn {
+  width: auto; /* override global 100% width */
+  min-width: 180px;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-radius: 10px;
+}
+/* Add small top spacing when buttons follow title */
+.hero .hero-btn-box { margin-top: 12px; }
+
+/* Promo pages typography and spacing */
+body.promo .headline {
+  margin-top: 44px;
+  margin-bottom: 14px;
+}
+body.promo .headline::before {
+  bottom: -6px;
+  background: rgba(255, 255, 255, 0.08);
+}
+body.promo p { margin-top: 0; }
+
+/* Modern features grid (2025-style) */
+.features-grid {
+  list-style: none;
+  margin: 8px 0 24px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.features-grid li {
+  background: #343A46;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 16px 16px 44px;
+  position: relative;
+  text-align: left;
+  font-size: 15px;
+  line-height: 22px;
+  color: #BCC2CB;
+}
+.features-grid li:before {
+  content: "✓";
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #8E34D9 0%, #72AAFF 100%);
+}
+
 .socially {
   display: -webkit-box;
   display: -ms-flexbox;
