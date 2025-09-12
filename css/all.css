@@ -2080,6 +2080,12 @@ body.promo p { margin-top: 0; }
   gap: 8px;
   margin: 6px 0 8px;
 }
+
+/* Service pages spacing */
+body.service .headline {
+  margin-top: 44px;
+  margin-bottom: 14px;
+}
 .chip {
   display: inline-block;
   padding: 6px 10px;
