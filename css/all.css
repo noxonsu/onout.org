@@ -2073,6 +2073,24 @@ body.promo p { margin-top: 0; }
   background: linear-gradient(135deg, #8E34D9 0%, #72AAFF 100%);
 }
 
+/* Chips for tech stacks */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 8px;
+}
+.chip {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #BCC2CB;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
 .socially {
   display: -webkit-box;
   display: -ms-flexbox;
