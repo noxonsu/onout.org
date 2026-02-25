@@ -18,8 +18,9 @@ This repository contains landing pages and demos for NoxonThemes products sold o
 - **Category**: WordPress / Widgets
 - **Description**: Multi-currency cryptocurrency wallet and exchange widgets for WordPress
 - **Repository**: Unknown (needs investigation)
-- **Demo**: Check `/wallet/` directory in this repo
-- **Live Preview**: https://codecanyon.net/item/bitcoin-ethereum-erc20-crypto-wallets-with-exchange/
+- **Landing Page**: https://onout.org/wallet/
+- **Live Demo**: https://wallet.wpmix.net/
+- **CodeCanyon**: https://codecanyon.net/item/bitcoin-ethereum-erc20-crypto-wallets-with-exchange/
 
 ### 2. FarmFactory - Staking & Yield Farming
 - **Price**: $899
@@ -28,38 +29,44 @@ This repository contains landing pages and demos for NoxonThemes products sold o
 - **Category**: WordPress / Forms
 - **Description**: Asset staking and yield farming on Ethereum, BSC, and Polygon
 - **Repository**: Possibly https://github.com/noxonsu/FarmFactory
-- **Demo**: Check `/farming/` directory in this repo
-- **Live Preview**: https://codecanyon.net/item/farmfactory-assets-staking-yield-farming/
+- **Landing Page**: https://onout.org/farming/
+- **Live Demo**: https://farm.wpmix.net/
+- **Video Demo**: https://www.youtube.com/watch?v=fU9RoMXWPjk
+- **Documentation**: https://support.onout.org/hc/1331700057/category/3
+- **CodeCanyon**: https://codecanyon.net/item/farmfactory-assets-staking-yield-farming/
 
 ### 3. DeFinance - Ethereum DeFi Plugin
 - **Price**: $935
 - **Sales**: 53 purchases (1.03/month)
 - **Revenue**: $27,132 + $256 support
 - **Category**: WordPress / Widgets
-- **Description**: Decentralized finance plugin for Ethereum integration on WordPress
+- **Description**: Decentralized finance plugin for Ethereum integration on WordPress (Uniswap-like DEX)
 - **Repository**: https://github.com/noxonsu/definance
-- **Demo**: Check `/dex/` directory in this repo
-- **Live Preview**: https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/
+- **Landing Page**: https://onout.org/dex/
+- **Live Demo**: https://dex.onout.org/
+- **CodeCanyon**: https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/
 
 ### 4. DAO Factory - WordPress Plugin
 - **Price**: $600
 - **Sales**: 15 purchases (0.37/month)
 - **Revenue**: $8,748 + $259 support
 - **Category**: WordPress / Widgets
-- **Description**: Governance and proposals plugin for cryptocurrency tokens
-- **Repository**: Unknown
-- **Demo**: Check `/dao/` directory in this repo (WordPress version)
-- **Live Preview**: https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin/
+- **Description**: Governance and proposals plugin for cryptocurrency tokens (Snapshot-like)
+- **Repository**: Unknown (needs investigation)
+- **Landing Page**: https://onout.org/dao/
+- **Live Demo**: https://farm.wpmix.net/daofactory/
+- **CodeCanyon**: https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin/
 
 ### 5. Dao Widget - JavaScript Version
 - **Price**: $699
 - **Sales**: 8 purchases (0.22/month)
 - **Revenue**: $4,138
 - **Category**: JavaScript / Miscellaneous
-- **Description**: Widget enabling governance and proposal functionality (standalone JS)
+- **Description**: Widget enabling governance and proposal functionality (standalone JS, non-WordPress)
 - **Repository**: https://github.com/noxonsu/DAOwidget
-- **Demo**: Check `/dao/` directory in this repo (JavaScript version)
-- **Live Preview**: https://codecanyon.net/item/dao-widget-governance-and-proposals/
+- **Landing Page**: https://onout.org/dao/
+- **Live Demo**: https://farm.wpmix.net/daofactory/ (same as DAO Factory)
+- **CodeCanyon**: https://codecanyon.net/item/dao-widget-governance-and-proposals/
 
 ### 6. IDOFactory - Crypto Launchpad
 - **Price**: $952
@@ -68,8 +75,35 @@ This repository contains landing pages and demos for NoxonThemes products sold o
 - **Category**: JavaScript
 - **Description**: Crypto launchpad platform for creating IDO pools with token lockers
 - **Repository**: https://github.com/noxonsu/launchpad
-- **Demo**: Check `/launchpad/` directory in this repo
-- **Live Preview**: https://codecanyon.net/item/idofactory-crypto-launchpad/
+- **Landing Page**: https://onout.org/launchpad/
+- **Live Demo**: https://launchpad.onout.org/
+- **CodeCanyon**: https://codecanyon.net/item/idofactory-crypto-launchpad/
+
+## Additional Products (Not on Main Portfolio)
+
+### 7. NFTsy - NFT Marketplace
+- **Category**: WordPress / Widgets
+- **Description**: NFT marketplace plugin for WordPress with lazy minting (Rarible SDK)
+- **Repository**: https://github.com/noxonsu/NFTsy
+- **Landing Page**: https://onout.org/nft/
+- **Live Demo**: https://nft.wpmix.net/
+- **Status**: Available but not prominently listed
+
+### 8. Lenda - Lending/Borrowing Platform
+- **Category**: DeFi / JavaScript
+- **Description**: Aave-like lending and borrowing platform for Ethereum
+- **Repository**: Unknown
+- **Landing Page**: https://onout.org/lenda/
+- **Live Demo**: https://borrowlend.onout.org/ or https://lenda.onout.xyz/
+- **Status**: Available but not prominently listed
+
+### 9. Crypto Lottery
+- **Category**: WordPress / JavaScript
+- **Description**: Cryptocurrency lottery system
+- **Repository**: https://github.com/noxonsu/LotteryFactory
+- **Landing Page**: https://onout.org/lottery/
+- **Live Demo**: ⚠️ Not working (links to #)
+- **Status**: Demo needs fixing
 
 ## Related GitHub Repositories
 
@@ -78,7 +112,7 @@ This repository contains landing pages and demos for NoxonThemes products sold o
 - **launchpad** - IDO launchpad platform for EVM chains
 - **definance** - DeFi plugin source
 - **DAOwidget** - DAO governance widget
-- **LotteryFactory** - Lottery system (possibly related product)
+- **LotteryFactory** - Lottery system
 - **NFTsy** - NFT marketplace plugin for WordPress
 - **SensoricaBackend** - Telegram ChatGPT bot on Cloudflare Workers
 
@@ -94,19 +128,30 @@ This repository contains landing pages and demos for NoxonThemes products sold o
 This repository (`/var/www/onout.org/`) contains static HTML landing pages for products:
 
 ```
-/dao/          - DAO Widget demo (JavaScript version)
-/wallet/       - Crypto Wallets demo
-/farming/      - FarmFactory demo
-/dex/          - DeFinance demo
-/lottery/      - Lottery demo
-/nft/          - NFTsy demo
-/lenda/        - Lenda demo
-/launchpad/    - IDOFactory demo
+/dao/          - DAO Widget/Factory → https://farm.wpmix.net/daofactory/
+/wallet/       - Crypto Wallets → https://wallet.wpmix.net/
+/farming/      - FarmFactory → https://farm.wpmix.net/
+/dex/          - DeFinance → https://dex.onout.org/
+/lottery/      - Lottery → ⚠️ Demo not working
+/nft/          - NFTsy → https://nft.wpmix.net/
+/lenda/        - Lenda → https://borrowlend.onout.org/
+/launchpad/    - IDOFactory → https://launchpad.onout.org/
 ```
 
 Each directory contains:
 - `index.html` - Landing page
 - `js/`, `css/`, `images/` - Assets
+- Links to live working demos on `*.wpmix.net` or `*.onout.org`
+
+### Working Demo Sites
+- **wallet.wpmix.net** - Crypto wallets demo
+- **farm.wpmix.net** - Staking/farming demo
+- **farm.wpmix.net/daofactory/** - DAO governance demo
+- **dex.onout.org** - DEX (Uniswap clone) demo
+- **nft.wpmix.net** - NFT marketplace demo
+- **launchpad.onout.org** - IDO launchpad demo
+- **borrowlend.onout.org** - Lending platform demo
+- **dash.onout.org** - Admin dashboard (mentioned in multiple pages)
 
 ## Known Issues
 
