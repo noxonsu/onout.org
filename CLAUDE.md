@@ -207,3 +207,88 @@ See `DEPLOYMENT.md` for full deployment guide.
 
 **Last Updated**: 2026-02-25
 **Maintained By**: NoxonThemes
+
+## Repository & Server Mapping
+
+### Confirmed Repositories
+
+| Product | GitHub | Demo | Server | Type |
+|---------|--------|------|--------|------|
+| FarmFactory | [farmfactory](https://github.com/noxonsu/farmfactory) | farm.wpmix.net | ?167.235.145.60 | WordPress |
+| DeFinance | [definance](https://github.com/noxonsu/definance) | dex.onout.org | Behind CF | WordPress |
+| DAO Widget | [DAOwidget](https://github.com/noxonsu/DAOwidget) | farm.wpmix.net/daofactory/ | ?167.235.145.60 | JS Widget |
+| IDOFactory | [launchpad](https://github.com/noxonsu/launchpad) | launchpad.onout.org | Behind CF | React |
+| Lenda | [Lenda](https://github.com/noxonsu/Lenda) | borrowlend.onout.org | Behind CF | React/Aave |
+| NFTsy | [NFTsy](https://github.com/noxonsu/NFTsy) | nft.wpmix.net | ?167.235.145.60 | WordPress |
+| Lottery | [LotteryFactory](https://github.com/noxonsu/LotteryFactory) | ⚠️ Broken | - | Unknown |
+
+### Missing Repositories (Need Investigation)
+
+- **Multi Currency Wallet Pro** (wallet.wpmix.net) - ⚠️ NO REPO FOUND
+  - Revenue: $113,416 (BESTSELLER)
+  - Plugin path: `/wp-content/plugins/multi-currency-wallet-pro/`
+  - Needs urgent documentation
+  
+- **DAO Factory WordPress** - ⚠️ Might be DAOwidget adapted for WP
+
+### Server Infrastructure
+
+**Current Server (95.217.227.164):**
+- Role: habab.ru + onout.org landing pages
+- Path: `/var/www/onout.org/` (static HTML only)
+- Has: dao/, wallet/, farming/, dex/, launchpad/, nft/, lenda/, lottery/
+
+**Reverse Proxy (62.109.14.209):**
+- Role: Proxy for *.wpmix.net
+- Has: simpledashboard.wpmix.net, simplesite.wpmix.net
+- Missing: wallet/farm/nft.wpmix.net configs
+
+**WordPress Server (167.235.145.60):**
+- Status: ⚠️ SSH connection refused
+- Likely hosts: wallet.wpmix.net, farm.wpmix.net, nft.wpmix.net
+- All WordPress demos probably here
+
+**Cloudflare:**
+- wpmix.net → 104.21.79.232, 172.67.149.79
+- onout.org → 188.114.96.3, 188.114.97.3
+
+### Tech Stack Details
+
+| Product | Framework | Key Dependencies |
+|---------|-----------|------------------|
+| Wallets | WordPress + React | LocalStorage, 0x Protocol, Transak |
+| FarmFactory | WordPress | Astra theme, ERC20 staking contracts |
+| DeFinance | WordPress | unifactory base, Uniswap clone |
+| DAO Widget | React | Embeddable, Snapshot-like governance |
+| IDOFactory | React | yarn build → /build |
+| Lenda | React | Aave fork, IPFS deploy |
+| NFTsy | WordPress | Rarible SDK, lazy minting |
+
+### Additional Repositories
+
+- **unifactory** - Base for DeFinance DEX
+- **lotterybuild**, **StaticLotteryFactory** - Lottery variants  
+- **nft-staking-app**, **nftstakedemo** - NFT staking demos
+- **index** - DEX list database
+
+### Packaging Process (From READMEs)
+
+**React Apps (Launchpad, Lenda):**
+```bash
+yarn install
+yarn build  # → /build directory
+```
+
+**WordPress Plugins (DeFinance):**
+```bash
+cd unifactory
+nvm use 16
+npm i --legacy-peer-deps
+npm run build_clean  # → copy to vendor_source
+```
+
+**DAO Widget:**
+```bash
+npm run build  # → /build/static/js/main.js
+# Embed via <script> tag
+```
