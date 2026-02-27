@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Status - NoxonThemes Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-revenue {
+            font-size: 0.9em;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .badge-section {
+            margin: 15px 0;
+        }
+
+        .badge-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .link:hover {
+            color: #764ba2;
+        }
+
+        .link::before {
+            content: "→";
+            font-weight: bold;
+        }
+
+        .link.envato::before { content: "🛒"; }
+        .link.landing::before { content: "📄"; }
+        .link.description::before { content: "📋"; }
+        .link.edit::before { content: "✏️"; }
+
+        .changelog {
+            margin-top: 12px;
+            padding: 10px;
+            background: #f9fafb;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            font-size: 0.8em;
+            color: #555;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        .changelog-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .changelog ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+
+        .changelog li {
+            margin-bottom: 2px;
+        }
+
+        .links-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .links-group .link {
+            font-size: 0.8em;
+            padding: 3px 8px;
+            background: #f3f4f6;
+            border-radius: 4px;
+        }
+
+        .links-group .link:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .version-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .version-badge.wordpress {
+            background: #21759b;
+            color: white;
+        }
+
+        .version-badge.static {
+            background: #10b981;
+            color: white;
+        }
+
+        .demo-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .demo-title {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .demo-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 0.9em;
+            margin-bottom: 6px;
+            transition: all 0.2s;
+        }
+
+        .demo-link:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .demo-link::before {
+            content: "🌐";
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            display: inline-block;
+            margin-right: 4px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        .last-updated {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 CI/CD Status Dashboard</h1>
+            <p>Real-time build status for all NoxonThemes products</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Products</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label">With CI/CD</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">441</div>
+                <div class="stat-label">Total Sales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$203K</div>
+                <div class="stat-label">Revenue</div>
+            </div>
+        </div>
+
+        <div class="products-grid">
+            <!-- FarmFactory -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        FarmFactory
+                        <span class="version-badge wordpress">WP</span>
+                    </div>
+                    <div class="product-revenue">$45,468</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://github.com/noxonsu/farmfactory/actions/workflows/deploy.yml/badge.svg"
+                         alt="Deploy Status">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://farm.wpmix.net" class="demo-link" target="_blank">
+                        <span class="status-indicator"></span>
+                        WordPress Demo
+                    </a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/farmfactory/actions" class="link">GitHub Actions</a>
+                    <a href="https://farm.wpmix.net/updates/farmfactory-info.json" class="link">Update Info</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/edit/29987071" class="link edit" target="_blank">Edit on Envato</a>
+                    <a href="https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071" class="link envato" target="_blank">CodeCanyon</a>
+                    <a href="https://onout.org/farming/" class="link landing" target="_blank">Landing</a>
+                    <a href="https://onout.org/envato-descriptions/farming.html" class="link description" target="_blank">Description</a>
+                </div>
+                <div class="changelog" id="changelog-farmfactory">
+                    <div class="changelog-title">Changelog loading...</div>
+                </div>
+            </div>
+
+            <!-- DAOwidget -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        DAO Widget
+                        <span class="version-badge wordpress">WP</span>
+                        <span class="version-badge static">Static</span>
+                    </div>
+                    <div class="product-revenue">$4,138</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://github.com/noxonsu/DAOwidget/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://farm.wpmix.net/daofactory" class="demo-link" target="_blank"><span class="status-indicator"></span>WordPress Demo</a>
+                    <a href="https://dao.onout.org" class="demo-link" target="_blank"><span class="status-indicator"></span>Static Demo</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/DAOwidget/actions" class="link">GitHub Actions</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://codecanyon.net/item/dao-widget-governance-and-proposals-for-your-crypto-token/edit/35358807" class="link edit" target="_blank">Edit JS</a>
+                    <a href="https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/edit/35608699" class="link edit" target="_blank">Edit WP</a>
+                    <a href="https://onout.org/dao/" class="link landing" target="_blank">Landing</a>
+                    <a href="https://onout.org/envato-descriptions/dao-widget.html" class="link description" target="_blank">Desc JS</a>
+                    <a href="https://onout.org/envato-descriptions/dao-factory.html" class="link description" target="_blank">Desc WP</a>
+                </div>
+                <div class="changelog" id="changelog-dao">
+                    <div class="changelog-title">Changelog loading...</div>
+                </div>
+            </div>
+
+            <!-- DeFinance -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        DeFinance
+                        <span class="version-badge wordpress">WP</span>
+                        <span class="version-badge static">Static</span>
+                    </div>
+                    <div class="product-revenue">$27,132</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://github.com/noxonsu/definance/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://definance.wpmix.net" class="demo-link" target="_blank"><span class="status-indicator"></span>WordPress Demo</a>
+                    <a href="https://dex.onout.org" class="demo-link" target="_blank"><span class="status-indicator"></span>Static Demo (Unifactory)</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/definance/actions" class="link">GitHub Actions</a>
+                    <a href="https://farm.wpmix.net/updates/definance-info.json" class="link">Update Info</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/edit/29099232" class="link edit" target="_blank">Edit on Envato</a>
+                    <a href="https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232" class="link envato" target="_blank">CodeCanyon</a>
+                    <a href="https://onout.org/dex/" class="link landing" target="_blank">Landing</a>
+                    <a href="https://onout.org/envato-descriptions/definance.html" class="link description" target="_blank">Description</a>
+                </div>
+                <div class="changelog" id="changelog-definance">
+                    <div class="changelog-title">Changelog loading...</div>
+                </div>
+            </div>
+
+            <!-- LotteryFactory -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        LotteryFactory
+                        <span class="version-badge static">Static</span>
+                    </div>
+                    <div class="product-revenue">N/A</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://github.com/noxonsu/LotteryFactory/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://onout.org/lottery" class="demo-link" target="_blank"><span class="status-indicator"></span>Landing Page</a>
+                    <a href="https://lottery.onout.org" class="demo-link" target="_blank"><span class="status-indicator"></span>Static Demo</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/LotteryFactory/actions" class="link">GitHub Actions</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://onout.org/lottery/" class="link landing" target="_blank">Landing</a>
+                </div>
+                <div class="changelog" id="changelog-lottery">
+                    <div class="changelog-title">Changelog loading...</div>
+                </div>
+            </div>
+
+            <!-- Launchpad -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        IDO Launchpad
+                        <span class="version-badge static">Static</span>
+                    </div>
+                    <div class="product-revenue">$3,367</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://github.com/noxonsu/launchpad/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://launchpad.onout.org" class="demo-link" target="_blank"><span class="status-indicator"></span>Static Demo</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/launchpad/actions" class="link">GitHub Actions</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://codecanyon.net/item/idofactory-crypto-launchpad-create-ido-pools-with-token-lockers-on/edit/39882380" class="link edit" target="_blank">Edit on Envato</a>
+                    <a href="https://codecanyon.net/item/idofactory-crypto-launchpad-create-ido-pools-with-token-lockers-on/39882380" class="link envato" target="_blank">CodeCanyon</a>
+                    <a href="https://onout.org/launchpad/" class="link landing" target="_blank">Landing</a>
+                    <a href="https://onout.org/envato-descriptions/launchpad.html" class="link description" target="_blank">Description</a>
+                </div>
+                <div class="changelog" id="changelog-launchpad">
+                    <div class="changelog-title">Changelog loading...</div>
+                </div>
+            </div>
+
+            <!-- MultiCurrencyWallet -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        Multi Currency Wallet
+                        <span class="version-badge wordpress">WP</span>
+                    </div>
+                    <div class="product-revenue">$113,416 ⭐</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://github.com/swaponline/MultiCurrencyWallet/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://wallet.wpmix.net" class="demo-link" target="_blank"><span class="status-indicator"></span>WordPress Demo</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/swaponline/MultiCurrencyWallet/actions" class="link">GitHub Actions</a>
+                    <a href="https://farm.wpmix.net/updates/mcw-info.json" class="link">Update Info</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/edit/23532064" class="link edit" target="_blank">Edit on Envato</a>
+                    <a href="https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064" class="link envato" target="_blank">CodeCanyon</a>
+                    <a href="https://onout.org/wallet/" class="link landing" target="_blank">Landing</a>
+                    <a href="https://onout.org/envato-descriptions/wallet.html" class="link description" target="_blank">Description</a>
+                </div>
+                <div class="changelog" id="changelog-mcw">
+                    <div class="changelog-title">Changelog loading...</div>
+                </div>
+            </div>
+
+            <!-- Unifactory -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        Unifactory DEX
+                        <span class="version-badge static">Static</span>
+                    </div>
+                    <div class="product-revenue">N/A</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://github.com/noxonsu/unifactory/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://dex.wpmix.net" class="demo-link" target="_blank"><span class="status-indicator"></span>Static Demo (Blue-Green)</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/unifactory/actions" class="link">GitHub Actions</a>
+                </div>
+                <div class="changelog" id="changelog-unifactory">
+                    <div class="changelog-title">Changelog loading...</div>
+                </div>
+            </div>
+
+            <!-- NFTsy -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        NFTsy
+                        <span class="version-badge wordpress">WP</span>
+                    </div>
+                    <div class="product-revenue">N/A</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://img.shields.io/badge/CI%2FCD-Manual-orange" alt="Manual Deploy">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://nft.wpmix.net" class="demo-link" target="_blank"><span class="status-indicator"></span>WordPress Demo</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/NFTsy" class="link">GitHub Repo</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://onout.org/nft/" class="link landing" target="_blank">Landing</a>
+                </div>
+            </div>
+
+            <!-- Lenda -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        Lenda
+                        <span class="version-badge static">Static</span>
+                    </div>
+                    <div class="product-revenue">N/A</div>
+                </div>
+                <div class="badge-section">
+                    <img src="https://img.shields.io/badge/CI%2FCD-Manual-orange" alt="Manual Deploy">
+                </div>
+                <div class="demo-section">
+                    <div class="demo-title">Live Demos:</div>
+                    <a href="https://borrowlend.onout.org" class="demo-link" target="_blank"><span class="status-indicator"></span>Static Demo (Aave Fork)</a>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/noxonsu/Lenda" class="link">GitHub Repo</a>
+                </div>
+                <div class="links-group">
+                    <a href="https://onout.org/lenda/" class="link landing" target="_blank">Landing</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>All products deployed automatically via GitHub Actions</p>
+            <div class="last-updated">
+                Last updated: <span id="timestamp"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+
+        // GitHub repos for changelog
+        const repos = {
+            'changelog-mcw': { owner: 'swaponline', repo: 'MultiCurrencyWallet' },
+            'changelog-farmfactory': { owner: 'noxonsu', repo: 'farmfactory' },
+            'changelog-definance': { owner: 'noxonsu', repo: 'definance' },
+            'changelog-dao': { owner: 'noxonsu', repo: 'DAOwidget' },
+            'changelog-launchpad': { owner: 'noxonsu', repo: 'launchpad' },
+            'changelog-lottery': { owner: 'noxonsu', repo: 'LotteryFactory' },
+            'changelog-unifactory': { owner: 'noxonsu', repo: 'unifactory' },
+        };
+
+        // Load changelogs from GitHub API
+        async function loadChangelogs() {
+            for (const [elemId, { owner, repo }] of Object.entries(repos)) {
+                const el = document.getElementById(elemId);
+                if (!el) continue;
+                try {
+                    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits?per_page=5`);
+                    if (!res.ok) throw new Error(res.status);
+                    const commits = await res.json();
+                    const date = new Date(commits[0].commit.author.date).toLocaleDateString();
+                    let html = `<div class="changelog-title">Recent changes (${date})</div><ul>`;
+                    commits.forEach(c => {
+                        const msg = c.commit.message.split('\n')[0].substring(0, 80);
+                        html += `<li>${msg}</li>`;
+                    });
+                    html += '</ul>';
+                    el.innerHTML = html;
+                } catch (e) {
+                    el.innerHTML = '<div class="changelog-title">Changelog unavailable</div>';
+                }
+            }
+        }
+
+        // Check demo sites health
+        async function checkDemoHealth() {
+            const demoLinks = document.querySelectorAll('.demo-link');
+            for (const link of demoLinks) {
+                const url = link.getAttribute('href');
+                const indicator = link.querySelector('.status-indicator');
+                try {
+                    await fetch(url, { method: 'HEAD', mode: 'no-cors', cache: 'no-cache' });
+                    indicator.style.background = '#10b981';
+                } catch (error) {
+                    indicator.style.background = '#ef4444';
+                }
+            }
+        }
+
+        setTimeout(checkDemoHealth, 1000);
+        loadChangelogs();
+
+        // Auto-refresh every 5 minutes
+        setTimeout(() => location.reload(), 5 * 60 * 1000);
+    </script>
+</body>
+</html>
