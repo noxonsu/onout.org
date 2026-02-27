@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Get staged files
+STAGED_HTML=$(git diff --cached --name-only --diff-filter=ACM -- '*.html')
+STAGED_CSS=$(git diff --cached --name-only --diff-filter=ACM -- '*.css')
+
+# HTMLHint on staged .html files
+if [ -n "$STAGED_HTML" ]; then
+  echo "Running HTMLHint..."
+  echo "$STAGED_HTML" | xargs npx htmlhint
+  if [ $? -ne 0 ]; then
+    echo "HTMLHint found errors. Fix them before committing."
+    exit 1
+  fi
+fi
+
+# Stylelint on staged .css files
+if [ -n "$STAGED_CSS" ]; then
+  echo "Running Stylelint..."
+  echo "$STAGED_CSS" | xargs npx stylelint
+  if [ $? -ne 0 ]; then
+    echo "Stylelint found errors. Fix them before committing."
+    exit 1
+  fi
+fi
+
+# Gitleaks on staged changes
+echo "Running gitleaks..."
+gitleaks protect --staged --no-banner
+if [ $? -ne 0 ]; then
+  echo "gitleaks detected secrets. Remove them before committing."
+  exit 1
+fi
+
+echo "All pre-commit checks passed."

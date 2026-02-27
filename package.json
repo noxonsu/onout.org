@@ -1,0 +1,27 @@
+{
+  "name": "onout.org",
+  "version": "1.0.0",
+  "description": "Landing pages for NoxonThemes products on CodeCanyon",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noxonsu/onout.org.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noxonsu/onout.org/issues"
+  },
+  "homepage": "https://github.com/noxonsu/onout.org#readme",
+  "devDependencies": {
+    "htmlhint": "^1.9.1",
+    "husky": "^9.1.7",
+    "stylelint": "^17.4.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
