@@ -19,16 +19,25 @@ Two versions:
 
 ## Configuration
 
-### JS Widget (GitHub Pages)
+### JS Widget — no npm install (recommended)
 
-Fork `https://github.com/appsource/dao`, then edit `src/config.js`:
+Fork pre-built repo, edit config in GitHub web editor — no local setup needed:
+
+```
+1. Fork https://github.com/appsource/dao
+2. Open src/config.js → click pencil icon (Edit) in GitHub
+3. Settings → Pages → Source: Deploy from branch (main)
+4. Live at https://{username}.github.io/dao/
+```
+
+Edit `src/config.js` (in GitHub web editor or locally):
 
 ```js
 export default {
-  tokenAddress: "0xYOUR_TOKEN",      // ← your governance token
-  chainId: 56,                        // ← 56=BSC, 1=ETH
+  tokenAddress: "0xYOUR_TOKEN",      // your governance token
+  chainId: 56,                        // 56=BSC, 1=ETH
   rpcUrl: "https://bsc-dataseed.binance.org",
-  minVotingPower: 100,               // ← min tokens to create proposal
+  minVotingPower: 100,               // min tokens to create proposal
   title: "MyDAO",
   primaryColor: "#4f46e5"
 }
@@ -44,16 +53,6 @@ Add shortcode to any page:
   rpc="https://bsc-dataseed.binance.org"
   template="light_template"
 ]
-```
-
-## Deploy (GitHub Pages)
-
-```bash
-# 1. Fork https://github.com/appsource/dao
-# 2. Edit src/config.js
-# 3. Settings → Pages → Source: GitHub Actions
-# 4. Push → auto-deploy
-# 5. Live at https://{username}.github.io/dao/
 ```
 
 ## WordPress Install
@@ -79,6 +78,6 @@ Add shortcode to any page:
 ## Source
 
 - JS Widget: https://github.com/noxonsu/DAOwidget
-- White-label: https://github.com/appsource/dao
+- White-label (pre-built): https://github.com/appsource/dao
 - Demo: https://farm.wpmix.net/daofactory/
 - Landing: https://onout.org/dao/

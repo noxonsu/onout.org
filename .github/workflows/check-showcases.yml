@@ -1,0 +1,94 @@
+name: Check Showcases
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check .claude/setup.md files exist for all products
+        run: |
+          echo "=== Checking .claude/setup.md files ==="
+          MISSING=0
+          for product in dao wallet farming dex launchpad nft lenda lottery predictionmarket; do
+            if [ ! -f "$product/.claude/setup.md" ]; then
+              echo "MISSING: $product/.claude/setup.md"
+              MISSING=$((MISSING + 1))
+            else
+              echo "OK: $product/.claude/setup.md"
+            fi
+          done
+          if [ $MISSING -gt 0 ]; then
+            echo "ERROR: $MISSING setup.md files are missing"
+            exit 1
+          fi
+          echo "All setup.md files present ✓"
+
+      - name: Validate HTML files in .claude/ dirs
+        run: |
+          echo "=== Validating showcase HTML files ==="
+          # Find all HTML files in showcase-related dirs
+          HTML_FILES=$(find . -path './.git' -prune -o \
+            -name "*.html" -path "*/.claude/*" -print \
+            -o -name "*.html" -path "*/showcases/*" -print \
+            2>/dev/null | grep -v '.git')
+
+          if [ -z "$HTML_FILES" ]; then
+            echo "No showcase HTML files found"
+            exit 0
+          fi
+
+          ERRORS=0
+          for f in $HTML_FILES; do
+            # Check file is not empty
+            if [ ! -s "$f" ]; then
+              echo "EMPTY: $f"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+            # Check has DOCTYPE or html tag
+            if ! grep -qi "<!DOCTYPE\|<html" "$f"; then
+              echo "INVALID HTML (no DOCTYPE): $f"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+            echo "OK: $f"
+          done
+
+          if [ $ERRORS -gt 0 ]; then
+            echo "ERROR: $ERRORS HTML files failed validation"
+            exit 1
+          fi
+          echo "All showcase HTML files valid ✓"
+
+      - name: Check demo URLs reachable
+        continue-on-error: true   # don't fail build if demos are temporarily down
+        run: |
+          echo "=== Checking demo URLs from setup.md files ==="
+          URLS=(
+            "https://wallet.wpmix.net/"
+            "https://farm.wpmix.net/"
+            "https://dex.onout.org/"
+            "https://launchpad.onout.org/"
+            "https://predictionmarket.wpmix.net/"
+          )
+          FAILED=0
+          for url in "${URLS[@]}"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url" || echo "000")
+            if [ "$STATUS" = "200" ] || [ "$STATUS" = "301" ] || [ "$STATUS" = "302" ]; then
+              echo "OK ($STATUS): $url"
+            else
+              echo "WARN ($STATUS): $url — may be down or rate-limited"
+              FAILED=$((FAILED + 1))
+            fi
+          done
+          if [ $FAILED -gt 0 ]; then
+            echo "WARNING: $FAILED demo URLs returned non-200. Check manually."
+          fi
+          echo "Demo URL check complete (non-blocking) ✓"

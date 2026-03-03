@@ -14,18 +14,20 @@ Decentralized exchange (DEX) for any EVM chain — swap tokens, add liquidity, e
 - [ ] List of tokens to support
 - [ ] Your branding: logo, title, fee %
 
-## Configuration (React app / unifactory)
+## Quick deploy — no npm install (recommended)
 
-```bash
-git clone https://github.com/noxonsu/unifactory
-cd unifactory
-nvm use 16
-npm i --legacy-peer-deps
+Fork the pre-built static repo — no compilation needed:
+
+```
+1. Fork https://github.com/appsource/dex on GitHub
+2. Edit config.js directly in the GitHub web editor
+3. Settings → Pages → Source: Deploy from branch (main)
+4. Your DEX is live at https://{username}.github.io/dex/
 ```
 
-Edit `src/config/index.ts`:
+Edit `config.js` in the repo root (GitHub web editor, no local setup):
 
-```ts
+```js
 export const config = {
   chainId: 56,                              // your chain
   factoryAddress: "0xYOUR_FACTORY",        // Uniswap V2 factory
@@ -38,11 +40,16 @@ export const config = {
 }
 ```
 
-## Deploy
+## Developer deploy (with npm, for customization)
 
 ```bash
+git clone https://github.com/noxonsu/unifactory
+cd unifactory
+nvm use 16
+npm i --legacy-peer-deps
+# Edit src/config/index.ts, then:
 npm run build_clean
-# Builds to /build — deploy to your server or GitHub Pages
+# Deploy /build to server or GitHub Pages
 ```
 
 ## WordPress Plugin (DeFinance)
