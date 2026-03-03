@@ -59,6 +59,7 @@ GitHub (noxonsu/*)
 | DAO Factory WP | private | 35608699 | /dao/ | /envato-descriptions/dao-factory.html |
 | DAO Widget JS | [noxonsu/DAOwidget](https://github.com/noxonsu/DAOwidget) | 35358807 | /dao/ | /envato-descriptions/dao-widget.html |
 | IDOFactory | [noxonsu/launchpad](https://github.com/noxonsu/launchpad) | 39882380 | /launchpad/ | /envato-descriptions/launchpad.html |
+| PredictionMarket | [marsiandeployer/PolyFactory](https://github.com/marsiandeployer/PolyFactory) | — | /predictionmarket/ | /envato-descriptions/predictionmarket.html |
 
 ---
 
@@ -125,9 +126,19 @@ git push
 
 ---
 
+## Типы версий продукта
+
+| Тип | Деплой | Описание |
+|-----|--------|----------|
+| **Static** | GitHub Pages / onout.org | HTML лендинг, без бэкенда |
+| **WordPress** | *.wpmix.net | WordPress плагин/виджет |
+| **Claude** | Любой хостинг | Настраивается AI-агентом через `.claude/setup.md` |
+
+---
+
 ## Как добавить новый продукт
 
-### Чеклист (6 шагов)
+### Чеклист (7 шагов)
 
 #### Шаг 1 — Лендинг
 
@@ -264,10 +275,32 @@ git add newproduct/ envato-descriptions/newproduct.html ci-status.html
 git commit -m "feat: add NewProduct landing and description"
 git push origin main
 
-# Обновить сервер
+# Обновить сервер (nginx обслуживает onout.org напрямую, GitHub Pages — зеркало)
 sudo git pull origin main
 sudo chown -R www-data:www-data .
 sudo systemctl reload nginx
+```
+
+#### Шаг 7 — Agent Version (.claude/setup.md)
+
+```bash
+# Создать папку и скопировать шаблон
+mkdir -p /var/www/onout.org/newproduct/.claude
+cp /var/www/onout.org/product-template/.claude/setup.md \
+   /var/www/onout.org/newproduct/.claude/setup.md
+
+# Заполнить:
+# - Что делает продукт (1–2 предложения)
+# - Какие параметры конфигурирует клиент (контракты, chain, branding)
+# - Шаги деплоя (fork → config → build → deploy → verify)
+nano /var/www/onout.org/newproduct/.claude/setup.md
+
+# В ci-status.html добавить badge:
+# <span class="version-badge claude">Claude</span>
+
+git add newproduct/.claude/setup.md ci-status.html
+git commit -m "feat: add NewProduct claude setup guide"
+git push origin main
 ```
 
 ---
@@ -298,8 +331,10 @@ sudo systemctl reload nginx
 | Workflow | Триггер | Что делает |
 |----------|---------|-----------|
 | `generate_sitemap.yml` | push → main | Генерирует sitemap.xml и коммитит обратно |
-| `static.yml` | push → main | Деплоит на GitHub Pages |
+| `static.yml` | push → main | Деплоит на GitHub Pages (зеркало; продакшн — nginx на 95.217.227.164) |
 | `compressimages.yml` | PR с изображениями | Сжимает картинки через calibre |
+
+> **Важно:** продакшн onout.org обслуживается nginx напрямую из `/var/www/onout.org/` (через `git pull`), а не из GitHub Pages. `static.yml` создаёт публичное зеркало, полезное для превью PR, но не является основным деплоем.
 
 ---
 

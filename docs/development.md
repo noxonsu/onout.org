@@ -37,3 +37,12 @@
 ## 4. Documentation
 
 0. Add instructions on adding new networks ([Adding networks](./add_network.md))
+
+## 5. Agent Version (Claude-optimized)
+
+0. Create `.claude/setup.md` in the product directory using template from `product-template/.claude/setup.md`
+0. List all configurable parameters (contract addresses, chain IDs, branding, fees)
+0. Write step-by-step deploy instructions an AI agent can execute
+0. Add `setup.md` to landing page: `onout.org/{product}/.claude/setup.md`
+0. Add "Claude" badge to product card in `ci-status.html`
+0. Update `PIPELINE.md` — add product to the mapping table

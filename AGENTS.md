@@ -43,3 +43,19 @@
 - Read the root `README.md` before changes.
 - Touch only relevant folders; avoid mass refactors.
 - When adding a product, start from `product-template/` and keep structure consistent.
+
+## Product Setup Guides (Claude Version)
+
+Each product has a `.claude/setup.md` with configuration parameters and deployment steps for AI-assisted setup:
+
+- [dao/.claude/setup.md](dao/.claude/setup.md) — DAO governance (token voting, proposals)
+- [wallet/.claude/setup.md](wallet/.claude/setup.md) — Multi-currency crypto wallet (WordPress)
+- [farming/.claude/setup.md](farming/.claude/setup.md) — Staking & yield farming
+- [dex/.claude/setup.md](dex/.claude/setup.md) — DEX / Uniswap-like exchange
+- [launchpad/.claude/setup.md](launchpad/.claude/setup.md) — IDO crypto launchpad
+- [nft/.claude/setup.md](nft/.claude/setup.md) — NFT marketplace (lazy minting)
+- [lenda/.claude/setup.md](lenda/.claude/setup.md) — Lending & borrowing (Aave-like)
+- [lottery/.claude/setup.md](lottery/.claude/setup.md) — On-chain crypto lottery
+- [predictionmarket/.claude/setup.md](predictionmarket/.claude/setup.md) — Prediction market (Polymarket-like)
+
+When adding a new product, create `.claude/setup.md` from `product-template/.claude/setup.md`.
