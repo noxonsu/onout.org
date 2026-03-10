@@ -1,0 +1,30 @@
+{
+  "name": "envato-upload-automation",
+  "version": "1.0.0",
+  "description": "Automate CodeCanyon plugin uploads with Puppeteer",
+  "main": "upload-to-envato.js",
+  "scripts": {
+    "envato-upload": "node upload-to-envato.js",
+    "envato-list-items": "node list-items.js",
+    "test-login": "node upload-to-envato.js --test-login",
+    "generate-changelog": "./generate-changelog.sh"
+  },
+  "keywords": ["envato", "codecanyon", "automation", "upload"],
+  "author": "NoxonThemes",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.11.0",
+    "dotenv": "^16.4.1",
+    "yargs": "^17.7.2",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "inquirer": "^8.2.6",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

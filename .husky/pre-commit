@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Get staged files
-STAGED_HTML=$(git diff --cached --name-only --diff-filter=ACM -- '*.html')
+# Get staged files (exclude envato-descriptions — HTML fragments without DOCTYPE)
+STAGED_HTML=$(git diff --cached --name-only --diff-filter=ACM -- '*.html' | grep -v '^envato-descriptions/')
 STAGED_CSS=$(git diff --cached --name-only --diff-filter=ACM -- '*.css')
 
 # HTMLHint on staged .html files

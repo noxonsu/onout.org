@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeCanyon Description Uploader — Agent Tasks</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: #8b949e;
+    font-size: 14px;
+  }
+  .badge-agent {
+    display: inline-block;
+    background: linear-gradient(90deg, #238636, #2ea043);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .task-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .task-card:hover { border-color: #58a6ff; }
+  .task-card.done { border-color: #238636; opacity: 0.6; }
+  .task-card.done .card-header { background: #1a2e1a; }
+  .card-header {
+    background: #1c2128;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #30363d;
+  }
+  .card-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .product-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .card-subtitle {
+    font-size: 11px;
+    color: #8b949e;
+    margin-top: 2px;
+  }
+  .status-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .status-todo {
+    background: #21262d;
+    color: #f0883e;
+    border: 1px solid #f0883e55;
+  }
+  .status-done {
+    background: #1a2e1a;
+    color: #3fb950;
+    border: 1px solid #3fb95055;
+  }
+  .card-body { padding: 16px 20px; }
+  .instructions {
+    font-size: 13px;
+    color: #8b949e;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .instructions ol { padding-left: 18px; }
+  .instructions li { margin-bottom: 4px; }
+  .instructions a { color: #58a6ff; text-decoration: none; }
+  .instructions a:hover { text-decoration: underline; }
+  .cc-url {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #58a6ff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    word-break: break-all;
+  }
+  .cc-url span { color: #8b949e; white-space: nowrap; }
+  .html-block {
+    position: relative;
+  }
+  .html-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  textarea {
+    width: 100%;
+    height: 120px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #e6edf3;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    padding: 10px;
+    resize: vertical;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  textarea:focus { border-color: #58a6ff; }
+  .btn-copy {
+    margin-top: 8px;
+    width: 100%;
+    padding: 9px;
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #e6edf3;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .btn-copy:hover { background: #30363d; border-color: #58a6ff; }
+  .btn-copy.copied { background: #1a2e1a; border-color: #3fb950; color: #3fb950; }
+  .progress-bar {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    background: #21262d;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-label { font-size: 13px; color: #8b949e; white-space: nowrap; }
+  .progress-track {
+    flex: 1;
+    height: 8px;
+    background: #0d1117;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #238636, #2ea043);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+  .progress-count { font-size: 14px; font-weight: 700; color: #3fb950; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge-agent">🤖 Agent Task Board</div>
+  <h1>CodeCanyon Description Uploader</h1>
+  <p>Copy HTML from each card → paste into CodeCanyon item description → mark as done</p>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Progress</span>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+  <span class="progress-count" id="progressCount">0 / 6</span>
+</div>
+
+<div class="tasks-grid" id="tasksGrid">
+</div>
+
+<script>
+const tasks = [
+  {
+    id: 'wallet',
+    icon: '💳',
+    iconBg: '#F7931A33',
+    product: 'Bitcoin / Ethereum / ERC20 Wallet',
+    subtitle: 'Multi-Currency Wallet — WordPress Plugin',
+    ccUrl: 'https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064',
+    editUrl: 'https://codecanyon.net/item/edit/23532064',
+    html: `<strong>Ask a question!</strong> <a href="mailto:support@onout.org">support@onout.org</a>, <a href="https://t.me/onoutsupportbot/?start=cc_wallet_wp" target="_blank">Telegram Chat</a>, <a href="https://support.onout.org/hc/1331700057/" target="_blank">Knowledge Base</a> (<a href="https://www.youtube.com/channel/UCEu5-QDPFCxKm9z4BAYQSJw/playlists">+video</a>)<br>
+<strong>Join the community!</strong> <a href="https://discord.gg/VwKEmHEgVN" target="_blank">Join Discord</a>, <a href="https://dash.onout.org/?utm_source=cc_wallet_wp" target="_blank">Join mailing list</a>, <a href="https://twitter.com/onout_org" target="_blank">Twitter</a>
+
+<p><img src="https://onout.org/envato-descriptions/banners/wallet-update-2026.png" width="590" alt="Multi-Currency Wallet Update 2026"></p>
+
+You can add any token from https://etherscan.io/tokens, https://bscscan.com/tokens (or your own ERC20 or BEP20 token), Matic tokens. All other cryptocurrencies are not supported
+
+<p>
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-1.1.png">
+</p>
+
+<h2>Cryptocurrency wallet.<br>Your users can store Bitcoin and custom assets</h2>
+
+<p>
+<a href="https://swaponline.io/">
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-2.1.png">
+</a>
+</p>
+
+<h2>NEW! "Dashboard and exchange only" mode</h2>
+Without the "Create wallet" feature (users use their own MetaMask or WalletConnect wallets). <a href="https://nointernal.wpmix.net/" target="_blank">DEMO: Dashboard and exchange only</a>. Set the "exchange admin fee" and earn commission from every exchange.
+
+<h2>Visa/MC integration</h2>
+<p>Allow users to buy Bitcoin, Ethereum, and USDT using a credit card. Use any external fiat on-ramp provider like transak.com or itez.com. Sell your own ERC20 token for ETH (client can buy ETH instantly then exchange to any token).</p>
+
+<p>
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-3.1.png">
+</p>
+
+<h2>ERC20 wallet / portfolio tracker</h2>
+
+<p>
+Are you an ERC20 owner? Create a branded ERC20 wallet on your own domain. Allow users to exchange tokens to/from eth (and VISA)<br>
+</p>
+
+<p>
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-4.1.png">
+</p>
+
+<h2>Buy/Sell assets. (Exchange widget)</h2>
+
+<p>
+<a href="https://youtu.be/U_j-pH_G9vA" target="_blank">
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-5.1.png">
+</a>
+</p>
+
+<p>
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-6.1.png">
+</p>
+
+<p>
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-7.1.png">
+</p>
+
+<p>
+<img src="https://wallet.wpmix.net/screenshots/mcwallet-description-8.1.png">
+</p>
+
+<h2>Other Features</h2>
+- Light/Dark theme (possible to set "only light" or "only dark" option)<br>
+- Add own ERC20 token, BSC asset<br>
+- Enable disable registration<br>
+- Add admin commission (to earn)<br>
+
+<h2>Risk warning!</h2> According to WordFence, there are almost 90,000 attacks per minute on WordPress websites. In one study, it was found there are 3,972 known WordPress vulnerabilities. Out of which, 52% are from WordPress plugins, 37% are due to core WordPress files & 11% are from WordPress Themes. We cannot guarantee the security of your customer's fund. Please use Simple Static Plugin, which <strong>greatly reduces the risk of loss of funds</strong> check this tutorial https://www.youtube.com/watch?v=RXJ1KyCTBFQ
+<br><br>
+
+<h2>QA</h2>
+q: <strong>Who controls a wallet?</strong><br>
+a: user. private keys stored in his browser's localstorage, the user must save his keys.
+
+<br><br>
+<strong>How can i trust you?</strong><br>
+We have hundreds of installations all over the world and good reviews<br>
+<br><br>
+<strong>Can we integrate your wallet directly inside our website allowing users to transfer from A to B on OUR website?</strong><br>
+a: YES!
+<br><br>
+<strong>How to create own token?</strong><br>
+https://vittominacori.github.io/erc20-generator/ (set in form: decimals: "18", name:"example", initialSuply:1000000, totalSuply:1000000)
+<br><br>
+<strong>Is it non-custodial wallet?</strong><br>
+Yes
+<br><br>
+<strong>How can admin earn on this plugin?</strong><br>
+a: You can setup transaction's commission. See admin panel video: <a href="https://youtu.be/Mw_NAu-HpWI">https://youtu.be/Mw_NAu-HpWI</a>
+<br><br>
+<strong>Where are bitcoins stored? on bitpay? Is it non-custodial wallet?</strong><br>
+Our wallet is non-custodial wallet. How it works https://www.blockchain.com/learning-portal/
+<br><br>
+<strong>Can i see the admin panel?</strong><br>
+Video: <a href="https://youtu.be/Mw_NAu-HpWI">https://youtu.be/Mw_NAu-HpWI</a><br>
+<br><br>
+<strong>All the deposits and withdrawals are automatic?</strong><br>
+yes, transactions are sent to a network immediately<br>
+<br><br>
+<strong>Should the admin maintain a reserve of bitcoin for sale via VISA/MC?</strong><br>
+No, sales are automatically perform through the itez.com service (they forward bitcoins from kraken.com).<br>
+<br>
+<strong>The members have the possibility to open this wallet on other wallet with their private keys?</strong><br>
+Yes (Electrum, Metamask, Myetherwallet etc...)<br>
+
+<br><strong>I didn't see the "backup your private keys" banner</strong><br>
+Looks like you've already saved your keys. Clear local data and refresh the page (in Chrome: Settings > Privacy > Clear browsing data > Cookies and site data).<br>
+
+<br><br>
+<strong>Can i change a footer?</strong><br>
+You can place HTML code there via the admin panel.<br><br>
+<strong>Can i edit the wallet page like all other WordPress pages?</strong><br>
+The app uses bitcoin.js library for processing users bitcoin addresses (sending/receiving), also we use ReactJS, these libraries work in the frontend (in the user's browser) and it's impossible to implement WordPress's hooks inside because all hooks work in the backend.
+
+<br><br>
+<strong>Is it possible to use woocommerce payment gateway to deposit real currencies</strong><br>
+Use this plugin https://wordpress.org/plugins/cryptocurrency-product-for-woocommerce/
+<br><br>
+<strong>Does the app support BSC and BEP20 tokens?</strong><br>
+BSC and BEP20 are supported
+<br><br>
+<strong>Why i need to renew support?</strong><br>
+By default, you pay for 6-month support which included fast updates of the plugin (we make changes almost every day). An expired license does not affect functionality also you still available to download the latest version from codecanyon (but new versions come out with a delay because require moderation and manual actions).
+<br><br>
+<strong>What is "recommended exchange rate" in admin panel in the token form</strong><br>
+the price of token which uses only to calculate "total balance" in the wallet (but not connected wallet, only internal balance affected). does not affect anything else.
+
+<strong>How to enable BSC</strong><br>
+BSC is enabled by default. If you want to add a BSC token (BEP-20 standard), select such network in the dashboard
+<br><br>
+Q: How to change border radius and colors?<br>
+A: Open <a href="https://user-images.githubusercontent.com/1880211/143594200-724111e1-fc2d-4e58-a321-b5ea64a8b44c.png" target="_blank"><img src="https://user-images.githubusercontent.com/1880211/143594200-724111e1-fc2d-4e58-a321-b5ea64a8b44c.png"></a>
+<br><br>
+Q: How to change preloader text?<br>
+A: <a href="https://user-images.githubusercontent.com/1880211/143593747-60023a4a-ec96-4720-8061-608d2dc6673a.png" target="_blank"><img src="https://user-images.githubusercontent.com/1880211/143593747-60023a4a-ec96-4720-8061-608d2dc6673a.png"></a>
+<br><br>
+Q: How to hide service links?<br>
+A: <a href="https://support.onout.org/hc/1331700057/15/how-to-hide-service-links?category_id=1" target="_blank">Follow this guide</a>
+
+<br>
+SEE also:<br>
+2. <a href="https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/35608699" target="_blank">DAO tool (based on snapshot.org)</a><br>
+3. <a href="https://onout.org/lottery/" target="_blank">Crypto Lottery</a><br>
+4. <a href="https://onout.org/nft/" target="_blank">NFT Marketplace</a><br>
+5. <a href="https://onout.org/farming/" target="_blank">FarmFactory - Staking & Yield Farming</a><br>
+6. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeToxedUhbdGPORwVwPLwVCuASXUuRluIRuNSkQsZtLTtsnGA/viewform?usp=sf_link" target="_blank">Request a custom tool (survey)</a>
+
+<h2>Changelog v2.26.0227</h2>
+<ul>
+  <li><strong>New:</strong> WordPress auto-update — plugin checks for updates automatically</li>
+</ul>`
+  },
+  {
+    id: 'farming',
+    icon: '🌾',
+    iconBg: '#00D39533',
+    product: 'FarmFactory — Staking & Yield Farming',
+    subtitle: 'Assets Staking · Ethereum · BSC · Polygon',
+    ccUrl: 'https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071',
+    editUrl: 'https://codecanyon.net/item/edit/29987071',
+    html: `<strong>Ask a question!</strong> <a href="mailto:support@onout.org">support@onout.org</a>, <a href="https://t.me/onoutsupportbot/?start=cc_farming_wp" target="_blank">Telegram Chat</a>, <a href="https://support.onout.org/hc/1331700057/category/3" target="_blank">Knowledge Base</a> (<a href="https://www.youtube.com/watch?v=fU9RoMXWPjk">+video</a>)<br>
+<strong>Join the community!</strong> <a href="https://discord.gg/VwKEmHEgVN" target="_blank">Join Discord</a>, <a href="https://dash.onout.org/?utm_source=cc_farming_wp" target="_blank">Join mailing list</a>, <a href="https://twitter.com/onout_org" target="_blank">Twitter</a>
+
+<p><img src="https://onout.org/envato-descriptions/banners/farming-update-2026.png" width="590" alt="FarmFactory Update 2026"></p>
+
+<h2>Create a Token Farm at your own domain without coding skills</h2>
+
+<p>FarmFactory is the simplest way to allow your users to deposit ERC20 tokens (for example USDT) using a simple Deposit/Withdraw interface. Users stake tokens and receive the original amount plus additional rewards after the staking period.</p>
+
+<p>
+<a href="https://farm.wpmix.net/" target="_blank">Live Demo</a> | <a href="https://www.youtube.com/watch?v=fU9RoMXWPjk" target="_blank">Video Tutorial</a>
+</p>
+
+<h2>Key Features</h2>
+- ERC20 token staking with reward distribution<br>
+- Support for liquidity pool (LP) token staking<br>
+- Works on Ethereum, BSC (BNB Chain), and Polygon networks<br>
+- Admin-controlled reward rounds with configurable durations<br>
+- Flexible reward structures based on stake amount and duration<br>
+- Multi-token reward systems<br>
+- WordPress plugin — install in 1 minute via shortcode <code>[farmFactory]</code><br>
+- No coding skills required<br>
+
+<h2>How it works</h2>
+<p><strong>Simple Model:</strong> Users stake tokens and receive the original amount plus additional rewards after the staking period concludes.</p>
+<p><strong>Advanced Model:</strong> Holders can stake LP tokens from decentralized exchanges (Uniswap, PancakeSwap) and earn rewards in separate tokens proportional to their contribution and lock-up duration.</p>
+
+<h2>Supported Networks</h2>
+- Ethereum Mainnet<br>
+- Binance Smart Chain (BSC)<br>
+- Polygon (Matic)<br>
+- Aurora (NEAR EVM)<br>
+- xDai / Gnosis Chain<br>
+
+<br>
+SEE also:<br>
+1. <a href="https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064" target="_blank">Multi Currency Wallet — Bitcoin, Ethereum, ERC20</a><br>
+2. <a href="https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232" target="_blank">DeFinance — DEX Plugin (Uniswap fork)</a><br>
+3. <a href="https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/35608699" target="_blank">DAO Factory — Governance & Proposals</a><br>
+4. <a href="https://onout.org/nft/" target="_blank">NFT Marketplace</a><br>
+5. <a href="https://onout.org/lottery/" target="_blank">Crypto Lottery</a><br>
+6. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeToxedUhbdGPORwVwPLwVCuASXUuRluIRuNSkQsZtLTtsnGA/viewform?usp=sf_link" target="_blank">Request a custom tool (survey)</a>`
+  },
+  {
+    id: 'definance',
+    icon: '🔀',
+    iconBg: '#FF007A33',
+    product: 'DeFinance — DEX Plugin',
+    subtitle: 'Uniswap Fork · White-label · WordPress',
+    ccUrl: 'https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232',
+    editUrl: 'https://codecanyon.net/item/edit/29099232',
+    html: `<strong>Ask a question!</strong> <a href="mailto:support@onout.org">support@onout.org</a>, <a href="https://t.me/onoutsupportbot/?start=cc_dex_wp" target="_blank">Telegram Chat</a>, <a href="https://support.onout.org/hc/1331700057/" target="_blank">Knowledge Base</a><br>
+<strong>Join the community!</strong> <a href="https://discord.gg/VwKEmHEgVN" target="_blank">Join Discord</a>, <a href="https://dash.onout.org/?utm_source=cc_dex_wp" target="_blank">Join mailing list</a>, <a href="https://twitter.com/onout_org" target="_blank">Twitter</a>
+
+<p><img src="https://onout.org/envato-descriptions/banners/definance-update-2026.png" width="590" alt="DeFinance DEX Update 2026"></p>
+
+<h2>Build your own DEX (Uniswap fork) — No coding required</h2>
+
+<p>DeFinance is a white-label decentralized exchange plugin based on Uniswap. Deploy smart contracts in 2 clicks and set up your own commission from 0.05% to 20%. Trusted by 1000+ webmasters.</p>
+
+<p>
+<a href="https://definance.wpmix.net/" target="_blank">Live Demo</a>
+</p>
+
+<h2>Key Features</h2>
+- Deploy your own DEX smart contract in 2 clicks<br>
+- Set custom commission (0.05% — 20%) and earn from every swap<br>
+- Custom branding: logo, colors, domain name<br>
+- Manage token lists in the interface<br>
+- MetaMask integration for admin authentication<br>
+- Uses verified Uniswap source code<br>
+- WordPress plugin — install in 1 minute<br>
+- No coding skills required<br>
+
+<h2>How it works</h2>
+<p>Install the plugin, connect MetaMask, deploy your DEX smart contract, customize branding, and start earning commission from every token swap on your platform.</p>
+
+<h2>Supported Networks</h2>
+- Ethereum Mainnet<br>
+- Binance Smart Chain (BSC)<br>
+- Polygon (Matic)<br>
+- Any EVM-compatible blockchain<br>
+
+<h2>Security</h2>
+<p>Smart contracts are based on verified Uniswap source code with minimal modifications. No platform access to user liquidity pools. All contracts are verifiable on-chain.</p>
+
+<br>
+SEE also:<br>
+1. <a href="https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064" target="_blank">Multi Currency Wallet — Bitcoin, Ethereum, ERC20</a><br>
+2. <a href="https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071" target="_blank">FarmFactory — Staking & Yield Farming</a><br>
+3. <a href="https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/35608699" target="_blank">DAO Factory — Governance & Proposals</a><br>
+4. <a href="https://onout.org/nft/" target="_blank">NFT Marketplace</a><br>
+5. <a href="https://onout.org/lottery/" target="_blank">Crypto Lottery</a><br>
+6. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeToxedUhbdGPORwVwPLwVCuASXUuRluIRuNSkQsZtLTtsnGA/viewform?usp=sf_link" target="_blank">Request a custom tool (survey)</a>`
+  },
+  {
+    id: 'dao-factory',
+    icon: '🏛️',
+    iconBg: '#7B3FE433',
+    product: 'DAO Factory — WordPress Plugin',
+    subtitle: 'Governance & Proposals · Snapshot.org',
+    ccUrl: 'https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/35608699',
+    editUrl: 'https://codecanyon.net/item/edit/35608699',
+    html: `<strong>Ask a question!</strong> <a href="mailto:support@onout.org">support@onout.org</a>, <a href="https://t.me/onoutsupportbot/?start=cc_dao_wp" target="_blank">Telegram Chat</a>, <a href="https://support.onout.org/hc/1331700057/" target="_blank">Knowledge Base</a><br>
+<strong>Join the community!</strong> <a href="https://discord.gg/VwKEmHEgVN" target="_blank">Join Discord</a>, <a href="https://dash.onout.org/?utm_source=cc_dao_wp" target="_blank">Join mailing list</a>, <a href="https://twitter.com/onout_org" target="_blank">Twitter</a>
+
+<p><img src="https://onout.org/envato-descriptions/banners/dao-factory-update-2026.png" width="590" alt="DAO Factory Update 2026"></p>
+
+<h2>DAO Factory — Governance and Proposals Plugin for WordPress</h2>
+
+<p>WordPress plugin enabling token holders to create proposals and vote without gas fees. Based on snapshot.org infrastructure. Install in 1 minute — no coding required.</p>
+
+<p>
+<a href="https://farm.wpmix.net/daofactory/" target="_blank">Live Demo</a>
+</p>
+
+<h2>Key Features</h2>
+- Create proposals and vote — gas-free<br>
+- MetaMask wallet integration<br>
+- Customizable voting periods<br>
+- Vote tracking and listing<br>
+- Multi-blockchain: ERC20, BEP20, any EVM network<br>
+- Light and dark themes<br>
+- Configurable token requirements for proposal creation and voting<br>
+- ENS domain support<br>
+- WordPress shortcode: <code>[daofactory_app]</code><br>
+- No coding skills required<br>
+
+<h2>Use Cases</h2>
+<p>The plugin is designed for diverse organizational structures including:</p>
+- Community groups and DAOs<br>
+- Developer and worker cooperatives<br>
+- Virtual worlds and metaverse projects<br>
+- Venture capital and investment DAOs<br>
+- Insurance protocols<br>
+- Trust funds and asset management<br>
+- Fan ownership platforms<br>
+- Art collectives and media companies<br>
+- Politics and civic governance<br>
+
+<h2>How it works</h2>
+<p>Install the plugin, add the shortcode to any page, configure your token address and voting parameters. Token holders connect their wallets, create proposals, and vote — all without paying gas fees.</p>
+<p>To hide the "powered by" link: WP Admin Panel → Dao Factory → All DAOs → <strong>Hide service link</strong>.</p>
+
+<h2>Supported Networks</h2>
+- Ethereum Mainnet<br>
+- Binance Smart Chain (BSC)<br>
+- Any EVM-compatible blockchain<br>
+
+<br>
+SEE also:<br>
+1. <a href="https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064" target="_blank">Multi Currency Wallet — Bitcoin, Ethereum, ERC20</a><br>
+2. <a href="https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071" target="_blank">FarmFactory — Staking & Yield Farming</a><br>
+3. <a href="https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232" target="_blank">DeFinance — DEX Plugin (Uniswap fork)</a><br>
+4. <a href="https://codecanyon.net/item/dao-widget-governance-and-proposals-for-your-crypto-token/35358807" target="_blank">DAO Widget — JavaScript version</a><br>
+5. <a href="https://onout.org/nft/" target="_blank">NFT Marketplace</a><br>
+6. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeToxedUhbdGPORwVwPLwVCuASXUuRluIRuNSkQsZtLTtsnGA/viewform?usp=sf_link" target="_blank">Request a custom tool (survey)</a>`
+  },
+  {
+    id: 'dao-widget',
+    icon: '🗳️',
+    iconBg: '#7B3FE433',
+    product: 'DAO Widget — JavaScript Embed',
+    subtitle: 'Governance & Proposals · Any Website',
+    ccUrl: 'https://codecanyon.net/item/dao-widget-governance-and-proposals-for-your-crypto-token/35358807',
+    editUrl: 'https://codecanyon.net/item/edit/35358807',
+    html: `<strong>Ask a question!</strong> <a href="mailto:support@onout.org">support@onout.org</a>, <a href="https://t.me/onoutsupportbot/?start=cc_dao_js" target="_blank">Telegram Chat</a>, <a href="https://support.onout.org/hc/1331700057/" target="_blank">Knowledge Base</a><br>
+<strong>Join the community!</strong> <a href="https://discord.gg/VwKEmHEgVN" target="_blank">Join Discord</a>, <a href="https://dash.onout.org/?utm_source=cc_dao_js" target="_blank">Join mailing list</a>, <a href="https://twitter.com/onout_org" target="_blank">Twitter</a>
+
+<p><img src="https://onout.org/envato-descriptions/banners/dao-widget-update-2026.png" width="590" alt="DAO Widget Update 2026"></p>
+
+<h2>DAO Widget — Governance and Proposals for your crypto token</h2>
+
+<p>Enable your token holders to create proposals and vote without gas fees. Based on snapshot.org infrastructure. Embeddable JavaScript widget — works on any website.</p>
+
+<p>
+<a href="https://farm.wpmix.net/daofactory/" target="_blank">Live Demo</a>
+</p>
+
+<h2>Key Features</h2>
+- Create proposals and vote — gas-free<br>
+- MetaMask wallet integration<br>
+- Customizable voting periods<br>
+- Vote tracking and listing<br>
+- Multi-blockchain: ERC20, BEP20, any EVM network<br>
+- Light and dark themes<br>
+- Configurable token requirements for proposal creation and voting<br>
+- ENS domain support<br>
+- Simple HTML/JavaScript embed — works on any website<br>
+
+<h2>Use Cases</h2>
+<p>The widget is designed for diverse organizational structures including:</p>
+- Community groups and DAOs<br>
+- Developer and worker cooperatives<br>
+- Virtual worlds and metaverse projects<br>
+- Venture capital and investment DAOs<br>
+- Insurance protocols<br>
+- Trust funds and asset management<br>
+- Fan ownership platforms<br>
+- Art collectives<br>
+- Media companies and politics<br>
+- Social media platforms<br>
+
+<h2>How it works</h2>
+<p>Embed the widget on your website, configure your token address and voting parameters. Token holders connect their wallets, create proposals, and vote — all without paying gas fees.</p>
+
+<h2>Supported Networks</h2>
+- Ethereum Mainnet<br>
+- Binance Smart Chain (BSC)<br>
+- Any EVM-compatible blockchain (configurable chainID)<br>
+
+<br>
+SEE also:<br>
+1. <a href="https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064" target="_blank">Multi Currency Wallet — Bitcoin, Ethereum, ERC20</a><br>
+2. <a href="https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071" target="_blank">FarmFactory — Staking & Yield Farming</a><br>
+3. <a href="https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232" target="_blank">DeFinance — DEX Plugin (Uniswap fork)</a><br>
+4. <a href="https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/35608699" target="_blank">DAO Factory — WordPress version</a><br>
+5. <a href="https://onout.org/nft/" target="_blank">NFT Marketplace</a><br>
+6. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeToxedUhbdGPORwVwPLwVCuASXUuRluIRuNSkQsZtLTtsnGA/viewform?usp=sf_link" target="_blank">Request a custom tool (survey)</a>`
+  },
+  {
+    id: 'launchpad',
+    icon: '🚀',
+    iconBg: '#F59E0B33',
+    product: 'IDOFactory — Crypto Launchpad',
+    subtitle: 'IDO Pools · Token Locker · White-label',
+    ccUrl: 'https://codecanyon.net/item/idofactory-crypto-launchpad-create-ido-pools-with-token-lockers-on/39882380',
+    editUrl: 'https://codecanyon.net/item/edit/39882380',
+    html: `<strong>Ask a question!</strong> <a href="mailto:support@onout.org">support@onout.org</a>, <a href="https://t.me/onoutsupportbot/?start=cc_launchpad" target="_blank">Telegram Chat</a>, <a href="https://support.onout.org/hc/1331700057/" target="_blank">Knowledge Base</a><br>
+<strong>Join the community!</strong> <a href="https://discord.gg/VwKEmHEgVN" target="_blank">Join Discord</a>, <a href="https://dash.onout.org/?utm_source=cc_launchpad" target="_blank">Join mailing list</a>, <a href="https://twitter.com/onout_org" target="_blank">Twitter</a>
+
+<p><img src="https://onout.org/envato-descriptions/banners/launchpad-update-2026.png" width="590" alt="IDOFactory Update 2026"></p>
+
+<h2>IDOFactory — White-label Decentralized IDO Launchpad</h2>
+
+<p>Build your own IDO launchpad with token lockers. Create and manage decentralized initial DEX offering pools. White-label solution — customize branding and deploy on your domain.</p>
+
+<p>
+<a href="https://launchpad.onout.org/" target="_blank">Live Demo</a>
+</p>
+
+<h2>Key Features</h2>
+- Create and manage IDO pools with multi-step configuration<br>
+- Built-in token locker for secure asset management and vesting<br>
+- User dashboard for tracking participation and portfolio<br>
+- Multi-chain support: any EVM-compatible blockchain<br>
+- White-label: customize logo, colors, domain name<br>
+- Launchpad interface displaying active IDO opportunities<br>
+- Static deployment — host anywhere<br>
+- No coding skills required<br>
+
+<h2>How it works</h2>
+<p>Deploy the launchpad on your domain, customize branding. Project owners create IDO pools with configurable parameters. Users connect wallets and participate in token launches. Token locker ensures safe vesting schedules.</p>
+
+<h2>Supported Networks</h2>
+- Ethereum Mainnet<br>
+- Binance Smart Chain (BSC)<br>
+- Polygon (Matic)<br>
+- Any EVM-compatible blockchain<br>
+
+<br>
+SEE also:<br>
+1. <a href="https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064" target="_blank">Multi Currency Wallet — Bitcoin, Ethereum, ERC20</a><br>
+2. <a href="https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071" target="_blank">FarmFactory — Staking & Yield Farming</a><br>
+3. <a href="https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232" target="_blank">DeFinance — DEX Plugin (Uniswap fork)</a><br>
+4. <a href="https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/35608699" target="_blank">DAO Factory — Governance & Proposals</a><br>
+5. <a href="https://onout.org/nft/" target="_blank">NFT Marketplace</a><br>
+6. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeToxedUhbdGPORwVwPLwVCuASXUuRluIRuNSkQsZtLTtsnGA/viewform?usp=sf_link" target="_blank">Request a custom tool (survey)</a>`
+  }
+];
+
+function getDoneIds() {
+  try { return JSON.parse(localStorage.getItem('cc_done') || '[]'); } catch { return []; }
+}
+function saveDone(ids) {
+  localStorage.setItem('cc_done', JSON.stringify(ids));
+}
+
+function updateProgress() {
+  const done = getDoneIds();
+  const count = done.length;
+  const total = tasks.length;
+  const pct = Math.round(count / total * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressCount').textContent = `${count} / ${total}`;
+}
+
+function renderTasks() {
+  const done = getDoneIds();
+  const grid = document.getElementById('tasksGrid');
+  grid.innerHTML = '';
+
+  tasks.forEach(task => {
+    const isDone = done.includes(task.id);
+    const card = document.createElement('div');
+    card.className = 'task-card' + (isDone ? ' done' : '');
+    card.id = 'card-' + task.id;
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="product-icon" style="background:${task.iconBg}">${task.icon}</div>
+          <div>
+            <div class="card-title">${task.product}</div>
+            <div class="card-subtitle">${task.subtitle}</div>
+          </div>
+        </div>
+        <div class="status-badge ${isDone ? 'status-done' : 'status-todo'}"
+             onclick="toggleDone('${task.id}')"
+             id="status-${task.id}">
+          ${isDone ? '✓ Done' : '○ Todo'}
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="instructions">
+          <ol>
+            <li>Open the <a href="${task.editUrl}" target="_blank">CodeCanyon edit page</a></li>
+            <li>Find the <strong>Description</strong> field (HTML source mode)</li>
+            <li>Select all existing text, paste the HTML below</li>
+            <li>Save / Submit</li>
+          </ol>
+        </div>
+        <div class="cc-url"><span>Edit URL:</span> <a href="${task.editUrl}" target="_blank">${task.editUrl}</a></div>
+        <div class="html-block">
+          <div class="html-label">HTML Description</div>
+          <textarea id="html-${task.id}" readonly>${task.html}</textarea>
+          <button class="btn-copy" id="btn-${task.id}" onclick="copyHTML('${task.id}')">
+            <span>📋</span> Copy HTML to Clipboard
+          </button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  updateProgress();
+}
+
+function toggleDone(id) {
+  const done = getDoneIds();
+  const idx = done.indexOf(id);
+  if (idx === -1) done.push(id);
+  else done.splice(idx, 1);
+  saveDone(done);
+  renderTasks();
+}
+
+async function copyHTML(id) {
+  const textarea = document.getElementById('html-' + id);
+  const btn = document.getElementById('btn-' + id);
+  try {
+    await navigator.clipboard.writeText(textarea.value);
+    btn.className = 'btn-copy copied';
+    btn.innerHTML = '<span>✓</span> Copied!';
+    setTimeout(() => {
+      btn.className = 'btn-copy';
+      btn.innerHTML = '<span>📋</span> Copy HTML to Clipboard';
+    }, 2500);
+  } catch {
+    textarea.select();
+    document.execCommand('copy');
+  }
+}
+
+renderTasks();
+</script>
+</body>
+</html>

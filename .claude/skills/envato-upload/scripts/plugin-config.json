@@ -1,0 +1,79 @@
+{
+  "farmfactory": {
+    "itemId": "29987071",
+    "name": "FarmFactory - Staking & Yield Farming",
+    "category": "WordPress / Forms",
+    "price": 899,
+    "repo": "farmfactory",
+    "repoPath": "/root/farmfactory",
+    "zipPattern": "farmfactory-v*.zip",
+    "remoteZipDir": "/home/farmFactory/web/farm.wpmix.net/public_html/updates",
+    "codecanyonUrl": "https://codecanyon.net/item/farmfactory-ethereum-assets-staking-yield-farming/29987071"
+  },
+  "definance": {
+    "itemId": "29099232",
+    "name": "DeFinance - Ethereum DeFi Plugin",
+    "category": "WordPress / Widgets",
+    "price": 935,
+    "repo": "definance",
+    "repoPath": "/root/definance",
+    "zipPattern": "definance-v*.zip",
+    "remoteZipDir": "/home/definance/web/definance.wpmix.net/public_html/updates",
+    "codecanyonUrl": "https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232"
+  },
+  "daofactory": {
+    "itemId": "35608699",
+    "name": "DAO Factory - WordPress Plugin",
+    "category": "WordPress / Widgets",
+    "price": 600,
+    "repo": "DAOwidget",
+    "repoPath": "/root/DAOwidget",
+    "zipPattern": "daofactory-v*.zip",
+    "remoteZipDir": "/home/farmFactory/web/farm.wpmix.net/public_html/updates",
+    "codecanyonUrl": "https://codecanyon.net/item/dao-factory-governance-and-proposals-plugin-for-your-token-for-wordpress/35608699"
+  },
+  "daowidget": {
+    "itemId": "35358807",
+    "name": "DAO Widget - JavaScript Version",
+    "category": "JavaScript / Miscellaneous",
+    "price": 699,
+    "repo": "DAOwidget",
+    "repoPath": "/root/DAOwidget",
+    "zipPattern": "DAOwidget-v*.zip",
+    "remoteZipDir": "/home/farmFactory/web/farm.wpmix.net/public_html/updates",
+    "codecanyonUrl": "https://codecanyon.net/item/dao-widget-governance-and-proposals-for-your-crypto-token/35358807"
+  },
+  "multicurrencywallet": {
+    "itemId": "23532064",
+    "name": "Bitcoin/Ethereum/ERC20 Wallets with Exchange",
+    "category": "WordPress / Widgets",
+    "price": 993,
+    "repo": "MultiCurrencyWallet",
+    "repoPath": "/root/MultiCurrencyWallet",
+    "zipPattern": "mcw-v*.zip",
+    "remoteZipDir": "/home/farmFactory/web/farm.wpmix.net/public_html/updates",
+    "codecanyonUrl": "https://codecanyon.net/item/multicurrency-crypto-wallet-and-exchange-widgets-for-wordpress/23532064"
+  },
+  "idofactory": {
+    "itemId": "39882380",
+    "name": "IDOFactory - Crypto Launchpad",
+    "category": "JavaScript",
+    "price": 952,
+    "repo": "launchpad",
+    "repoPath": "/root/launchpad",
+    "zipPattern": "launchpad-v*.zip",
+    "remoteZipDir": "/home/farmFactory/web/farm.wpmix.net/public_html/updates",
+    "codecanyonUrl": "https://codecanyon.net/item/idofactory-crypto-launchpad-create-ido-pools-with-token-lockers-on/39882380"
+  },
+  "lotteryfactory": {
+    "itemId": "UNKNOWN",
+    "name": "Lottery Factory - Blockchain Lottery",
+    "category": "WordPress / Miscellaneous",
+    "price": 0,
+    "repo": "LotteryFactory",
+    "repoPath": "/root/LotteryFactory",
+    "zipPattern": "lottery-v*.zip",
+    "remoteZipDir": "/home/farmFactory/web/farm.wpmix.net/public_html/updates",
+    "codecanyonUrl": ""
+  }
+}

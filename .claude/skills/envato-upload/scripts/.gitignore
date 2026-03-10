@@ -1,0 +1,20 @@
+# Environment
+.env
+
+# Session
+.envato-session
+
+# Logs
+logs/
+*.log
+
+# Screenshots
+screenshots/
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
