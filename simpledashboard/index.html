@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Build business dashboards with AI. Upload CSV, connect API, describe what you need — get real-time analytics dashboards in minutes. No coding required.">
+  <meta name="keywords" content="business dashboard builder, AI analytics, KPI dashboard, no-code analytics, CSV to dashboard, sales dashboard">
+  <title>SimpleDashboard — AI Business Dashboard Builder</title>
+  <meta property="og:title" content="SimpleDashboard — Business at a Glance">
+  <meta property="og:description" content="Build business dashboards with AI chat. Upload CSV, connect API, get real-time analytics.">
+  <meta property="og:image" content="https://onout.org/simpledashboard/images/screen-construction-crm.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #21262d; padding: 14px 0; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+    .nav-logo img { width: 30px; height: 30px; border-radius: 6px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: #8b949e; font-size: 14px; transition: color 0.15s; }
+    .nav-links a:hover { color: #e6edf3; }
+    .nav-cta { background: #388bfd; color: #fff; padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: background 0.15s; }
+    .nav-cta:hover { background: #58a6ff; }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(56,139,253,0.1); border: 1px solid rgba(56,139,253,0.3); color: #58a6ff; padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 700; line-height: 1.15; margin-bottom: 20px; background: linear-gradient(135deg, #e6edf3 0%, #58a6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 18px; color: #8b949e; max-width: 580px; margin: 0 auto 36px; line-height: 1.6; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: #388bfd; color: #fff; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: background 0.15s; }
+    .btn-primary:hover { background: #58a6ff; }
+    .btn-secondary { background: transparent; color: #e6edf3; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; border: 1px solid #30363d; transition: border-color 0.15s, background 0.15s; }
+    .btn-secondary:hover { border-color: #8b949e; background: rgba(255,255,255,0.04); }
+
+    /* HERO IMAGE */
+    .hero-img { margin: 48px auto 0; max-width: 900px; border-radius: 12px; overflow: hidden; border: 1px solid #21262d; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+    .hero-img img { width: 100%; border-radius: 12px; }
+
+    /* STATS */
+    .stats { padding: 48px 0; border-top: 1px solid #21262d; border-bottom: 1px solid #21262d; margin: 60px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .stat-value { font-size: 32px; font-weight: 700; color: #58a6ff; }
+    .stat-label { font-size: 13px; color: #8b949e; margin-top: 4px; }
+
+    /* SECTION */
+    section { padding: 64px 0; }
+    .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #388bfd; margin-bottom: 12px; }
+    .section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; margin-bottom: 16px; }
+    .section-desc { color: #8b949e; font-size: 16px; max-width: 600px; line-height: 1.7; }
+
+    /* FEATURES GRID */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .feature-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 24px; transition: border-color 0.2s; }
+    .feature-card:hover { border-color: #388bfd; }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .feature-text { font-size: 13px; color: #8b949e; line-height: 1.6; }
+
+    /* SCREENSHOT TABS */
+    .screenshots { margin-top: 40px; }
+    .screen-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .screen-tab { padding: 7px 14px; border: 1px solid #30363d; border-radius: 6px; font-size: 13px; color: #8b949e; cursor: pointer; transition: all 0.15s; }
+    .screen-tab:hover, .screen-tab.active { border-color: #388bfd; color: #58a6ff; background: rgba(56,139,253,0.08); }
+    .screen-img { border-radius: 10px; overflow: hidden; border: 1px solid #21262d; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .screen-img img { width: 100%; display: none; }
+    .screen-img img.active { display: block; }
+
+    /* TWO COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .two-col.reverse { direction: rtl; }
+    .two-col.reverse > * { direction: ltr; }
+    .two-col-img { border-radius: 10px; overflow: hidden; border: 1px solid #21262d; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+    /* DATA SOURCES */
+    .sources-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 32px; }
+    .source-item { display: flex; align-items: center; gap: 12px; background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 14px; }
+    .source-icon { font-size: 22px; }
+    .source-name { font-size: 14px; font-weight: 500; }
+    .source-desc { font-size: 12px; color: #8b949e; margin-top: 2px; }
+
+    /* USE CASES */
+    .usecases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+    .usecase-card { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 20px; }
+    .usecase-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .usecase-card p { font-size: 13px; color: #8b949e; }
+
+    /* CTA */
+    .cta { background: linear-gradient(135deg, #0d1117 0%, #0c1529 50%, #0d1117 100%); border-top: 1px solid #21262d; border-bottom: 1px solid #21262d; padding: 80px 0; text-align: center; }
+    .cta h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 16px; }
+    .cta p { color: #8b949e; font-size: 16px; max-width: 520px; margin: 0 auto 32px; }
+
+    /* FOOTER */
+    footer { padding: 40px 0; border-top: 1px solid #21262d; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: #8b949e; transition: color 0.15s; }
+    .footer-links a:hover { color: #e6edf3; }
+    .footer-copy { font-size: 13px; color: #484f58; }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid, .usecases-grid { grid-template-columns: 1fr 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .two-col.reverse { direction: ltr; }
+      .sources-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .features-grid, .usecases-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">
+      <img src="images/icon.png" alt="SimpleDashboard">
+      SimpleDashboard
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#data-sources">Data Sources</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="https://onout.org">onout.org</a>
+    </div>
+    <a href="https://simpledashboard.wpmix.net" class="nav-cta" target="_blank">Try Free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">🤖 AI-Powered · Free to Try</div>
+    <h1>Business at a Glance</h1>
+    <p class="hero-sub">Build professional business dashboards through conversation with AI. Upload CSV, connect your data — get real-time analytics in minutes.</p>
+    <div class="hero-btns">
+      <a href="https://simpledashboard.wpmix.net" class="btn-primary" target="_blank">Open SimpleDashboard →</a>
+      <a href="https://aisell.wpmix.net" class="btn-secondary" target="_blank">View Chrome Extension</a>
+    </div>
+    <div class="hero-img">
+      <img src="images/screen-construction-crm.png" alt="SimpleDashboard — Construction CRM Dashboard">
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div><div class="stat-value">14+</div><div class="stat-label">Dashboard templates</div></div>
+      <div><div class="stat-value">0</div><div class="stat-label">Lines of code needed</div></div>
+      <div><div class="stat-value">5 min</div><div class="stat-label">From idea to dashboard</div></div>
+      <div><div class="stat-value">Free</div><div class="stat-label">To try, no signup</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <div class="section-title">Everything you need to see your business</div>
+    <div class="section-desc">Just describe what metrics matter to you. AI handles charts, layout, and design.</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">AI Chart Generation</div>
+        <div class="feature-text">Describe metrics in plain English. AI picks the best visualization — bar, line, pie, funnel, KPI card — automatically.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📁</div>
+        <div class="feature-title">Upload Your Data</div>
+        <div class="feature-text">Drop in a CSV or Excel file. AI reads the columns, understands the structure, and builds a dashboard around your actual data.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔌</div>
+        <div class="feature-title">Connect APIs & Sheets</div>
+        <div class="feature-text">Link Google Sheets, REST APIs, or webhook receivers. Keep dashboards updated in real time with live data.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <div class="feature-title">Professional Design</div>
+        <div class="feature-text">Dark theme, responsive layout, interactive filters and date ranges. Looks great on any screen — no designer needed.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <div class="feature-title">Instant Hosting</div>
+        <div class="feature-text">Publish to your own subdomain with HTTPS included. Share a link with your team or embed in any website.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✏️</div>
+        <div class="feature-title">Edit in Chat</div>
+        <div class="feature-text">"Change the chart to weekly", "add a leads table", "make the colors blue" — just tell the AI and it updates instantly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="section-label">Live Examples</div>
+    <div class="section-title">14+ dashboard types, all AI-generated</div>
+    <div class="screenshots">
+      <div class="screen-tabs">
+        <div class="screen-tab active" onclick="showScreen(0, this)">Construction CRM</div>
+        <div class="screen-tab" onclick="showScreen(1, this)">Sales & UTM</div>
+        <div class="screen-tab" onclick="showScreen(2, this)">Funnel Analytics</div>
+        <div class="screen-tab" onclick="showScreen(3, this)">Ecommerce Orders</div>
+        <div class="screen-tab" onclick="showScreen(4, this)">SaaS Metrics</div>
+      </div>
+      <div class="screen-img">
+        <img class="active" src="images/screen-construction-crm.png" alt="Construction CRM Dashboard">
+        <img src="images/screen-sales-utm.png" alt="Sales & UTM Analytics">
+        <img src="images/screen-funnel.png" alt="Funnel Analytics">
+        <img src="images/screen-ecommerce.png" alt="Ecommerce Orders">
+        <img src="images/screen-saas.png" alt="SaaS Metrics">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA SOURCES -->
+<section id="data-sources" style="background:#0c1219">
+  <div class="container">
+    <div class="section-label">Data Sources</div>
+    <div class="section-title">Connect any data in minutes</div>
+    <div class="section-desc">No database setup, no SQL. Just upload a file or paste a URL.</div>
+    <div class="sources-grid">
+      <div class="source-item">
+        <div class="source-icon">📄</div>
+        <div>
+          <div class="source-name">CSV / Excel Upload</div>
+          <div class="source-desc">Drop a .csv or .xlsx file — AI reads and visualizes immediately</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">📊</div>
+        <div>
+          <div class="source-name">Google Sheets</div>
+          <div class="source-desc">Share a link — dashboard stays in sync with your spreadsheet</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">🔗</div>
+        <div>
+          <div class="source-name">REST API</div>
+          <div class="source-desc">Connect any JSON endpoint — configure headers, auth, polling interval</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">🪝</div>
+        <div>
+          <div class="source-name">Webhooks</div>
+          <div class="source-desc">Push data in real time from any service — Stripe, GitHub, Zapier</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="use-cases">
+  <div class="container">
+    <div class="section-label">Use Cases</div>
+    <div class="section-title">Who uses SimpleDashboard</div>
+    <div class="usecases-grid">
+      <div class="usecase-card">
+        <h3>📦 Operations Manager</h3>
+        <p>Track orders, delivery times, inventory levels and supplier performance in a single view.</p>
+      </div>
+      <div class="usecase-card">
+        <h3>📣 Marketing Team</h3>
+        <p>Visualize UTM campaigns, traffic sources, conversion funnels and ad spend ROI.</p>
+      </div>
+      <div class="usecase-card">
+        <h3>💼 Sales Lead</h3>
+        <p>Monitor pipeline stages, deal velocity, rep performance and monthly revenue targets.</p>
+      </div>
+      <div class="usecase-card">
+        <h3>🏗️ Project Manager</h3>
+        <p>See sprint progress, team workload, blockers and delivery timelines at a glance.</p>
+      </div>
+      <div class="usecase-card">
+        <h3>📈 SaaS Founder</h3>
+        <p>Track MRR, churn, NPS, activation rates and feature usage across cohorts.</p>
+      </div>
+      <div class="usecase-card">
+        <h3>🍽️ Business Owner</h3>
+        <p>Revenue by day, top products, staff efficiency, costs — your whole business in one screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:#0c1219">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">3 steps to your dashboard</div>
+    <div class="features-grid" style="margin-top:32px">
+      <div class="feature-card" style="border-color:#388bfd22">
+        <div class="feature-icon">1️⃣</div>
+        <div class="feature-title">Describe what you need</div>
+        <div class="feature-text">Open the chat and type what you want: "Sales dashboard with monthly revenue chart and leads table" — in plain English.</div>
+      </div>
+      <div class="feature-card" style="border-color:#388bfd22">
+        <div class="feature-icon">2️⃣</div>
+        <div class="feature-title">Upload or connect your data</div>
+        <div class="feature-text">Drop a CSV file, paste a Google Sheets link, or let AI generate sample data to start. Real data in seconds.</div>
+      </div>
+      <div class="feature-card" style="border-color:#388bfd22">
+        <div class="feature-icon">3️⃣</div>
+        <div class="feature-title">Publish & share</div>
+        <div class="feature-text">Your dashboard gets a public URL with HTTPS. Share with your team, embed in a website, or keep it private.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="container">
+    <h2>See your whole business at a glance</h2>
+    <p>No signup required. Start building your dashboard in under 5 minutes — for free.</p>
+    <div class="hero-btns">
+      <a href="https://simpledashboard.wpmix.net" class="btn-primary" target="_blank">Open SimpleDashboard →</a>
+    </div>
+    <p style="margin-top:20px;font-size:13px;color:#484f58">Also available as a <a href="https://aisell.wpmix.net" style="color:#58a6ff">Chrome Extension</a> — use in a sidebar on any page</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="nav-logo">
+      <img src="images/icon.png" alt="SimpleDashboard">
+      SimpleDashboard
+    </div>
+    <div class="footer-links">
+      <a href="https://simpledashboard.wpmix.net" target="_blank">Live Demo</a>
+      <a href="https://aisell.wpmix.net" target="_blank">Chrome Extension</a>
+      <a href="https://onout.org" target="_blank">onout.org</a>
+      <a href="mailto:support@onout.org">Support</a>
+    </div>
+    <div class="footer-copy">© 2026 NoxonThemes</div>
+  </div>
+</footer>
+
+<script>
+function showScreen(idx, tab) {
+  document.querySelectorAll('.screen-img img').forEach((img, i) => {
+    img.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.screen-tab').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+}
+</script>
+</body>
+</html>
