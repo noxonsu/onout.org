@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Fork Aave: Build Your Own Lending Protocol | Onout</title>
+  <meta name="description" content="Complete guide to forking Aave V2/V3 and building your own DeFi lending protocol. Compare fork approaches, costs, and ready-made alternatives.">
+  <link rel="canonical" href="https://onout.org/blog/how-to-fork-aave/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link href="/css/all.css" rel="stylesheet">
+  <link href="/blog/blog.css" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Fork Aave: Build Your Own Lending Protocol",
+    "description": "Complete guide to forking Aave and building your own DeFi lending protocol.",
+    "datePublished": "2026-03-11",
+    "dateModified": "2026-03-11",
+    "author": {"@type": "Organization", "name": "Onout", "url": "https://onout.org"},
+    "publisher": {"@type": "Organization", "name": "Onout", "url": "https://onout.org"}
+  }
+  </script>
+</head>
+<body class="blog-article">
+  <header class="blog-header">
+    <div class="container">
+      <a href="/blog/">Back to Blog</a>
+      <a href="/" class="header-logo">Onout.org</a>
+    </div>
+  </header>
+
+  <section class="article-hero">
+    <div class="container">
+      <h1>How to Fork Aave: Build Your Own Lending Protocol</h1>
+      <div class="article-meta">
+        <span>Published: March 11, 2026</span>
+        <span>14 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-content">
+
+    <nav class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#what-is-aave">What Is Aave and Why Fork It?</a></li>
+        <li><a href="#v2-vs-v3">Aave V2 vs V3: Which Version to Fork?</a></li>
+        <li><a href="#architecture">Architecture Overview</a></li>
+        <li><a href="#step-1">Step 1 &mdash; Clone and Set Up</a></li>
+        <li><a href="#step-2">Step 2 &mdash; Configure Markets</a></li>
+        <li><a href="#step-3">Step 3 &mdash; Set Up Price Oracles</a></li>
+        <li><a href="#step-4">Step 4 &mdash; Deploy to Testnet</a></li>
+        <li><a href="#step-5">Step 5 &mdash; Build the Frontend</a></li>
+        <li><a href="#hidden-complexity">The Hidden Complexity of Aave Forks</a></li>
+        <li><a href="#alternatives">Alternative Approaches to Building a Lending Protocol</a></li>
+        <li><a href="#notable-forks">List of Notable Aave Forks</a></li>
+        <li><a href="#cost">How Much Does It Cost to Fork Aave?</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <!-- Section 1 -->
+    <h2 id="what-is-aave">What Is Aave and Why Fork It?</h2>
+
+    <p>Aave is one of the largest decentralized lending protocols in DeFi, with billions of dollars in total value locked across multiple chains. At its core, Aave allows users to <strong>deposit crypto assets to earn interest</strong> and <strong>borrow assets against their collateral</strong>. Interest rates adjust algorithmically based on supply and demand, and the entire system runs on smart contracts without any centralized intermediary.</p>
+
+    <p>So why would you want to fork it? There are several compelling reasons builders consider learning <strong>how to fork Aave</strong>:</p>
+
+    <ul>
+      <li><strong>Custom collateral types</strong> &mdash; support assets that Aave governance hasn't approved, such as real-world asset tokens, LP tokens from specific DEXes, or niche ERC-20 tokens serving a particular community.</li>
+      <li><strong>Chain-specific deployments</strong> &mdash; launch on newer L2s or EVM-compatible chains where Aave hasn't deployed yet, capturing early liquidity.</li>
+      <li><strong>Niche market focus</strong> &mdash; build a lending market tailored to a specific vertical like NFT collateral, gaming assets, or stablecoin-only markets.</li>
+      <li><strong>Revenue from interest rate spreads</strong> &mdash; protocol owners earn a percentage of interest paid by borrowers, creating a sustainable revenue stream.</li>
+      <li><strong>Full control over governance</strong> &mdash; set your own risk parameters, upgrade schedules, and fee structures without needing approval from Aave DAO voters.</li>
+    </ul>
+
+    <p>Because Aave's smart contracts are open source (licensed under BUSL-1.1 for V3, with older versions under more permissive licenses), anyone can study, fork, and modify the codebase. However, as we'll explore in this guide, the distance between "cloning a repository" and "running a production lending protocol" is enormous.</p>
+
+    <!-- Section 2 -->
+    <h2 id="v2-vs-v3">Aave V2 vs V3: Which Version to Fork?</h2>
+
+    <p>When you decide to fork Aave, the first decision is which version to base your project on. Both V2 and V3 are battle-tested and have been deployed on mainnet for years, but they differ significantly in complexity and features.</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Aave V2</th>
+          <th>Aave V3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>License</td>
+          <td>GPL-3.0 (permissive)</td>
+          <td>BUSL-1.1 (restrictive, converts to GPL after 2 years)</td>
+        </tr>
+        <tr>
+          <td>Code Complexity</td>
+          <td>Moderate (~15 core contracts)</td>
+          <td>High (~25+ core contracts)</td>
+        </tr>
+        <tr>
+          <td>Efficiency Mode (eMode)</td>
+          <td>Not available</td>
+          <td>Yes &mdash; higher LTV for correlated assets</td>
+        </tr>
+        <tr>
+          <td>Isolation Mode</td>
+          <td>Not available</td>
+          <td>Yes &mdash; limit risk of new assets</td>
+        </tr>
+        <tr>
+          <td>Portals (Cross-Chain)</td>
+          <td>Not available</td>
+          <td>Yes &mdash; bridging liquidity across chains</td>
+        </tr>
+        <tr>
+          <td>Gas Optimization</td>
+          <td>Higher gas costs</td>
+          <td>20-25% lower gas costs</td>
+        </tr>
+        <tr>
+          <td>Supply/Borrow Caps</td>
+          <td>Not available</td>
+          <td>Yes &mdash; per-asset caps</td>
+        </tr>
+        <tr>
+          <td>Flash Loan Fees</td>
+          <td>0.09% fixed</td>
+          <td>Configurable per asset</td>
+        </tr>
+        <tr>
+          <td>Existing Forks</td>
+          <td>Many (Geist, Radiant V1, Sturdy)</td>
+          <td>Growing (Seamless, Spark, Radiant V2)</td>
+        </tr>
+        <tr>
+          <td>Fork Difficulty</td>
+          <td>Medium</td>
+          <td>High</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Our recommendation:</strong> If you're building a simple lending market and want the easiest path, V2 is more approachable due to its GPL license and simpler architecture. If you need advanced risk management features like isolation mode and eMode, V3 is the way to go &mdash; but be aware of the BUSL-1.1 license implications. According to DeFiLlama, there are now <strong>over 50 Aave V3 forks</strong> deployed across various chains, demonstrating that the complexity is manageable with the right team.</p>
+
+    <!-- Section 3 -->
+    <h2 id="architecture">Architecture Overview</h2>
+
+    <p>Before you touch any code, you need to understand how Aave's contracts fit together. The protocol is modular by design, which makes it powerful but also means there are many moving parts.</p>
+
+    <h3>Core Contracts</h3>
+
+    <ul>
+      <li><strong>Pool (LendingPool in V2)</strong> &mdash; the main entry point for all user interactions: supply, borrow, repay, withdraw, and liquidate. Every transaction flows through this contract.</li>
+      <li><strong>PoolAddressesProvider</strong> &mdash; a registry that stores the addresses of all other protocol contracts. This is the single source of truth for the deployment &mdash; if you need to upgrade a component, you update its address here.</li>
+      <li><strong>aTokens</strong> &mdash; ERC-20 tokens that represent a user's deposit. When you supply 100 USDC, you receive 100 aUSDC. These tokens accrue interest in real time &mdash; your balance increases every block.</li>
+      <li><strong>Debt Tokens</strong> &mdash; track what users owe. There are two varieties: <code>StableDebtToken</code> (fixed-rate borrowing) and <code>VariableDebtToken</code> (floating-rate borrowing).</li>
+      <li><strong>Price Oracle</strong> &mdash; fetches asset prices from external sources (typically Chainlink). The oracle contract aggregates prices and provides them to the Pool for calculating health factors and collateral values.</li>
+      <li><strong>Interest Rate Strategy</strong> &mdash; each asset has its own interest rate model defined by a contract implementing <code>IInterestRateStrategy</code>. These contracts use a kinked curve: rates are low when utilization is below the optimal threshold and spike sharply above it.</li>
+    </ul>
+
+    <h3>Supporting Infrastructure</h3>
+
+    <ul>
+      <li><strong>ACL Manager</strong> &mdash; role-based access control for admin functions (adding assets, pausing the protocol, setting risk parameters).</li>
+      <li><strong>Pool Configurator</strong> &mdash; admin interface for configuring reserves, setting LTV ratios, and enabling/disabling features.</li>
+      <li><strong>Liquidation logic</strong> &mdash; handles undercollateralized position cleanup. In V3, this includes a liquidation bonus that incentivizes third-party liquidators.</li>
+      <li><strong>Flash Loan logic</strong> &mdash; enables uncollateralized single-transaction loans, used by arbitrageurs and composability protocols.</li>
+    </ul>
+
+    <p>Understanding this architecture is essential because when you fork Aave, you aren't just deploying one contract &mdash; you're deploying and correctly wiring together a <strong>system of 20+ interrelated contracts</strong>.</p>
+
+    <!-- Section 4 -->
+    <h2 id="step-1">Step 1 &mdash; Clone and Set Up</h2>
+
+    <p>Start by cloning the Aave V3 core repository and installing dependencies:</p>
+
+    <pre><code># Clone the core protocol contracts
+git clone https://github.com/aave/aave-v3-core.git
+cd aave-v3-core
+
+# Install dependencies
+npm install
+
+# Compile contracts
+npx hardhat compile</code></pre>
+
+    <p>The repository is organized into several key directories:</p>
+
+    <pre><code>aave-v3-core/
+  contracts/
+    protocol/         # Core protocol (Pool, aTokens, debt tokens)
+    misc/             # Helper contracts (WETH gateway, etc.)
+    flashloan/        # Flash loan logic
+    interfaces/       # All interface definitions
+  deploy/             # Deployment scripts
+  helpers/            # Deployment helper utilities
+  test/               # Test suite
+  markets/            # Market configurations per chain</code></pre>
+
+    <p>You'll also want the deploy repository, which contains the actual deployment scripts and market configurations:</p>
+
+    <pre><code># Clone the deployment tooling
+git clone https://github.com/aave/aave-v3-deploy.git
+cd aave-v3-deploy
+npm install</code></pre>
+
+    <p>Make sure you're running <strong>Node.js 16+</strong> and have <strong>Hardhat</strong> configured properly. The test suite is extensive &mdash; run it first to make sure everything compiles and passes before making any changes.</p>
+
+    <!-- Section 5 -->
+    <h2 id="step-2">Step 2 &mdash; Configure Markets</h2>
+
+    <p>Market configuration is where you define which assets your lending protocol supports and their risk parameters. In Aave V3, this is done through configuration files in the <code>markets/</code> directory.</p>
+
+    <p>Here's an example of how a reserve configuration looks:</p>
+
+    <pre><code>// markets/mychain/reservesConfigs.ts
+export const strategyUSDC: IReserveParams = {
+  strategy: rateStrategyStableTwo,
+  baseLTVAsCollateral: '8000',   // 80% LTV
+  liquidationThreshold: '8500',  // 85% liquidation threshold
+  liquidationBonus: '10500',     // 5% liquidation bonus
+  liquidationProtocolFee: '1000', // 10% of liquidation bonus to protocol
+  borrowingEnabled: true,
+  stableBorrowRateEnabled: false,
+  flashLoanEnabled: true,
+  reserveDecimals: '6',
+  aTokenImpl: eContractid.AToken,
+  reserveFactor: '1000',         // 10% of interest goes to treasury
+  supplyCap: '2000000000',       // 2B USDC supply cap
+  borrowCap: '2000000000',       // 2B USDC borrow cap
+  debtCeiling: '0',
+  borrowableIsolation: true,
+};</code></pre>
+
+    <p>Key parameters you'll need to set for each asset:</p>
+
+    <ul>
+      <li><strong>baseLTVAsCollateral</strong> &mdash; the maximum percentage a user can borrow against this asset. An 80% LTV means depositing $1000 worth allows borrowing up to $800.</li>
+      <li><strong>liquidationThreshold</strong> &mdash; the point at which a position becomes liquidatable. Set this above the LTV to give borrowers a safety buffer.</li>
+      <li><strong>liquidationBonus</strong> &mdash; the discount liquidators receive when closing unhealthy positions. 10500 means a 5% bonus (100% + 5%).</li>
+      <li><strong>reserveFactor</strong> &mdash; the percentage of interest payments that go to the protocol treasury. This is your revenue.</li>
+      <li><strong>supplyCap / borrowCap</strong> &mdash; maximum amounts that can be supplied or borrowed (V3 only). Essential for limiting exposure to volatile or low-liquidity assets.</li>
+    </ul>
+
+    <p>You also need to define <strong>interest rate strategies</strong>. These control how borrow rates change based on utilization:</p>
+
+    <pre><code>export const rateStrategyStableTwo: IInterestRateStrategyParams = {
+  name: 'rateStrategyStableTwo',
+  optimalUsageRatio: ethers.utils.parseUnits('0.8', 27).toString(),
+  baseVariableBorrowRate: '0',
+  variableRateSlope1: ethers.utils.parseUnits('0.04', 27).toString(),
+  variableRateSlope2: ethers.utils.parseUnits('0.75', 27).toString(),
+  stableRateSlope1: ethers.utils.parseUnits('0.005', 27).toString(),
+  stableRateSlope2: ethers.utils.parseUnits('0.75', 27).toString(),
+  baseStableRateOffset: ethers.utils.parseUnits('0.01', 27).toString(),
+  stableRateExcessOffset: ethers.utils.parseUnits('0.08', 27).toString(),
+  optimalStableToTotalDebtRatio: ethers.utils.parseUnits('0.2', 27).toString(),
+};</code></pre>
+
+    <p>The interest rate curve uses two slopes: <code>slope1</code> applies below optimal utilization (encouraging borrowing), and <code>slope2</code> applies above it (discouraging over-utilization). Getting these numbers right is critical for balancing depositor yields with borrower costs.</p>
+
+    <!-- Section 6 -->
+    <h2 id="step-3">Step 3 &mdash; Set Up Price Oracles</h2>
+
+    <p>Price oracles are the backbone of any lending protocol. They determine collateral values, health factors, and liquidation triggers. A faulty oracle can drain your entire protocol in minutes.</p>
+
+    <p>Aave uses <strong>Chainlink price feeds</strong> as its primary oracle source. You'll need to configure the oracle contract to point to the correct Chainlink aggregators on your target chain:</p>
+
+    <pre><code>// markets/mychain/commons.ts
+export const chainlinkAggregatorProxy: Record&lt;string, string&gt; = {
+  USDC: '0x50834F3163758fCC1Df9973b6e91f0F0F0434aD3',
+  WETH: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419',
+  WBTC: '0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c',
+  // Add your asset price feeds here
+};</code></pre>
+
+    <p>Important considerations for oracle setup:</p>
+
+    <ul>
+      <li><strong>Chainlink availability</strong> &mdash; not all assets have Chainlink feeds on all chains. If your target chain or asset lacks a feed, you'll need a fallback solution.</li>
+      <li><strong>Fallback oracle pattern</strong> &mdash; Aave implements a fallback mechanism where if the primary oracle fails or returns stale data, a backup source is used. You should configure both.</li>
+      <li><strong>Heartbeat and deviation thresholds</strong> &mdash; each Chainlink feed updates at different intervals. Make sure your protocol handles stale prices correctly.</li>
+      <li><strong>Base currency</strong> &mdash; Aave V3 uses USD as the base currency for all price calculations. Ensure all your price feeds return values in the same denomination.</li>
+    </ul>
+
+    <pre><code>// Example: Setting up the oracle in deployment
+const aaveOracle = await deploy('AaveOracle', {
+  args: [
+    addressesProvider.address,
+    [USDC_ADDRESS, WETH_ADDRESS, WBTC_ADDRESS],
+    [USDC_ORACLE, WETH_ORACLE, WBTC_ORACLE],
+    FALLBACK_ORACLE_ADDRESS,
+    USD_ADDRESS,
+    ethers.utils.parseUnits('1', 8), // base currency unit
+  ],
+});</code></pre>
+
+    <p>Oracle manipulation is one of the most common attack vectors in DeFi. Using Chainlink mitigates most risks, but you should also implement circuit breakers that pause borrowing if prices move beyond expected thresholds within a short window.</p>
+
+    <!-- Section 7 -->
+    <h2 id="step-4">Step 4 &mdash; Deploy to Testnet</h2>
+
+    <p>Once your configurations are in place, it's time to deploy. Aave provides deployment scripts, but they require careful configuration.</p>
+
+    <p>First, set up your environment variables:</p>
+
+    <pre><code># .env
+PRIVATE_KEY=your_deployer_private_key
+ALCHEMY_KEY=your_alchemy_api_key
+ETHERSCAN_API_KEY=your_etherscan_key
+
+# For testnet deployment
+HARDHAT_NETWORK=sepolia</code></pre>
+
+    <p>Run the deployment:</p>
+
+    <pre><code># Deploy core protocol
+npx hardhat deploy --network sepolia --tags core
+
+# Initialize reserves (add your configured assets)
+npx hardhat deploy --network sepolia --tags init
+
+# Verify contracts on Etherscan
+npx hardhat verify-contracts --network sepolia</code></pre>
+
+    <p>The deployment process will create and wire together approximately <strong>20-30 contracts</strong> depending on how many assets you configure. After deployment, verify that:</p>
+
+    <ul>
+      <li>All contracts are correctly linked through the AddressesProvider.</li>
+      <li>Oracles return valid prices for each configured asset.</li>
+      <li>You can successfully supply and borrow in a test transaction.</li>
+      <li>Liquidation works correctly when positions become undercollateralized.</li>
+      <li>Interest accrues properly over time (advance blocks in your test).</li>
+    </ul>
+
+    <p>Expect to spend several days debugging deployment issues. Common problems include incorrect constructor arguments, missing oracle feeds on testnet, and library linking errors.</p>
+
+    <!-- Section 8 -->
+    <h2 id="step-5">Step 5 &mdash; Build the Frontend</h2>
+
+    <p>With the contracts deployed, you need a user interface. Aave's official frontend is open source, but it's a complex React application with hundreds of components.</p>
+
+    <p>You have three options:</p>
+
+    <ol>
+      <li><strong>Fork the Aave interface</strong> &mdash; clone <code>aave/interface</code> from GitHub. It's built with React, Next.js, and uses ethers.js for contract interactions. You'll need to update contract addresses, branding, and supported networks. This is the most feature-complete option but requires significant frontend expertise.</li>
+      <li><strong>Build from scratch</strong> &mdash; use a framework like React or Vue and interact with contracts directly via ethers.js or viem. This gives full control but takes months of development for basic functionality (deposit, borrow, repay, withdraw, health factor display).</li>
+      <li><strong>Use a template</strong> &mdash; some projects offer pre-built lending frontends that you can configure to point at your deployed contracts.</li>
+    </ol>
+
+    <p>Key frontend components you'll need:</p>
+
+    <ul>
+      <li><strong>Market overview</strong> &mdash; show all assets with current supply/borrow APYs, total supplied, total borrowed.</li>
+      <li><strong>Deposit/Withdraw</strong> &mdash; approve token spending, call <code>pool.supply()</code> and <code>pool.withdraw()</code>.</li>
+      <li><strong>Borrow/Repay</strong> &mdash; display available borrow amount based on collateral, call <code>pool.borrow()</code> and <code>pool.repay()</code>.</li>
+      <li><strong>Health factor display</strong> &mdash; calculate and show the user's health factor in real time. Below 1.0 means liquidation risk.</li>
+      <li><strong>Wallet connection</strong> &mdash; integrate with MetaMask, WalletConnect, and other providers.</li>
+    </ul>
+
+    <p>The frontend alone typically takes <strong>2-4 months</strong> of development time for a small team, even when forking the existing Aave interface.</p>
+
+    <!-- Mid-article CTA -->
+    <div class="cta-box">
+      <h3>Skip Months of Development &mdash; Use Lenda</h3>
+      <p>Lenda is a ready-made lending platform with custom smart contracts. Deploy your own Aave-like protocol without forking, configuring, and auditing the entire Aave codebase. Supports USDT lending, multi-collateral borrowing (WBNB, BTC, ETH), health factor monitoring, and an admin dashboard &mdash; all out of the box.</p>
+      <div class="btn-row">
+        <a href="/lenda/" class="btn">Try Live Demo</a>
+        <a href="/lenda/" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Section 9 -->
+    <h2 id="hidden-complexity">The Hidden Complexity of Aave Forks</h2>
+
+    <p>Most guides about <strong>how to fork Aave</strong> stop at deployment. But deploying the contracts is only about 20% of the work. Here's what catches most teams off guard:</p>
+
+    <h3>Governance Setup</h3>
+    <p>Aave uses a sophisticated governance system with tiered proposal types, time locks, and voting power delegation. If you fork the protocol, you need to decide: do you implement on-chain governance from day one, or start with a multisig? Most forks start with a multisig (like Gnosis Safe) and plan to decentralize later &mdash; but "later" often never comes, leaving users trusting a small team with full admin control.</p>
+
+    <h3>Oracle Reliability</h3>
+    <p>Chainlink feeds are reliable on major chains, but if you deploy on a newer L2 or alt-L1, you may find that feeds are missing, update infrequently, or have wider deviation thresholds. Some Aave forks have been exploited because they used oracle sources that could be manipulated through flash loans or low-liquidity pools.</p>
+
+    <h3>Liquidation Bot Infrastructure</h3>
+    <p>Your protocol is only as safe as its liquidation infrastructure. If borrowers become undercollateralized and nobody liquidates them, the protocol accrues bad debt. You need:</p>
+    <ul>
+      <li>At least one reliable liquidation bot running 24/7.</li>
+      <li>Sufficient liquidity for liquidators to execute trades.</li>
+      <li>Gas price monitoring to ensure liquidations are profitable on-chain.</li>
+      <li>Alerting systems for when positions approach liquidation thresholds.</li>
+    </ul>
+    <p>Running this infrastructure costs $500-2000/month in cloud hosting and gas fees, and requires ongoing maintenance.</p>
+
+    <h3>Security Audits</h3>
+    <p>Any lending protocol handling real user funds <strong>must</strong> be audited. Even if you only changed a few configuration files, auditors need to verify that your changes don't introduce vulnerabilities. Professional audits from firms like Trail of Bits, OpenZeppelin, or Spearbit cost <strong>$100,000-$500,000</strong> depending on scope, and take 4-8 weeks.</p>
+
+    <h3>Ongoing Maintenance</h3>
+    <p>Post-launch, you'll need to monitor for:</p>
+    <ul>
+      <li>Oracle failures or stale prices.</li>
+      <li>Interest rate model performance (are rates attracting enough depositors?).</li>
+      <li>Asset risk changes (did a supported token lose liquidity?).</li>
+      <li>Smart contract upgrades when vulnerabilities are discovered in the Aave codebase.</li>
+      <li>Frontend hosting and reliability.</li>
+    </ul>
+
+    <!-- Section 10 -->
+    <h2 id="alternatives">Alternative Approaches to Building a Lending Protocol</h2>
+
+    <p>Forking Aave is one approach, but it's not the only one. Here's how the alternatives compare:</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Approach</th>
+          <th>Time to Launch</th>
+          <th>Cost</th>
+          <th>Flexibility</th>
+          <th>Security Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Full Aave V3 Fork</strong></td>
+          <td>4-8 months</td>
+          <td>$150K-$500K+</td>
+          <td>Very High</td>
+          <td>High (large attack surface)</td>
+        </tr>
+        <tr>
+          <td><strong>Aave V2 Fork</strong></td>
+          <td>3-6 months</td>
+          <td>$100K-$300K+</td>
+          <td>High</td>
+          <td>Medium-High</td>
+        </tr>
+        <tr>
+          <td><strong>Simplified Lending Contracts</strong></td>
+          <td>2-4 months</td>
+          <td>$50K-$150K</td>
+          <td>Medium</td>
+          <td>Medium (smaller codebase to audit)</td>
+        </tr>
+        <tr>
+          <td><strong>Ready-made Platform (Lenda)</strong></td>
+          <td>Days</td>
+          <td>Under $1K</td>
+          <td>Medium</td>
+          <td>Lower (tested, focused scope)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The "simplified lending contracts" approach means writing your own pool contract from scratch with only the features you need: deposit, borrow, repay, withdraw, and liquidate. Without the complexity of flash loans, stable rates, eMode, isolation mode, and portals, the codebase shrinks by 80%, making it far easier to audit and maintain. This is the approach taken by projects like <a href="/lenda/">Lenda</a>, which implements an ERC4626-inspired vault with Chainlink oracles and multi-collateral support in a fraction of the code.</p>
+
+    <!-- Section 11 -->
+    <h2 id="notable-forks">List of Notable Aave Forks</h2>
+
+    <p>Dozens of teams have already forked Aave with varying degrees of success. Here are the most notable ones:</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Protocol</th>
+          <th>Base</th>
+          <th>Chain(s)</th>
+          <th>Notable Changes</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Spark Protocol</strong></td>
+          <td>Aave V3</td>
+          <td>Ethereum</td>
+          <td>Built by MakerDAO for DAI lending; uses Maker oracle system</td>
+          <td>Active, $1B+ TVL</td>
+        </tr>
+        <tr>
+          <td><strong>Radiant Capital</strong></td>
+          <td>Aave V2/V3</td>
+          <td>Arbitrum, BSC</td>
+          <td>Cross-chain lending via LayerZero; RDNT token incentives</td>
+          <td>Active (post-exploit recovery)</td>
+        </tr>
+        <tr>
+          <td><strong>Seamless Protocol</strong></td>
+          <td>Aave V3</td>
+          <td>Base</td>
+          <td>Native Base chain lending; integrated borrowing strategies</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td><strong>Granary Finance</strong></td>
+          <td>Aave V2</td>
+          <td>Multi-chain</td>
+          <td>Multi-chain V2 fork with GRAIN token</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td><strong>Sturdy Finance</strong></td>
+          <td>Aave V2</td>
+          <td>Ethereum</td>
+          <td>Interest-free borrowing via yield farming deposits</td>
+          <td>Relaunched after exploit</td>
+        </tr>
+        <tr>
+          <td><strong>Geist Finance</strong></td>
+          <td>Aave V2</td>
+          <td>Fantom</td>
+          <td>Fantom-native lending; GEIST token</td>
+          <td>Wound down</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>A few important lessons from these forks:</p>
+
+    <ul>
+      <li><strong>Security is paramount.</strong> Both Radiant and Sturdy suffered exploits that cost millions. In Radiant's case, the exploit targeted the multisig infrastructure rather than the Aave code itself, demonstrating that the attack surface extends far beyond smart contracts.</li>
+      <li><strong>Chain choice matters.</strong> Forks on chains with deep liquidity (Ethereum, Arbitrum) tend to survive longer than those on smaller chains where liquidity can dry up quickly.</li>
+      <li><strong>Token incentives are a double-edged sword.</strong> Most forks launch with aggressive token emissions to attract TVL, but this creates mercenary capital that leaves when rewards decrease.</li>
+      <li><strong>Some forks have been shut down.</strong> Geist Finance wound down operations, proving that even a well-executed fork isn't guaranteed to succeed long-term.</li>
+    </ul>
+
+    <!-- Section 12 -->
+    <h2 id="cost">How Much Does It Cost to Fork Aave?</h2>
+
+    <p>Let's break down the realistic costs of launching an Aave fork from scratch. These numbers are based on actual market rates for Solidity developers, auditors, and infrastructure providers in 2025-2026.</p>
+
+    <h3>Development Costs</h3>
+    <ul>
+      <li><strong>Smart contract customization:</strong> $30,000-$80,000 &mdash; modifying Aave's contracts, configuring markets, writing deployment scripts, and building a test suite for your changes.</li>
+      <li><strong>Frontend development:</strong> $20,000-$60,000 &mdash; forking and customizing the Aave interface or building from scratch. Includes wallet integration, responsive design, and transaction handling.</li>
+      <li><strong>Liquidation bot:</strong> $10,000-$30,000 &mdash; custom bot that monitors positions and executes liquidations. Must handle gas price spikes and MEV competition.</li>
+      <li><strong>Subgraph/indexer:</strong> $5,000-$15,000 &mdash; building a Graph Protocol subgraph or custom indexer for historical data and analytics.</li>
+    </ul>
+
+    <h3>Security Costs</h3>
+    <ul>
+      <li><strong>Professional audit:</strong> $100,000-$500,000 &mdash; a thorough audit from a top firm. Even for a minimal fork with few changes, expect at least $100K.</li>
+      <li><strong>Bug bounty program:</strong> $50,000-$200,000 &mdash; ongoing budget for rewarding vulnerability disclosures.</li>
+      <li><strong>Formal verification (optional):</strong> $50,000-$150,000 &mdash; mathematical proof of contract correctness.</li>
+    </ul>
+
+    <h3>Ongoing Operational Costs</h3>
+    <ul>
+      <li><strong>Cloud infrastructure:</strong> $500-$2,000/month &mdash; RPC nodes, liquidation bot hosting, monitoring, and alerting.</li>
+      <li><strong>Oracle costs:</strong> Variable &mdash; Chainlink feeds are free to read, but running custom oracle nodes has costs.</li>
+      <li><strong>Team maintenance:</strong> $10,000-$30,000/month &mdash; at minimum, you need 1-2 developers on call for emergencies.</li>
+    </ul>
+
+    <h3>Total Cost Comparison</h3>
+
+    <p><strong>Full Aave V3 Fork:</strong> $200,000-$800,000+ to launch, plus $15,000-$40,000/month to operate.</p>
+
+    <p><strong>Simplified Lending Protocol:</strong> $50,000-$150,000 to launch, plus $5,000-$15,000/month to operate.</p>
+
+    <p><strong>Ready-made Platform like <a href="/lenda/">Lenda</a>:</strong> Under $1,000, with the smart contracts and frontend already built and tested. This approach trades some customization flexibility for a dramatically lower cost and faster time-to-market.</p>
+
+    <p>For teams with limited budgets, understanding how to fork Aave is valuable knowledge, but actually doing it may not be the most practical path. Consider whether a turnkey solution covers your needs before committing six figures to a custom fork.</p>
+
+    <!-- FAQ -->
+    <h2 id="faq">Frequently Asked Questions</h2>
+
+    <div class="faq">
+      <details>
+        <summary>Is forking Aave legal?</summary>
+        <p>Aave V2 is released under the GPL-3.0 license, which allows forking as long as derivative works are also open-sourced under the same license. Aave V3 uses the Business Source License 1.1 (BUSL-1.1), which restricts commercial use for 2 years after release, after which it converts to GPL-2.0. If you're forking V3, check the specific date when the BUSL restriction expires for the version you're using. In practice, many projects have forked Aave V3 commercially &mdash; but you should consult a lawyer to understand your legal obligations, especially regarding the BUSL terms and any trademarks.</p>
+      </details>
+
+      <details>
+        <summary>What chains can I deploy an Aave fork to?</summary>
+        <p>Any EVM-compatible chain works: Ethereum, Arbitrum, Optimism, Base, Polygon, BSC, Avalanche, Fantom, and hundreds of others. The main limiting factor is oracle availability &mdash; you need reliable Chainlink price feeds (or an alternative oracle) for every asset you want to support. Newer chains may have limited oracle coverage, which restricts which assets you can list. Gas costs also matter: on Ethereum mainnet, deploying the full Aave V3 suite costs 0.5-1 ETH in gas, while L2s cost a fraction of that.</p>
+      </details>
+
+      <details>
+        <summary>Do I need a security audit?</summary>
+        <p>If you plan to handle any real user funds: yes, absolutely. Lending protocols are among the highest-risk DeFi applications because they custody user deposits and use leverage. Even if you made minimal changes to the Aave codebase, an auditor needs to verify your configuration is safe &mdash; incorrect LTV ratios, missing oracle feeds, or deployment errors can all lead to total loss of funds. Unaudited lending protocols have collectively lost billions of dollars to exploits. At minimum, get a focused review of your changes and configuration from a reputable firm.</p>
+      </details>
+
+      <details>
+        <summary>How long does it take to fork Aave?</summary>
+        <p>A basic testnet deployment can be done in 1-2 weeks by an experienced Solidity developer. However, a production-ready fork &mdash; including custom market configuration, frontend development, oracle setup, liquidation infrastructure, testing, and an audit &mdash; typically takes 4-8 months for a team of 2-4 developers. The audit alone usually takes 4-8 weeks. If you need governance, tokenomics, and cross-chain features, add another 2-3 months. This is why many teams opt for simpler alternatives rather than a full Aave fork.</p>
+      </details>
+
+      <details>
+        <summary>Can I add custom collateral types?</summary>
+        <p>Yes &mdash; this is one of the main reasons to fork Aave rather than use the official protocol. You can add any ERC-20 token as collateral by configuring it as a reserve with appropriate risk parameters (LTV, liquidation threshold, liquidation bonus). The key requirement is having a reliable price oracle for the asset. For exotic collateral types like LP tokens, NFTs, or rebasing tokens, you may need to write custom oracle adapters or modify the aToken implementation to handle non-standard ERC-20 behavior. Aave V3's isolation mode is particularly useful for new assets &mdash; it allows you to list them with capped exposure while you evaluate their real-world risk profile.</p>
+      </details>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-box final">
+      <h3>Ready to Launch Your Own Lending Platform?</h3>
+      <p>Skip the months of development, six-figure audit costs, and complex infrastructure. Lenda gives you a working lending protocol with custom smart contracts, multi-collateral support, health factor monitoring, and an admin dashboard &mdash; ready to deploy today.</p>
+      <div class="btn-row">
+        <a href="/lenda/" class="btn">Get Started with Lenda</a>
+        <a href="/lenda/" class="btn-outline">View Live Demo</a>
+      </div>
+    </div>
+
+  </article>
+
+  <footer style="background:#343B48;padding:24px 0;text-align:center;font-size:14px;color:#6B7280;border-top:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      &copy; 2026 Onout.org &mdash; No-code DeFi tools for builders.
+      <a href="/" style="color:#9577FF;margin-left:16px;">Home</a>
+      <a href="/blog/" style="color:#9577FF;margin-left:16px;">Blog</a>
+    </div>
+  </footer>
+
+</body>
+</html>

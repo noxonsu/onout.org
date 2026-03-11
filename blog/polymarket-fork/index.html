@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Polymarket Fork: Build Your Own Prediction Market | Onout</title>
+  <meta name="description" content="How to build a Polymarket-like prediction market. Explore open source options, smart contract architecture, and ready-made solutions for 2026.">
+  <link rel="canonical" href="https://onout.org/blog/polymarket-fork/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link href="/css/all.css" rel="stylesheet">
+  <link href="/blog/blog.css" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Polymarket Fork: Build Your Own Prediction Market",
+    "description": "How to build a Polymarket-like prediction market with smart contracts, open source tools, and ready-made solutions.",
+    "datePublished": "2026-03-11",
+    "dateModified": "2026-03-11",
+    "author": {"@type": "Organization", "name": "Onout", "url": "https://onout.org"},
+    "publisher": {"@type": "Organization", "name": "Onout", "url": "https://onout.org"}
+  }
+  </script>
+</head>
+<body class="blog-article">
+  <header class="blog-header">
+    <div class="container">
+      <a href="/blog/">Back to Blog</a>
+      <a href="/" class="header-logo">Onout.org</a>
+    </div>
+  </header>
+
+  <section class="article-hero">
+    <div class="container">
+      <h1>Polymarket Fork: Build Your Own Prediction Market</h1>
+      <div class="article-meta">
+        <span>Published: March 11, 2026</span>
+        <span>|</span>
+        <span>13 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-content">
+
+    <nav class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#what-is-polymarket">What Is Polymarket and Why Build a Fork?</a></li>
+        <li><a href="#how-prediction-markets-work">How Prediction Markets Work (Technical Overview)</a></li>
+        <li><a href="#approaches">Approaches to Building a Prediction Market</a></li>
+        <li><a href="#smart-contract-architecture">Core Smart Contract Architecture</a></li>
+        <li><a href="#oracle-resolution">Oracle and Resolution Design</a></li>
+        <li><a href="#frontend-architecture">Frontend Architecture</a></li>
+        <li><a href="#platforms-compared">Prediction Market Platforms Compared</a></li>
+        <li><a href="#legal-considerations">Legal Considerations</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <!-- Section 1 -->
+    <h2 id="what-is-polymarket">What Is Polymarket and Why Build a Fork?</h2>
+
+    <p>Prediction markets are platforms where participants trade on the outcome of future events. Instead of placing a traditional bet, users buy and sell outcome tokens whose prices reflect the market's collective probability estimate. If you hold a "Yes" token for an event that resolves as true, you receive a payout. If the event resolves as false, the token is worth nothing.</p>
+
+    <p>Polymarket is the dominant prediction market platform today. Built on Polygon, it surged to mainstream prominence during the 2024 US presidential election, processing over $3.5 billion in trading volume on election-related markets alone. At its peak, Polymarket attracted hundreds of thousands of active traders and became a go-to source for real-time probability data, even being cited by major news outlets.</p>
+
+    <p>So why would anyone want to build a <strong>Polymarket fork</strong>? There are several compelling reasons:</p>
+
+    <ul>
+      <li><strong>Niche markets</strong> &mdash; Polymarket focuses on major global events. There is untapped demand for prediction markets focused on specific verticals: sports, crypto prices, regional politics, entertainment, corporate earnings, or even internal company decision-making.</li>
+      <li><strong>Regional focus</strong> &mdash; Polymarket is restricted in the US and other jurisdictions. Builders in permitted regions can serve local audiences with localized markets and languages.</li>
+      <li><strong>Different tokens and chains</strong> &mdash; Polymarket runs on Polygon with USDC. You might want to deploy on BSC, Arbitrum, Base, or another EVM chain, using native tokens or stablecoins that your community prefers.</li>
+      <li><strong>Revenue from fees</strong> &mdash; Prediction markets generate revenue through trading fees, market creation fees, and resolution fees. Running your own platform means capturing that revenue stream directly.</li>
+      <li><strong>Customization and control</strong> &mdash; You can design your own UX, add features Polymarket lacks (like on-chain order books, limit orders, or multi-outcome markets), and retain full control over the platform's direction.</li>
+    </ul>
+
+    <p>Polymarket uses the Polygon network for low transaction costs and relies on a combination of the Gnosis Conditional Token Framework (CTF) for its outcome tokens and UMA's optimistic oracle for market resolution. Understanding this architecture is the first step toward building something similar.</p>
+
+    <!-- Section 2 -->
+    <h2 id="how-prediction-markets-work">How Prediction Markets Work (Technical Overview)</h2>
+
+    <p>Before diving into how to build a Polymarket fork, it helps to understand the core mechanics that make prediction markets function on-chain.</p>
+
+    <h3>Binary Outcome Markets</h3>
+
+    <p>The simplest prediction market is a <strong>binary market</strong>: an event resolves as either "Yes" or "No." When a user deposits collateral (say, 1 USDC), they receive one Yes token and one No token. These tokens are complementary &mdash; together they always equal the collateral value. The market price of each token fluctuates based on supply and demand, reflecting the crowd's probability estimate.</p>
+
+    <p>If the event resolves as "Yes," each Yes token is redeemable for 1 USDC, and each No token becomes worthless. The reverse applies if the event resolves as "No."</p>
+
+    <h3>AMM vs. Order Book</h3>
+
+    <p>There are two main approaches to facilitating trades:</p>
+
+    <ul>
+      <li><strong>Automated Market Maker (AMM)</strong> &mdash; A smart contract holds a liquidity pool and uses a bonding curve (like constant product) to price tokens. Simpler to implement but can suffer from impermanent loss and wider spreads. Augur V2 and early prediction markets used this approach.</li>
+      <li><strong>Central Limit Order Book (CLOB)</strong> &mdash; Users place limit orders at specific prices. A matching engine pairs buy and sell orders. Polymarket uses a hybrid CLOB model with an off-chain matching engine and on-chain settlement. This provides tighter spreads and better capital efficiency but is more complex to build.</li>
+    </ul>
+
+    <h3>Conditional Token Framework (CTF)</h3>
+
+    <p>The <a href="https://github.com/gnosis/conditional-tokens-contracts" target="_blank" rel="noopener">Gnosis Conditional Token Framework</a> is an open-source ERC-1155 token standard specifically designed for prediction markets. It allows you to:</p>
+
+    <ul>
+      <li>Split collateral into conditional outcome tokens</li>
+      <li>Merge outcome tokens back into collateral</li>
+      <li>Create markets with any number of outcomes</li>
+      <li>Compose conditions (e.g., "Team A wins AND total score is over 50")</li>
+    </ul>
+
+    <p>CTF is the foundation that Polymarket builds on, and it is fully open source under the LGPL license.</p>
+
+    <h3>Resolution and Oracles</h3>
+
+    <p>Every prediction market needs a mechanism to determine the outcome once the event occurs. This is called <strong>resolution</strong>. The entity or system that provides the answer is the <strong>oracle</strong>. Oracle design is arguably the most critical and challenging aspect of building a prediction market &mdash; we dedicate a full section to it below.</p>
+
+    <!-- Section 3 -->
+    <h2 id="approaches">Approaches to Building a Prediction Market</h2>
+
+    <p>There are three realistic paths to launching your own prediction market platform, ranging from building from scratch to using a ready-made solution.</p>
+
+    <h3>Option 1 &mdash; Fork Polymarket (Hardest)</h3>
+
+    <p>This is what most people search for when they look up "Polymarket fork," but it is important to be transparent: <strong>Polymarket is NOT fully open source</strong>. Here is what you can and cannot access:</p>
+
+    <p><strong>What IS open source or publicly available:</strong></p>
+    <ul>
+      <li>Gnosis Conditional Token Framework (CTF) &mdash; the core token contracts</li>
+      <li>Polymarket's CTF Exchange contract &mdash; <a href="https://github.com/Polymarket/ctf-exchange" target="_blank" rel="noopener">available on GitHub</a></li>
+      <li>Polymarket's NegRiskAdapter &mdash; for multi-outcome markets</li>
+      <li>Some SDK libraries and tooling</li>
+    </ul>
+
+    <p><strong>What is NOT open source:</strong></p>
+    <ul>
+      <li>The off-chain order matching engine (the core of Polymarket's CLOB system)</li>
+      <li>The complete frontend application</li>
+      <li>The market creation and curation infrastructure</li>
+      <li>The resolution pipeline and oracle integration layer</li>
+      <li>Backend APIs, indexers, and data infrastructure</li>
+    </ul>
+
+    <p>In practice, "forking Polymarket" means using the same on-chain primitives (CTF + their exchange contract) but building everything else yourself. This is a massive engineering effort that could take a team of experienced developers 6-12 months to complete. You would need to build the matching engine, the frontend, the data pipeline, the oracle integration, and operational tooling from scratch.</p>
+
+    <h3>Option 2 &mdash; Use Gnosis Conditional Token Framework</h3>
+
+    <p>A more practical approach is to start with the CTF primitives and build a simpler system on top. Instead of replicating Polymarket's CLOB, you can use an AMM approach:</p>
+
+    <ol>
+      <li>Deploy Gnosis CTF contracts on your target chain</li>
+      <li>Build an AMM contract that provides liquidity for outcome tokens</li>
+      <li>Integrate an oracle for resolution (UMA, Chainlink, or a simpler centralized oracle)</li>
+      <li>Build a React frontend for market creation, trading, and portfolio management</li>
+    </ol>
+
+    <p>This approach gives you genuine prediction market mechanics with lower complexity. However, it still requires significant smart contract expertise, frontend development, and careful oracle design. Expect 3-6 months of development time for a competent team.</p>
+
+    <h3>Option 3 &mdash; Use a Ready-Made Platform</h3>
+
+    <p>The fastest path is to use a platform that gives you a deployable prediction market out of the box. These solutions handle the smart contracts, frontend, and admin tooling, letting you focus on market creation and community building.</p>
+
+    <p>Ready-made platforms typically include:</p>
+    <ul>
+      <li>Deployed and audited smart contracts</li>
+      <li>Trading interface with order book or AMM</li>
+      <li>Admin panel for creating and resolving markets</li>
+      <li>Fee configuration and revenue collection</li>
+      <li>Multi-chain deployment support</li>
+    </ul>
+
+    <p>The tradeoff is less customization at the contract level, but you can be live in days instead of months. For most entrepreneurs and crypto projects looking to add prediction market functionality, this is the most practical path.</p>
+
+    <!-- Section 4 -->
+    <h2 id="smart-contract-architecture">Core Smart Contract Architecture</h2>
+
+    <p>Whether you build from scratch or customize an existing solution, understanding the smart contract architecture of a prediction market is essential. Here are the key contracts you need:</p>
+
+    <h3>MarketFactory</h3>
+    <p>This contract creates new prediction markets. It stores market metadata (question, resolution date, outcome labels) and deploys or configures the associated token and pool contracts. The factory pattern keeps deployment costs predictable and makes it easy to enumerate all markets.</p>
+
+    <h3>ConditionalToken / Binary Option Contract</h3>
+    <p>This contract manages the outcome tokens. In the CTF model, it uses ERC-1155 with position IDs derived from the condition and outcome index. A simpler approach uses separate ERC-20 tokens for each outcome. Below is a simplified example of a binary market contract:</p>
+
+    <pre><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+contract BinaryMarket {
+    IERC20 public collateral;
+    address public oracle;
+    string public question;
+    uint256 public resolutionTime;
+
+    // Outcome balances: user => outcome (0=No, 1=Yes) => amount
+    mapping(address => mapping(uint8 => uint256)) public balances;
+    uint256 public totalCollateral;
+
+    bool public resolved;
+    uint8 public winningOutcome; // 0 = No, 1 = Yes
+
+    event TokensMinted(address indexed user, uint256 amount);
+    event MarketResolved(uint8 outcome);
+    event Redeemed(address indexed user, uint256 payout);
+
+    constructor(
+        address _collateral,
+        address _oracle,
+        string memory _question,
+        uint256 _resolutionTime
+    ) {
+        collateral = IERC20(_collateral);
+        oracle = _oracle;
+        question = _question;
+        resolutionTime = _resolutionTime;
+    }
+
+    /// @notice Deposit collateral, receive 1 Yes + 1 No token
+    function mint(uint256 amount) external {
+        collateral.transferFrom(msg.sender, address(this), amount);
+        balances[msg.sender][0] += amount; // No tokens
+        balances[msg.sender][1] += amount; // Yes tokens
+        totalCollateral += amount;
+        emit TokensMinted(msg.sender, amount);
+    }
+
+    /// @notice Oracle resolves the market
+    function resolve(uint8 outcome) external {
+        require(msg.sender == oracle, "Only oracle");
+        require(block.timestamp >= resolutionTime, "Too early");
+        require(!resolved, "Already resolved");
+        require(outcome <= 1, "Invalid outcome");
+
+        resolved = true;
+        winningOutcome = outcome;
+        emit MarketResolved(outcome);
+    }
+
+    /// @notice Redeem winning tokens for collateral
+    function redeem() external {
+        require(resolved, "Not resolved");
+        uint256 payout = balances[msg.sender][winningOutcome];
+        require(payout > 0, "Nothing to redeem");
+
+        balances[msg.sender][0] = 0;
+        balances[msg.sender][1] = 0;
+
+        collateral.transfer(msg.sender, payout);
+        emit Redeemed(msg.sender, payout);
+    }
+}</code></pre>
+
+    <p>This simplified contract demonstrates the core flow: deposit collateral to mint outcome tokens, oracle resolves the market, and winners redeem their tokens for collateral. A production contract would add trading functionality (AMM or order book), fee collection, emergency mechanisms, and proper access control.</p>
+
+    <h3>Oracle / Resolution Contract</h3>
+    <p>This contract (or external integration) determines the outcome. It may be a simple admin address, a multi-sig, or an integration with a decentralized oracle system. We cover this in detail in the next section.</p>
+
+    <h3>AMM Pool</h3>
+    <p>If you use the AMM approach instead of an order book, you need a pool contract that holds liquidity and prices outcome tokens using a bonding curve. The Logarithmic Market Scoring Rule (LMSR), used by early prediction markets like Augur, or a simpler constant product formula can work here.</p>
+
+    <!-- Mid-article CTA -->
+    <div class="cta-box">
+      <h3>Launch a Prediction Market Without Building From Scratch</h3>
+      <p>Onout Prediction Market gives you a deployable prediction market with admin panel, on-chain order book, and price charts. Create markets, set outcomes, manage resolutions &mdash; deploy on any EVM chain.</p>
+      <div class="btn-row">
+        <a href="/predictionmarket/" class="btn">Try Live Demo</a>
+        <a href="/predictionmarket/" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Section 5 -->
+    <h2 id="oracle-resolution">Oracle and Resolution Design</h2>
+
+    <p>The oracle problem is the single hardest challenge in building a prediction market. How do you trustlessly determine whether a real-world event happened? There is no perfect solution &mdash; only a spectrum of tradeoffs between decentralization, speed, cost, and reliability.</p>
+
+    <h3>Centralized Oracle (Admin Resolves)</h3>
+    <p>The simplest approach: a designated admin address (or multi-sig) calls the resolution function when the event outcome is known. This is fast, cheap, and reliable for trusted operators.</p>
+    <ul>
+      <li><strong>Pros:</strong> Simple to implement, fast resolution, no oracle fees</li>
+      <li><strong>Cons:</strong> Requires trust in the admin, single point of failure, can be perceived as unfair</li>
+      <li><strong>Best for:</strong> Private platforms, corporate prediction markets, bootstrapping a new platform</li>
+    </ul>
+
+    <h3>UMA Optimistic Oracle</h3>
+    <p>Polymarket uses UMA's optimistic oracle. Someone proposes an outcome, and there is a challenge period during which anyone can dispute it. If disputed, it goes to UMA token holders for a vote.</p>
+    <ul>
+      <li><strong>Pros:</strong> Decentralized, battle-tested (Polymarket's volume proves it), handles ambiguous cases</li>
+      <li><strong>Cons:</strong> Resolution can take hours or days, requires UMA token staking for disputes, complexity</li>
+      <li><strong>Best for:</strong> High-stakes markets where trust minimization matters</li>
+    </ul>
+
+    <h3>Chainlink</h3>
+    <p>Chainlink provides data feeds for prices, sports scores, and other structured data. For markets tied to verifiable on-chain or API data (e.g., "Will BTC be above $100K on June 1?"), Chainlink can provide automated resolution.</p>
+    <ul>
+      <li><strong>Pros:</strong> Automated, reliable for data-driven markets, widely supported</li>
+      <li><strong>Cons:</strong> Limited to data Chainlink already provides, not suitable for subjective or novel questions</li>
+      <li><strong>Best for:</strong> Price-based markets, sports, weather, quantifiable events</li>
+    </ul>
+
+    <h3>Reality.eth</h3>
+    <p>An on-chain escalation game where anyone can post an answer with a bond. If someone disagrees, they can post a larger bond with a different answer. Final arbitration goes to a designated arbitrator contract.</p>
+    <ul>
+      <li><strong>Pros:</strong> Decentralized, economic incentives align reporters with truth, flexible</li>
+      <li><strong>Cons:</strong> Can be slow under dispute, bond requirements, potential for manipulation on low-liquidity markets</li>
+      <li><strong>Best for:</strong> General-purpose markets with moderate stakes</li>
+    </ul>
+
+    <p>Many production systems use a <strong>hybrid approach</strong>: centralized resolution for speed with an escalation path to a decentralized oracle for disputes. This gives you fast resolution in the 99% of cases where the outcome is unambiguous, with a safety net for contested results.</p>
+
+    <!-- Section 6 -->
+    <h2 id="frontend-architecture">Frontend Architecture</h2>
+
+    <p>A prediction market frontend needs to handle several distinct user flows. Here is what a complete UI requires:</p>
+
+    <h3>Market Listing</h3>
+    <p>The homepage displays all active markets with their current probabilities, volume, and time remaining. Markets are typically categorized (politics, crypto, sports, etc.) and sortable by volume, recency, or closing date. Each market card shows the Yes/No probability as a percentage, which is derived from the last trade price or AMM state.</p>
+
+    <h3>Trading Interface</h3>
+    <p>The core trading view for a single market. Users need to see:</p>
+    <ul>
+      <li>Current Yes/No prices and probabilities</li>
+      <li>Price history chart</li>
+      <li>Order book depth (if CLOB-based)</li>
+      <li>Buy/sell interface with amount input and slippage settings</li>
+      <li>Market metadata: question, resolution source, resolution date, rules</li>
+    </ul>
+
+    <h3>Portfolio View</h3>
+    <p>Users need to see their open positions across all markets, current profit/loss, and the ability to sell positions before resolution. This requires indexing on-chain events (token mints, trades, redemptions) and presenting them in a coherent dashboard.</p>
+
+    <h3>Market Creation (Admin)</h3>
+    <p>Admin users need an interface to create new markets, specifying the question, outcome options, resolution date, oracle configuration, initial liquidity (if AMM-based), and fee parameters. A good admin panel also provides market management tools: pausing trading, extending resolution deadlines, and manual resolution.</p>
+
+    <p>The typical tech stack is <strong>React</strong> (or Next.js) with <strong>wagmi</strong> and <strong>viem</strong> for wallet connectivity and contract interaction. Data indexing is handled by The Graph or a custom indexer. For a Polymarket fork with an order book, you also need a WebSocket server for real-time order updates.</p>
+
+    <!-- Section 7 -->
+    <h2 id="platforms-compared">Prediction Market Platforms Compared</h2>
+
+    <p>Here is a comparison of the major options available if you want to launch a prediction market in 2026:</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Open Source</th>
+          <th>Deployable</th>
+          <th>Chain</th>
+          <th>Oracle</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Polymarket</strong></td>
+          <td>Partial (contracts only)</td>
+          <td>No</td>
+          <td>Polygon</td>
+          <td>UMA Optimistic</td>
+          <td>N/A (proprietary)</td>
+        </tr>
+        <tr>
+          <td><strong>Augur</strong></td>
+          <td>Yes</td>
+          <td>No (defunct)</td>
+          <td>Ethereum</td>
+          <td>REP token voting</td>
+          <td>N/A (discontinued)</td>
+        </tr>
+        <tr>
+          <td><strong>Azuro</strong></td>
+          <td>Partial</td>
+          <td>Limited</td>
+          <td>Polygon, Gnosis, Arbitrum</td>
+          <td>Centralized (sports data)</td>
+          <td>Revenue share</td>
+        </tr>
+        <tr>
+          <td><strong>Gnosis CTF</strong></td>
+          <td>Yes</td>
+          <td>Framework only</td>
+          <td>Any EVM</td>
+          <td>BYO (bring your own)</td>
+          <td>Free (build cost only)</td>
+        </tr>
+        <tr>
+          <td><strong><a href="/predictionmarket/">Onout Prediction Market</a></strong></td>
+          <td>Yes</td>
+          <td>Yes (full platform)</td>
+          <td>Any EVM</td>
+          <td>Admin + configurable</td>
+          <td>$899 one-time</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>As the table shows, most existing prediction market platforms are either proprietary (Polymarket), defunct (Augur), or narrowly focused (Azuro on sports). Gnosis CTF gives you open-source building blocks but requires substantial development to turn into a usable product. Onout Prediction Market is the only option that gives you a complete, deployable prediction market platform with source code, admin panel, and on-chain order book &mdash; ready to launch on any EVM chain.</p>
+
+    <!-- Section 8 -->
+    <h2 id="legal-considerations">Legal Considerations</h2>
+
+    <p>Prediction markets exist in a complex regulatory landscape, and any builder in this space needs to be aware of the legal environment.</p>
+
+    <p>In the <strong>United States</strong>, the Commodity Futures Trading Commission (CFTC) considers many prediction markets to be derivatives or event contracts. Polymarket settled with the CFTC in 2022 for $1.4 million and subsequently geo-blocked US users. The CFTC has taken enforcement action against other prediction market operators as well. In 2024, a court ruling allowed Kalshi to offer election contracts, but the regulatory picture remains uncertain.</p>
+
+    <p>In the <strong>European Union</strong>, prediction markets may fall under MiCA (Markets in Crypto-Assets) regulation or gambling laws depending on the jurisdiction and market type.</p>
+
+    <p>In <strong>other jurisdictions</strong>, the legal status varies widely. Some countries have clear frameworks for betting and prediction markets, while others have no specific regulation.</p>
+
+    <p><strong>Key legal considerations:</strong></p>
+    <ul>
+      <li><strong>Licensing</strong> &mdash; Depending on your jurisdiction, you may need a gambling license, a financial services license, or both.</li>
+      <li><strong>KYC/AML</strong> &mdash; Many jurisdictions require identity verification for financial services platforms.</li>
+      <li><strong>Geo-blocking</strong> &mdash; You may need to restrict access from certain jurisdictions (as Polymarket does with the US).</li>
+      <li><strong>Market types</strong> &mdash; Markets on certain topics (elections, assassinations) face additional scrutiny or outright bans in some jurisdictions.</li>
+    </ul>
+
+    <p><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute legal advice. Consult with a qualified attorney in your jurisdiction before launching a prediction market platform.</p>
+
+    <!-- Section 9 - FAQ -->
+    <h2 id="faq">Frequently Asked Questions</h2>
+
+    <div class="faq">
+      <details>
+        <summary>Is Polymarket open source?</summary>
+        <p>Partially. Polymarket's smart contracts, including its CTF Exchange contract and NegRiskAdapter, are open source on GitHub. However, the off-chain matching engine, frontend application, backend APIs, and operational infrastructure are all proprietary. You cannot simply clone a repository and run your own Polymarket instance. The underlying Gnosis Conditional Token Framework that Polymarket builds on is fully open source.</p>
+      </details>
+
+      <details>
+        <summary>Can I fork Polymarket?</summary>
+        <p>You can use the same on-chain primitives (Gnosis CTF + Polymarket's exchange contracts), but you would need to build the matching engine, frontend, data indexing, oracle integration, and backend infrastructure yourself. This is a substantial engineering effort &mdash; think 6-12 months for a skilled team. For a faster path, consider using the Gnosis CTF with a simpler AMM model, or a ready-made platform like <a href="/predictionmarket/">Onout Prediction Market</a> that provides the complete stack.</p>
+      </details>
+
+      <details>
+        <summary>How do prediction market smart contracts work?</summary>
+        <p>At the core, users deposit collateral (e.g., USDC) and receive outcome tokens (one for each possible result). These tokens trade freely, with prices reflecting the market's probability estimate. When the event occurs, an oracle resolves the market, and holders of the winning outcome token can redeem it for the full collateral value. The main contracts are: a factory contract that creates markets, a conditional token contract that manages outcome tokens, an oracle contract that handles resolution, and a trading contract (AMM pool or order book) that facilitates token exchange.</p>
+      </details>
+
+      <details>
+        <summary>What oracle should I use for market resolution?</summary>
+        <p>It depends on your trust model and market types. For a new platform, starting with a centralized oracle (admin or multi-sig resolution) is pragmatic &mdash; it is fast, cheap, and simple. As you scale, you can add UMA's optimistic oracle for decentralized resolution, Chainlink for automated data-driven markets, or Reality.eth for community-driven resolution. Many successful platforms use a hybrid approach: fast admin resolution with a decentralized dispute escalation path.</p>
+      </details>
+
+      <details>
+        <summary>How much does it cost to build a prediction market?</summary>
+        <p>Building from scratch with a custom matching engine, frontend, and oracle integration typically costs $100,000-$300,000+ in development and takes 6-12 months. Using Gnosis CTF with a simpler AMM approach reduces this to $30,000-$80,000 and 3-6 months. A ready-made solution like <a href="/predictionmarket/">Onout Prediction Market</a> costs $899 as a one-time purchase and can be deployed in days. Smart contract auditing, which is critical for any DeFi platform handling user funds, adds $10,000-$50,000 regardless of approach.</p>
+      </details>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-box final">
+      <h3>Ready to Launch Your Own Prediction Market?</h3>
+      <p>Skip months of development. Onout Prediction Market gives you a complete, deployable platform with on-chain CLOB order book, admin panel, price charts, and multi-chain support. Create your first market today.</p>
+      <div class="btn-row">
+        <a href="/predictionmarket/" class="btn">Get Started</a>
+        <a href="/predictionmarket/" class="btn-outline">View Live Demo</a>
+      </div>
+    </div>
+
+  </article>
+
+  <footer style="text-align:center; padding:32px 0; color:#6B7280; font-size:14px; border-top:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      <p>&copy; 2026 <a href="/" style="color:#9577FF;">Onout.org</a> &mdash; No-code crypto tools for builders</p>
+    </div>
+  </footer>
+
+</body>
+</html>

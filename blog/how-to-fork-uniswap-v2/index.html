@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Fork Uniswap V2: Complete Guide 2026 | Onout</title>
+  <meta name="description" content="Step-by-step guide to forking Uniswap V2 smart contracts and frontend. Deploy your own decentralized exchange on Ethereum, BSC, or Polygon in 2026.">
+  <link rel="canonical" href="https://onout.org/blog/how-to-fork-uniswap-v2/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link href="/css/all.css" rel="stylesheet">
+  <link href="/blog/blog.css" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Fork Uniswap V2: Complete Guide 2026",
+    "description": "Step-by-step guide to forking Uniswap V2 smart contracts and frontend. Deploy your own decentralized exchange.",
+    "datePublished": "2026-03-11",
+    "dateModified": "2026-03-11",
+    "author": {"@type": "Organization", "name": "Onout", "url": "https://onout.org"},
+    "publisher": {"@type": "Organization", "name": "Onout", "url": "https://onout.org"}
+  }
+  </script>
+</head>
+<body class="blog-article">
+  <header class="blog-header">
+    <div class="container">
+      <a href="/blog/">Back to Blog</a>
+      <a href="/" class="header-logo">Onout.org</a>
+    </div>
+  </header>
+
+  <div class="article-hero">
+    <div class="container">
+      <h1>How to Fork Uniswap V2: Complete Guide 2026</h1>
+      <div class="article-meta">
+        <span>Published: March 11, 2026</span>
+        <span>12 min read</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-content">
+
+    <nav class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#what-is-uniswap-v2">What Is Uniswap V2 and Why Fork It?</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#step-1-clone">Step 1 &mdash; Clone the Uniswap V2 Contracts</a></li>
+        <li><a href="#step-2-fees">Step 2 &mdash; Modify the Fee Structure</a></li>
+        <li><a href="#step-3-deploy">Step 3 &mdash; Deploy Contracts</a></li>
+        <li><a href="#step-4-frontend">Step 4 &mdash; Fork the Frontend</a></li>
+        <li><a href="#step-5-liquidity">Step 5 &mdash; Add Liquidity and Test</a></li>
+        <li><a href="#common-pitfalls">Common Pitfalls When Forking Uniswap V2</a></li>
+        <li><a href="#v2-vs-v3">Uniswap V2 vs V3: Which to Fork?</a></li>
+        <li><a href="#cost">How Much Does It Cost?</a></li>
+        <li><a href="#faq">Frequently Asked Questions</a></li>
+      </ol>
+    </nav>
+
+    <!-- Section 1 -->
+    <h2 id="what-is-uniswap-v2">What Is Uniswap V2 and Why Fork It?</h2>
+
+    <p>Uniswap V2 is an automated market maker (AMM) protocol that revolutionized decentralized trading when it launched on Ethereum in May 2020. Instead of using traditional order books, it relies on liquidity pools governed by the constant product formula <strong>x * y = k</strong>. Liquidity providers deposit equal values of two tokens into a pool, and traders swap against that pool, paying a small fee that accrues to the providers.</p>
+
+    <p>The protocol consists of two core contract sets: the <strong>Factory</strong>, which deploys new trading pair contracts, and the <strong>Router</strong>, which handles multi-hop swaps, slippage protection, and deadline enforcement. Each trading pair is its own contract (the <strong>Pair</strong>) that holds reserves and mints LP tokens to track liquidity ownership.</p>
+
+    <p>So why would you want to fork Uniswap V2? There are several compelling reasons:</p>
+
+    <ul>
+      <li><strong>Revenue from trading fees.</strong> The default 0.3% swap fee goes to liquidity providers, but you can redirect a portion (or all) of it to a treasury address you control. Even a modest-volume DEX can generate meaningful revenue.</li>
+      <li><strong>Custom branding and UX.</strong> Running your own exchange lets you build a brand, design the interface exactly how you want, and curate the token list for your community.</li>
+      <li><strong>Chain-specific opportunities.</strong> Many newer chains (Base, Arbitrum, Polygon zkEVM, opBNB) still have room for well-executed DEX deployments. Getting in early on a growing chain gives you a first-mover advantage.</li>
+      <li><strong>Learning and portfolio building.</strong> Forking and deploying a full DEX is one of the best ways to deeply understand DeFi smart contract architecture.</li>
+    </ul>
+
+    <p>The Uniswap V2 codebase is fully open-source under GPL-3.0, which means you can freely fork, modify, and deploy it on any EVM-compatible chain. This guide walks you through every step of the process.</p>
+
+    <!-- Section 2 -->
+    <h2 id="prerequisites">Prerequisites</h2>
+
+    <p>Before you start, make sure you have the following tools and knowledge in place:</p>
+
+    <ul>
+      <li><strong>Solidity fundamentals.</strong> You should understand contract inheritance, interfaces, events, and how ERC-20 tokens work. You do not need to be an expert, but you need to be able to read and modify Solidity code confidently.</li>
+      <li><strong>Node.js (v18+) and npm/yarn.</strong> The build tooling, deployment scripts, and frontend all run on Node. Install the latest LTS version.</li>
+      <li><strong>Hardhat or Foundry.</strong> These are the two leading smart contract development frameworks. This guide uses Hardhat because it has a larger ecosystem of plugins, but all concepts translate directly to Foundry.</li>
+      <li><strong>A wallet with testnet funds.</strong> You will deploy contracts on a testnet first. Get test ETH from a faucet for Sepolia, or test BNB for BSC Testnet.</li>
+      <li><strong>An RPC endpoint.</strong> Use Alchemy, Infura, or a public RPC URL for the chain you are deploying to.</li>
+      <li><strong>A block explorer API key.</strong> You will want to verify your contracts on Etherscan, BscScan, or the relevant explorer for transparency and trust.</li>
+    </ul>
+
+    <p>If you are comfortable with all of the above, you are ready to fork Uniswap V2.</p>
+
+    <!-- Section 3 -->
+    <h2 id="step-1-clone">Step 1 &mdash; Clone the Uniswap V2 Contracts</h2>
+
+    <p>The Uniswap V2 protocol is split across two repositories: <strong>v2-core</strong> (Factory and Pair contracts) and <strong>v2-periphery</strong> (Router and helper libraries). You will need both.</p>
+
+    <p>Start by creating your project structure:</p>
+
+<pre><code>mkdir my-dex && cd my-dex
+npm init -y
+npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
+
+npx hardhat init
+# Choose "Create a JavaScript project"
+</code></pre>
+
+    <p>Now create your contract files. The three essential contracts are:</p>
+
+    <ul>
+      <li><strong>Factory.sol</strong> &mdash; Deploys new Pair contracts for each token pair. It stores the mapping of all pairs and emits events when new ones are created.</li>
+      <li><strong>Pair.sol</strong> &mdash; The core AMM logic. Holds token reserves, calculates swap amounts using the constant product formula, mints and burns LP tokens, and collects fees.</li>
+      <li><strong>Router.sol</strong> &mdash; The user-facing entry point. Wraps native currency (ETH/BNB), handles multi-hop routing, enforces slippage limits, and provides helper functions for adding/removing liquidity.</li>
+    </ul>
+
+    <p>Your contracts directory should look like this:</p>
+
+<pre><code>contracts/
+  core/
+    Factory.sol
+    Pair.sol
+    ERC20.sol          # LP token implementation
+    Math.sol           # Safe math and sqrt
+    UQ112x112.sol      # Fixed-point math for price oracles
+  periphery/
+    Router.sol
+    libraries/
+      Library.sol      # Pair address calculation, sorting
+      SafeMath.sol
+      TransferHelper.sol
+  interfaces/
+    IFactory.sol
+    IPair.sol
+    IRouter.sol
+    IERC20.sol
+    IWETH.sol
+</code></pre>
+
+    <h3>Understanding INIT_CODE_HASH</h3>
+
+    <p>This is one of the most critical and most commonly misunderstood parts of a Uniswap V2 fork. The Router uses the <strong>INIT_CODE_HASH</strong> to deterministically compute Pair contract addresses without making on-chain calls. This hash is the keccak256 of the Pair contract's creation bytecode.</p>
+
+    <p>Every time you modify the Pair contract (even adding a comment can change it in some compilers), this hash changes. If the hash in your Library contract does not match the actual hash of your Pair bytecode, every swap and liquidity operation will fail because the Router will compute wrong addresses.</p>
+
+    <p>To get the correct hash after compiling your contracts:</p>
+
+<pre><code>// In a Hardhat script: scripts/getInitCodeHash.js
+const { ethers } = require("hardhat");
+
+async function main() {
+  const Pair = await ethers.getContractFactory("Pair");
+  const bytecode = Pair.bytecode;
+  const hash = ethers.keccak256(bytecode);
+  console.log("INIT_CODE_HASH:", hash);
+}
+
+main();
+</code></pre>
+
+    <p>Copy this hash into your <code>Library.sol</code> where <code>pairFor()</code> computes addresses. We will revisit this when we deploy.</p>
+
+    <!-- Section 4 -->
+    <h2 id="step-2-fees">Step 2 &mdash; Modify the Fee Structure</h2>
+
+    <p>The default Uniswap V2 fee is <strong>0.3%</strong> on every swap. Of that, 100% goes to liquidity providers by default. However, the protocol includes a built-in mechanism to divert 0.05% (one-sixth of the fee) to a designated address. This is called the <strong>protocol fee</strong>, and it is controlled by the <code>feeTo</code> address in the Factory contract.</p>
+
+    <p>The fee logic lives in the <code>_mintFee</code> function inside <code>Pair.sol</code>. Here is a simplified version showing how it works:</p>
+
+<pre><code>// Inside Pair.sol
+address public factory;
+
+function _mintFee(
+    uint112 _reserve0,
+    uint112 _reserve1
+) private returns (bool feeOn) {
+    address feeTo = IFactory(factory).feeTo();
+    feeOn = feeTo != address(0);
+    uint _kLast = kLast;
+
+    if (feeOn) {
+        if (_kLast != 0) {
+            uint rootK = Math.sqrt(
+                uint(_reserve0) * uint(_reserve1)
+            );
+            uint rootKLast = Math.sqrt(_kLast);
+
+            if (rootK > rootKLast) {
+                uint numerator = totalSupply * (rootK - rootKLast);
+
+                // Change the denominator to adjust fee split
+                // Default: 5 gives 1/6 of 0.3% = 0.05% to protocol
+                // Use 3 for 1/4 = 0.075% to protocol
+                // Use 1 for 1/2 = 0.15% to protocol
+                uint denominator = rootK * 5 + rootKLast;
+
+                uint liquidity = numerator / denominator;
+                if (liquidity > 0) {
+                    _mint(feeTo, liquidity);
+                }
+            }
+        }
+    } else if (_kLast != 0) {
+        kLast = 0;
+    }
+}
+</code></pre>
+
+    <p>The key line is the denominator calculation. The multiplier (default <code>5</code>) determines what fraction of the fee goes to the protocol versus liquidity providers:</p>
+
+    <ul>
+      <li><strong>Multiplier 5</strong> &mdash; Protocol gets 1/6 of 0.3% = 0.05%. LPs get 0.25%.</li>
+      <li><strong>Multiplier 3</strong> &mdash; Protocol gets 1/4 of 0.3% = 0.075%. LPs get 0.225%.</li>
+      <li><strong>Multiplier 1</strong> &mdash; Protocol gets 1/2 of 0.3% = 0.15%. LPs get 0.15%.</li>
+    </ul>
+
+    <p>If you want to change the <strong>total swap fee</strong> itself (not just the protocol split), you need to modify the swap function in <code>Pair.sol</code>. Look for the line that enforces the constant product invariant after the swap:</p>
+
+<pre><code>// Default: 0.3% fee (multiply amounts by 997 out of 1000)
+uint balance0Adjusted = balance0 * 1000 - amount0In * 3;
+uint balance1Adjusted = balance1 * 1000 - amount1In * 3;
+require(
+    balance0Adjusted * balance1Adjusted >=
+    uint(_reserve0) * uint(_reserve1) * (1000**2),
+    "K"
+);
+</code></pre>
+
+    <p>To change the fee to 0.2%, replace the <code>3</code> with <code>2</code>. For 0.5%, use <code>5</code>. For 1%, use <code>10</code>. Be careful with this &mdash; higher fees discourage trading, and lower fees may not attract liquidity providers.</p>
+
+    <p>Finally, set the <code>feeTo</code> address after deployment by calling <code>setFeeTo()</code> on the Factory from the <code>feeToSetter</code> account (which is the deployer by default). If <code>feeTo</code> is the zero address, no protocol fee is collected.</p>
+
+    <!-- Section 5 -->
+    <h2 id="step-3-deploy">Step 3 &mdash; Deploy Contracts</h2>
+
+    <p>With your contracts modified and compiled, it is time to deploy. The deployment order matters: Factory first, then Router (which needs the Factory address and the WETH/WBNB address).</p>
+
+    <p>First, configure Hardhat for your target chain. Here is an example <code>hardhat.config.js</code> for BSC Testnet:</p>
+
+<pre><code>// hardhat.config.js
+require("@nomicfoundation/hardhat-toolbox");
+
+module.exports = {
+  solidity: {
+    version: "0.8.20",
+    settings: {
+      optimizer: { enabled: true, runs: 999999 },
+    },
+  },
+  networks: {
+    bscTestnet: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+      chainId: 97,
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY],
+    },
+    bscMainnet: {
+      url: "https://bsc-dataseed.binance.org/",
+      chainId: 56,
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY],
+    },
+    polygon: {
+      url: "https://polygon-rpc.com",
+      chainId: 137,
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.EXPLORER_API_KEY,
+  },
+};
+</code></pre>
+
+    <p>Now create the deployment script:</p>
+
+<pre><code>// scripts/deploy.js
+const { ethers } = require("hardhat");
+
+// WETH/WBNB addresses per chain
+const WRAPPED_NATIVE = {
+  1:     "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", // ETH Mainnet
+  56:    "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", // BSC
+  97:    "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd", // BSC Testnet
+  137:   "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270", // Polygon (WMATIC)
+  42161: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1", // Arbitrum
+  8453:  "0x4200000000000000000000000000000000000006", // Base
+};
+
+async function main() {
+  const [deployer] = await ethers.getSigners();
+  const chainId = (await ethers.provider.getNetwork()).chainId;
+
+  console.log("Deploying with:", deployer.address);
+  console.log("Chain ID:", chainId);
+
+  // 1. Deploy Factory
+  const Factory = await ethers.getContractFactory("Factory");
+  const factory = await Factory.deploy(deployer.address);
+  await factory.waitForDeployment();
+  const factoryAddr = await factory.getAddress();
+  console.log("Factory deployed to:", factoryAddr);
+
+  // 2. Get INIT_CODE_HASH (update Library.sol if needed)
+  const Pair = await ethers.getContractFactory("Pair");
+  const initCodeHash = ethers.keccak256(Pair.bytecode);
+  console.log("INIT_CODE_HASH:", initCodeHash);
+
+  // 3. Deploy Router
+  const wrappedNative = WRAPPED_NATIVE[Number(chainId)];
+  if (!wrappedNative) throw new Error("No WETH address for chain " + chainId);
+
+  const Router = await ethers.getContractFactory("Router");
+  const router = await Router.deploy(factoryAddr, wrappedNative);
+  await router.waitForDeployment();
+  const routerAddr = await router.getAddress();
+  console.log("Router deployed to:", routerAddr);
+
+  // 4. Enable protocol fee (optional)
+  const tx = await factory.setFeeTo(deployer.address);
+  await tx.wait();
+  console.log("Protocol fee enabled, feeTo:", deployer.address);
+
+  console.log("\n--- Deployment Summary ---");
+  console.log("Factory:", factoryAddr);
+  console.log("Router: ", routerAddr);
+  console.log("WETH:   ", wrappedNative);
+}
+
+main().catch(console.error);
+</code></pre>
+
+    <p>Run the deployment on BSC Testnet:</p>
+
+<pre><code>DEPLOYER_PRIVATE_KEY=0xYOUR_KEY npx hardhat run scripts/deploy.js --network bscTestnet
+</code></pre>
+
+    <p>After deployment, verify your contracts on the block explorer so users can read the source code and build trust:</p>
+
+<pre><code>npx hardhat verify --network bscTestnet FACTORY_ADDRESS "DEPLOYER_ADDRESS"
+npx hardhat verify --network bscTestnet ROUTER_ADDRESS "FACTORY_ADDRESS" "WBNB_ADDRESS"
+</code></pre>
+
+    <!-- Section 6 -->
+    <h2 id="step-4-frontend">Step 4 &mdash; Fork the Frontend</h2>
+
+    <p>With your contracts live on a testnet, you need a frontend for users to interact with. The original Uniswap Interface is a React application. While you can fork it directly, be aware that recent versions are complex with many dependencies. Many builders prefer to start from a simplified fork or a purpose-built DEX frontend.</p>
+
+    <p>If you go the DIY route, here is what you need to change in the frontend code:</p>
+
+    <ul>
+      <li><strong>Contract addresses.</strong> Replace the Factory and Router addresses with your deployed contracts. These are usually defined in a constants file or environment variables.</li>
+      <li><strong>Chain configuration.</strong> Update the supported chains list to include only the chains where you have deployed contracts. Remove references to Uniswap-specific chains if they do not apply.</li>
+      <li><strong>INIT_CODE_HASH.</strong> The frontend SDK uses this hash to compute pair addresses client-side. It must match the hash from your deployed Pair bytecode.</li>
+      <li><strong>Token list.</strong> Replace the default Uniswap token list with your own curated list. You can host a JSON file following the <a href="https://tokenlists.org/">Token Lists</a> standard, or hardcode a small set of tokens.</li>
+      <li><strong>Branding.</strong> Change the logo, colors, page title, and favicon. Update any references to "Uniswap" in the UI copy.</li>
+      <li><strong>Analytics and tracking.</strong> Remove Uniswap's analytics endpoints and replace with your own (or remove entirely).</li>
+    </ul>
+
+    <p>A minimal approach is to use ethers.js or viem directly with a simple React or vanilla JavaScript frontend. For swapping, you only need to call two functions on the Router:</p>
+
+<pre><code>// Swap exact tokens for tokens (simplified)
+await router.swapExactTokensForTokens(
+  amountIn,           // Amount of input token
+  amountOutMin,       // Minimum output (slippage protection)
+  [tokenA, tokenB],   // Swap path
+  userAddress,        // Recipient
+  deadline            // Unix timestamp
+);
+
+// For native currency swaps (ETH/BNB), use:
+await router.swapExactETHForTokens(
+  amountOutMin,
+  [WETH, tokenB],
+  userAddress,
+  deadline,
+  { value: amountIn }
+);
+</code></pre>
+
+    <p>You can host your frontend anywhere: Vercel, Netlify, GitHub Pages, or your own server. For a decentralized approach, deploy to IPFS. If you are building on WordPress, you can embed the DEX interface as a plugin &mdash; which is exactly what <a href="/dex/">DeFinance</a> does.</p>
+
+    <!-- Section 7 -->
+    <h2 id="step-5-liquidity">Step 5 &mdash; Add Liquidity and Test</h2>
+
+    <p>Your DEX is useless without liquidity. Before launching publicly, you need to create at least one trading pair and seed it with tokens so that swaps can actually execute.</p>
+
+    <h3>Create Your First Pair</h3>
+
+    <p>Call the Factory to create a pair, then add liquidity through the Router:</p>
+
+<pre><code>// scripts/addLiquidity.js
+const { ethers } = require("hardhat");
+
+async function main() {
+  const [deployer] = await ethers.getSigners();
+
+  const routerAddr = "YOUR_ROUTER_ADDRESS";
+  const tokenA = "YOUR_TOKEN_A_ADDRESS";
+  const tokenB = "YOUR_TOKEN_B_ADDRESS";
+
+  const router = await ethers.getContractAt("IRouter", routerAddr);
+  const tokenAContract = await ethers.getContractAt("IERC20", tokenA);
+  const tokenBContract = await ethers.getContractAt("IERC20", tokenB);
+
+  // Approve Router to spend tokens
+  const amountA = ethers.parseEther("1000");
+  const amountB = ethers.parseEther("1000");
+
+  await tokenAContract.approve(routerAddr, amountA);
+  await tokenBContract.approve(routerAddr, amountB);
+
+  // Add liquidity (this also creates the pair if it doesn't exist)
+  const deadline = Math.floor(Date.now() / 1000) + 600; // 10 min
+  const tx = await router.addLiquidity(
+    tokenA,
+    tokenB,
+    amountA,
+    amountB,
+    0, // amountAMin (set to 0 for first deposit)
+    0, // amountBMin
+    deployer.address,
+    deadline
+  );
+
+  const receipt = await tx.wait();
+  console.log("Liquidity added. TX:", receipt.hash);
+}
+
+main().catch(console.error);
+</code></pre>
+
+    <p>For a native currency pair (e.g., BNB/USDT), use <code>addLiquidityETH</code> instead and send the native amount as <code>msg.value</code>.</p>
+
+    <h3>Testing Checklist</h3>
+
+    <p>Before going to mainnet, verify all of these on testnet:</p>
+
+    <ol>
+      <li>Create a pair and add liquidity. Confirm LP tokens are received.</li>
+      <li>Execute a swap in both directions. Check that output amounts match expected values.</li>
+      <li>Remove liquidity. Verify you get both tokens back proportionally.</li>
+      <li>Test with the native currency wrapper (WETH/WBNB).</li>
+      <li>Test slippage protection &mdash; set a tight <code>amountOutMin</code> and confirm it reverts when price moves.</li>
+      <li>Test the deadline parameter &mdash; set an expired deadline and confirm the transaction reverts.</li>
+      <li>If you enabled protocol fees, verify that LP token balances for the <code>feeTo</code> address increase over time.</li>
+      <li>Test the frontend end-to-end: connect wallet, approve tokens, swap, add/remove liquidity.</li>
+    </ol>
+
+    <!-- Mid-article CTA -->
+    <div class="cta-box">
+      <h3>Skip the Coding &mdash; Use DeFinance Plugin</h3>
+      <p>DeFinance gives you a ready-made Uniswap V2 fork with a full admin panel. No coding required. Set your swap fees anywhere from 0% to 20%, customize branding and colors, manage token lists, and deploy to any EVM chain &mdash; all from a WordPress dashboard.</p>
+      <div class="btn-row">
+        <a href="/dex/" class="btn">Try Live Demo</a>
+        <a href="https://codecanyon.net/item/definance-ethereum-defi-plugin-for-wordpress/29099232" class="btn-outline">Buy on CodeCanyon ($899)</a>
+      </div>
+    </div>
+
+    <!-- Section 8 -->
+    <h2 id="common-pitfalls">Common Pitfalls When Forking Uniswap V2</h2>
+
+    <p>Having walked hundreds of developers through the process of how to fork Uniswap V2, we have seen the same mistakes come up repeatedly. Here are the ones that cost the most time:</p>
+
+    <h3>1. INIT_CODE_HASH Mismatch</h3>
+    <p>This is the single most common issue. If the hash in your Library contract does not match your compiled Pair bytecode, every call to the Router will revert with a generic error. The fix is straightforward: recompile, recalculate the hash, update <code>Library.sol</code>, and redeploy. But many developers spend hours debugging before they realize this is the problem.</p>
+    <p>Tip: log the hash during deployment (as shown in our deploy script above) and compare it against the value hardcoded in Library.sol before going live.</p>
+
+    <h3>2. Wrong WETH/WBNB Address</h3>
+    <p>Every chain has a different wrapped native currency contract. Using the Ethereum WETH address on BSC will cause all native-currency swaps to fail silently or revert. Always double-check the wrapped native address for your target chain. We listed the common ones in the deployment script above.</p>
+
+    <h3>3. Forgetting to Verify Contracts</h3>
+    <p>Unverified contracts are a major red flag for users and liquidity providers. Nobody wants to interact with a DEX whose contract source code they cannot read. Verify on the block explorer immediately after deploying. It takes two minutes and builds enormous trust.</p>
+
+    <h3>4. Liquidity Bootstrapping Problems</h3>
+    <p>The initial price of a pair is determined by the ratio of tokens in the first liquidity deposit. If you add 1 ETH and 1000 USDT, the price is 1000 USDT per ETH. Get this ratio wrong, and arbitrage bots will drain your pool within seconds of launch. Always match the initial deposit ratio to the current market price.</p>
+
+    <h3>5. Compiler Version and Optimizer Settings</h3>
+    <p>Changing the Solidity compiler version or optimizer settings changes the bytecode, which changes the INIT_CODE_HASH. Lock your compiler version in <code>hardhat.config.js</code> and use the same settings for compilation and verification.</p>
+
+    <h3>6. Not Handling Fee-on-Transfer Tokens</h3>
+    <p>Some tokens (like SafeMoon and its clones) charge a fee on every transfer. The standard Router functions do not account for this. Uniswap V2 includes separate functions (<code>swapExactTokensForTokensSupportingFeeOnTransferTokens</code>) for these tokens. If your DEX will support them, make sure the Router includes these functions and your frontend offers them as an option.</p>
+
+    <!-- Section 9 -->
+    <h2 id="v2-vs-v3">Uniswap V2 vs V3: Which to Fork?</h2>
+
+    <p>If you are deciding whether to fork Uniswap V2 or V3, the choice depends on your goals, your team's capabilities, and the legal landscape.</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Uniswap V2</th>
+          <th>Uniswap V3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AMM Model</td>
+          <td>Constant product (x * y = k)</td>
+          <td>Concentrated liquidity</td>
+        </tr>
+        <tr>
+          <td>Capital Efficiency</td>
+          <td>Lower &mdash; liquidity spread across full range</td>
+          <td>Higher &mdash; LPs choose price ranges</td>
+        </tr>
+        <tr>
+          <td>Complexity</td>
+          <td>Simple &mdash; ~1,000 lines of Solidity</td>
+          <td>Complex &mdash; ~3,500 lines with tick math</td>
+        </tr>
+        <tr>
+          <td>License</td>
+          <td>GPL-3.0 (fully open)</td>
+          <td>BSL 1.1 (expired April 2023, now GPL-2.0)</td>
+        </tr>
+        <tr>
+          <td>Fork Difficulty</td>
+          <td>Beginner-friendly</td>
+          <td>Requires strong Solidity skills</td>
+        </tr>
+        <tr>
+          <td>Frontend Complexity</td>
+          <td>Standard swap UI</td>
+          <td>Needs range selection UI for LPs</td>
+        </tr>
+        <tr>
+          <td>Gas Cost (Swap)</td>
+          <td>~150,000 gas</td>
+          <td>~180,000-250,000 gas</td>
+        </tr>
+        <tr>
+          <td>Gas Cost (Deploy)</td>
+          <td>~$50-100</td>
+          <td>~$150-400</td>
+        </tr>
+        <tr>
+          <td>Oracle</td>
+          <td>Cumulative price (simple TWAP)</td>
+          <td>Observation array (advanced TWAP)</td>
+        </tr>
+        <tr>
+          <td>Battle-Tested Forks</td>
+          <td>SushiSwap, PancakeSwap, QuickSwap</td>
+          <td>Fewer production forks</td>
+        </tr>
+        <tr>
+          <td>Best For</td>
+          <td>New builders, quick launches, smaller chains</td>
+          <td>Advanced teams, high-volume pairs</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Our recommendation:</strong> If you are building your first DEX, start with a Uniswap V2 fork. The codebase is simpler, easier to audit, cheaper to deploy, and has a proven track record across dozens of successful forks (PancakeSwap alone does billions in monthly volume on a V2 base). You can always upgrade to concentrated liquidity later once you have traction and a development team.</p>
+
+    <p>The BSL license on V3 expired in April 2023, so it is now legally safe to fork. However, the added complexity of tick-based liquidity, range orders, and the frontend UI for managing positions makes it a significantly larger engineering effort. For most teams, V2 remains the pragmatic choice.</p>
+
+    <!-- Section 10 -->
+    <h2 id="cost">How Much Does It Cost?</h2>
+
+    <p>One of the most common questions from developers learning how to fork Uniswap V2 is "how much will it cost?" Here is a realistic breakdown:</p>
+
+    <h3>Contract Deployment (One-Time)</h3>
+    <ul>
+      <li><strong>Ethereum Mainnet:</strong> $200-800 depending on gas prices. Factory and Router together consume roughly 5-6 million gas.</li>
+      <li><strong>BSC:</strong> $5-15. Gas is cheap on BSC.</li>
+      <li><strong>Polygon:</strong> $1-5. Even cheaper.</li>
+      <li><strong>Arbitrum / Base:</strong> $5-30. L2 costs vary but are generally low.</li>
+    </ul>
+
+    <h3>Frontend Hosting (Monthly)</h3>
+    <ul>
+      <li><strong>Vercel / Netlify free tier:</strong> $0/month for low-to-moderate traffic.</li>
+      <li><strong>Custom domain:</strong> $10-15/year.</li>
+      <li><strong>IPFS (decentralized):</strong> Free via Pinata or Fleek.</li>
+    </ul>
+
+    <h3>Security Audit (Recommended)</h3>
+    <ul>
+      <li><strong>If you did not modify core logic:</strong> A lightweight review ($2,000-5,000) may suffice since the base code is already audited.</li>
+      <li><strong>If you changed fee logic or added features:</strong> Full audit from a reputable firm runs $10,000-50,000+ depending on scope.</li>
+    </ul>
+
+    <h3>Ongoing Maintenance</h3>
+    <ul>
+      <li>Monitoring, subgraph indexing, token list curation, and community support. Budget 5-10 hours per week minimum.</li>
+    </ul>
+
+    <h3>DIY vs Ready-Made Solution</h3>
+
+    <p>If you factor in developer time (research, coding, debugging, testing, frontend work), a DIY fork typically takes 2-4 weeks of full-time effort for an experienced developer. At market rates, that is $5,000-15,000+ in time cost alone.</p>
+
+    <p>A ready-made solution like <a href="/dex/">DeFinance</a> or the <a href="/uniswapFork/">Uniswap Fork package</a> gives you a tested, deployed, and customizable DEX for a fraction of that cost, often deployable in under an hour. The trade-off is less control over the contract layer, but for many use cases (branded DEX, community exchange, token launch platform) that trade-off makes sense.</p>
+
+    <!-- Section 11 -->
+    <h2 id="faq">Frequently Asked Questions</h2>
+
+    <div class="faq">
+      <details>
+        <summary>Is it legal to fork Uniswap V2?</summary>
+        <p>Yes. Uniswap V2 is released under the GPL-3.0 open-source license, which explicitly permits copying, modifying, and redistributing the code. You must keep the same license on your derivative work (copyleft), but you are free to deploy and commercialize it. Many of the largest DEXes in crypto &mdash; PancakeSwap, SushiSwap, Trader Joe, QuickSwap &mdash; are direct forks of Uniswap V2. Uniswap V3 was initially under a Business Source License (BSL) that restricted commercial forks for two years, but that license expired in April 2023 and converted to GPL-2.0.</p>
+      </details>
+
+      <details>
+        <summary>Can I fork Uniswap V2 to BSC, Polygon, or Arbitrum?</summary>
+        <p>Absolutely. The Uniswap V2 contracts are standard EVM Solidity and deploy on any EVM-compatible chain without modification. You only need to change two things: the wrapped native currency address (WBNB on BSC, WMATIC on Polygon, WETH on Arbitrum) and the RPC endpoint in your deployment configuration. The contract logic, fee structure, and AMM math work identically on every EVM chain. Many of the most successful Uniswap V2 forks actually run on chains other than Ethereum &mdash; PancakeSwap on BSC and QuickSwap on Polygon being prime examples.</p>
+      </details>
+
+      <details>
+        <summary>How do I change the swap fee?</summary>
+        <p>The swap fee is controlled by a single line in the Pair contract's swap function. The default calculation multiplies input amounts by 997 (out of 1000), which implements a 0.3% fee. To change it to 0.2%, use 998. For 0.5%, use 995. For 1%, use 990. The formula is: multiplier = 1000 - (fee_percentage * 10). Separately, you can control how much of the fee goes to the protocol versus liquidity providers by adjusting the denominator multiplier in the <code>_mintFee</code> function, as described in Step 2 of this guide.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to audit my fork?</summary>
+        <p>If you are deploying a DEX that will hold real user funds, a security audit is strongly recommended. That said, if you have not modified the core swap and liquidity logic (only changed fees, branding, and addresses), the risk is lower because the original Uniswap V2 contracts are among the most battle-tested in DeFi. At minimum, have an experienced Solidity developer review your changes. If you have added new features (custom fee distribution, governance, staking rewards), a professional audit becomes much more important. Many audit firms offer "fork reviews" at a lower price point ($2,000-5,000) for projects that only make minor modifications to audited codebases.</p>
+      </details>
+
+      <details>
+        <summary>How long does it take to fork Uniswap V2?</summary>
+        <p>For an experienced Solidity developer, deploying a basic fork (contracts + minimal frontend) takes 1-2 weeks. Building a polished product with custom branding, a curated token list, analytics, mobile responsiveness, and proper testing takes 3-6 weeks. If you are learning Solidity while building, expect 1-3 months. Using a pre-built solution like <a href="/dex/">DeFinance</a> can reduce this to a single day &mdash; it handles contracts, frontend, token list management, and admin panel out of the box.</p>
+      </details>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-box final">
+      <h3>Ready to Launch Your Own DEX?</h3>
+      <p>Whether you want to build from scratch or get started in minutes, we have you covered. DeFinance is a production-ready Uniswap V2 fork with a WordPress admin panel, multi-chain support, customizable fees, and built-in token list management. Deployed by 50+ teams on Ethereum, BSC, Polygon, Arbitrum, and more.</p>
+      <div class="btn-row">
+        <a href="/dex/" class="btn">View DeFinance Demo</a>
+        <a href="/uniswapFork/" class="btn-outline">Explore Uniswap Fork Package</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="text-align:center; padding:32px 0; color:#6B7280; font-size:14px; border-top:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      &copy; 2026 <a href="/" style="color:#9577FF; text-decoration:none;">Onout.org</a> &mdash; Crypto tools for builders
+    </div>
+  </footer>
+
+</body>
+</html>
