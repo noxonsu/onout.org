@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — SimpleReview</title>
+  <meta name="description" content="Privacy Policy for the SimpleReview Chrome Extension.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.7; }
+    .container { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    nav { border-bottom: 1px solid #21262d; padding: 14px 24px; }
+    nav a { color: #58a6ff; font-size: 14px; text-decoration: none; }
+    h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .updated { color: #8b949e; font-size: 14px; margin-bottom: 40px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 36px 0 12px; color: #e6edf3; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+    p { color: #8b949e; margin-bottom: 12px; }
+    ul { color: #8b949e; padding-left: 20px; margin-bottom: 12px; }
+    ul li { margin-bottom: 6px; }
+    strong { color: #e6edf3; }
+    a { color: #58a6ff; }
+    .highlight { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+    .highlight p { margin: 0; }
+    code { background: #161b22; border: 1px solid #30363d; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    th { text-align: left; color: #e6edf3; font-weight: 600; padding: 8px 12px; border-bottom: 1px solid #30363d; font-size: 14px; }
+    td { color: #8b949e; padding: 8px 12px; border-bottom: 1px solid #21262d; font-size: 14px; vertical-align: top; }
+  </style>
+</head>
+<body>
+<nav><a href="https://onout.org/simpledashboard/">← SimpleReview</a></nav>
+<div class="container">
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: April 2026 · Applies to SimpleReview Chrome Extension</div>
+
+  <div class="highlight">
+    <p><strong>Summary:</strong> SimpleReview collects only the minimum data needed to function: a session token stored locally on your device to avoid repeated logins, and the element context you explicitly choose to review. Your data is never sold or used for advertising. AI processing runs via Codex (OpenAI) through the platform's subscription — no browsing history or page content is collected outside of what you explicitly select.</p>
+  </div>
+
+  <h2>1. Data We Collect and Why</h2>
+  <p>The following table describes each category of data SimpleReview collects, its purpose, and legal basis under GDPR:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Source</th>
+        <th>Purpose</th>
+        <th>Legal basis (GDPR Art. 6)</th>
+        <th>Storage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>JWT session token</strong> (authentication token after Google Sign-In)</td>
+        <td>Issued by our server after you authenticate; sent from the terminal page via <code>postMessage</code></td>
+        <td>Allows the extension to reopen your AI terminal session without requiring you to log in again each time</td>
+        <td>Performance of a contract (Art. 6(1)(b))</td>
+        <td><code>chrome.storage.local</code> on your device only; never sent to third parties; cleared when you uninstall the extension or it expires</td>
+      </tr>
+      <tr>
+        <td><strong>Element context</strong> (tag name, text, CSS path of the element you click "Fix it" on)</td>
+        <td>Collected only when you explicitly click the "Fix it" button on a specific element</td>
+        <td>Builds the review prompt sent to the AI; includes tag, visible text, and DOM path of the selected element only</td>
+        <td>Performance of a contract (Art. 6(1)(b))</td>
+        <td>Stored temporarily in <code>chrome.storage.session</code> (cleared when the browser session ends); transmitted to our AI terminal as part of the prompt</td>
+      </tr>
+      <tr>
+        <td><strong>Page URL and title</strong> (of the tab where you click "Fix it")</td>
+        <td>Active tab, only when you click "Fix it"</td>
+        <td>Included in the review prompt so the AI understands the context of the element</td>
+        <td>Performance of a contract (Art. 6(1)(b))</td>
+        <td>Transmitted to our AI terminal as part of the prompt; not stored independently</td>
+      </tr>
+      <tr>
+        <td><strong>Screenshot</strong> (visible viewport of the page at the moment of "Fix it")</td>
+        <td>Captured via <code>html-to-image</code> library only if the page's Content Security Policy allows it; skipped silently if blocked</td>
+        <td>Gives the AI visual context to identify layout or design issues</td>
+        <td>Performance of a contract (Art. 6(1)(b))</td>
+        <td>Uploaded once to <code>op.wpmix.net/upload</code> (public temporary storage); URL appended to the AI prompt; not linked to your account</td>
+      </tr>
+      <tr>
+        <td><strong>Google account email and display name</strong></td>
+        <td>Google Sign-In (OAuth 2.0), only when you authenticate in the side panel</td>
+        <td>Authentication and workspace identification in the AI terminal</td>
+        <td>Performance of a contract (Art. 6(1)(b))</td>
+        <td>Stored on our server linked to your workspace; retained until you delete your account</td>
+      </tr>
+      <tr>
+        <td><strong>IP address</strong> (from server access logs)</td>
+        <td>Automatically when you connect to our service</td>
+        <td>Security monitoring and abuse prevention</td>
+        <td>Legitimate interest (Art. 6(1)(f))</td>
+        <td>Server access logs retained for up to 14 days, then automatically deleted</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>We do <strong>not</strong> collect: browsing history, content of web pages you visit (beyond the single element you explicitly select), location data, microphone or camera data, or financial information.</p>
+
+  <h2>2. What the Extension Does NOT Do</h2>
+  <ul>
+    <li>Does <strong>not</strong> read or transmit the content of pages you visit without your explicit action</li>
+    <li>Does <strong>not</strong> inject scripts into pages until you click the extension icon</li>
+    <li>Does <strong>not</strong> have broad <code>host_permissions</code> — it cannot access arbitrary websites you browse</li>
+    <li>Does <strong>not</strong> track which websites you visit</li>
+    <li>Does <strong>not</strong> record keystrokes or form inputs</li>
+    <li>Does <strong>not</strong> run in the background when the side panel is closed</li>
+  </ul>
+
+  <h2>3. Chrome Extension Permissions</h2>
+  <p>SimpleReview requests the following permissions and uses them strictly as described:</p>
+  <ul>
+    <li><strong>activeTab</strong> — reads the URL/title of the current tab and injects the element inspector <em>only</em> when you click the extension icon. Access ends when the tab changes.</li>
+    <li><strong>scripting</strong> — injects the element hover/inspector script and the review bridge into the active tab when you click the icon. Scripts are injected only into the tab you explicitly activate the extension on.</li>
+    <li><strong>sidePanel</strong> — opens the AI chat in Chrome's native side panel.</li>
+    <li><strong>storage</strong> — saves your session JWT locally (<code>chrome.storage.local</code>) and temporarily buffers element context (<code>chrome.storage.session</code>).</li>
+    <li><strong>tabs</strong> — used to open a preview URL when the AI creates a file (e.g., a fixed page), and to capture a screenshot of the visible tab when you click "Fix it".</li>
+  </ul>
+  <p>The extension has <strong>no</strong> <code>host_permissions</code> declared in its manifest. It does not have blanket access to websites you visit.</p>
+
+  <h2>4. Cookies and Local Storage</h2>
+  <p>SimpleReview does <strong>not</strong> use tracking cookies or advertising cookies. The extension uses:</p>
+  <ul>
+    <li><strong>chrome.storage.local (sr_auth)</strong> — stores your JWT session token locally to avoid re-login on each sidebar open.</li>
+    <li><strong>chrome.storage.session (reviewElementContext)</strong> — temporarily stores the selected element context between the "Fix it" click and the side panel opening. Cleared automatically when the browser session ends.</li>
+  </ul>
+
+  <h2>5. Third-Party Services</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Data Shared</th>
+        <th>Purpose</th>
+        <th>Location</th>
+        <th>Their Privacy Policy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>OpenAI (Codex)</strong></td>
+        <td>Your review prompt (element context + page URL). AI processing runs through the platform's Codex subscription.</td>
+        <td>AI-powered code fix generation</td>
+        <td>USA</td>
+        <td><a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">openai.com/policies/privacy-policy</a></td>
+      </tr>
+      <tr>
+        <td><strong>Anthropic (Claude)</strong></td>
+        <td>Your review prompt, if you select Claude as the AI agent</td>
+        <td>Alternative AI-powered code fix generation</td>
+        <td>USA</td>
+        <td><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></td>
+      </tr>
+      <tr>
+        <td><strong>Google OAuth</strong></td>
+        <td>Email address and display name (from Google account, on sign-in)</td>
+        <td>Authentication in the AI terminal</td>
+        <td>USA</td>
+        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+      </tr>
+      <tr>
+        <td><strong>op.wpmix.net</strong> (our service)</td>
+        <td>Screenshot image (JPEG, visible viewport only), if captured</td>
+        <td>Temporary public URL for screenshot in AI prompt</td>
+        <td>Finland, EU (Hetzner)</td>
+        <td>This policy</td>
+      </tr>
+      <tr>
+        <td><strong>simpledashboard.wpmix.net</strong> (our service)</td>
+        <td>Review prompt, session JWT, element context</td>
+        <td>AI terminal — executes the code fix in your isolated workspace</td>
+        <td>Finland, EU (Hetzner)</td>
+        <td>This policy</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. Data Retention</h2>
+  <ul>
+    <li><strong>JWT session token (sr_auth):</strong> Stored in <code>chrome.storage.local</code> until it expires or you uninstall the extension.</li>
+    <li><strong>Element context:</strong> Stored in <code>chrome.storage.session</code> — cleared when the browser session ends (typically on browser close).</li>
+    <li><strong>Uploaded screenshots:</strong> Stored temporarily on <code>op.wpmix.net</code>; not linked to your identity; may be purged after 7 days.</li>
+    <li><strong>Server access logs (IP addresses):</strong> Retained for up to 14 days, then automatically deleted.</li>
+  </ul>
+
+  <h2>7. Your Rights Under GDPR</h2>
+  <p>If you are located in the European Economic Area (EEA), you have the following rights under GDPR:</p>
+  <ul>
+    <li><strong>Right of access (Art. 15):</strong> Request a copy of the personal data we hold about you.</li>
+    <li><strong>Right to erasure (Art. 17):</strong> Request deletion of your account and all associated data.</li>
+    <li><strong>Right to data portability (Art. 20):</strong> Request your data in a machine-readable format.</li>
+    <li><strong>Right to object (Art. 21):</strong> Object to processing based on legitimate interest.</li>
+  </ul>
+  <p>To exercise any of these rights, contact us at <a href="mailto:support@onout.org">support@onout.org</a>. We will respond within 30 days.</p>
+  <p>The lead supervisory authority for OnOut OÜ (Estonia) is the <strong>Estonian Data Protection Inspectorate</strong> (<a href="https://www.aki.ee/en" target="_blank" rel="noopener">aki.ee</a>).</p>
+
+  <h2>8. Children's Privacy</h2>
+  <p>SimpleReview is not directed at children under 13. We do not knowingly collect personal data from children.</p>
+
+  <h2>9. Changes to This Policy</h2>
+  <p>We may update this policy to reflect changes in our practices or legal requirements. The "Last updated" date at the top will reflect any changes.</p>
+
+  <h2>10. Contact and Data Controller</h2>
+  <p>Data controller: <strong>OnOut OÜ</strong><br>
+  Trading name: NoxonThemes<br>
+  Country of registration: <strong>Estonia, EU</strong><br>
+  Email: <a href="mailto:support@onout.org">support@onout.org</a><br>
+  Website: <a href="https://onout.org">onout.org</a></p>
+</div>
+</body>
+</html>
