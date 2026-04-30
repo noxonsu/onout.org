@@ -7,8 +7,7 @@
     <title>ChatGPT Telegram bot</title>
     <meta name="description" content="Step-by-step guide to creating a Telegram bot with built-in ChatGPT" />
     <meta name="keywords" content="onout, onout bot, telegram bot, telegram chatgpt, chatgpt bot, chatgpt telegram bot"/>
-    <link rel="canonical" href="https://onout.org/telegram/GPT" />
-    <link rel="stylesheet" href="index.css" />
+<link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/default.min.css">
     <script src="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
@@ -19,7 +18,8 @@
         });
       });
     </script>
-  </head>
+    <link rel="canonical" href="https://onout.org/telegram/GPT/">
+</head>
   <body>
     <header>
       <h1>Telegram Bot with ChatGPT</h1>
@@ -87,7 +87,7 @@
           The picture below shows a general description of the process:
           <a href="https://onout.org/telegram/GPT/images/bot-development-description.png" target="_blank" rel="noreferrer noopener">
           <img
-            src="./images/bot-development-description.png" 
+            src="./images/bot-development-description.png"
             alt="General description of the bot development circle with Cloudflare workers and Telegram API"
             >
           </a>
@@ -366,7 +366,7 @@ export const msgChatWithOpenAI = async (message, apiToken) => {
   } catch (error) {
     return error;
   }
-};            
+};
           </code>
         </pre>
         Finally replace <u>index.js</u> content with this code. Here we get
@@ -640,7 +640,7 @@ send_metrics = false
 
 kv_namespaces = [
   # Create a new KV in Cloudflare dashboard and copy ID from there.
-  # Assuming you call KV as "DATABASE". Otherwise also replace binding with your name. 
+  # Assuming you call KV as "DATABASE". Otherwise also replace binding with your name.
   { binding = "DATABASE", id = "" }
 ]
 
@@ -976,7 +976,7 @@ export default {
           </pre>
         At last we need to deploy updated code with wrangler. After deployment you can try
         to send to bot some message to spent free limit. After that bot will ask you to
-        pay via link:          
+        pay via link:
         <img src="./images/bot-asks-payment.jpg" alt="Telegram bot interface of requested payment">
         And when you sent an activation code the bot allows you to use it:
         <img src="./images/bot-payment-activation-process.jpg" alt="Telegram bot interface with an activation code validation">

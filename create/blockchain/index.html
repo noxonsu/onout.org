@@ -18,18 +18,18 @@
     }
     .layout {
         display: flex;
-        justify-content: center;            
+        justify-content: center;
     }
-    .toc-content {            
+    .toc-content {
         position: relative;
     }
     .sticky{
         position: sticky;
         top: 1rem;
     }
-    .toc-list{            
+    .toc-list{
         list-style: none;
-        margin: 0;                                                                        
+        margin: 0;
         overflow: hidden;
         position: relative;
     }
@@ -42,12 +42,12 @@
         position: static;
     }
 
-    .toc>.toc-list{                    
+    .toc>.toc-list{
         position: static;
     }
 
     .toc>.toc-list li{
-        list-style: none;                    
+        list-style: none;
     }
 
     .sticky-panel{
@@ -91,7 +91,7 @@
         aside{
             display: none;
         }
-        .content {                
+        .content {
             width: 100%;
             margin-left: 0;
         }
@@ -99,7 +99,7 @@
             padding-left: 0;
             padding-right: 0;
         }
-        .content {        
+        .content {
             flex: 0 0 100%;
             max-width: 100%;
         }
@@ -107,10 +107,11 @@
             padding-left: 0;
         }
     }
-     
-    
+
+
         </style>
-    </head>
+      <link rel="canonical" href="https://onout.org/create/blockchain/">
+</head>
     <body class="w-100 sans-serif pa3 pb0">
         <header class="tc pv2 pv4-l">
             <h1 class="f2 lh-title mt0 mb4">Create Your Own Blockchain and earn mining fees</h1>
@@ -123,14 +124,14 @@
 
         <div class="layout mw8 center pa0">
             <aside class="aside">
-                <div class="sticky">                          
+                <div class="sticky">
                     <nav class="toc-content mb3">
-                        <!-- tocbot will inject TOC here -->                
+                        <!-- tocbot will inject TOC here -->
                     </nav>
                     <!-- <a href="#"><img src="https://placehold.co/200x200" alt=""></a> -->
-                </div>      
+                </div>
             </aside>
-                                    
+
             <!-- Main Content -->
             <div class="content">
                 <article class="mb4">
@@ -167,7 +168,7 @@ Deployment: Follow the documentation provided by the bridge software to deploy a
                 </article>
                 <!-- Additional articles or content here -->
             </div>
-        
+
         </div>
 
         <div style='
@@ -187,17 +188,17 @@ Deployment: Follow the documentation provided by the bridge software to deploy a
         <!-- Include tocbot script -->
         <script src="https://cdn.jsdelivr.net/npm/tocbot/dist/tocbot.min.js"></script>
         <script>
-          
+
     // Initialize tocbot
     tocbot.init({
         tocSelector: '.toc-content',
         contentSelector: '.content',
-        headingSelector: 'h1, h2, h3',                    
+        headingSelector: 'h1, h2, h3',
         collapseDepth: 1,
         hasInnerContainers: true
     });
-    function closePanel() {              
-        var button = event.target;              
+    function closePanel() {
+        var button = event.target;
         var parent = button.closest('.sticky-panel');
         parent.style.display = 'none';
     }

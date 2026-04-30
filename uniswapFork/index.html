@@ -6,9 +6,7 @@
     <meta name="description" content="Step-by-step guide how to fork Uniswap" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	  <link rel="canonical" href="https://onout.org/uniswapFork/" />
-    
-    <link rel="stylesheet" href="index.css" />
+<link rel="stylesheet" href="index.css" />
     <script>
     if (location.protocol !== 'https:') {
       location.replace(`https:${location.href.substring(location.protocol.length)}`);
@@ -26,7 +24,8 @@
         color: #000;
       }
     </style>
-  </head>
+    <link rel="canonical" href="https://onout.org/uniswapFork/">
+</head>
 
   <body>
     <header>
@@ -104,11 +103,11 @@
         <ul>
           <li>
             <a href="#deploy-with-truffle">Deploy with Truffle</a>
-            
+
             <ul>
               <li>
                 <a href="#core-contracts">Core contracts</a>
-                
+
                 <ul>
                   <li><a href="#base-core-contracts-template">base core contracts template</a></li>
                   <li><a href="#deploy-core-with-ganache">deploy core with Ganache</a></li>
@@ -191,7 +190,7 @@
 
         <ol>
           <li id="base-core-contracts-template">
-            Create a new folder CoolSwap-core and copy there the code from Gihub repo. 
+            Create a new folder CoolSwap-core and copy there the code from Gihub repo.
             Create two files: <code>.env</code> (deployment data) and <code>.secret</code> (leave here your mnemonic phrase).
 
             <blockquote class="danger">
@@ -218,7 +217,7 @@
             <pre><code>bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(SwapPair).creationCode));</code></pre>
 
             In the <code>SwapERC20.sol</code> contract we change Uniswap token names with ours:
-            
+
             <pre><code>string public constant name = 'Swap-LP-Token';</code></pre>
             <pre><code>string public constant symbol = 'SWAP-LP';</code></pre>
 
@@ -247,7 +246,7 @@
 
           <li>
             Go to <code>2_deploy_contracts.js</code> and fill these variables
-            (<b>adminAddress</b> address will be able to change himself (_feeToSetter) and 
+            (<b>adminAddress</b> address will be able to change himself (_feeToSetter) and
             feeCollectingAddress (_feeTo) in the deployed factory):
 
             <pre><code>const adminAddress = "";</code></pre>
@@ -264,7 +263,7 @@
             Deploy contracts on Ganache local blockchain:
 
             <pre><code>npx truffle migrate --reset --network development</code></pre>
-            
+
             No you probably can see this error in the terminal/console:
 
             <pre><code>Error: Returned error: VM Exception while processing transaction: revert Swap: FORBIDDEN -- Reason given: Swap: FORBIDDEN.</code></pre>
@@ -322,7 +321,7 @@
 
           <li>
             Copy <code>.env</code> and <code>.secret</code> files from the <b>CoolSwap-core</b> folder
-            and install dependecies: 
+            and install dependecies:
 
             <pre><code>npm i</code></pre>
           </li>
@@ -713,7 +712,7 @@
             Go to the <b>Pool</b> page and remove some part or all liquidity from the pool:
 
             <img src="./img/interface/remove-liquidity.png" alt="" />
-            
+
             We see in our <code>remove liquidity</code> transaction the <b>feeTo</b> address,
             where were accumulated tokens sent:
 
@@ -806,7 +805,7 @@
 
         <h3>Token lists</h3>
         <p>
-          Here is the main file with lists sources. 
+          Here is the main file with lists sources.
           <pre><code>constants/lists.ts</code></pre>
 
           All lists is available for Ethereum network.
@@ -854,7 +853,7 @@
 
           <img src="./img/addition/localesDirectroy.png" alt="" />
 
-          Now we already have this message. If you don't just add a key and message 
+          Now we already have this message. If you don't just add a key and message
           as a value in all translation files. It will automatically detect browser
           language and show content in this language.
 
@@ -915,6 +914,6 @@
   gtag('config', 'G-R05C1YP0CP');
 </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
-	  
+
   </body>
 </html>

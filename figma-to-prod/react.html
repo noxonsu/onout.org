@@ -10,9 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://onout.org/figma-to-production.html" rel="canonical">
-    <meta name="google-site-verification" content="dAuAE5Avrhl9BnkcweTCaDMEPJBS2k84sWwqtWAomuw" />
-    
+<meta name="google-site-verification" content="dAuAE5Avrhl9BnkcweTCaDMEPJBS2k84sWwqtWAomuw" />
+
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -141,6 +140,7 @@
             color: white;
         }
     </style>
+  <link rel="canonical" href="https://onout.org/figma-to-prod/react.html">
 </head>
 <body>
     <!-- Navigation -->
@@ -149,7 +149,7 @@
             <a class="navbar-brand fw-bold text-white" href="index.html">OnOut.org</a>
             <div class="d-flex gap-3">
                 <a href="index.html" class="btn btn-modern btn-sm">Figma to Production</a>
-                <a href="#figma_url_main" 
+                <a href="#figma_url_main"
                    class="btn btn-primary-modern btn-sm">Get started</a>
             </div>
         </div>
@@ -162,19 +162,19 @@
                 <div class="col-lg-8 text-center">
                     <h1 class="display-4 fw-bold mb-4">Figma to React</h1>
                     <p class="lead mb-5 opacity-90">Professional development and backend integration</p>
-                    
+
                     <!-- Evaluation Form -->
                     <div class="glass-card p-4 p-md-5 mx-auto" style="max-width: 500px;">
                         <h3 class="h5 fw-semibold mb-3">Evaluate your Figma design</h3>
                         <p class="text-white-50 mb-4 small">Enter the link to your Figma design or upload an image of your mockup. We will contact you to evaluate it.</p>
-                        
+
                         <form id="figmaEvaluationForm" method="POST" enctype="multipart/form-data"> {/* action removed, will be handled by JS */}
                             <div class="mb-3">
                                 <label for="figma_url_main" class="form-label fw-medium">Figma design link</label>
-                                <input type="url" 
-                                       id="figma_url_main" 
-                                       name="figma_url" 
-                                       class="form-control form-control-modern" 
+                                <input type="url"
+                                       id="figma_url_main"
+                                       name="figma_url"
+                                       class="form-control form-control-modern"
                                        placeholder="https://www.figma.com/file/...">
                             </div>
 
@@ -184,9 +184,9 @@
 
                             <div class="mb-4">
                                 <label for="figma_image_upload" class="form-label fw-medium">Upload design image</label>
-                                <input type="file" 
-                                       id="figma_image_upload" 
-                                       name="figma_image" 
+                                <input type="file"
+                                       id="figma_image_upload"
+                                       name="figma_image"
                                        class="form-control form-control-modern"
                                        accept="image/*">
                             </div>
@@ -208,7 +208,7 @@
                     <div class="glass-card p-4 p-md-5">
                         <h2 class="h4 fw-semibold mb-4">More about the service</h2>
                         <p class="mb-4 opacity-90">
-                            I offer a new service: professional development of layouts from Figma directly into a finished product. 
+                            I offer a new service: professional development of layouts from Figma directly into a finished product.
                             This is not just a translation of design into code, but a complete integration with your backend.
                         </p>
 
@@ -229,10 +229,10 @@
 
                         <h3 class="h5 fw-semibold mb-3">Contact:</h3>
                         <p class="mb-4 opacity-90">To discuss the details, contact me in Telegram:</p>
-                        
+
                         <div class="text-center">
-                            <a href="https://t.me/onoutsupportbot" 
-                               target="_blank" 
+                            <a href="https://t.me/onoutsupportbot"
+                               target="_blank"
                                class="btn btn-primary-modern">
                                 Contact in Telegram
                             </a>
@@ -251,16 +251,16 @@
                     <div class="d-flex align-items-center gap-3 mb-3 mb-md-0">
                         <span class="fw-semibold">OnOut.org</span>
                         <!-- TrustBox widget -->
-                        <div class="trustpilot-widget" 
-                             data-locale="en-US" 
-                             data-template-id="5419b6a8b0d04a076446a9ad" 
-                             data-businessunit-id="639a2de1b79e39e3f877b277" 
-                             data-style-height="24px" 
-                             data-style-width="100%" 
-                             data-theme="dark" 
+                        <div class="trustpilot-widget"
+                             data-locale="en-US"
+                             data-template-id="5419b6a8b0d04a076446a9ad"
+                             data-businessunit-id="639a2de1b79e39e3f877b277"
+                             data-style-height="24px"
+                             data-style-width="100%"
+                             data-theme="dark"
                              data-min-review-count="10">
-                            <a href="https://www.trustpilot.com/review/onout.org" 
-                               target="_blank" 
+                            <a href="https://www.trustpilot.com/review/onout.org"
+                               target="_blank"
                                class="text-white-50 text-decoration-none">Trustpilot</a>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
 
     <!-- TrustBox script -->
     <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-    
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -299,13 +299,13 @@
 
                     const figmaUrlInput = document.getElementById('figma_url_main');
                     const figmaImageInput = document.getElementById('figma_image_upload');
-                    
+
                     const figmaUrl = figmaUrlInput ? figmaUrlInput.value.trim() : '';
                     const figmaImageFile = figmaImageInput ? figmaImageInput.files[0] : null;
 
                     if (!figmaUrl && !figmaImageFile) {
                         alert('Please provide either a Figma design link or upload an image of your mockup.');
-                        return; 
+                        return;
                     }
 
                     let mailtoLink = 'mailto:support@onout.org';
@@ -320,7 +320,7 @@
                         body += `Design Image: ${figmaImageFile.name} (selected for upload).\n`; // Refined image text
                         alert('If you have selected an image, please ensure it is attached to the email when your mail client opens.');
                     }
-                    
+
                     body += '\nPlease advise on the next steps.\n\nThank you.'; // Refined closing
 
                     mailtoLink += `?subject=${encodeURIComponent(subject)}`;

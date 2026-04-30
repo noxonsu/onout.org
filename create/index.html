@@ -8,15 +8,15 @@
         <meta name="keywords" content="create your own token, create your own blockchain, create your own cryptocurrency, create your own NFT, create your own smart contract, create your own dapp, create your own defi">
         <meta name="description" content="Create crypto things">
         <title>Create crypto things</title>
-       
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tachyons/css/tachyons.min.css">
         <style>
-           
-    
-    
+
+
+
     .toc{overflow-y:auto}.toc>.toc-list{overflow:hidden;position:relative}.toc>.toc-list li{list-style:none}.js-toc{overflow-y:hidden}.toc-list{margin:0;padding-left:10px}a.toc-link{color:currentColor;height:100%}.is-collapsible{max-height:1000px;overflow:hidden;transition:all 300ms ease-in-out}.is-collapsed{max-height:0}.is-position-fixed{position:fixed !important;top:0}.toc-link::before{background-color:#eee;content:" ";display:inline-block;height:inherit;left:0;margin-top:-1px;position:absolute;width:2px}.is-active-link::before{background-color:#54bc4b}/*# sourceMappingURL=tocbot.css.map */
 
-           
+
     /* Custom styles for layout */
     body{
         font-size: 1.1rem;
@@ -24,18 +24,18 @@
     }
     .layout {
         display: flex;
-        justify-content: center;            
+        justify-content: center;
     }
-    .toc-content {            
+    .toc-content {
         position: relative;
     }
     .sticky{
         position: sticky;
         top: 1rem;
     }
-    .toc-list{            
+    .toc-list{
         list-style: none;
-        margin: 0;                                                                        
+        margin: 0;
         overflow: hidden;
         position: relative;
     }
@@ -48,12 +48,12 @@
         position: static;
     }
 
-    .toc>.toc-list{                    
+    .toc>.toc-list{
         position: static;
     }
 
     .toc>.toc-list li{
-        list-style: none;                    
+        list-style: none;
     }
 
     .sticky-panel{
@@ -97,7 +97,7 @@
         aside{
             display: none;
         }
-        .content {                
+        .content {
             width: 100%;
             margin-left: 0;
         }
@@ -105,7 +105,7 @@
             padding-left: 0;
             padding-right: 0;
         }
-        .content {        
+        .content {
             flex: 0 0 100%;
             max-width: 100%;
         }
@@ -113,10 +113,11 @@
             padding-left: 0;
         }
     }
-     
-    
+
+
         </style>
-    </head>
+      <link rel="canonical" href="https://onout.org/create/">
+</head>
     <body class="w-100 sans-serif pa3 pb0">
         <header class="tc pv2 pv4-l">
             <h1 class="f2 lh-title mt0 mb4">Create crypto things</h1>
@@ -129,14 +130,14 @@
 
         <div class="layout mw8 center pa0">
             <aside class="aside">
-                <div class="sticky">                          
+                <div class="sticky">
                     <nav class="toc-content mb3">
-                        <!-- tocbot will inject TOC here -->                
+                        <!-- tocbot will inject TOC here -->
                     </nav>
                     <!-- <a href="#"><img src="https://placehold.co/200x200" alt=""></a> -->
-                </div>      
+                </div>
             </aside>
-                                    
+
             <!-- Main Content -->
             <div class="content">
                 <article class="mb4">
@@ -164,7 +165,7 @@
                 </article>
                 <!-- Additional articles or content here -->
             </div>
-        
+
         </div>
 
         <div style='
@@ -184,17 +185,17 @@
         <!-- Include tocbot script -->
         <script src="https://cdn.jsdelivr.net/npm/tocbot/dist/tocbot.min.js"></script>
         <script>
-          
+
     // Initialize tocbot
     tocbot.init({
         tocSelector: '.toc-content',
         contentSelector: '.content',
-        headingSelector: 'h1, h2, h3',                    
+        headingSelector: 'h1, h2, h3',
         collapseDepth: 1,
         hasInnerContainers: true
     });
-    function closePanel() {              
-        var button = event.target;              
+    function closePanel() {
+        var button = event.target;
         var parent = button.closest('.sticky-panel');
         parent.style.display = 'none';
     }
