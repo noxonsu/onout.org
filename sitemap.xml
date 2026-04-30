@@ -1,647 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://onout.org/</loc>
-<lastmod>2026-03-11T21:49:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/8e2eb842-0344-4db1-92ce-d51cbd3c708b.html</loc>
-<lastmod>2022-12-14T23:11:54+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/chatgpt_prompt_email_blockscout_forkers.pdf</loc>
-<lastmod>2023-01-13T20:34:16+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/ci-status.html</loc>
-<lastmod>2026-03-05T00:37:35+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/googleb0ef9bfd96887057.html</loc>
-<lastmod>2023-01-11T01:53:33+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/ru.html</loc>
-<lastmod>2026-04-02T22:26:28+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/AI/Writer.html</loc>
-<lastmod>2023-11-28T10:46:53Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/API/identity_verification copy.html</loc>
-<lastmod>2023-11-10T16:39:17+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/API/identity_verification.html</loc>
-<lastmod>2023-11-10T16:39:17+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/AiGram/</loc>
-<lastmod>2024-03-04T19:35:43Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/AiGram/de.html</loc>
-<lastmod>2024-03-04T19:35:43Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/AiGram/es.html</loc>
-<lastmod>2024-03-04T19:35:43Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/AiGram/fr.html</loc>
-<lastmod>2024-03-04T19:35:43Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/AiGram/ru.html</loc>
-<lastmod>2024-03-04T19:35:43Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/ChatGPT_API/</loc>
-<lastmod>2023-09-06T07:35:05Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken.html</loc>
-<lastmod>2023-09-08T10:08:52Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/de.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/demo.html</loc>
-<lastmod>2024-01-23T22:34:08+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/es.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/fr.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/ru.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/CryptoLottery/</loc>
-<lastmod>2026-03-24T16:41:30+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/DAOWidget/</loc>
-<lastmod>2026-03-24T16:41:30+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/FeeToken/</loc>
-<lastmod>2023-09-08T10:04:15+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/GambleFi/</loc>
-<lastmod>2023-10-09T10:30:02+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/KYC/API.html</loc>
-<lastmod>2025-05-29T09:44:16Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/KYC/WorldID-integration.html</loc>
-<lastmod>2025-05-29T09:44:16Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/KYC/developer.html</loc>
-<lastmod>2023-10-25T21:11:39+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/KYC/providers.html</loc>
-<lastmod>2023-11-28T10:46:53Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/LangChain/</loc>
-<lastmod>2023-09-06T11:45:36+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/LangChain/de.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/LangChain/es.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/LangChain/fr.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/LangChain/ru.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/LotterySource/</loc>
-<lastmod>2023-03-25T15:07:40+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/MascotGPT/</loc>
-<lastmod>2023-10-20T20:12:54+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/MascotGPT/de.html</loc>
-<lastmod>2023-10-20T20:12:54+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/MascotGPT/es.html</loc>
-<lastmod>2023-10-20T20:12:54+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/MascotGPT/fr.html</loc>
-<lastmod>2023-10-09T09:18:42+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/MascotGPT/ru.html</loc>
-<lastmod>2023-10-20T20:12:54+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NFTsy/</loc>
-<lastmod>2026-03-24T16:41:30+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroComment/</loc>
-<lastmod>2023-09-28T16:10:08+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroComment/de.html</loc>
-<lastmod>2023-09-28T16:10:08+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroComment/es.html</loc>
-<lastmod>2023-09-28T16:10:08+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroComment/fr.html</loc>
-<lastmod>2023-09-28T16:10:08+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroComment/ru.html</loc>
-<lastmod>2023-09-28T16:10:08+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroTender/</loc>
-<lastmod>2023-10-20T20:24:40+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroTender/de.html</loc>
-<lastmod>2023-10-20T20:24:40+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroTender/es.html</loc>
-<lastmod>2023-10-20T20:24:40+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroTender/fr.html</loc>
-<lastmod>2023-10-20T20:24:40+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/NeiroTender/ru.html</loc>
-<lastmod>2023-10-20T20:24:40+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/OpenGpt/</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/OpenGpt/de.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/OpenGpt/es.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/OpenGpt/fr.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/OpenGpt/ru.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Sanctions/Screening.html</loc>
-<lastmod>2023-12-08T14:33:06Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Speechgpt/</loc>
-<lastmod>2023-04-26T20:32:08+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Speechgpt/de.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Speechgpt/es.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Speechgpt/fr.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Speechgpt/ru.html</loc>
-<lastmod>2023-04-26T16:02:52+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/ai/</loc>
-<lastmod>2024-03-15T19:09:35+09:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/bitcoin/dex.html</loc>
-<lastmod>2023-11-22T13:02:41Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/blog/</loc>
-<lastmod>2026-03-11T21:49:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/cloud/gpt.html</loc>
-<lastmod>2023-11-07T19:31:20+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/create/</loc>
-<lastmod>2024-03-15T06:49:53+09:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/crosschain/</loc>
-<lastmod>2026-03-09T16:49:03+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/dao/</loc>
-<lastmod>2026-03-09T16:49:03+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/dashsource/</loc>
-<lastmod>2026-03-24T16:41:30+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/dex/</loc>
-<lastmod>2026-03-09T16:49:03+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/dex/fr.html</loc>
-<lastmod>2026-03-03T23:25:32+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/dex/ru.html</loc>
-<lastmod>2026-03-03T23:25:32+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/eeat/</loc>
-<lastmod>2024-01-24T10:41:30+01:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/eeat/de.html</loc>
-<lastmod>2024-01-24T10:41:30+01:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/eeat/es.html</loc>
-<lastmod>2024-01-24T10:41:30+01:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/eeat/fr.html</loc>
-<lastmod>2024-01-24T10:41:30+01:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/eeat/prices.html</loc>
-<lastmod>2023-11-24T16:15:58+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/eeat/ru.html</loc>
-<lastmod>2024-01-24T10:41:30+01:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/embedGPT/</loc>
-<lastmod>2024-03-15T06:49:53+09:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/dao-factory.html</loc>
-<lastmod>2026-03-10T21:08:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/dao-widget.html</loc>
-<lastmod>2026-03-10T21:08:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/definance.html</loc>
-<lastmod>2026-03-10T21:08:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/farming.html</loc>
-<lastmod>2026-03-10T21:08:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/launchpad.html</loc>
-<lastmod>2026-03-10T21:08:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/predictionmarket.html</loc>
-<lastmod>2026-03-02T16:27:12+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/upload-agent.html</loc>
-<lastmod>2026-03-10T21:08:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/envato-descriptions/wallet.html</loc>
-<lastmod>2026-03-10T21:08:10+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/farming/</loc>
-<lastmod>2026-03-09T16:49:03+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/figma-to-prod/</loc>
-<lastmod>2025-09-08T19:32:17+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/figma-to-prod/react.html</loc>
-<lastmod>2025-06-12T17:48:25Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/launchpad/</loc>
-<lastmod>2026-03-09T16:49:03+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/lenda/</loc>
-<lastmod>2026-03-10T21:38:48+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/lottery/</loc>
-<lastmod>2026-03-03T23:25:32+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/lottery/404.html</loc>
-<lastmod>2024-04-29T21:27:10Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/lottery/index_static.html</loc>
-<lastmod>2024-06-06T12:39:16Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/lottery/settings.html</loc>
-<lastmod>2024-04-29T21:27:10Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/nft/</loc>
-<lastmod>2026-03-03T23:25:32+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/nftstake/</loc>
-<lastmod>2026-03-03T23:25:32+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/predictionmarket/</loc>
-<lastmod>2026-03-09T16:49:03+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/product-template/</loc>
-<lastmod>2025-09-08T19:28:30+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/1c-wordpress-sync.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/ai-avatar-platform.html</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/ai-coaching-platform.html</loc>
-<lastmod>2025-09-12T14:37:35+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/amoexcel-googledrive-sync.html</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/bitcoin-mempool-explorer.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/book-to-audio-tg.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/calorie-tracker-bot.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/contract-analysis.html</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/crypto-aml-checker.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/crypto-lead-automation.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/figma-to-code.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/freelance-lead-parser.html</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/hr-dialogue-mimic.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/image-share-platform.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/learning-platform.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/news-analysis.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/site-presentations.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/telegram-bot-development.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/telegram-copilot-psychotherapist.html</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/telephony-dashboard.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/voice-to-text-app.html</loc>
-<lastmod>2025-09-12T14:52:26+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/yadirect-mcp-server.html</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/promo/youtube-telegram-scraper.html</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/research/non-kyc-p2p-exchanges.html</loc>
-<lastmod>2023-03-07T11:51:54+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/sensorica/</loc>
-<lastmod>2023-04-11T11:50:59Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/services/</loc>
-<lastmod>2025-09-12T14:10:00+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/simpledashboard/</loc>
-<lastmod>2026-03-11T12:52:22+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/telegram/</loc>
-<lastmod>2026-03-24T16:41:30+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/telegramGPT/</loc>
-<lastmod>2024-03-04T19:35:43Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/trash/fr.html</loc>
-<lastmod>2024-01-24T10:41:30+01:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/trash/ru.html</loc>
-<lastmod>2024-01-24T10:41:30+01:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/uniswapFork/</loc>
-<lastmod>2026-03-31T16:20:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/wallet/</loc>
-<lastmod>2026-03-09T16:21:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/ru.html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(1).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(10).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(2).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(3).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(4).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(5).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(6).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(7).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(8).html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource(9).html</loc>
-<lastmod>2023-09-08T10:30:27Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/Chate/chicken_files/saved_resource.html</loc>
-<lastmod>2023-09-08T12:29:52+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/LangChain/KYC_providers/</loc>
-<lastmod>2023-10-30T16:26:59+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/bitcoin/runes/</loc>
-<lastmod>2024-04-21T11:29:15Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/blog/crypto-wallet-white-label/</loc>
-<lastmod>2026-03-11T21:49:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/blog/how-to-fork-aave/</loc>
-<lastmod>2026-03-11T21:49:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/blog/how-to-fork-uniswap-v2/</loc>
-<lastmod>2026-03-11T21:49:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/blog/polymarket-fork/</loc>
-<lastmod>2026-03-11T21:49:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/blog/snapshot-alternative/</loc>
-<lastmod>2026-03-11T21:49:21+03:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/create/blockchain/</loc>
-<lastmod>2024-03-21T03:36:23+09:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/create/cryptocurrency/</loc>
-<lastmod>2024-04-16T22:56:11+09:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/create/memecoin/</loc>
-<lastmod>2024-04-11T09:27:40Z</lastmod>
-</url>
-<url>
-<loc>https://onout.org/create/token/</loc>
-<lastmod>2024-04-25T00:28:59+09:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/services/ai-ml/</loc>
-<lastmod>2025-09-12T14:14:20+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/services/blockchain-crypto/</loc>
-<lastmod>2025-09-12T14:21:08+02:00</lastmod>
-</url>
-<url>
-<loc>https://onout.org/telegram/GPT/</loc>
-<lastmod>2024-03-04T19:35:43Z</lastmod>
-</url>
+  <url>
+    <loc>https://onout.org/</loc>
+    <lastmod>2026-03-11T21:49:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/AI/Writer.html</loc>
+    <lastmod>2023-11-28T10:46:53Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/API/identity_verification.html</loc>
+    <lastmod>2023-11-10T16:39:17+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/AiGram/</loc>
+    <lastmod>2024-03-04T19:35:43Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/ChatGPT_API/</loc>
+    <lastmod>2023-09-06T07:35:05Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/Chate/</loc>
+    <lastmod>2023-04-26T16:02:52+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/Chate/demo.html</loc>
+    <lastmod>2024-01-23T22:34:08+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/FeeToken/</loc>
+    <lastmod>2023-09-08T10:04:15+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/GambleFi/</loc>
+    <lastmod>2023-10-09T10:30:02+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/KYC/API.html</loc>
+    <lastmod>2025-05-29T09:44:16Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/KYC/WorldID-integration.html</loc>
+    <lastmod>2025-05-29T09:44:16Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/KYC/developer.html</loc>
+    <lastmod>2023-10-25T21:11:39+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/KYC/providers.html</loc>
+    <lastmod>2023-11-28T10:46:53Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/LangChain/</loc>
+    <lastmod>2023-09-06T11:45:36+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/LotterySource/</loc>
+    <lastmod>2023-03-25T15:07:40+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/MascotGPT/</loc>
+    <lastmod>2023-10-20T20:12:54+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/NeiroComment/</loc>
+    <lastmod>2023-09-28T16:10:08+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/OpenGpt/</loc>
+    <lastmod>2023-04-26T16:02:52+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/Sanctions/Screening.html</loc>
+    <lastmod>2023-12-08T14:33:06Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/Speechgpt/</loc>
+    <lastmod>2023-04-26T20:32:08+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/ai/</loc>
+    <lastmod>2024-03-15T19:09:35+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/bitcoin/dex.html</loc>
+    <lastmod>2023-11-22T13:02:41Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/blog/</loc>
+    <lastmod>2026-03-11T21:49:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/cloud/gpt.html</loc>
+    <lastmod>2023-11-07T19:31:20+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/create/</loc>
+    <lastmod>2024-03-15T06:49:53+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/crosschain/</loc>
+    <lastmod>2026-03-09T16:49:03+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/dao/</loc>
+    <lastmod>2026-03-09T16:49:03+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/dashsource/</loc>
+    <lastmod>2026-03-24T16:41:30+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/dex/</loc>
+    <lastmod>2026-03-09T16:49:03+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/eeat/</loc>
+    <lastmod>2024-01-24T10:41:30+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/embedGPT/</loc>
+    <lastmod>2024-03-15T06:49:53+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/envato-descriptions/predictionmarket.html</loc>
+    <lastmod>2026-03-02T16:27:12+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/envato-descriptions/upload-agent.html</loc>
+    <lastmod>2026-03-10T21:08:10+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/farming/</loc>
+    <lastmod>2026-03-09T16:49:03+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/figma-to-prod/</loc>
+    <lastmod>2025-09-08T19:32:17+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/figma-to-prod/react.html</loc>
+    <lastmod>2025-06-12T17:48:25Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/launchpad/</loc>
+    <lastmod>2026-03-09T16:49:03+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/lottery/</loc>
+    <lastmod>2026-03-03T23:25:32+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/lottery/index_static.html</loc>
+    <lastmod>2024-06-06T12:39:16Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/lottery/settings.html</loc>
+    <lastmod>2024-04-29T21:27:10Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/nft/</loc>
+    <lastmod>2026-03-03T23:25:32+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/nftstake/</loc>
+    <lastmod>2026-03-03T23:25:32+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/predictionmarket/</loc>
+    <lastmod>2026-03-09T16:49:03+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/product-template/</loc>
+    <lastmod>2025-09-08T19:28:30+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/1c-wordpress-sync.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/ai-avatar-platform.html</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/ai-coaching-platform.html</loc>
+    <lastmod>2025-09-12T14:37:35+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/amoexcel-googledrive-sync.html</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/bitcoin-mempool-explorer.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/book-to-audio-tg.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/calorie-tracker-bot.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/contract-analysis.html</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/crypto-aml-checker.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/crypto-lead-automation.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/figma-to-code.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/freelance-lead-parser.html</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/hr-dialogue-mimic.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/image-share-platform.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/learning-platform.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/news-analysis.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/site-presentations.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/telegram-bot-development.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/telegram-copilot-psychotherapist.html</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/telephony-dashboard.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/voice-to-text-app.html</loc>
+    <lastmod>2025-09-12T14:52:26+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/yadirect-mcp-server.html</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/promo/youtube-telegram-scraper.html</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/research/non-kyc-p2p-exchanges.html</loc>
+    <lastmod>2023-03-07T11:51:54+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/sensorica/</loc>
+    <lastmod>2023-04-11T11:50:59Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/services/</loc>
+    <lastmod>2025-09-12T14:10:00+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/simpledashboard/</loc>
+    <lastmod>2026-03-11T12:52:22+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/telegram/</loc>
+    <lastmod>2026-03-24T16:41:30+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/uniswapFork/</loc>
+    <lastmod>2026-03-31T16:20:52+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/wallet/</loc>
+    <lastmod>2026-03-09T16:21:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/LangChain/KYC_providers/</loc>
+    <lastmod>2023-10-30T16:26:59+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/blog/crypto-wallet-white-label/</loc>
+    <lastmod>2026-03-11T21:49:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/blog/how-to-fork-aave/</loc>
+    <lastmod>2026-03-11T21:49:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/blog/how-to-fork-uniswap-v2/</loc>
+    <lastmod>2026-03-11T21:49:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/blog/polymarket-fork/</loc>
+    <lastmod>2026-03-11T21:49:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/blog/snapshot-alternative/</loc>
+    <lastmod>2026-03-11T21:49:21+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/create/blockchain/</loc>
+    <lastmod>2024-03-21T03:36:23+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/create/cryptocurrency/</loc>
+    <lastmod>2024-04-16T22:56:11+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/create/memecoin/</loc>
+    <lastmod>2024-04-11T09:27:40Z</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/create/token/</loc>
+    <lastmod>2024-04-25T00:28:59+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/services/ai-ml/</loc>
+    <lastmod>2025-09-12T14:14:20+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/services/blockchain-crypto/</loc>
+    <lastmod>2025-09-12T14:21:08+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://onout.org/telegram/GPT/</loc>
+    <lastmod>2024-03-04T19:35:43Z</lastmod>
+  </url>
 </urlset>
