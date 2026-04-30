@@ -15,6 +15,10 @@ Promo articles
 - Minimal promo pages live in `/promo/` (e.g., `/promo/contract-analysis.html`).
 - Add links to relevant promo pages under each service “Cases” list in `index.html` and on the service detail page.
 
+SEO / sitemap
+- `sitemap.xml` is curated manually for indexable English pages only. Do not regenerate it with a full repository crawl: that includes language duplicates, internal tooling, utility pages, and weak pages that should not be submitted to Google.
+- The GitHub sitemap workflow is manual-only (`workflow_dispatch`) so it cannot overwrite the curated sitemap after every push.
+
 если аи и прочие новые:
 1. см гугл таблицы. 
 2. меняй там нужную строку (сделано, чтоб манагерам проще было).

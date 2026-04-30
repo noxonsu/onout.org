@@ -1,8 +1,7 @@
 name: Generate xml sitemap
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   sitemap_job:
